@@ -1,0 +1,3 @@
+[submodule "unity/Assets/Robot/NetworkTables-CSharp"]
+	path = unity/Assets/Robot/NetworkTables-CSharp
+	url = https://github.com/juchong/NetworkTables-CSharp.git
