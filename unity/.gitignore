@@ -12,6 +12,12 @@
 **/[Bb]uilds/
 **/[Ll]ogs/
 **/[Uu]ser[Ss]ettings/
+**/.utmp/**
+**/oculus-frc-streamer_BurstDebugInformation_DoNotShip/**
+
+# Ignore specific plugins
+**[Aa]ssets/[Ss]cripts/[Mm]essage[Pp]ack.meta
+**[Aa]ssets/[Ss]cripts/[Mm]essage[Pp]ack/**
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
