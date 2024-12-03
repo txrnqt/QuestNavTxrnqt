@@ -1,7 +1,7 @@
 # QuestNav
-This project enables streaming Oculus VR headset pose information to an FRC robot using the Network Tables 4 (NT4) protocol. This pose information can be used by the robot control system to accurately map the it's surroundings and navigate around a competition field, practice space, or any other location. QuestNav produces a more stable and reliable tracking pose than other FRC vision solutions (LimeLight, Photon Vision, etc.)
+This project enables streaming Oculus VR headset pose information to an FRC robot using the Network Tables 4 (NT4) protocol. This pose information can be used by the robot control system to accurately map it's surroundings and navigate around a competition field, practice space, or any other location. QuestNav produces a more stable and reliable tracking pose than any other FRC vision solution (LimeLight, Photon Vision, etc.)
 
-Using a VR headset for robot localization has many benefits:
+Using a VR headset for robot localization has several advantages:
 - Lower cost than most FRC vision solutions 
 - Multiple SLAM cameras enable redundant, calibrated VIO
 - Camera tracking is fused with an onboard IMU to provide accurate position and velocity estimates
@@ -13,9 +13,9 @@ Using a VR headset for robot localization has many benefits:
 # Hardware Requirements
 QuestNav requires the following to get started:
 1. FRC robot and/or control system
-	- *This project was tested using REV swerve modules with REV NEOs and Spark Max motor controllers.*
+	- *This project was tested using REV swerve modules assembled with REV NEOs and Spark Max motor controllers.*
 2. Quest 3S headset
-	- *A Quest 3S headset is recommended since it is lower cost and offers excellent tracking performance. It's currently not clear whether the depth projector on the Quest 3 benefits FRC applications.*
+	- *A Quest 3S headset is recommended due to its lower cost and excellent tracking performance. It's currently not clear whether the depth projector on the Quest 3 benefits FRC applications.*
 3. USB C to Ethernet adapter dongle
 	- *I'm actively working on compiling a list of known-good dongles. Please submit a pull request if you found one that works with your headset!*
 
