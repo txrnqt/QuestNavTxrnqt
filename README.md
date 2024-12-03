@@ -44,7 +44,7 @@ These setup steps are required *once per boot* and can be prevented by ensuring 
 3. Check that the Quest headset has connected to your robot and is writing pose data. 
 
 # Unity Development Environment Setup
-## Install Unity
+### Install Unity
 - Download and install Unity Hub from the official website ([link](https://unity.com/download))
 - Open Unity Hub, sign in, and install Unity 6 (6000.0.25f1) LTS
 	- Select the following:
@@ -54,25 +54,36 @@ These setup steps are required *once per boot* and can be prevented by ensuring 
 		- "Android SDK & NDK Tools"
 - Click "Install" and wait for the installation to finish
 
-## Install Quest Link
+### Install Quest Link
+
 - Install the Quest Link software ([link](https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/install-app-for-link/))
-## Install Git for Windows
+
+### Install Git for Windows
+
 - Install Git using whatever method you prefer. You can download Git for Windows [here](https://git-scm.com/downloads/win).
-## Fork, clone, and import this repository into Unity
+
+### Fork, clone, and import this repository into Unity
+
 The main editing window will only open if a project is active. 
 - Click `Add > Add project from disk` and select the unity subfolder in this repository
 - Click on the newly imported project
 - Wait for Unity to compile assets and open the main interface
-## Install the Git for Unity plugin
+
+### Install the Git for Unity plugin
+
 Installing Git for Unity will make managing the Unity source code much easier. 
 - Follow the instructions on [this](https://github.com/spoiledcat/git-for-unity) page
 - Git for Unity should detect your forked repository
-## Install the MessagePack plugin for Unity
+
+### Install the MessagePack plugin for Unity
+
 This package is required by the C# Network Tables library. 
 - Download the latest release with a `.unitypackage` extension from [here](https://github.com/MessagePack-CSharp/MessagePack-CSharp/releases/tag/v2.5.187)
 - In the main unity window, select `Assets > Import Package > Custom Package`
 - Browse to the package you downloaded and click `Import`
-## Explore the C# Code
+
+### Explore the C# Code
+
 - That's it! You'll find the core streamer application in `Assets > Robot > MotionStreamer.cs`. 
 
 # FAQ
