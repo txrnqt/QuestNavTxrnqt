@@ -53,7 +53,7 @@ public class DriveSubsystem extends SubsystemBase {
   NetworkTable nt4Table = nt4Instance.getTable("oculus");
   private IntegerSubscriber questMiso = nt4Table.getIntegerTopic("miso").subscribe(0);
   private IntegerPublisher questMosi = nt4Table.getIntegerTopic("mosi").publish();
-  
+
   // Subscribe to the Network Tables oculus data topics
   private IntegerSubscriber questFrameCount = nt4Table.getIntegerTopic("frameCount").subscribe(0);
   private DoubleSubscriber questTimestamp = nt4Table.getDoubleTopic("timestamp").subscribe(0.0f);
@@ -142,7 +142,7 @@ public class DriveSubsystem extends SubsystemBase {
    * @param rateLimit     Whether to enable rate limiting for smoother control.
    */
   public void drive(double xSpeed, double ySpeed, double rot, boolean fieldRelative, boolean rateLimit) {
-    
+
     double xSpeedCommanded;
     double ySpeedCommanded;
 
@@ -158,7 +158,7 @@ public class DriveSubsystem extends SubsystemBase {
       } else {
         directionSlewRate = 500.0; //some high number that means the slew rate is effectively instantaneous
       }
-      
+
 
       double currentTime = WPIUtilJNI.now() * 1e-6;
       double elapsedTime = currentTime - m_prevTime;
@@ -182,7 +182,7 @@ public class DriveSubsystem extends SubsystemBase {
         m_currentTranslationMag = m_magLimiter.calculate(0.0);
       }
       m_prevTime = currentTime;
-      
+
       xSpeedCommanded = m_currentTranslationMag * Math.cos(m_currentTranslationDir);
       ySpeedCommanded = m_currentTranslationMag * Math.sin(m_currentTranslationDir);
       m_currentRotation = m_rotLimiter.calculate(rot);
@@ -276,9 +276,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   private Translation2d getOculusPosition() {
     float[] oculusPosition = questPosition.get();
-    return new Translation2d(
-            Math.sqrt(Math.pow(oculusPosition[0], 2) + Math.pow(oculusPosition[2], 2)),
-            Rotation2d.fromRadians(Math.atan(oculusPosition[0]*-1/oculusPosition[2]))).unaryMinus();
+    return new Translation2d(oculusPosition[2], -oculusPosition[0]);
   }
 
   private Pose2d getOculusPose() {
