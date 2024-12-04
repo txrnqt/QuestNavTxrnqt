@@ -31,9 +31,12 @@ At it's heart, QuestNav is merely a VR app designed to push data to Network Tabl
 1. Follow [this](https://medium.com/sidequestvr/how-to-turn-on-developer-mode-for-the-quest-3-509244ccd386) guide to set up "Developer Mode" 
 2. Sign into your Meta developer account and download the [Meta Quest Developer Hub (MQDH)](https://developers.meta.com/horizon/develop)
 3. Configure the following settings on your Quest headset:
-	- Set the display timeout to 4 hours
-	- Enable the following developer settings under `Experimental Settings > Advanced`
-		- Disable guardian for development purposes
+	- Enable travel mode ([link](https://www.meta.com/help/quest/articles/in-vr-experiences/oculus-features/travel-mode/) to instructions)
+	- Set the display timeout to 4 hours in `Settings > General > Power > Display off`
+	- Disable WiFi in `Settings > WiFi`
+		- **NOTE:** Be sure to completely turn off WiFi, otherwise the headset will constantly disconnect from the robot network as it tries to look for the internet.
+	- Disable Bluetooth in `Settings > Bluetooth`
+	- Disable the guardian for development purposes `Settings > Advanced > Experimental Settings > Enable custom settings`
 4. Plug the headset into your PC and install the example .apk using MQDH
 	- **NOTE!** The example app team number is hard-coded to 9999
 
@@ -82,9 +85,14 @@ This package is required by the C# Network Tables library.
 - In the main unity window, select `Assets > Import Package > Custom Package`
 - Browse to the package you downloaded and click `Import`
 
-### Explore the C# Code
+### Explore the C# Code and Build The Project
 
-- That's it! You'll find the core streamer application in `Assets > Robot > MotionStreamer.cs`. 
+- The main scene is located in `Assets > Scenes > QuestNav`
+- The pose streaming code is located in `Assets > Robot > MotionStreamer.cs`.
+
+Unity will need to download and install several Android packages during the first build, so it might be helpful to connect to the headset over USB the first time to make sure it can download everything from the internet. Subsequent builds should be faster and will not require additional downloads. 
+
+The project should be configured for Android out of the box. If not, you may need to manually change the build target to Android in `File > Build Profiles`
 
 # FAQ
 ### Q: Are you doing anything to initialize its location? Or do you have an idea how you'd recommend teams to initialize its location?

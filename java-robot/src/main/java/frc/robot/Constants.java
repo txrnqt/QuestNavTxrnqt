@@ -29,9 +29,15 @@ public final class Constants {
     public static final double kMaxSpeedMetersPerSecond = 2.8;
     public static final double kMaxAngularSpeed = 2 * Math.PI; // radians per second
 
-    public static final double kDirectionSlewRate = 2.5; // radians per second
-    public static final double kMagnitudeSlewRate = 2.5; // percent per second (1 = 100%)
-    public static final double kRotationalSlewRate = 4.0; // percent per second (1 = 100%)
+    // Full-field speeds and feeds:
+    //public static final double kDirectionSlewRate = 2.5; // radians per second
+    //public static final double kMagnitudeSlewRate = 2.5; // percent per second (1 = 100%)
+    //public static final double kRotationalSlewRate = 4.0; // percent per second (1 = 100%)
+
+    // Demo speeds and feeds:
+    public static final double kDirectionSlewRate = 0.8; // radians per second
+    public static final double kMagnitudeSlewRate = 0.8; // percent per second (1 = 100%)
+    public static final double kRotationalSlewRate = 1.0; // percent per second (1 = 100%)
 
     // Chassis configuration
     // Distance between centers of right and left wheels on robot (in meters)
