@@ -1,7 +1,7 @@
 # QuestNav
 This project enables streaming Oculus VR headset pose information to an FRC robot using the Network Tables 4 (NT4) protocol. This pose information can be used by the robot control system to accurately map it's surroundings and navigate around a competition field, practice space, or any other location. QuestNav produces a more stable and reliable tracking pose than any other FRC vision solution (LimeLight, Photon Vision, etc.)
 
-![Demo Video](https://i.imgur.com/N7zD08c.gif)
+![Demo Video](https://nextcloud.chongflix.tv/public.php/dav/files/Ey4NL4NgTfDXW68/)
 
 [Check out the full video here!](https://youtu.be/Mo0p1GGeasM)
 
