@@ -16,8 +16,47 @@ QuestNav requires the following to get started:
 	- *This project was tested using REV swerve modules assembled with REV NEOs and Spark Max motor controllers.*
 2. Quest 3S headset
 	- *A Quest 3S headset is recommended due to its lower cost and excellent tracking performance. It's currently not clear whether the depth projector on the Quest 3 benefits FRC applications.*
-3. USB C to Ethernet adapter dongle
-	- *I'm actively working on compiling a list of known-good dongles. Please submit a pull request if you found one that works with your headset!*
+3. Supported USB-C to Ethernet + power passthrough adapter
+
+# Power Requirements
+
+TL;DR: An external 5V supply is **REQUIRED** for the headset to operate properly on an FRC robot. 5V may be supplied from anything - including the RoboRIO's USB ports. 
+
+### USB to Ethernet Adapters
+
+As per the FRC rules (R707 in the 2024 ruels), wireless communication is not allowed within the robot. In order to comply with this rule, all communication with the Quest headset must be done over a wired link. USB to Ethernet adapters offer a convenient way to communicate with the headset, however, the correct style of adapter must be chosen to avoid connectivity issues. 
+
+The USB port on Quest headsets was never designed to constantly supply 5V at "high power" (5V @ 500mA as per the USB spec), so supplemental power must be provided to ensure a reliable connection. **Only USB to Ethernet adapters that support power passthrough should be used on a robot!** These products are often sold as "USB C port replicators", "USB C docks", "USB C charging adapters", etc. A list of recommended, tested adapters can be found [here](ADAPTERS.md).
+
+### 5V Power Recommendations
+
+There are several ways to power the Quest headset + USB to Ethernet adapter on an FRC robot: 
+
+**1. Power the headset using a USB port on the RoboRIO**
+
+The USB ports on the RoboRIO provide a stable 5V source that the headset can use to power the Ethernet adapter. This port will not supply enough power to charge the Quest headset, so you'll need to keep an eye on charge levels throughout the event. This is the quickest and easiest option. 
+
+**2. Power the headset using a 5V USB battery bank**
+
+This approach has several benefits:
+
+- It provides the Quest headset and USB to Ethernet adapter with clean, reliable power 
+- The battery should supply enough power to sustain the Quest headset's internal battery indefinitely
+- Charge state can be monitored externally using the power meter on the battery bank
+- Battery banks can be replaced without interrupting (powering off) the headset
+- No soldering required
+
+**NOTE:** It's important to make sure **only** 5V is supplied to the robot. You should avoid power banks that support USB C Power Delivery (PD). In our testing, we've noticed that some USB to Ethernet adapters will boot loop when a voltage greater than 5V is applied. Alternatively, you can use a USB A to USB C cable to foce a USB PD power bank to deliver 5V to the headset. 
+
+**3. Power the headset using a good quality 5V regulator**
+
+This approach is likely the most convenient. However, if implemented incorrectly, it may lead to several issues that might be difficult to debug. 
+
+Recommended 5V regulators:
+- [Grapple Robotics MitoCANdria](https://www.thethriftybot.com/products/mitocandria)
+- [Pololu D36V50F5 Regulator](https://www.pololu.com/product/4091)
+
+In either case, you'll need to use a USB breakout board like [this](https://a.co/d/gLUZN0Z) one that includes onboard sense resistors so that the headset knows that it's connected to a 5V power source. 
 
 # Software Flow
 A high-level overview of the software architecture is shown below.
