@@ -1,6 +1,10 @@
 # QuestNav
 This project enables streaming Oculus VR headset pose information to an FRC robot using the Network Tables 4 (NT4) protocol. This pose information can be used by the robot control system to accurately map it's surroundings and navigate around a competition field, practice space, or any other location. QuestNav produces a more stable and reliable tracking pose than any other FRC vision solution (LimeLight, Photon Vision, etc.)
 
+![Demo Video](https://i.imgur.com/N7zD08c.gif)
+
+[Check out the full video here!](https://youtu.be/Mo0p1GGeasM)
+
 Using a VR headset for robot localization has several advantages:
 - Lower cost than most FRC vision solutions 
 - Multiple SLAM cameras enable redundant, calibrated VIO
@@ -20,11 +24,11 @@ QuestNav requires the following to get started:
 
 # Power Requirements
 
-TL;DR: An external 5V supply is **REQUIRED** for the headset to operate properly on an FRC robot. 5V may be supplied from anything - including the RoboRIO's USB ports. 
+TL;DR: An external 5V supply is **REQUIRED** for the headset to operate properly on an FRC robot. 5V can be supplied from any stable source - including the RoboRIO's USB ports. 
 
 ### USB to Ethernet Adapters
 
-As per the FRC rules (R707 in the 2024 ruels), wireless communication is not allowed within the robot. In order to comply with this rule, all communication with the Quest headset must be done over a wired link. USB to Ethernet adapters offer a convenient way to communicate with the headset, however, the correct style of adapter must be chosen to avoid connectivity issues. 
+As per the FRC robot rules (R707 in the 2024 ruels), wireless communication is not allowed within the robot. In order to comply with this rule, all communication with the Quest headset must be done over a wired link at competition events. USB to Ethernet adapters offer a convenient way to communicate with the headset, however, the correct style of adapter must be chosen to avoid connectivity issues. 
 
 The USB port on Quest headsets was never designed to constantly supply 5V at "high power" (5V @ 500mA as per the USB spec), so supplemental power must be provided to ensure a reliable connection. **Only USB to Ethernet adapters that support power passthrough should be used on a robot!** These products are often sold as "USB C port replicators", "USB C docks", "USB C charging adapters", etc. A list of recommended, tested adapters can be found [here](ADAPTERS.md).
 
@@ -52,11 +56,14 @@ This approach has several benefits:
 
 This approach is likely the most convenient. However, if implemented incorrectly, it may lead to several issues that might be difficult to debug. 
 
+Recommended USB-compliant 5V regulators:
+- [Redux Robotics Zinc-V](https://shop.reduxrobotics.com/zinc-v/)
+
 Recommended 5V regulators:
 - [Grapple Robotics MitoCANdria](https://www.thethriftybot.com/products/mitocandria)
 - [Pololu D36V50F5 Regulator](https://www.pololu.com/product/4091)
 
-In either case, you'll need to use a USB breakout board like [this](https://a.co/d/gLUZN0Z) one that includes onboard sense resistors so that the headset knows that it's connected to a 5V power source. 
+For non-compliant regulators, you'll need to use a USB breakout board like [this](https://a.co/d/gLUZN0Z) one that includes onboard sense resistors so that the headset knows that it's connected to a 5V power source. 
 
 # Software Flow
 A high-level overview of the software architecture is shown below.
