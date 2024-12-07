@@ -23,6 +23,10 @@ QuestNav requires the following to get started:
 2. Quest 3S headset
 	- *A Quest 3S headset is recommended due to its lower cost and excellent tracking performance. It's currently not clear whether the depth projector on the Quest 3 benefits FRC applications.*
 3. Supported USB-C to Ethernet + power passthrough adapter
+4. 3D printed mount that attaches the headset to your robot
+	- [Available on Printables.com!](https://www.printables.com/model/1100711-quest-3s-robot-mount)
+
+<img src="docs/quest3s-mount.jpeg" width="600"/>
 
 # Power Requirements
 
