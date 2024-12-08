@@ -85,9 +85,11 @@ At it's heart, QuestNav is merely a VR app designed to push data to Network Tabl
 3. Configure the following settings on your Quest headset:
 	- Enable travel mode ([link](https://www.meta.com/help/quest/articles/in-vr-experiences/oculus-features/travel-mode/) to instructions)
 	- Set the display timeout to 4 hours in `Settings > General > Power > Display off`
+	- Enable battery saver mode in `Settings > General > Power > Battery saver mode`
 	- Disable WiFi in `Settings > WiFi`
-		- **NOTE:** Be sure to completely turn off WiFi, otherwise the headset will constantly disconnect from the robot network as it tries to look for the internet.
+		- **NOTE:** Be sure to completely turn off WiFi, otherwise the headset will constantly disconnect from the robot network as it tries to look for the internet
 	- Disable Bluetooth in `Settings > Bluetooth`
+		- **NOTE:** Disabling Bluetooth will break the companion app functionality
 	- Disable the guardian for development purposes `Settings > Advanced > Experimental Settings > Enable Custom Settings` and **TURN OFF** `Physical Space Features`, `MTP Notification`, and `Link Auto Connect`
 		- These settings might also be located in `Settings > Developer > Experimental Settings > Enable Custom Settings` on some older OS builds
 4. Plug the headset into your PC and install the example .apk using MQDH or adb (`adb install QuestNav.apk`)
@@ -136,15 +138,6 @@ The main editing window will only open if a project is active.
 - Click on the newly imported project
 - Wait for Unity to compile assets and open the main interface
 
-### Install the Git for Unity plugin
-
-Git for Unity is included in the project, but you may need to re-initialize it the first time that the project is imported. 
-
-- Open the asset manager by selecting `Asset Store > My Assets`
-- Remove and reinstall the `Git for Unity` and `Git for Unity UI` packages
-- Close and open Unity
-- Git for Unity should now detect your forked repository
-
 ### Install the MessagePack plugin for Unity
 
 This package is required by the C# Network Tables library. 
@@ -157,11 +150,12 @@ This package is required by the C# Network Tables library.
 
 Be sure to resolve any Project Setup Tool warnings that appear in the `Console` tab! You need to look for warnings in both the `PC` and `Android` tabs to successfully build your Unity project. 
 
-### Change the build target to Android and ttempt to build the project
+### Build your project using the OVR build tool
 
-- You may need to change the build target to Android in `File > Build Profiles`
-- Click `Build` and cross your fingers
-- If everything works, then you should be good to go! 
+- The build tool is located in `Meta > OVR Build > OVR Build APK...`
+- Set your desired OVR build path and click `Build`
+	- This tool prioritizes build speed above all else, so it will consume all CPU resources for a few minutes!
+- If everything works, then upload the .apk to your headset! 
 
 ### Link Unity to Visual Studio for debugging
 

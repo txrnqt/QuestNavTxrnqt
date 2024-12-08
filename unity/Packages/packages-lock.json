@@ -19,29 +19,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.spoiledcat.git": {
-      "version": "1.0.44",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://registry.spoiledcat.com"
-    },
-    "com.spoiledcat.git.api": {
-      "version": "1.0.44",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://registry.spoiledcat.com"
-    },
-    "com.spoiledcat.git.ui": {
-      "version": "1.0.44",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.spoiledcat.git.api": "1.0.44"
-      },
-      "url": "https://registry.spoiledcat.com"
-    },
     "com.unity.ai.navigation": {
       "version": "2.0.4",
       "depth": 0,
