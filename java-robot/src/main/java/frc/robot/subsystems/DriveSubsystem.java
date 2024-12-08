@@ -60,6 +60,7 @@ public class DriveSubsystem extends SubsystemBase {
   private FloatArraySubscriber questPosition = nt4Table.getFloatArrayTopic("position").subscribe(new float[]{0.0f, 0.0f, 0.0f});
   private FloatArraySubscriber questQuaternion = nt4Table.getFloatArrayTopic("quaternion").subscribe(new float[]{0.0f, 0.0f, 0.0f, 0.0f});
   private FloatArraySubscriber questEulerAngles = nt4Table.getFloatArrayTopic("eulerAngles").subscribe(new float[]{0.0f, 0.0f, 0.0f});
+  private DoubleSubscriber questBattery = nt4Table.getDoubleTopic("batteryLevel").subscribe(0.0f);
 
   // Local heading helper variables
   private float yaw_offset = 0.0f;

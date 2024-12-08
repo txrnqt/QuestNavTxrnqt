@@ -36,6 +36,7 @@ public class MotionStreamer : MonoBehaviour
     [SerializeField] public Transform vrCamera; // The VR camera transform
     [SerializeField] public Transform vrCameraRoot; // The root of the camera transform
     [SerializeField] public Transform resetTransform; // The desired position & rotation (look direction) for your player
+    private float batteryLevel; // Local variable to store the headset battery level
 
     /* NT configuration settings */
     private readonly string appName = "Quest3S"; // A fun name to ID the client in the robot logs
@@ -95,6 +96,7 @@ public class MotionStreamer : MonoBehaviour
         frcDataSink.PublishTopic("/oculus/position", "float[]");
         frcDataSink.PublishTopic("/oculus/quaternion", "float[]");
         frcDataSink.PublishTopic("/oculus/eulerAngles", "float[]");
+        frcDataSink.PublishTopic("/oculus/batteryLevel", "double");
         frcDataSink.Subscribe("/oculus/mosi", 0.1, false, false, false);
     }
 
@@ -106,12 +108,14 @@ public class MotionStreamer : MonoBehaviour
         position = cameraRig.centerEyeAnchor.position;
         rotation = cameraRig.centerEyeAnchor.rotation;
         eulerAngles = cameraRig.centerEyeAnchor.eulerAngles;
+        batteryLevel = SystemInfo.batteryLevel;
 
         frcDataSink.PublishValue("/oculus/frameCount", frameIndex);
         frcDataSink.PublishValue("/oculus/timestamp", timeStamp);
         frcDataSink.PublishValue("/oculus/position", position.ToArray());
         frcDataSink.PublishValue("/oculus/quaternion", rotation.ToArray());
         frcDataSink.PublishValue("/oculus/eulerAngles", eulerAngles.ToArray());
+        frcDataSink.PublishValue("/oculus/batteryLevel", batteryLevel);
     }
 
     // Process commands from the robot
