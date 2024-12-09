@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Quaternion;
@@ -73,6 +74,8 @@ public class DriveSubsystem extends SubsystemBase {
   private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(DriveConstants.kRotationalSlewRate);
   private double m_prevTime = WPIUtilJNI.now() * 1e-6;
   private Pose2d resetPosition = new Pose2d(new Translation2d(0, Rotation2d.fromDegrees(0)), Rotation2d.fromDegrees(0));
+  private double angleSetpoint = 0.0;
+  private PIDController anglePIDController = new PIDController(1.0/60.0, 0, 0);
 
   // Odometry class for tracking the robot's pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
@@ -87,6 +90,8 @@ public class DriveSubsystem extends SubsystemBase {
 
   // Create a new DriveSubsystem
   public DriveSubsystem() {
+    anglePIDController.enableContinuousInput(-180, 180);
+    zeroPosition();
   }
 
   // Update odometry in the periodic block
@@ -194,15 +199,27 @@ public class DriveSubsystem extends SubsystemBase {
       ySpeedCommanded = ySpeed;
       m_currentRotation = rot;
     }
+    if (Math.abs(rot) > 0.05) {
+      angleSetpoint -= Math.copySign(Math.pow(rot, 2) * 8, rot);
+      if (angleSetpoint > 360) {
+        angleSetpoint -= 360;
+      } else if (angleSetpoint < 0) {
+        angleSetpoint += 360;
+      }
+      anglePIDController.setSetpoint(angleSetpoint - 180);
+    }
+    Logger.recordOutput("angleSetpoint", angleSetpoint);
 
     // Convert the commanded speeds to the correct units for the drivetrain
     double xSpeedDelivered = xSpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
     double ySpeedDelivered = ySpeedCommanded * DriveConstants.kMaxSpeedMetersPerSecond;
-    double rotDelivered = m_currentRotation * DriveConstants.kMaxAngularSpeed;
+    double rotDelivered = compensateAngle() * DriveConstants.kMaxAngularSpeed;
+    double oculusYaw = getOculusYaw();
+    Logger.recordOutput("OculusYaw", oculusYaw);
 
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(
         fieldRelative
-            ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, Rotation2d.fromDegrees(360-getOculusYaw()))
+            ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, Rotation2d.fromDegrees(360 - oculusYaw))
             : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
     SwerveDriveKinematics.desaturateWheelSpeeds(
         swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
@@ -210,6 +227,12 @@ public class DriveSubsystem extends SubsystemBase {
     m_frontRight.setDesiredState(swerveModuleStates[1]);
     m_rearLeft.setDesiredState(swerveModuleStates[2]);
     m_rearRight.setDesiredState(swerveModuleStates[3]);
+  }
+
+  private double compensateAngle() {
+    var ret = -anglePIDController.calculate(getOculusYaw() - 180);
+    Logger.recordOutput("PIDOut", ret);
+    return ret;
   }
 
   // Set the wheels into an X formation to prevent movement
@@ -242,6 +265,7 @@ public class DriveSubsystem extends SubsystemBase {
   public void zeroHeading() {
     float[] eulerAngles = questEulerAngles.get();
     yaw_offset = eulerAngles[1];
+    angleSetpoint = 0;
   }
 
   // Zero the absolute 3D position of the robot (similar to long-pressing the quest logo)
