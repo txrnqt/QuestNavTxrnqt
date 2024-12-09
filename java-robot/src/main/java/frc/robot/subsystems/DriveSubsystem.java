@@ -310,6 +310,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   private Pose2d getOculusPose() {
-    return new Pose2d(getOculusPosition(), Rotation2d.fromDegrees(getOculusYaw()));
+    var oculousPositionCompensated = getOculusPosition().minus(new Translation2d(0, 0.1651)); // 6.5
+    return new Pose2d(oculousPositionCompensated, Rotation2d.fromDegrees(getOculusYaw()));
   }
 }
