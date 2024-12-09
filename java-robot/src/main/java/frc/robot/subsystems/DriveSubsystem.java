@@ -91,7 +91,7 @@ public class DriveSubsystem extends SubsystemBase {
   // Create a new DriveSubsystem
   public DriveSubsystem() {
     anglePIDController.enableContinuousInput(-180, 180);
-    zeroPosition();
+    zeroHeading();
   }
 
   // Update odometry in the periodic block
@@ -206,8 +206,8 @@ public class DriveSubsystem extends SubsystemBase {
       } else if (angleSetpoint < 0) {
         angleSetpoint += 360;
       }
-      anglePIDController.setSetpoint(angleSetpoint - 180);
     }
+    anglePIDController.setSetpoint(angleSetpoint - 180);
     Logger.recordOutput("angleSetpoint", angleSetpoint);
 
     // Convert the commanded speeds to the correct units for the drivetrain
@@ -265,7 +265,7 @@ public class DriveSubsystem extends SubsystemBase {
   public void zeroHeading() {
     float[] eulerAngles = questEulerAngles.get();
     yaw_offset = eulerAngles[1];
-    angleSetpoint = 0;
+    angleSetpoint = 0.0;
   }
 
   // Zero the absolute 3D position of the robot (similar to long-pressing the quest logo)
@@ -296,7 +296,12 @@ public class DriveSubsystem extends SubsystemBase {
   // Get the yaw Euler angle of the headset
   private float getOculusYaw() {
     float[] eulerAngles = questEulerAngles.get();
-    return eulerAngles[1] - yaw_offset;
+    var ret = eulerAngles[1] - yaw_offset;
+    ret %= 360;
+    if (ret < 0) {
+      ret += 360;
+    }
+    return ret;
   }
 
   private Translation2d getOculusPosition() {
