@@ -34,7 +34,7 @@ TL;DR: An external 5V supply is **REQUIRED** for the headset to operate properly
 
 ### USB to Ethernet Adapters
 
-As per the FRC robot rules (R707 in the 2024 ruels), wireless communication is not allowed within the robot. In order to comply with this rule, all communication with the Quest headset must be done over a wired link at competition events. USB to Ethernet adapters offer a convenient way to communicate with the headset, however, the correct style of adapter must be chosen to avoid connectivity issues. 
+As per the FRC robot rules (R707 in the 2024 ruels), wireless communication is not allowed within the robot. To comply with this rule, all communication with the Quest headset must be done over a wired link at competition events. USB to Ethernet adapters offer a convenient way to communicate with the headset, however, the correct style of adapter must be chosen to avoid connectivity issues. 
 
 The USB port on Quest headsets was never designed to constantly supply 5V at "high power" (5V @ 500mA as per the USB spec), so supplemental power must be provided to ensure a reliable connection. **Only USB to Ethernet adapters that support power passthrough should be used on a robot!** These products are often sold as "USB C port replicators", "USB C docks", "USB C charging adapters", etc. A list of recommended, tested adapters can be found [here](ADAPTERS.md).
 
@@ -65,7 +65,7 @@ This approach is likely the most convenient. However, if implemented incorrectly
 Recommended USB-compliant 5V regulators:
 - [Redux Robotics Zinc-V](https://shop.reduxrobotics.com/zinc-v/)
 
-Recommended 5V regulators:
+Recommended 5V regulators (requires soldering and custom circuitry):
 - [Grapple Robotics MitoCANdria](https://www.thethriftybot.com/products/mitocandria)
 - [Pololu D36V50F5 Regulator](https://www.pololu.com/product/4091)
 
@@ -79,9 +79,16 @@ A high-level overview of the software architecture is shown below.
 # Testing QuestNav
 At it's heart, QuestNav is merely a VR app designed to push data to Network Tables. However, some one-time setup is required before we're able to push a custom app to a VR headset. 
 
-## One-Time Setup
+## Manual Meta Account Setup
 1. Follow [this](https://medium.com/sidequestvr/how-to-turn-on-developer-mode-for-the-quest-3-509244ccd386) guide to set up "Developer Mode" 
 2. Sign into your Meta developer account and download the [Meta Quest Developer Hub (MQDH)](https://developers.meta.com/horizon/develop)
+
+## SideQuest-Led Meta Developer Account Setup
+1. Download the SideQuest advanced installer ([link](https://sidequestvr.com/setup-howto))
+2. Plug your headset into your PC
+3. Follow the prompts to enable SideQuest
+
+## One-Time Headset Setup (Required for Each Headset)
 3. Configure the following settings on your Quest headset:
 	- Enable travel mode ([link](https://www.meta.com/help/quest/articles/in-vr-experiences/oculus-features/travel-mode/) to instructions)
 	- Set the display timeout to 4 hours in `Settings > General > Power > Display off`
@@ -102,7 +109,7 @@ These setup steps are required *once per boot*. This setup process can be preven
 3. Check that the Quest headset has connected to your robot and is writing pose data
 
 # Unity Development Environment Setup
-### Install Unity
+### Step 1: Install Unity
 - Download and install Unity Hub from the official website ([link](https://unity.com/download))
 - Open Unity Hub, sign in, and install Unity 6 (6000.0.25f1) LTS
 	- Select the following:
@@ -112,7 +119,7 @@ These setup steps are required *once per boot*. This setup process can be preven
 		- "Android SDK & NDK Tools"
 - Click "Install" and wait for the installation to finish
 
-### Optional: Install Visual Studio Unity Support
+### Optional: Add Unity support to an existing Visual Studio installation
 
 The Unity installer may fail to install "Unity Support for Visual Studio" if you already have Visual Studio 2022 installed. In this case, you'll need to install it separately. 
 
@@ -123,14 +130,24 @@ The Unity installer may fail to install "Unity Support for Visual Studio" if you
 
 ### Optional: Install Quest Link
 
-Installing Quest Link is not necessary, but may make 
-- Install the Quest Link software ([link](https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/install-app-for-link/))
+Installing Quest Link is not necessary, but may make debugging on the headset a bit easier
 
-### Install Git for Windows
+- Download the Quest Link software [here](https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/install-app-for-link/)
+- Double-click the installer and proceed through the install prompts
+- Once installed, enable the beta/debug options by navigating to `Settings > Beta > Developer Runtime Features`
+- Enabling the rest of the features is optional
 
-- Install Git using whatever method you prefer. You can download Git for Windows [here](https://git-scm.com/downloads/win).
+### Step 2: Install Git
 
-### Fork, clone, and import this repository into Unity
+- Install Git using whatever method you prefer for your specific operating system. 
+	- You can download Git for Windows [here](https://git-scm.com/downloads/win).
+
+### Step 3: Add the Meta XR All-in-One SDK to your Unity account
+
+- Log into your Unity [account](https://id.unity.com) in your default browser
+- Add the [Meta XR All-in-One SDK](https://assetstore.unity.com/packages/tools/integration/meta-xr-all-in-one-sdk-269657) to your account
+
+### Step 4: Fork, clone, and import this repository into Unity
 
 The main editing window will only open if a project is active. 
 
@@ -138,37 +155,67 @@ The main editing window will only open if a project is active.
 - Click on the newly imported project
 - Wait for Unity to compile assets and open the main interface
 
-### Install the MessagePack plugin for Unity
+### Step 5: Install the MessagePack plugin for Unity
 
 This package is required by the C# Network Tables library. 
 
-- Download the latest release with a `.unitypackage` extension from [here](https://github.com/MessagePack-CSharp/MessagePack-CSharp/releases/tag/v2.5.187)
+- Download the latest release with a `.unitypackage` extension from [here](https://github.com/MessagePack-CSharp/MessagePack-CSharp/releases/tag/v2.5.192)
 - In the main unity window, select `Assets > Import Package > Custom Package`
 - Browse to the package you downloaded and click `Import`
 
-### Resolve any "recommended project setup tool" fixes
+### Step 6: Set your build environment to Android
 
-Be sure to resolve any Project Setup Tool warnings that appear in the `Console` tab! You need to look for warnings in both the `PC` and `Android` tabs to successfully build your Unity project. 
+- Navigate to `File > Build Profiles` 
+- Under `Platforms` select `Android` 
+- Click on `Switch Platform`
 
-### Build your project using the OVR build tool
+### Step 7: Resolve any "recommended project setup tool" fixes
+
+- Navigate to `Meta > Tools > Project Setup Tool`
+- Apply all the recommended fixes on the default tab (probably Android)
+- Cycle through the rest of the tabs at the top of the window and apply all the fixes
+- At a minimum, the Android tab should show a green ✅ and report its status as "XR Ready for Android"
+
+### Step 8: Build the project using the OVR build tool
 
 - The build tool is located in `Meta > OVR Build > OVR Build APK...`
 - Set your desired OVR build path and click `Build`
 	- This tool prioritizes build speed above all else, so it will consume all CPU resources for a few minutes!
-- If everything works, then upload the .apk to your headset! 
+- If everything works, the project should output a .apk
 
-### Link Unity to Visual Studio for debugging
+### Step 9: Install the .apk on your headset
+
+There are several ways to upload/install an .apk on a headset
+
+#### Install using adb
+
+- Open a terminal / command / PowerShell window
+- Plug the headset into your PC using a USB cable
+- Type the following command: `adb install <name>.apk`
+
+#### Install using MQDH
+
+- Plug the headset into your PC using a USB cable
+- Drag and drop the .apk into the right side of the MQDH window
+
+#### Install using SideQuest
+
+- Plug the headset into your PC using a USB cable
+- Click the icon of a box with an arrow at the top of the window
+- Select the .apk and click `Open`
+
+### Optional: Link Unity to Visual Studio for debugging
 
 The installer may not automatically detect Visual Studio as the default editor for Unity. This may lead to missing Unity namespaces and missing debugging options. 
 
 - Follow this [guide](https://unity.com/how-to/debugging-with-microsoft-visual-studio-2022) so that Unity knows to use Visual Studio for debugging
 
-### Explore the C# code and build t1he project
+### Optional Explore the C# code and build the project
 
 - The main scene is located in `Assets > Scenes > QuestNav`
 - The pose streaming code is located in `Assets > Robot > MotionStreamer.cs`.
 
-Unity will need to download and install several Android packages during the first build, so it might be helpful to connect to the headset over USB the first time to make sure it can download everything from the internet. Subsequent builds should be faster and will not require additional downloads. 
+Unity will need to download and install several Android packages during the first build, so it might be helpful to connect to your headset over USB the first time to make sure it can download everything from the internet. Subsequent builds should be faster and will not require additional downloads. 
 
 # FAQ
 ### Q: Are you doing anything to initialize its location? Or do you have an idea how you'd recommend teams to initialize its location?
