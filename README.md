@@ -56,7 +56,7 @@ This approach has several benefits:
 - Battery banks can be replaced without interrupting (powering off) the headset
 - No soldering required
 
-**NOTE:** It's important to make sure **only** 5V is supplied to the robot. You should avoid power banks that support USB C Power Delivery (PD). In our testing, we've noticed that some USB to Ethernet adapters will boot loop when a voltage greater than 5V is applied. Alternatively, you can use a USB A to USB C cable to foce a USB PD power bank to deliver 5V to the headset. 
+**NOTE:** It's important to make sure **only** 5V is supplied to the robot. You should avoid power banks that support USB C Power Delivery (PD). In our testing, we've noticed that some USB to Ethernet adapters will boot loop when a voltage greater than 5V is applied. Alternatively, you can use a USB A to USB C cable to force a USB PD power bank to deliver 5V to the headset. 
 
 **3. Power the headset using a good quality 5V regulator**
 
