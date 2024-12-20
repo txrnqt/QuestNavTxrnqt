@@ -168,6 +168,7 @@ This package is required by the C# Network Tables library.
 - Navigate to `File > Build Profiles` 
 - Under `Platforms` select `Android` 
 - Click on `Switch Platform`
+- Wait for Unity to recompile assets and generally get it's life in order
 
 ### Step 7: Resolve any "recommended project setup tool" fixes
 
@@ -185,7 +186,7 @@ This package is required by the C# Network Tables library.
 
 ### Step 9: Install the .apk on your headset
 
-There are several ways to upload/install an .apk on a headset
+There are several ways to upload/install an .apk on a headset:
 
 #### Install using adb
 

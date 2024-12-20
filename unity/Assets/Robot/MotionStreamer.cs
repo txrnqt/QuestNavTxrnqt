@@ -1,5 +1,6 @@
 /* Unity-based example for publishing Quest headset data to FRC-compatible Network Tables */
 /* Juan Chong - 2024 */
+/* Refer to the README.md for setup instructions and LICENSE for licensing information */
 using UnityEngine;
 using NetworkTables;
 
@@ -26,6 +27,8 @@ public class MotionStreamer : MonoBehaviour
     /* Initialize local variables */
     public int frameIndex; // Local variable to store the headset frame index
     public double timeStamp; // Local variable to store the headset timestamp
+    public double [] letpositionArray; // Local variable to store the initial headset position
+    public double[] eulerAnglesArray; 
     public Vector3 position; // Local variable to store the headset position in 3D space
     public Quaternion rotation; // Local variable to store the headset rotation in quaternion form
     public Vector3 eulerAngles; // Local variable to store the headset rotation in Euler angles
@@ -170,8 +173,8 @@ public class MotionStreamer : MonoBehaviour
 
     void InitPose()
     {
-        Double[] letpositionArray = frcDataSink.GetDoubleArray("/oculus/init/position");
-        Double [] eulerAnglesArray = frcDataSink.GetDoubleArray("/oculus/init/eulerAngles");
+        letpositionArray = frcDataSink.GetDoubleArray("/oculus/init/position");
+        eulerAnglesArray = frcDataSink.GetDoubleArray("/oculus/init/eulerAngles");
         
         poseOffset.position = new Vector3((float)letpositionArray[0], (float)letpositionArray[1], (float)letpositionArray[2]);
         Quaternion quaternion = new Quaternion((float)eulerAnglesArray[0], (float)eulerAnglesArray[1], (float)eulerAnglesArray[2], (float)eulerAnglesArray[3]);
