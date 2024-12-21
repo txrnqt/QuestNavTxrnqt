@@ -170,10 +170,13 @@ Installing Quest Link is not necessary, but may make debugging on the headset a 
 - Install Git using whatever method you prefer for your specific operating system. 
 	- You can download Git for Windows [here](https://git-scm.com/downloads/win).
 
-### Step 3: Add the Meta XR All-in-One SDK to your Unity account
+### Step 3: Add the Meta SDKs to your Unity account
 
 - Log into your Unity [account](https://id.unity.com) in your default browser
-- Add the [Meta XR All-in-One SDK](https://assetstore.unity.com/packages/tools/integration/meta-xr-all-in-one-sdk-269657) to your account
+- Add the following SDKs to your account:
+	- [Meta XR All-in-One SDK](https://assetstore.unity.com/packages/tools/integration/meta-xr-all-in-one-sdk-269657)
+	- [Meta XR Interaction SDK Essentials](https://assetstore.unity.com/packages/tools/integration/meta-xr-interaction-sdk-essentials-264559)
+	- [Meta MR Utility Kit](https://assetstore.unity.com/packages/tools/integration/meta-mr-utility-kit-272450)
 
 ### Step 4: Fork, clone, and import this repository into Unity
 
