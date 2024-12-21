@@ -51,7 +51,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   // Configure Network Tables topics (oculus/...) to communicate with the Quest HMD
   NetworkTableInstance nt4Instance = NetworkTableInstance.getDefault();
-  NetworkTable nt4Table = nt4Instance.getTable("oculus");
+  NetworkTable nt4Table = nt4Instance.getTable("questnav");
   private IntegerSubscriber questMiso = nt4Table.getIntegerTopic("miso").subscribe(0);
   private IntegerPublisher questMosi = nt4Table.getIntegerTopic("mosi").publish();
 
@@ -61,7 +61,7 @@ public class DriveSubsystem extends SubsystemBase {
   private FloatArraySubscriber questPosition = nt4Table.getFloatArrayTopic("position").subscribe(new float[]{0.0f, 0.0f, 0.0f});
   private FloatArraySubscriber questQuaternion = nt4Table.getFloatArrayTopic("quaternion").subscribe(new float[]{0.0f, 0.0f, 0.0f, 0.0f});
   private FloatArraySubscriber questEulerAngles = nt4Table.getFloatArrayTopic("eulerAngles").subscribe(new float[]{0.0f, 0.0f, 0.0f});
-  private DoubleSubscriber questBattery = nt4Table.getDoubleTopic("batteryLevel").subscribe(0.0f);
+  private DoubleSubscriber questPercentBattery = nt4Table.getDoubleTopic("batteryLevel").subscribe(0.0f);
 
   // Local heading helper variables
   private float yaw_offset = 0.0f;

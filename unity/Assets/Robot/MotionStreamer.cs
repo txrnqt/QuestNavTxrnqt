@@ -51,6 +51,7 @@ public class MotionStreamer : MonoBehaviour
 
     void Start()
     {
+        OVRPlugin.systemDisplayFrequency = 120.0f;
         ConnectToRobot();
     }
 
@@ -95,16 +96,16 @@ public class MotionStreamer : MonoBehaviour
     // Publish topics to Network Tables
     private void PublishTopics()
     {
-        frcDataSink.PublishTopic("/oculus/miso", "int");
-        frcDataSink.PublishTopic("/oculus/frameCount", "int");
-        frcDataSink.PublishTopic("/oculus/timestamp", "double");
-        frcDataSink.PublishTopic("/oculus/position", "float[]");
-        frcDataSink.PublishTopic("/oculus/quaternion", "float[]");
-        frcDataSink.PublishTopic("/oculus/eulerAngles", "float[]");
-        frcDataSink.PublishTopic("/oculus/batteryLevel", "double");
-        frcDataSink.Subscribe("/oculus/mosi", 0.1, false, false, false);
-        frcDataSink.Subscribe("/oculus/init/position", 0.1, false, false, false);
-        frcDataSink.Subscribe("/oculus/init/eulerAngles", 0.1, false, false, false);
+        frcDataSink.PublishTopic("/questnav/miso", "int");
+        frcDataSink.PublishTopic("/questnav/frameCount", "int");
+        frcDataSink.PublishTopic("/questnav/timestamp", "double");
+        frcDataSink.PublishTopic("/questnav/position", "float[]");
+        frcDataSink.PublishTopic("/questnav/quaternion", "float[]");
+        frcDataSink.PublishTopic("/questnav/eulerAngles", "float[]");
+        frcDataSink.PublishTopic("/questnav/batteryLevel", "double");
+        frcDataSink.Subscribe("/questnav/mosi", 0.1, false, false, false);
+        frcDataSink.Subscribe("/questnav/init/position", 0.1, false, false, false);
+        frcDataSink.Subscribe("/questnav/init/eulerAngles", 0.1, false, false, false);
     }
 
     // Publish the Quest pose data to Network Tables
@@ -115,7 +116,7 @@ public class MotionStreamer : MonoBehaviour
         position = cameraRig.centerEyeAnchor.position;
         rotation = cameraRig.centerEyeAnchor.rotation;
         eulerAngles = cameraRig.centerEyeAnchor.eulerAngles;
-        batteryLevel = SystemInfo.batteryLevel;
+        batteryLevel = SystemInfo.batteryLevel * 100;
 
         if (poseOffset != null)
         {
@@ -123,32 +124,32 @@ public class MotionStreamer : MonoBehaviour
             rotation = poseOffset.rotation * rotation;
         }
 
-        frcDataSink.PublishValue("/oculus/frameCount", frameIndex);
-        frcDataSink.PublishValue("/oculus/timestamp", timeStamp);
-        frcDataSink.PublishValue("/oculus/position", position.ToArray());
-        frcDataSink.PublishValue("/oculus/quaternion", rotation.ToArray());
-        frcDataSink.PublishValue("/oculus/eulerAngles", eulerAngles.ToArray());
-        frcDataSink.PublishValue("/oculus/batteryLevel", batteryLevel);
+        frcDataSink.PublishValue("/questnav/frameCount", frameIndex);
+        frcDataSink.PublishValue("/questnav/timestamp", timeStamp);
+        frcDataSink.PublishValue("/questnav/position", position.ToArray());
+        frcDataSink.PublishValue("/questnav/quaternion", rotation.ToArray());
+        frcDataSink.PublishValue("/questnav/eulerAngles", eulerAngles.ToArray());
+        frcDataSink.PublishValue("/questnav/batteryLevel", batteryLevel);
     }
 
     // Process commands from the robot
     private void ProcessCommands()
     {
-        command = frcDataSink.GetLong("/oculus/mosi");
+        command = frcDataSink.GetLong("/questnav/mosi");
         switch (command)
         {
             case 1:
                 RecenterPlayer();
                 UnityEngine.Debug.Log("[MotionStreamer] Processed a heading reset request.");
-                frcDataSink.PublishValue("/oculus/miso", 99);
+                frcDataSink.PublishValue("/questnav/miso", 99);
                 break;
             case 2:
                 InitPose();
                 UnityEngine.Debug.Log("[MotionStreamer] Processed a pose reset request.");
-                frcDataSink.PublishValue("/oculus/miso", 99);
+                frcDataSink.PublishValue("/questnav/miso", 99);
                 break;
             default:
-                frcDataSink.PublishValue("/oculus/miso", 0);
+                frcDataSink.PublishValue("/questnav/miso", 0);
                 break;
         }
     }
@@ -173,8 +174,8 @@ public class MotionStreamer : MonoBehaviour
 
     void InitPose()
     {
-        letpositionArray = frcDataSink.GetDoubleArray("/oculus/init/position");
-        eulerAnglesArray = frcDataSink.GetDoubleArray("/oculus/init/eulerAngles");
+        letpositionArray = frcDataSink.GetDoubleArray("/questnav/init/position");
+        eulerAnglesArray = frcDataSink.GetDoubleArray("/questnav/init/eulerAngles");
         
         poseOffset.position = new Vector3((float)letpositionArray[0], (float)letpositionArray[1], (float)letpositionArray[2]);
         Quaternion quaternion = new Quaternion((float)eulerAnglesArray[0], (float)eulerAnglesArray[1], (float)eulerAnglesArray[2], (float)eulerAnglesArray[3]);

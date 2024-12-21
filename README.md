@@ -71,6 +71,26 @@ Recommended 5V regulators (requires soldering and custom circuitry):
 
 For non-compliant regulators, you'll need to use a USB breakout board like [this](https://a.co/d/gLUZN0Z) one that includes onboard sense resistors so that the headset knows that it's connected to a 5V power source. 
 
+# Android Debug Bridge (adb)
+
+### Installing adb on your RoboRIO
+
+I've found it helpful to install adb onto your RoboRIO. Connecting to the RoboRIO on your robot's network and then issuing adb commands is much easier than relying on a long USB cable. This [fork](https://github.com/juchong/ADB-For-RoboRIO) fixes a bug in the install script. 
+
+### Helpful adb commands
+
+Here's a list of Android Debug Bridge (adb) commands that you might find helpful when managing your Quest headset:
+
+	adb shell svc wifi enable | disable
+
+	This command enables or disables WiFi on the Quest headset. NOTE: The state of the Quest UI may not update until the headset is rebooted. This command will persist through reboots. 
+	
+	---------
+
+	adb shell svc bluetooth disable|enable
+
+	This command enables or disables Bluetooth on the Quest headset. NOTE: The state of the Quest UI may not update until the headset is rebooted. This command will persist through reboots.
+
 # Software Flow
 A high-level overview of the software architecture is shown below.
 
@@ -180,6 +200,7 @@ This package is required by the C# Network Tables library.
 ### Step 8: Build the project using the OVR build tool
 
 - The build tool is located in `Meta > OVR Build > OVR Build APK...`
+- **VERY IMPORTANT: Be sure to ✅ `Development Build?`** Otherwise, the app will crash at launch! 
 - Set your desired OVR build path and click `Build`
 	- This tool prioritizes build speed above all else, so it will consume all CPU resources for a few minutes!
 - If everything works, the project should output a .apk
