@@ -16,6 +16,14 @@ Using a VR headset for robot localization has several advantages:
 - Well-supported ecosystem and API that enables off-the-shelf libraries for mapping a 3D environment
 - Self-contained, rechargeable battery
 
+# Thanks
+QuestNav exists because of the many sidebar discussions, technical deep-dives, and what-if conversations I've had with coworkers and members of the FIRST community. I'm grateful for all the time everyone has spent sharing their knowledge and experiences with me. It's my hope that this project inspires others to think of new, creative ways we can solve some of the most challenging problems in the FRC community. 
+
+Special thanks to the following users who have directly contributed to the project in some meaningful way:
+- [@jasondaming](https://github.com/jasondaming)
+- [@ThadHouse](https://github.com/ThadHouse/)
+- [@allengregoryiv](https://github.com/allengregoryiv)
+
 # Hardware Requirements
 QuestNav requires the following to get started:
 1. FRC robot and/or control system

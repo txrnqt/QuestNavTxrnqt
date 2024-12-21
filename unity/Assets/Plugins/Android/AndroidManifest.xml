@@ -9,18 +9,21 @@
       </intent-filter>
       <meta-data android:name="com.oculus.vr.focusaware" android:value="true" />
     </activity>
-    <meta-data android:name="unityplayer.SkipPermissionsDialog" android:value="true" />
+    <meta-data android:name="unityplayer.SkipPermissionsDialog" android:value="false" />
     <meta-data android:name="com.samsung.android.vr.application.mode" android:value="vr_only" />
+    <meta-data android:name="com.oculus.handtracking.frequency" android:value="LOW" />
+    <meta-data android:name="com.oculus.handtracking.version" android:value="V2.0" />
     <meta-data android:name="com.oculus.ossplash.background" android:value="passthrough-contextual" />
-    <meta-data android:name="com.oculus.telemetry.project_guid" android:value="dad159d0-f6e9-449e-b113-ef571c59c4e1" />
+    <meta-data android:name="com.oculus.telemetry.project_guid" android:value="82e1085b-1adc-4311-a519-3c92cf4b49fb" />
     <meta-data android:name="com.oculus.supportedDevices" android:value="quest2|questpro|quest3|quest3s" />
-    <activity android:name="com.trev3d.DisplayCapture.DisplayCaptureRequestActivity" android:exported="false" />
-    <service android:name="com.trev3d.DisplayCapture.DisplayCaptureNotificationService" android:exported="false" android:foregroundServiceType="mediaProjection" />
   </application>
   <uses-feature android:name="android.hardware.vr.headtracking" android:version="1" android:required="true" />
+  <uses-feature android:name="oculus.software.handtracking" android:required="false" />
+  <uses-permission android:name="com.oculus.permission.HAND_TRACKING" />
+  <uses-feature android:name="oculus.software.overlay_keyboard" android:required="false" />
   <uses-permission android:name="com.oculus.permission.USE_ANCHOR_API" />
-  <uses-feature android:name="com.oculus.feature.PASSTHROUGH" android:required="false" />
+  <uses-feature android:name="com.oculus.feature.PASSTHROUGH" android:required="true" />
+  <uses-feature android:name="com.oculus.feature.RENDER_MODEL" />
+  <uses-permission android:name="com.oculus.permission.RENDER_MODEL" />
   <uses-permission android:name="com.oculus.permission.USE_SCENE" />
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
 </manifest>
