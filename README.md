@@ -173,7 +173,7 @@ Installing Quest Link is not necessary, but may make debugging on the headset a 
 ### Step 3: Add the Meta SDKs to your Unity account
 
 - Log into your Unity [account](https://id.unity.com) in your default browser
-- Add the following SDKs to your account:
+- Add the following SDKs to your account (they're free, but you need to "purchase" them):
 	- [Meta XR All-in-One SDK](https://assetstore.unity.com/packages/tools/integration/meta-xr-all-in-one-sdk-269657)
 	- [Meta XR Interaction SDK Essentials](https://assetstore.unity.com/packages/tools/integration/meta-xr-interaction-sdk-essentials-264559)
 	- [Meta MR Utility Kit](https://assetstore.unity.com/packages/tools/integration/meta-mr-utility-kit-272450)
