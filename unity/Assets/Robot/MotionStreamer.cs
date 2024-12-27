@@ -197,16 +197,36 @@ public class MotionStreamer : MonoBehaviour
 
     }
 
-    // Transform the HMD's rotation to virtually "zero" the robot position. Similar result as long-pressing the Oculus button.
+    // Transform the HMD's pose to match a specific position and rotation in the Quest's coordinate system
     void RecenterPlayer()
     {
-        float rotationAngleY = vrCamera.rotation.eulerAngles.y - resetTransform.rotation.eulerAngles.y;
+        // Get the desired position and rotation from the robot
+        letpositionArray = frcDataSink.GetDoubleArray("/questnav/init/position");
+        eulerAnglesArray = frcDataSink.GetDoubleArray("/questnav/init/eulerAngles");
+        
+        if (letpositionArray.Length < 3 || eulerAnglesArray.Length < 4)
+        {
+            Debug.LogWarning("[MotionStreamer] Received invalid position/rotation data for recentering");
+            return;
+        }
 
+        // Create the target pose
+        Vector3 targetPosition = new Vector3((float)letpositionArray[0], 
+                                           (float)letpositionArray[1], 
+                                           (float)letpositionArray[2]);
+        
+        Quaternion targetRotation = new Quaternion((float)eulerAnglesArray[0],
+                                                  (float)eulerAnglesArray[1],
+                                                  (float)eulerAnglesArray[2],
+                                                  (float)eulerAnglesArray[3]);
+
+        // Calculate the difference between current and target poses
+        Vector3 positionDiff = targetPosition - vrCamera.position;
+        float rotationAngleY = vrCamera.rotation.eulerAngles.y - targetRotation.eulerAngles.y;
+
+        // Apply the transformation to the camera root
         vrCameraRoot.transform.Rotate(0, -rotationAngleY, 0);
-
-        Vector3 distanceDiff = resetTransform.position - vrCamera.position;
-        vrCameraRoot.transform.position += distanceDiff;
-
+        vrCameraRoot.transform.position += positionDiff;
     }
 
     void InitPose()
