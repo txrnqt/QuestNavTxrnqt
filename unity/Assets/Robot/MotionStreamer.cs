@@ -44,7 +44,7 @@ public class MotionStreamer : MonoBehaviour
 
     public TMP_InputField teamInput;
     public Button teamUpdateButton;
-    public static string inputText = "9999";
+    public static string inputText = "5152"; // Default to my team
     private string teamNumber = "";
 
     [SerializeField] public Transform poseOffset;
@@ -65,7 +65,7 @@ public class MotionStreamer : MonoBehaviour
     void Start()
     {
         OVRPlugin.systemDisplayFrequency = 120.0f;
-        teamNumber = PlayerPrefs.GetString("TeamNumber", "9999");
+        teamNumber = PlayerPrefs.GetString("TeamNumber", "5152"); // Default to my team
         setInputBox(teamNumber);
         teamInput.Select();
         ConnectToRobot();
