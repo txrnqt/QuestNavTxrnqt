@@ -104,7 +104,7 @@ public class MotionStreamer : MonoBehaviour
     /// <summary>
     /// Default team number text
     /// </summary>
-    public static string inputText = "5152";
+    public static string inputText = "9999";
 
     /// <summary>
     /// Current team number
@@ -179,7 +179,7 @@ public class MotionStreamer : MonoBehaviour
     void Start()
     {
         OVRPlugin.systemDisplayFrequency = 120.0f;
-        teamNumber = PlayerPrefs.GetString("TeamNumber", "5152");
+        teamNumber = PlayerPrefs.GetString("TeamNumber", "9999");
         setInputBox(teamNumber);
         teamInput.Select();
         ConnectToRobot();
