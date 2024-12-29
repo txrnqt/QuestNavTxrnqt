@@ -122,11 +122,14 @@ At it's heart, QuestNav is merely a VR app designed to push data to Network Tabl
 	- Set the display timeout to 4 hours in `Settings > General > Power > Display off`
 	- Enable battery saver mode in `Settings > General > Power > Battery saver mode`
 	- Disable WiFi in `Settings > WiFi`
+		- Alternatively, WiFi can be disabled via adb using this command: `adb shell svc wifi disable`
 		- **NOTE:** Be sure to completely turn off WiFi, otherwise the headset will constantly disconnect from the robot network as it tries to look for the internet
 	- Disable Bluetooth in `Settings > Bluetooth`
+		- Alternatively, Bluetooth can be disabled via adb using this command: `adb shell svc bluetooth disable`
 		- **NOTE:** Disabling Bluetooth will break the companion app functionality
 	- Disable the guardian for development purposes `Settings > Advanced > Experimental Settings > Enable Custom Settings` and **TURN OFF** `Physical Space Features`, `MTP Notification`, and `Link Auto Connect`
 		- These settings might also be located in `Settings > Developer > Experimental Settings > Enable Custom Settings` on some older OS builds
+		- Alternatively, the Guardian can be disabled via adb using this command: `adb shell setprop debug.oculus.guardian_pause 1`, however the setting **does not persist** and must be sent after every boot. 
 4. Plug the headset into your PC and install the example .apk using MQDH or adb (`adb install QuestNav.apk`)
 	- **NOTE!** The example app team number is hard-coded to 9999
 
