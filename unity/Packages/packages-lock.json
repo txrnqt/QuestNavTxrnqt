@@ -53,7 +53,7 @@
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.interaction": {
-      "version": "71.0.0",
+      "version": "72.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {

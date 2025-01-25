@@ -96,6 +96,11 @@ public class MotionStreamer : MonoBehaviour
     /// </summary>
     public TMP_InputField teamInput;
 
+    // <summary>
+    /// IP address text
+    /// </summary>
+    public TMP_Text ipAddressText;
+
     /// <summary>
     /// Button to update team number
     /// </summary>
@@ -169,6 +174,16 @@ public class MotionStreamer : MonoBehaviour
     /// Counter for connection retry delay
     /// </summary>
     private int delayCounter = 0;
+
+    /// <summary>
+    /// Quest display frequency (in Hz)
+    /// </summary>
+    private float displayFrequency = 120.0f;
+
+    /// <summary>
+    /// Holds the detected local IP address of the HMD
+    /// </summary>
+    private string myAddressLocal = "0.0.0.0";
     #endregion
     #endregion
 
@@ -178,10 +193,11 @@ public class MotionStreamer : MonoBehaviour
     /// </summary>
     void Start()
     {
-        OVRPlugin.systemDisplayFrequency = 120.0f;
+        OVRPlugin.systemDisplayFrequency = displayFrequency;
         teamNumber = PlayerPrefs.GetString("TeamNumber", "9999");
         setInputBox(teamNumber);
         teamInput.Select();
+        UpdateIPAddressText();
         ConnectToRobot();
         teamUpdateButton.onClick.AddListener(UpdateTeamNumber);
         teamInput.onSelect.AddListener(OnInputFieldSelected);
@@ -195,20 +211,22 @@ public class MotionStreamer : MonoBehaviour
         if (frcDataSink.Client.Connected())
         {
             PublishFrameData();
-
-            if (delayCounter >= 0)
-            {
-                ProcessCommands();
-                delayCounter = 0;
-            }
-            else
-            {
-                delayCounter++;
-            }
+            ProcessCommands();
         }
         else
         {
             HandleDisconnectedState();
+        }
+
+        // Only execute these functions once per second
+        if (delayCounter >= (int)displayFrequency)
+        {
+            UpdateIPAddressText();
+            delayCounter = 0;
+        }
+        else
+        {
+            delayCounter++;
         }
     }
     #endregion
@@ -221,7 +239,7 @@ public class MotionStreamer : MonoBehaviour
     {
         if (useAddress == true)
         {
-            ipAddress = getIP();
+            ipAddress = generateIP();
             useAddress = false;
         }
         else
@@ -415,6 +433,11 @@ public class MotionStreamer : MonoBehaviour
             Debug.Log($"[MotionStreamer] Before reset - Camera Pos:{currentCameraPos:F3} Rot:{currentCameraRot.eulerAngles:F3}");
 
             // Convert FRC coordinates to Unity coordinates:
+            // Unity uses a left-handed coordinate system with Y as the vertical axis (aligned with gravity)
+            // FRC uses a right-handed coordinate system with Z as the vertical axis (aligned with gravity)
+            // See this page for more Unity details: https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html
+            // See this page for more FRC details: https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
+
             // - Unity X = -FRC Y (right is positive in Unity)
             // - Unity Y = kept unchanged (height)
             // - Unity Z = FRC X (forward is positive in both)
@@ -518,7 +541,34 @@ public class MotionStreamer : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the input box placeholder text with the current team number
+    /// Updates the default IP address shown in the UI with the current HMD IP address
+    /// </summary>
+    /// 
+    public void UpdateIPAddressText()
+    {
+        //Get the local IP
+        IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
+        foreach (IPAddress ip in hostEntry.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                myAddressLocal = ip.ToString();
+                TextMeshProUGUI ipText = ipAddressText as TextMeshProUGUI;
+                if (myAddressLocal == "127.0.0.1")
+                {
+                    ipText.text = "No Adapter Found";
+                }
+                else
+                {
+                    ipText.text = myAddressLocal;
+                }
+            }
+            break;
+        }
+    }
+
+    /// <summary>
+    /// Updates the input box placeholder text with the current team number
     /// </summary>
     /// <param name="team">The team number to display</param>
     private void setInputBox(string team)
@@ -550,7 +600,7 @@ public class MotionStreamer : MonoBehaviour
     /// Generates the IP address for the roboRIO based on team number
     /// </summary>
     /// <returns>The formatted IP address string</returns>
-    private string getIP()
+    private string generateIP()
     {
         string tePart = teamNumber.Length > 2 ? teamNumber.Substring(0, teamNumber.Length - 2) : "0";
         string amPart = teamNumber.Length > 2 ? teamNumber.Substring(teamNumber.Length - 2) : teamNumber;
