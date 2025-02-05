@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.PowerDistribution;
-import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DriveSubsystem;
@@ -35,7 +33,6 @@ public class Robot extends LoggedRobot {
     if (isReal()) {
       Logger.addDataReceiver(new WPILOGWriter());
       Logger.addDataReceiver(new NT4Publisher());
-      new PowerDistribution(1, ModuleType.kAutomatic);
     } else {
       setUseTiming(false);
       String logPath = LogFileUtil.findReplayLog();
