@@ -105,6 +105,16 @@ public class QuestNav : MonoBehaviour
     /// </summary>
     public TMP_Text ipAddressText;
 
+    // <summary>
+    /// ConState text
+    /// </summary>
+    public TMP_Text conStateText;
+
+    /// <summary>
+    /// Current log message
+    /// </summary>
+    private string conStateMessage = "No Message";
+
     /// <summary>
     /// Button to update team number
     /// </summary>
@@ -215,6 +225,17 @@ public class QuestNav : MonoBehaviour
     /// </summary>
     private Coroutine _connectionCoroutine;
 
+    /// <summary>
+    /// used to only set up the coroutine once in async
+    /// </summary>
+    private bool connectionAttempt = false;
+
+    /// <summary>
+    /// used to make sure connection completed on coroutine
+    /// </summary>
+    private bool connectionAttemptCompleted = true;
+
+
     #endregion
 
     #region Unity Lifecycle Methods
@@ -228,6 +249,7 @@ public class QuestNav : MonoBehaviour
         setInputBox(teamNumber);
         teamInput.Select();
         UpdateIPAddressText();
+        UpdateConStateText();
         ConnectToRobot();
         teamUpdateButton.onClick.AddListener(UpdateTeamNumber);
         teamInput.onSelect.AddListener(OnInputFieldSelected);
@@ -241,23 +263,60 @@ public class QuestNav : MonoBehaviour
         // If the connection isn’t ready, skip the update.
         if (frcDataSink == null || !frcDataSink.Client.Connected())
         {
+            conStateMessage = "datasink null not connected";
+            UpdateConStateText();
+
+            if(!frcDataSink.Client.Connected() )
+            {
+                conStateMessage = "handling disconnected state";
+                UpdateConStateText();
+
+                // hitting the async handler repeatedly seems to cause issues
+                //  seeing multpile nt connections
+                //  need to do this once per attempt
+                // this bool is set to true in connect to robot
+                if( connectionAttempt == true )
+                {
+                    conStateMessage = "conn atmpt in progress";
+                    UpdateConStateText();
+                }
+                else
+                {
+                    HandleDisconnectedState();
+                }
+                
+            }
+
+            // add a null handler here too?
+
             return;
         }
 
         if (frcDataSink.Client.Connected())
         {
+            conStateMessage = "connected sending data";
             PublishFrameData();
             ProcessCommands();
         }
         else
         {
-            HandleDisconnectedState();
+
+            // the two recovery states should be handled above in null and not conected
+
+            conStateMessage = "not disconnected or connected";
+            
+            // hitting the async handler repeatedly seems to cause issues
+            //  seeing multpile nt connections
+
+            // HandleDisconnectedState();
+
         }
 
         // Only execute these functions once per second
         if (delayCounter >= (int)displayFrequency)
         {
             UpdateIPAddressText();
+            UpdateConStateText();
             delayCounter = 0;
         }
         else
@@ -274,6 +333,8 @@ public class QuestNav : MonoBehaviour
     /// </summary>
     private void ConnectToRobot()
     {
+        connectionAttempt = true;
+        connectionAttemptCompleted = false;
         StartCoroutine(ConnectionCoroutineWrapper());
     }
 
@@ -312,12 +373,14 @@ public class QuestNav : MonoBehaviour
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
                 QueuedLogger.LogWarning($"[QuestNav] Network not reachable. Waiting {unreachableNetworkDelay} seconds before reattempting.");
+                conStateMessage = "net no reach waiting";
                 await Task.Delay(unreachableNetworkDelay);
                 continue;
             }
 
             StringBuilder cycleLog = new StringBuilder();
             cycleLog.AppendLine("[QuestNav] Connection attempt cycle:");
+            conStateMessage = "connection attempt cycle";
 
             foreach (string candidate in candidateAddresses)
             {
@@ -325,11 +388,13 @@ public class QuestNav : MonoBehaviour
                 if (failedCandidates.ContainsKey(candidate) && (Time.time - failedCandidates[candidate] < candidateFailureCooldown))
                 {
                     cycleLog.AppendLine($"Skipping candidate {candidate} (failed less than {candidateFailureCooldown} seconds ago).");
+                    conStateMessage = "skipping " + candidate + " cool " + candidateFailureCooldown;
                     continue;
                 }
                 else
                 {
                     failedCandidates.Remove(candidate);
+                    conStateMessage = "removed candidate " + candidate;
                 }
 
                 string resolvedAddress = candidate;
@@ -347,6 +412,7 @@ public class QuestNav : MonoBehaviour
                     else
                     {
                         cycleLog.AppendLine($"DNS lookup returned no IPv4 for candidate '{candidate}'.");
+                        conStateMessage = "no ipv4 for " + candidate;
                         failedCandidates[candidate] = Time.time;
                         continue;
                     }
@@ -354,11 +420,13 @@ public class QuestNav : MonoBehaviour
                 catch (Exception ex)
                 {
                     cycleLog.AppendLine($"DNS resolution failed for candidate '{candidate}': {ex.Message}");
+                    conStateMessage = "dns failed for " + candidate;
                     failedCandidates[candidate] = Time.time;
                     continue;
                 }
 
                 cycleLog.AppendLine($"Attempting connection to {resolvedAddress}...");
+                conStateMessage = "attempting " + resolvedAddress;
 
                 try
                 {
@@ -373,17 +441,22 @@ public class QuestNav : MonoBehaviour
                         ipAddress = resolvedAddress; // Cache the working address.
                         frcDataSink = sink;
                         cycleLog.AppendLine($"Connected successfully to {resolvedAddress}.");
+                        conStateMessage = "connected to " + resolvedAddress;
                         connectionEstablished = true;
+                        connectionAttempt = false;
+                        connectionAttemptCompleted = true;
                         break;
                     }
                     else
                     {
                         cycleLog.AppendLine($"Connection attempt to {resolvedAddress} did not succeed.");
+                        conStateMessage = "conn failed to " + resolvedAddress;
                     }
                 }
                 catch (Exception ex)
                 {
                     cycleLog.AppendLine($"Connection attempt failed for {resolvedAddress}: {ex.Message}");
+                    conStateMessage = "conn failed " + resolvedAddress + " " + ex.Message;
                 }
             }
 
@@ -391,6 +464,7 @@ public class QuestNav : MonoBehaviour
             if (!connectionEstablished)
             {
                 cycleLog.AppendLine($"Could not establish a connection with any candidate addresses. Reattempting in {reconnectDelay} second(s)...");
+                conStateMessage = "no conn to any candidates trying in " + reconnectDelay;
                 QueuedLogger.Log(cycleLog.ToString(), QueuedLogger.LogLevel.Warning);
                 await Task.Delay((int)(reconnectDelay * 1000));
                 reconnectDelay = Mathf.Min(reconnectDelay * 2, maxReconnectDelay);
@@ -400,6 +474,7 @@ public class QuestNav : MonoBehaviour
         // Reset delay on success.
         reconnectDelay = defaultReconnectDelay;
         QueuedLogger.Log("[QuestNav] Connection established. Publishing topics.");
+        conStateMessage = "connected - publishing";
         PublishTopics();
     }
 
@@ -409,6 +484,7 @@ public class QuestNav : MonoBehaviour
     private void HandleDisconnectedState()
     {
         QueuedLogger.Log("[QuestNav] Robot disconnected. Resetting connection and attempting to reconnect...");
+        conStateMessage = "robot disconnected - retrying";
         frcDataSink.Client.Disconnect();
         ConnectToRobot();
     }
@@ -728,6 +804,15 @@ public class QuestNav : MonoBehaviour
             break;
         }
     }
+
+    public void UpdateConStateText()
+    {
+
+        TextMeshProUGUI conText = conStateText as TextMeshProUGUI;
+        conText.text = conStateMessage;
+    
+    }
+
 
     /// <summary>
     /// Updates the input box placeholder text with the current team number
