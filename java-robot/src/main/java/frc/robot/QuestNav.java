@@ -51,9 +51,9 @@ public class QuestNav {
     return new Quaternion(qqFloats[0], qqFloats[1], qqFloats[2], qqFloats[3]);
   }
 
-  // Gets the Quests's timestamp.
+  // Gets the Quests's timestamp in NT Server Time.
   public double timestamp() {
-    return questTimestamp.get();
+    return questTimestamp.getAtomic().serverTime;
   }
 
   // Zero the relativerobot heading
