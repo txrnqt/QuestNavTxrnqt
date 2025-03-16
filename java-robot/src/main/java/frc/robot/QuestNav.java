@@ -4,6 +4,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Quaternion;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.DoubleSubscriber;
 import edu.wpi.first.networktables.FloatArraySubscriber;
 import edu.wpi.first.networktables.IntegerPublisher;
@@ -26,9 +27,26 @@ public class QuestNav {
   private FloatArraySubscriber questEulerAngles = nt4Table.getFloatArrayTopic("eulerAngles").subscribe(new float[]{0.0f, 0.0f, 0.0f});
   private DoubleSubscriber questBatteryPercent = nt4Table.getDoubleTopic("batteryPercent").subscribe(0.0f);
 
+  /** Subscriber for heartbeat requests */
+  private final DoubleSubscriber heartbeatRequestSub = nt4Table.getDoubleTopic("heartbeat/quest_to_robot").subscribe(0.0);
+  /** Publisher for heartbeat responses */
+  private final DoublePublisher heartbeatResponsePub = nt4Table.getDoubleTopic("heartbeat/robot_to_quest").publish();
+  /** Last processed heartbeat request ID */
+  private double lastProcessedHeartbeatId = 0;
+
   // Local heading helper variables
   private float yaw_offset = 0.0f;
   private Pose2d resetPosition = new Pose2d();
+
+  /** Process heartbeat requests from Quest and respond with the same ID */
+  public void processHeartbeat() {
+    double requestId = heartbeatRequestSub.get();
+    // Only respond to new requests to avoid flooding
+    if (requestId > 0 && requestId != lastProcessedHeartbeatId) {
+      heartbeatResponsePub.set(requestId);
+      lastProcessedHeartbeatId = requestId;
+    }
+  }
 
   // Gets the Quest's measured position.
   public Pose2d getPose() {
