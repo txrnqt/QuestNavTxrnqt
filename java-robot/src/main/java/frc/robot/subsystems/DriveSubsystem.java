@@ -251,6 +251,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void cleanupQuestNavMessages() {
+    questNav.processHeartbeat();
     questNav.cleanUpQuestNavMessages();
   }
 
