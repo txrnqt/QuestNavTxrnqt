@@ -130,11 +130,6 @@
             public const string EULER_ANGLES = BASE_PATH + "/eulerAngles";
 
             /// <summary>
-            /// Battery percentage topic
-            /// </summary>
-            public const string BATTERY_PERCENT = BASE_PATH + "/batteryPercent";
-
-            /// <summary>
             /// Initial position topic
             /// </summary>
             public const string INIT_POSITION = BASE_PATH + "/init/position";
@@ -158,6 +153,16 @@
             /// Heartbeat topic (robot to Quest)
             /// </summary>
             public const string HEARTBEAT_FROM_ROBOT = BASE_PATH + "/heartbeat/robot_to_quest";
+            
+            /// <summary>
+            /// Heartbeat topic (robot to Quest)
+            /// </summary>
+            public const string TRACKING_LOST_COUNTER = BASE_PATH + "/device/trackingLostCounter";
+            
+            /// <summary>
+            /// Battery percentage topic
+            /// </summary>
+            public const string BATTERY_PERCENT = BASE_PATH + "/device/batteryPercent";
         }
 
         /// <summary>

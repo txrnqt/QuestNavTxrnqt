@@ -56,9 +56,16 @@ namespace QuestNav.Network
         /// <param name="position">Current position</param>
         /// <param name="rotation">Current rotation</param>
         /// <param name="eulerAngles">Current euler angles</param>
-        /// <param name="batteryPercent">Current battery percentage</param>
-        void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles, float batteryPercent);
+        void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles);
 
+        /// <summary>
+        /// Publishes device data to NetworkTables.
+        /// </summary>
+        /// <param name="trackingLostEvents">Number of tracking lost events this session</param>
+        /// <param name="batteryPercent">Current battery percentage</param>
+        void PublishDeviceData(int trackingLostEvents, float batteryPercent);
+
+        
         /// <summary>
         /// Publishes a value to NetworkTables.
         /// </summary>
@@ -511,7 +518,7 @@ namespace QuestNav.Network
         /// <summary>
         /// Publishes current frame data to NetworkTables
         /// </summary>
-        public void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles, float batteryPercent)
+        public void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles)
         {
             // Check if connection is established before publishing data
             if (frcDataSink == null || !frcDataSink.Client.Connected())
@@ -524,7 +531,17 @@ namespace QuestNav.Network
             frcDataSink.PublishValue(QuestNavConstants.Topics.POSITION, position.ToArray());
             frcDataSink.PublishValue(QuestNavConstants.Topics.QUATERNION, rotation.ToArray());
             frcDataSink.PublishValue(QuestNavConstants.Topics.EULER_ANGLES, eulerAngles.ToArray());
+        }
+
+        public void PublishDeviceData(int trackingLostEvents, float batteryPercent)
+        {
+            // Check if connection is established before publishing data
+            if (frcDataSink == null || !frcDataSink.Client.Connected())
+            {
+                return; // Exit early if connection isn't established
+            }
             frcDataSink.PublishValue(QuestNavConstants.Topics.BATTERY_PERCENT, batteryPercent);
+            frcDataSink.PublishValue(QuestNavConstants.Topics.TRACKING_LOST_COUNTER, trackingLostEvents);
         }
 
         /// <summary>

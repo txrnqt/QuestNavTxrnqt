@@ -1,6 +1,7 @@
 ﻿using QuestNav.Commands;
 using QuestNav.Network;
 using QuestNav.UI;
+using QuestNav.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,70 +19,70 @@ namespace QuestNav.Core
         /// <summary>
         /// Current frame index from Unity's Time.frameCount
         /// </summary>
-        public int frameIndex;
+        private int frameIndex;
 
         /// <summary>
         /// Current timestamp from Unity's Time.time
         /// </summary>
-        public double timeStamp;
+        private double timeStamp;
 
         /// <summary>
         /// Current position of the VR headset
         /// </summary>
-        public Vector3 position;
+        private Vector3 position;
 
         /// <summary>
         /// Current rotation of the VR headset as a Quaternion
         /// </summary>
-        public Quaternion rotation;
+        private Quaternion rotation;
 
         /// <summary>
         /// Current rotation of the VR headset in Euler angles
         /// </summary>
-        public Vector3 eulerAngles;
+        private Vector3 eulerAngles;
 
         /// <summary>
         /// Reference to the OVR Camera Rig for tracking
         /// </summary>
-        public OVRCameraRig cameraRig;
+        private OVRCameraRig cameraRig;
 
         /// <summary>
         /// Input field for team number entry
         /// </summary>
-        public TMP_InputField teamInput;
+        private TMP_InputField teamInput;
 
         /// <summary>
         /// IP address text
         /// </summary>
-        public TMP_Text ipAddressText;
+        private TMP_Text ipAddressText;
 
         /// <summary>
         /// ConState text
         /// </summary>
-        public TMP_Text conStateText;
+        private TMP_Text conStateText;
 
         /// <summary>
         /// Button to update team number
         /// </summary>
-        public Button teamUpdateButton;
+        private Button teamUpdateButton;
 
         /// <summary>
         /// Reference to the VR camera transform
         /// </summary>
         [SerializeField] 
-        public Transform vrCamera;
+        private Transform vrCamera;
 
         /// <summary>
         /// Reference to the VR camera root transform
         /// </summary>
         [SerializeField] 
-        public Transform vrCameraRoot;
+        private Transform vrCameraRoot;
 
         /// <summary>
         /// Reference to the reset position transform
         /// </summary>
         [SerializeField] 
-        public Transform resetTransform;
+        private Transform resetTransform;
 
         /// <summary>
         /// Current battery percentage of the device
@@ -92,6 +93,21 @@ namespace QuestNav.Core
         /// Counter for display update delay
         /// </summary>
         private int delayCounter = 0;
+        
+        /// <summary>
+        /// Increments once every time tracking is lost after having it aquired
+        /// </summary>
+        private int trackingLostEvents = 0;
+        
+        ///<summary>
+        /// Whether we have tracking
+        /// </summary>
+        private bool currentlyTracking = false;
+        
+        ///<summary>
+        /// Whether we had tracking
+        /// </summary>
+        private bool hadTracking = false;
 
         // Using display frequency constant from QuestNavConstants
 
@@ -168,7 +184,11 @@ namespace QuestNav.Core
                 
                 // Collect and publish current frame data
                 UpdateFrameData();
-                networkConnection.PublishFrameData(frameIndex, timeStamp, position, rotation, eulerAngles, batteryPercent);
+                networkConnection.PublishFrameData(frameIndex, timeStamp, position, rotation, eulerAngles);
+                
+                // Collect and publish current device data
+                UpdateDeviceData();
+                networkConnection.PublishDeviceData(trackingLostEvents, batteryPercent);
                 
                 // Process robot commands
                 commandProcessor.ProcessCommands();
@@ -185,6 +205,9 @@ namespace QuestNav.Core
             {
                 delayCounter++;
             }
+            
+            // Check for tracking loss
+            
         }
         #endregion
 
@@ -199,7 +222,30 @@ namespace QuestNav.Core
             position = cameraRig.centerEyeAnchor.position;
             rotation = cameraRig.centerEyeAnchor.rotation;
             eulerAngles = cameraRig.centerEyeAnchor.eulerAngles;
+        }
+        /// <summary>
+        /// Updates the current device data from the VR headset
+        /// </summary>
+        private void UpdateDeviceData()
+        {
+            CheckTrackingLoss();
             batteryPercent = SystemInfo.batteryLevel * 100;
+        }
+        /// <summary>
+        /// Checks to see if tracking is lost, and increments a counter if so
+        /// </summary>
+        private void CheckTrackingLoss()
+        {
+            currentlyTracking = OVRManager.tracker.isPositionTracked;
+
+            // Increment the tracking loss counter if we have tracking loss
+            if (!currentlyTracking && hadTracking)
+            {
+                trackingLostEvents++;
+                QueuedLogger.LogWarning($"Tracking Lost! Times this session: {trackingLostEvents}");
+            }
+
+            hadTracking = currentlyTracking;
         }
         #endregion
     }
