@@ -44,26 +44,31 @@ namespace QuestNav.Core
         /// <summary>
         /// Reference to the OVR Camera Rig for tracking
         /// </summary>
+        [SerializeField]
         private OVRCameraRig cameraRig;
 
         /// <summary>
         /// Input field for team number entry
         /// </summary>
+        [SerializeField]
         private TMP_InputField teamInput;
 
         /// <summary>
         /// IP address text
         /// </summary>
+        [SerializeField]
         private TMP_Text ipAddressText;
 
         /// <summary>
         /// ConState text
         /// </summary>
+        [SerializeField]
         private TMP_Text conStateText;
 
         /// <summary>
         /// Button to update team number
         /// </summary>
+        [SerializeField]
         private Button teamUpdateButton;
 
         /// <summary>
