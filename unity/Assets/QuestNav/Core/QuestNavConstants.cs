@@ -40,27 +40,27 @@
             /// <summary>
             /// Maximum reconnection delay (seconds)
             /// </summary>
-            public const float MAX_RECONNECT_DELAY = 10.0f;
+            public const float MAX_RECONNECT_DELAY = 5.0f;
 
             /// <summary>
             /// Cooldown before trying candidates that have failed previously (seconds)
             /// </summary>
-            public const float CANDIDATE_FAILURE_COOLDOWN = 10.0f;
+            public const float CANDIDATE_FAILURE_COOLDOWN = 5.0f;
 
             /// <summary>
             /// Delay before retrying when network is unreachable (seconds)
             /// </summary>
-            public const int UNREACHABLE_NETWORK_DELAY = 5;
+            public const int UNREACHABLE_NETWORK_DELAY = 3;
 
             /// <summary>
             /// Timeout for WebSocket connection in seconds
             /// </summary>
-            public const int WEBSOCKET_CONNECTION_TIMEOUT = 5;
+            public const int WEBSOCKET_CONNECTION_TIMEOUT = 3;
             
             /// <summary>
             /// Maximum time to wait for a connection attempt before resetting state (seconds)
             /// </summary>
-            public const float CONNECTION_ATTEMPT_TIMEOUT = 10.0f;
+            public const float CONNECTION_ATTEMPT_TIMEOUT = 5.0f;
 
             /// <summary>
             /// Default team number when none is provided

@@ -531,10 +531,7 @@ namespace QuestNav.Network
         /// <param name="teamNumber">The new team number</param>
         public void UpdateTeamNumber(string teamNumber)
         {
-            Log("Updating Team Number");
             this.teamNumber = teamNumber;
-            PlayerPrefs.SetString("TeamNumber", teamNumber);
-            PlayerPrefs.Save();
 
             // Clear cached IP and candidate failure data.
             ipAddress = "";
@@ -662,11 +659,16 @@ namespace QuestNav.Network
         /// <returns>The formatted IP address string</returns>
         private string generateIP()
         {
-            if (teamNumber.Length >= 1)
+            if (int.TryParse(teamNumber, out int team))
             {
-                string tePart = teamNumber.Length > 2 ? teamNumber.Substring(0, teamNumber.Length - 2) : "0";
-                string amPart = teamNumber.Length > 2 ? teamNumber.Substring(teamNumber.Length - 2) : teamNumber;
-                return QuestNavConstants.Network.SERVER_ADDRESS_FORMAT.Replace("TE", tePart).Replace("AM", amPart);
+                // Drop the last two digits by dividing by 100
+                int tePart = team / 100;
+                // The second part is the remainder.
+                int amPart = team % 100;
+                // Use the plain ToString() so that single-digit team numbers don't get a leading zero.
+                return QuestNavConstants.Network.SERVER_ADDRESS_FORMAT
+                    .Replace("TE", tePart.ToString())
+                    .Replace("AM", amPart.ToString());
             }
             else
             {
