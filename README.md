@@ -141,9 +141,9 @@ At it's heart, QuestNav is merely a VR app designed to push data to Network Tabl
 
 ## One-Time Headset Setup (Required for Each Headset)
 3. Configure the following settings on your Quest headset:
-	- Enable travel mode ([link](https://www.meta.com/help/quest/articles/in-vr-experiences/oculus-features/travel-mode/) to instructions)
+	- **Disable travel mode!** The instructions previously mentioned enabling travel mode. However, we now recommend *disabling* it! 
+	- **Disable battery saver mode!** The instructions previously mentioned enabling battery saver mode. However, we now recommend *disabling* it! 
 	- Set the display timeout to 4 hours in `Settings > General > Power > Display off`
-	- Enable battery saver mode in `Settings > General > Power > Battery saver mode`
 	- Disable WiFi in `Settings > WiFi`
 		- Alternatively, WiFi can be disabled via adb using this command: `adb shell svc wifi disable`
 		- **NOTE:** Be sure to completely turn off WiFi, otherwise the headset will constantly disconnect from the robot network as it tries to look for the internet

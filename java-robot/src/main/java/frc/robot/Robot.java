@@ -86,6 +86,7 @@ public class Robot extends LoggedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    m_robotContainer.getDriveSubsystem().zeroHeading();
   }
 
   /** This function is periodically called while the robot is in Teleop mode. */

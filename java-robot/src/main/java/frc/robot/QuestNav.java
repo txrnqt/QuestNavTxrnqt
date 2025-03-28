@@ -4,6 +4,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Quaternion;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.networktables.BooleanSubscriber;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.DoubleSubscriber;
 import edu.wpi.first.networktables.FloatArraySubscriber;
@@ -25,7 +26,10 @@ public class QuestNav {
   private FloatArraySubscriber questPosition = nt4Table.getFloatArrayTopic("position").subscribe(new float[]{0.0f, 0.0f, 0.0f});
   private FloatArraySubscriber questQuaternion = nt4Table.getFloatArrayTopic("quaternion").subscribe(new float[]{0.0f, 0.0f, 0.0f, 0.0f});
   private FloatArraySubscriber questEulerAngles = nt4Table.getFloatArrayTopic("eulerAngles").subscribe(new float[]{0.0f, 0.0f, 0.0f});
-  private DoubleSubscriber questBatteryPercent = nt4Table.getDoubleTopic("batteryPercent").subscribe(0.0f);
+  private IntegerSubscriber questFrameCount = nt4Table.getIntegerTopic("frameCount").subscribe(0);
+  private DoubleSubscriber questBatteryPercent = nt4Table.getDoubleTopic("device/batteryPercent").subscribe(0.0f);
+  private BooleanSubscriber questIsTracking = nt4Table.getBooleanTopic("device/isTracking").subscribe(false);
+  private IntegerSubscriber questTrackingLostCount = nt4Table.getIntegerTopic("device/trackingLostCounter").subscribe(0);
 
   /** Subscriber for heartbeat requests */
   private final DoubleSubscriber heartbeatRequestSub = nt4Table.getDoubleTopic("heartbeat/quest_to_robot").subscribe(0.0);
@@ -54,12 +58,27 @@ public class QuestNav {
   }
 
   // Gets the battery percent of the Quest.
-  public double getBatteryPercent() {
+  public Double getBatteryPercent() {
     return questBatteryPercent.get();
   }
 
+  // Gets the current tracking state of the Quest. 
+  public Boolean getTrackingStatus() {
+    return questIsTracking.get();
+  }
+
+  // Gets the current frame count from the Quest headset.
+  public Long getFrameCount() {
+    return questFrameCount.get();
+  }
+
+  // Gets the number of tracking lost events since the Quest connected to the robot. 
+  public Long getTrackingLostCounter() {
+    return questTrackingLostCount.get();
+  }
+
   // Returns if the Quest is connected.
-  public boolean connected() {
+  public Boolean connected() {
     return ((RobotController.getFPGATime() - questBatteryPercent.getLastChange()) / 1000) < 250;
   }
 
