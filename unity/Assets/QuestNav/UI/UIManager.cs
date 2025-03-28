@@ -129,6 +129,7 @@ namespace QuestNav.UI
             
             UpdateIPAddressText();
             UpdateConStateText();
+            networkConnection.UpdateTeamNumber(teamNumber);
         }
 
         /// <summary>

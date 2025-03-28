@@ -645,10 +645,10 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 6
-  m_RegexValue: ^\d+$
+  m_CharacterValidation: 8
+  m_RegexValue: 
   m_GlobalPointSize: 32
-  m_CharacterLimit: 4
+  m_CharacterLimit: 5
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   isAlert: 0
-  m_InputValidator: {fileID: 0}
+  m_InputValidator: {fileID: 11400000, guid: bc7bee773dc816340a56ae1203536e1c, type: 2}
   m_ShouldActivateOnSelect: 1
 --- !u!114 &360581114
 MonoBehaviour:
