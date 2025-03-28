@@ -113,6 +113,7 @@ namespace QuestNav.UI
         public void Initialize(TMP_InputField teamInput, TMP_Text ipAddressText, TMP_Text conStateText, 
                              Button teamUpdateButton, INetworkTableConnection networkConnection)
         {
+            QueuedLogger.Log("[QuestNav] Initializing UI Manager");
             this.teamInput = teamInput;
             this.ipAddressText = ipAddressText;
             this.conStateText = conStateText;
@@ -135,7 +136,7 @@ namespace QuestNav.UI
         /// </summary>
         public void UpdateTeamNumber()
         {
-            QueuedLogger.Log("[QuestNav] Updating Team Number");
+            QueuedLogger.Log("[UI Manager] Updating Team Number");
             teamNumber = teamInput.text;
             PlayerPrefs.SetString("TeamNumber", teamNumber);
             PlayerPrefs.Save();
@@ -150,6 +151,7 @@ namespace QuestNav.UI
         /// </summary>
         public void UpdateIPAddressText()
         {
+            // QueuedLogger.Log("[UI Manager] Updating IP Address Text");
             // Get the local IP
             IPHostEntry hostEntry = Dns.GetHostEntry(Dns.GetHostName());
             foreach (IPAddress ip in hostEntry.AddressList)
@@ -176,6 +178,7 @@ namespace QuestNav.UI
         /// </summary>
         public void UpdateConStateText()
         {
+            // QueuedLogger.Log("[UI Manager] Updating Connection State Text");
             TextMeshProUGUI conText = conStateText as TextMeshProUGUI;
             conText.text = networkConnection.ConnectionStateMessage;
         }
@@ -194,7 +197,7 @@ namespace QuestNav.UI
             }
             else
             {
-                QueuedLogger.LogError("Placeholder is not assigned or not a TextMeshProUGUI component.");
+                QueuedLogger.LogError("[UI Manager] Placeholder is not assigned or not a TextMeshProUGUI component.");
             }
         }
         #endregion
@@ -206,7 +209,7 @@ namespace QuestNav.UI
         /// <param name="text">The current text in the input field</param>
         private void OnInputFieldSelected(string text)
         {
-            QueuedLogger.Log("[QuestNav] Input Selected");
+            QueuedLogger.Log("[UI Manager] Input Selected");
         }
         #endregion
     }

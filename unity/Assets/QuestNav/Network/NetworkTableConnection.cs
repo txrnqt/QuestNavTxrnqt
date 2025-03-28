@@ -56,9 +56,17 @@ namespace QuestNav.Network
         /// <param name="position">Current position</param>
         /// <param name="rotation">Current rotation</param>
         /// <param name="eulerAngles">Current euler angles</param>
-        /// <param name="batteryPercent">Current battery percentage</param>
-        void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles, float batteryPercent);
+        void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles);
 
+        /// <summary>
+        /// Publishes device data to NetworkTables.
+        /// </summary>
+        /// <param name="currentlyTracking">Is the quest tracking currently</param>
+        /// <param name="trackingLostEvents">Number of tracking lost events this session</param>
+        /// <param name="batteryPercent">Current battery percentage</param>
+        void PublishDeviceData(bool currentlyTracking, int trackingLostEvents, float batteryPercent);
+
+        
         /// <summary>
         /// Publishes a value to NetworkTables.
         /// </summary>
@@ -171,6 +179,7 @@ namespace QuestNav.Network
         /// Timestamp when the connection attempt started for timeout calculation
         /// </summary>
         private float connectionAttemptStartTime = 0;
+        
         #endregion
         #endregion
 
@@ -201,6 +210,59 @@ namespace QuestNav.Network
         public Nt4Source DataSink => frcDataSink;
         #endregion
 
+        #region Logging Helper
+        /// <summary>
+        /// Centralized logging method to simplify logging and state tracking
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        /// <param name="level">Log level</param>
+        /// <param name="updateState">Whether to update connection state message</param>
+        private void Log(string message, QueuedLogger.LogLevel level = QueuedLogger.LogLevel.Info, bool updateState = true)
+        {
+            // Prefix log messages for consistency
+            string prefixedMessage = $"[NetworkTableConnection] {message}";
+            
+            // Update state message if requested
+            if (updateState)
+            {
+                conStateMessage = message;
+            }
+            
+            // Log with appropriate level
+            switch (level)
+            {
+                case QueuedLogger.LogLevel.Error:
+                    QueuedLogger.LogError(prefixedMessage);
+                    break;
+                case QueuedLogger.LogLevel.Warning:
+                    QueuedLogger.LogWarning(prefixedMessage);
+                    break;
+                default:
+                    QueuedLogger.Log(prefixedMessage);
+                    break;
+            }
+        }
+        
+        /// <summary>
+        /// Helper method to safely disconnect and clean up connection
+        /// </summary>
+        private void SafeDisconnect()
+        {
+            if (frcDataSink != null)
+            {
+                try
+                {
+                    frcDataSink.Client.Disconnect();
+                }
+                catch (Exception ex)
+                {
+                    Log($"Error disconnecting: {ex.Message}", QueuedLogger.LogLevel.Warning, false);
+                }
+                frcDataSink = null;
+            }
+        }
+        #endregion
+
         #region Network Connection Methods
         /// <summary>
         /// Called to start the connection process.
@@ -211,7 +273,7 @@ namespace QuestNav.Network
             // Don't start multiple connection attempts
             if (connectionAttempt)
             {
-                QueuedLogger.LogWarning("[QuestNav] Connection attempt already in progress, skipping new request");
+                Log("Connection attempt already in progress, skipping new request", QueuedLogger.LogLevel.Warning, false);
                 return;
             }
             
@@ -246,8 +308,9 @@ namespace QuestNav.Network
             // Check if the task completed successfully
             if (connectionTask.IsFaulted)
             {
-                QueuedLogger.LogError($"[QuestNav] Connection attempt failed with exception: {connectionTask.Exception}");
+                Log($"Connection attempt failed with exception: {connectionTask.Exception}", QueuedLogger.LogLevel.Error);
                 connectionAttempt = false;  // Reset flag to allow new attempts
+                connectionAttemptCompleted = true;
             }
         }
 
@@ -273,29 +336,24 @@ namespace QuestNav.Network
                 // Check if the network is reachable.
                 if (Application.internetReachability == NetworkReachability.NotReachable)
                 {
-                    QueuedLogger.LogWarning($"[QuestNav] Network not reachable. Waiting {QuestNavConstants.Network.UNREACHABLE_NETWORK_DELAY} seconds before reattempting.");
-                    conStateMessage = "net no reach waiting";
+                    Log($"Network not reachable. Waiting {QuestNavConstants.Network.UNREACHABLE_NETWORK_DELAY} seconds before reattempting.", QueuedLogger.LogLevel.Warning);
                     await Task.Delay(QuestNavConstants.Network.UNREACHABLE_NETWORK_DELAY * 1000);
                     continue;
                 }
 
-                StringBuilder cycleLog = new StringBuilder();
-                cycleLog.AppendLine("[QuestNav] Connection attempt cycle:");
-                conStateMessage = "connection attempt cycle";
+                Log("Starting NT4 connection attempt cycle");
 
                 foreach (string candidate in candidateAddresses)
                 {
                     // Skip a candidate if it failed recently.
                     if (failedCandidates.ContainsKey(candidate) && (Time.time - failedCandidates[candidate] < QuestNavConstants.Network.CANDIDATE_FAILURE_COOLDOWN))
                     {
-                        cycleLog.AppendLine($"Skipping candidate {candidate} (failed less than {QuestNavConstants.Network.CANDIDATE_FAILURE_COOLDOWN} seconds ago).");
-                        conStateMessage = "skipping " + candidate + " cool " + QuestNavConstants.Network.CANDIDATE_FAILURE_COOLDOWN;
+                        Log($"Skipping candidate {candidate} (failed less than {QuestNavConstants.Network.CANDIDATE_FAILURE_COOLDOWN} seconds ago)");
                         continue;
                     }
                     else
                     {
                         failedCandidates.Remove(candidate);
-                        conStateMessage = "removed candidate " + candidate;
                     }
 
                     string resolvedAddress = candidate;
@@ -312,37 +370,59 @@ namespace QuestNav.Network
                         }
                         else
                         {
-                            cycleLog.AppendLine($"DNS lookup returned no IPv4 for candidate '{candidate}'.");
-                            conStateMessage = "no ipv4 for " + candidate;
+                            Log($"DNS lookup returned no IPv4 for candidate '{candidate}'", QueuedLogger.LogLevel.Warning);
                             failedCandidates[candidate] = Time.time;
                             continue;
                         }
                     }
                     catch (Exception ex)
                     {
-                        cycleLog.AppendLine($"DNS resolution failed for candidate '{candidate}': {ex.Message}");
-                        conStateMessage = "dns failed for " + candidate;
+                        Log($"DNS resolution failed for candidate '{candidate}': {ex.Message}", QueuedLogger.LogLevel.Warning);
                         failedCandidates[candidate] = Time.time;
                         continue;
                     }
 
-                    cycleLog.AppendLine($"Attempting connection to {resolvedAddress}...");
-                    conStateMessage = "attempting " + resolvedAddress;
+                    Log($"Attempting to connect to NT4 server at {resolvedAddress}");
 
                     try
                     {
-                        // Wrap the potentially blocking connection call in Task.Run.
-                        var sink = await Task.Run(() =>
+                        // Create a timeout task
+                        var timeoutTask = Task.Delay(QuestNavConstants.Network.WEBSOCKET_CONNECTION_TIMEOUT * 1000);
+                        
+                        // Create the connection task
+                        var connectionTask = Task.Run(() =>
                         {
-                            return new Nt4Source(QuestNavConstants.Network.APP_NAME, resolvedAddress, QuestNavConstants.Network.SERVER_PORT);
+                            try
+                            {
+                                return new Nt4Source(QuestNavConstants.Network.APP_NAME, resolvedAddress,
+                                    QuestNavConstants.Network.SERVER_PORT);
+                            }
+                            catch (Exception ex)
+                            {
+                                Log($"WebSocket connection failed for {resolvedAddress}: {ex.Message}", QueuedLogger.LogLevel.Error);
+                                return null;
+                            }
                         });
+                        
+                        // Wait for either the connection or timeout, whichever comes first
+                        var completedTask = await Task.WhenAny(connectionTask, timeoutTask);
+                        
+                        // If the timeout occurred first
+                        if (completedTask == timeoutTask)
+                        {
+                            Log($"Connection to {resolvedAddress} timed out after {QuestNavConstants.Network.WEBSOCKET_CONNECTION_TIMEOUT} seconds", QueuedLogger.LogLevel.Warning);
+                            failedCandidates[candidate] = Time.time;
+                            continue;
+                        }
+                        
+                        // Get the actual connection result
+                        var sink = await connectionTask;
 
-                        if (sink.Client.Connected())
+                        if (sink != null && sink.Client.Connected())
                         {
                             ipAddress = resolvedAddress; // Cache the working address.
                             frcDataSink = sink;
-                            cycleLog.AppendLine($"Connected successfully to {resolvedAddress}.");
-                            conStateMessage = "connected to " + resolvedAddress;
+                            Log($"Connected successfully to {resolvedAddress}");
                             connectionEstablished = true;
                             connectionAttempt = false;
                             connectionAttemptCompleted = true;
@@ -350,23 +430,21 @@ namespace QuestNav.Network
                         }
                         else
                         {
-                            cycleLog.AppendLine($"Connection attempt to {resolvedAddress} did not succeed.");
-                            conStateMessage = "conn failed to " + resolvedAddress;
+                            Log($"Connection attempt to {resolvedAddress} did not succeed (null or not connected)", QueuedLogger.LogLevel.Warning);
+                            failedCandidates[candidate] = Time.time;
                         }
                     }
                     catch (Exception ex)
                     {
-                        cycleLog.AppendLine($"Connection attempt failed for {resolvedAddress}: {ex.Message}");
-                        conStateMessage = "conn failed " + resolvedAddress + " " + ex.Message;
+                        Log($"Connection attempt failed for {resolvedAddress}: {ex.Message}", QueuedLogger.LogLevel.Warning);
+                        failedCandidates[candidate] = Time.time;
                     }
                 }
 
                 // Handle a failed connection
                 if (!connectionEstablished)
                 {
-                    cycleLog.AppendLine($"Could not establish a connection with any candidate addresses. Reattempting in {reconnectDelay} second(s)...");
-                    conStateMessage = "no conn to any candidates trying in " + reconnectDelay;
-                    QueuedLogger.Log(cycleLog.ToString(), QueuedLogger.LogLevel.Warning);
+                    Log($"No connection to any addresses. Retry in {reconnectDelay} seconds", QueuedLogger.LogLevel.Warning);
                     await Task.Delay((int)(reconnectDelay * 1000));
                     reconnectDelay = Mathf.Min(reconnectDelay * 2, QuestNavConstants.Network.MAX_RECONNECT_DELAY);
                 }
@@ -374,8 +452,7 @@ namespace QuestNav.Network
 
             // Reset delay on success.
             reconnectDelay = QuestNavConstants.Network.DEFAULT_RECONNECT_DELAY;
-            QueuedLogger.Log("[QuestNav] Connection established. Publishing topics.");
-            conStateMessage = "connected - publishing";
+            Log("Connected to NT4 - Sending data!");
             PublishTopics();
         }
 
@@ -391,22 +468,10 @@ namespace QuestNav.Network
                 return;
             }
             
-            QueuedLogger.Log("[QuestNav] Robot disconnected. Resetting connection and attempting to reconnect...");
-            conStateMessage = "robot disconnected - retrying";
+            Log("Robot disconnected - retrying");
             
             // Safely disconnect if we have a connection
-            if (frcDataSink != null)
-            {
-                try
-                {
-                    frcDataSink.Client.Disconnect();
-                }
-                catch (Exception ex)
-                {
-                    QueuedLogger.LogWarning($"[QuestNav] Error disconnecting: {ex.Message}");
-                }
-                frcDataSink = null;
-            }
+            SafeDisconnect();
             
             // Start a fresh connection attempt
             ConnectToRobot();
@@ -418,14 +483,19 @@ namespace QuestNav.Network
         /// </summary>
         public void PublishTopics()
         {
-            // Standard QuestNav topics
+            // Frame data
             frcDataSink.PublishTopic(QuestNavConstants.Topics.MISO, "int");
             frcDataSink.PublishTopic(QuestNavConstants.Topics.FRAME_COUNT, "int");
             frcDataSink.PublishTopic(QuestNavConstants.Topics.TIMESTAMP, "double");
             frcDataSink.PublishTopic(QuestNavConstants.Topics.POSITION, "float[]");
             frcDataSink.PublishTopic(QuestNavConstants.Topics.QUATERNION, "float[]");
             frcDataSink.PublishTopic(QuestNavConstants.Topics.EULER_ANGLES, "float[]");
+            
+            // Device data
             frcDataSink.PublishTopic(QuestNavConstants.Topics.BATTERY_PERCENT, "double");
+            frcDataSink.PublishTopic(QuestNavConstants.Topics.TRACKING_LOST_COUNTER, "int");
+            frcDataSink.PublishTopic(QuestNavConstants.Topics.CURRENTLY_TRACKING, "boolean");
+            
             frcDataSink.Subscribe(QuestNavConstants.Topics.MOSI, 0.1, false, false, false);
             frcDataSink.Subscribe(QuestNavConstants.Topics.INIT_POSITION, 0.1, false, false, false);
             frcDataSink.Subscribe(QuestNavConstants.Topics.INIT_EULER_ANGLES, 0.1, false, false, false);
@@ -442,21 +512,10 @@ namespace QuestNav.Network
         /// </summary>
         public void ForceReconnection()
         {
-            QueuedLogger.Log("[QuestNav] Forcing reconnection due to heartbeat failure");
+            Log("Forcing reconnection due to heartbeat failure");
             
             // Disconnect existing connection
-            if (frcDataSink != null)
-            {
-                try
-                {
-                    frcDataSink.Client.Disconnect();
-                }
-                catch (Exception ex)
-                {
-                    QueuedLogger.LogWarning($"[QuestNav] Error disconnecting: {ex.Message}");
-                }
-                frcDataSink = null;
-            }
+            SafeDisconnect();
             
             // Reset connection state flags to enable reconnection
             connectionAttempt = false;
@@ -472,7 +531,7 @@ namespace QuestNav.Network
         /// <param name="teamNumber">The new team number</param>
         public void UpdateTeamNumber(string teamNumber)
         {
-            QueuedLogger.Log("[QuestNav] Updating Team Number");
+            Log("Updating Team Number");
             this.teamNumber = teamNumber;
             PlayerPrefs.SetString("TeamNumber", teamNumber);
             PlayerPrefs.Save();
@@ -489,14 +548,7 @@ namespace QuestNav.Network
             }
 
             // Disconnect existing connection, if any.
-            if (frcDataSink != null)
-            {
-                if (frcDataSink.Client.Connected())
-                {
-                    frcDataSink.Client.Disconnect();
-                }
-                frcDataSink = null;
-            }
+            SafeDisconnect();
 
             // Reset connection state and restart connection process
             connectionAttempt = false;
@@ -511,7 +563,7 @@ namespace QuestNav.Network
         /// <summary>
         /// Publishes current frame data to NetworkTables
         /// </summary>
-        public void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles, float batteryPercent)
+        public void PublishFrameData(int frameIndex, double timeStamp, Vector3 position, Quaternion rotation, Vector3 eulerAngles)
         {
             // Check if connection is established before publishing data
             if (frcDataSink == null || !frcDataSink.Client.Connected())
@@ -524,7 +576,18 @@ namespace QuestNav.Network
             frcDataSink.PublishValue(QuestNavConstants.Topics.POSITION, position.ToArray());
             frcDataSink.PublishValue(QuestNavConstants.Topics.QUATERNION, rotation.ToArray());
             frcDataSink.PublishValue(QuestNavConstants.Topics.EULER_ANGLES, eulerAngles.ToArray());
+        }
+
+        public void PublishDeviceData(bool currentlyTracking, int trackingLostEvents, float batteryPercent)
+        {
+            // Check if connection is established before publishing data
+            if (frcDataSink == null || !frcDataSink.Client.Connected())
+            {
+                return; // Exit early if connection isn't established
+            }
+            frcDataSink.PublishValue(QuestNavConstants.Topics.CURRENTLY_TRACKING, currentlyTracking);
             frcDataSink.PublishValue(QuestNavConstants.Topics.BATTERY_PERCENT, batteryPercent);
+            frcDataSink.PublishValue(QuestNavConstants.Topics.TRACKING_LOST_COUNTER, trackingLostEvents);
         }
 
         /// <summary>
