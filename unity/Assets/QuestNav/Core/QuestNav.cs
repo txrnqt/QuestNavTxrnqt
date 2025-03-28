@@ -92,17 +92,16 @@ namespace QuestNav.Core
         /// <summary>
         /// Current battery percentage of the device
         /// </summary>
-        private float batteryPercent = 0;
+        private float batteryPercent;
 
         /// <summary>
         /// Counter for display update delay
         /// </summary>
-        private int delayCounter = 0;
-        
+        private int delayCounter;
         /// <summary>
         /// Increments once every time tracking is lost after having it aquired
         /// </summary>
-        private int trackingLostEvents = 0;
+        private int trackingLostEvents;
         
         ///<summary>
         /// Whether we have tracking
@@ -170,6 +169,18 @@ namespace QuestNav.Core
         /// </summary>
         void LateUpdate()
         {
+            // Update UI periodically
+            if (delayCounter >= (int)QuestNavConstants.Display.DISPLAY_FREQUENCY)
+            {
+                uiManager.UpdateIPAddressText();
+                uiManager.UpdateConStateText();
+                delayCounter = 0;
+            }
+            else
+            {
+                delayCounter++;
+            }
+            
             // Check for connection attempt timeout to prevent zombie state
             if (!networkConnection.IsConnected)
             {
@@ -193,23 +204,12 @@ namespace QuestNav.Core
                 
                 // Collect and publish current device data
                 UpdateDeviceData();
-                networkConnection.PublishDeviceData(trackingLostEvents, batteryPercent);
+                networkConnection.PublishDeviceData(currentlyTracking, trackingLostEvents, batteryPercent);
                 
                 // Process robot commands
                 commandProcessor.ProcessCommands();
             }
-
-            // Update UI periodically
-            if (delayCounter >= (int)QuestNavConstants.Display.DISPLAY_FREQUENCY)
-            {
-                uiManager.UpdateIPAddressText();
-                uiManager.UpdateConStateText();
-                delayCounter = 0;
-            }
-            else
-            {
-                delayCounter++;
-            }
+            
             
             // Check for tracking loss
             

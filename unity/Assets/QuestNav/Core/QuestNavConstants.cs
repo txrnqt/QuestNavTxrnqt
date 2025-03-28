@@ -53,6 +53,11 @@
             public const int UNREACHABLE_NETWORK_DELAY = 5;
 
             /// <summary>
+            /// Timeout for WebSocket connection in seconds
+            /// </summary>
+            public const int WEBSOCKET_CONNECTION_TIMEOUT = 5;
+            
+            /// <summary>
             /// Maximum time to wait for a connection attempt before resetting state (seconds)
             /// </summary>
             public const float CONNECTION_ATTEMPT_TIMEOUT = 10.0f;
@@ -155,9 +160,14 @@
             public const string HEARTBEAT_FROM_ROBOT = BASE_PATH + "/heartbeat/robot_to_quest";
             
             /// <summary>
-            /// Heartbeat topic (robot to Quest)
+            /// How many times we have lost tracking this reboot
             /// </summary>
             public const string TRACKING_LOST_COUNTER = BASE_PATH + "/device/trackingLostCounter";
+            
+            /// <summary>
+            /// The current tracking state
+            /// </summary>
+            public const string CURRENTLY_TRACKING = BASE_PATH + "/device/isTracking";
             
             /// <summary>
             /// Battery percentage topic
