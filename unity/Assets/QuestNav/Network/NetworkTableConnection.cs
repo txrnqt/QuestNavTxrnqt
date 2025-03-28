@@ -324,7 +324,6 @@ namespace QuestNav.Network
             bool connectionEstablished = false;
             List<string> candidateAddresses = new List<string>()
             {
-                "10.51.52.2",
                 generateIP(),
                 "172.22.11.2",
                 $"roboRIO-{teamNumber}-FRC.local",
