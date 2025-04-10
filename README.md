@@ -1,7 +1,7 @@
 # QuestNav
 This project enables streaming Oculus VR headset pose information to an FRC robot using the Network Tables 4 (NT4) protocol. This pose information can be used by the robot control system to accurately map its surroundings and navigate around a competition field, practice space, or any other location. QuestNav produces a more stable and reliable tracking pose than any other FRC vision solution (LimeLight, Photon Vision, etc.)
 
-![Demo Video](docs/questnav-demo.gif)
+![Demo Video](docs-old/questnav-demo.gif)
 
 [Check out the full video here!](https://youtu.be/Mo0p1GGeasM)
 
@@ -34,7 +34,7 @@ QuestNav requires the following to get started:
 4. 3D printed mount that attaches the headset to your robot
 	- [Available on Printables.com!](https://www.printables.com/model/1100711-quest-3s-robot-mount)
 
-<img src="docs/quest3s-mount.jpeg" width="600"/>
+<img src="docs-old/quest3s-mount.jpeg" width="600"/>
 
 # Power Requirements
 
@@ -102,7 +102,7 @@ Here's a list of Android Debug Bridge (adb) commands that you might find helpful
 # Software Flow
 A high-level overview of the software architecture is shown below.
 
-![QuestNav Software Block Diagram](docs/QuestNav-Example-Flow.png)
+![QuestNav Software Block Diagram](docs-old/QuestNav-Example-Flow.png)
 
 # QuestNav Control Commands
 QuestNav implements a very simple transmit / receive structure that enables bidirectional communication between the VR headset and the robot. This is useful for commands such as resetting / initializing robot pose, updating the headset configuration, and future commands. The table below lists all of the commands and responses implemented to date. 
