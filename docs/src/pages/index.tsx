@@ -1,5 +1,4 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -15,7 +14,7 @@ function getMediaFiles() {
     const videos: string[] = [];
 
     // Base path to the static directory
-    const basePath = '/img/';
+    const basePath = '/img/index-slideshow/';
 
     // Example files - replace these with your actual files
     const exampleImages = [
@@ -71,7 +70,7 @@ function HomepageHeader() {
 
             <Link
                 className={styles.ctaButton}
-                to="/docs/intro">
+                to="/docs/getting-started/about">
                 Get Started
             </Link>
         </header>

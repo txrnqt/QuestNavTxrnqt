@@ -42,21 +42,7 @@ const config: Config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -70,17 +56,21 @@ const config: Config = {
     navbar: {
       title: 'QuestNav',
       logo: {
-        alt: 'QuestNav Logo',
+        alt: 'Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docsSidebar',
           position: 'left',
           label: 'Docs',
         },
-        {to: 'https://github.com/QuestNav/QuestNav/releases', label: 'Releases', position: 'left'},
+        {
+          to: 'https://github.com/QuestNav/QuestNav/releases',
+          label: 'Releases',
+          position: 'left',
+        },
         {
           href: 'https://github.com/QuestNav/QuestNav',
           label: 'GitHub',
@@ -95,8 +85,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Getting Started',
+              to: '/docs/getting-started/about',
             },
           ],
         },
