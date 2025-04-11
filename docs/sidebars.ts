@@ -16,6 +16,11 @@ const sidebars: SidebarsConfig = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   docsSidebar: [
     {
+      type: 'doc',
+      id: 'rewrite',
+      label: '⚠️ Upcoming Changes'
+    },
+    {
       type: 'category',
       label: 'Getting Started',
       items: [

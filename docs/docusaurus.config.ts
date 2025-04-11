@@ -51,6 +51,14 @@ const config: Config = {
   ],
 
   themeConfig: {
+    // Announcement bar for the rewrite, should be removed when the rewrite is done
+    announcementBar: {
+      id: 'version_notification',
+      content: '⚠️ This documentation is up to date as of v0.9, but a major rewrite is in progress. <a href="/docs/rewrite">Learn more</a>',
+      backgroundColor: 'var(--ifm-background-color)',
+      textColor: 'var(--ifm-color-primary)',
+      isCloseable: false,
+    },
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
