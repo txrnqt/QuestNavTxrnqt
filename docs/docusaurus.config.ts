@@ -111,10 +111,6 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Updates',
-              to: '/updates',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/QuestNav/QuestNav',
             },

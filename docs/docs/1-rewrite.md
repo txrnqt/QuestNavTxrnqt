@@ -4,8 +4,11 @@ description: After the 2025 season, we identified many areas for improvement. Th
 id: rewrite
 ---
 # Upcoming Changes
-After the 2025 season, we identified many areas for improvement. This is tracking our progress.
-
+:::warning
+After the 2025 season, we identified many areas for improvement.
+This list gives a general overview of the changes planned prior to 2026 kickoff.
+This will come with significant implementation changes, most likely breaking.
+:::
 ## Timeline
 
 1. **Properly implement NT4 (Network Tables 4)** (#26)
