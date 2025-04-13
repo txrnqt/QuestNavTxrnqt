@@ -8,6 +8,7 @@ import styles from './index.module.css';
 import IndexTextScroller from "@site/src/components/IndexTextScroller";
 import IndexBackgroundSlideshow from '@site/src/components/IndexBackgroundSlideshow';
 import AwardShowcase from "@site/src/components/AwardShowcase";
+import FeaturesGrid from "@site/src/components/FeaturesGrid";
 
 // Function to get all media files from a directory
 function getMediaFiles() {
@@ -78,66 +79,6 @@ function HomepageHeader() {
     );
 }
 
-function Feature({title, description, icon}) {
-    return (
-        <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>{icon}</div>
-            <h3 className={styles.featureTitle}>{title}</h3>
-            <p className={styles.featureDescription}>{description}</p>
-        </div>
-    );
-}
-
-function HomepageFeatures() {
-    const features = [
-        {
-            title: 'Fast & Reliable',
-            icon: '⚡',
-            description: 'QuestNav delivers lightning-fast performance you can rely on, every time.',
-        },
-        {
-            title: 'Easy to Use',
-            icon: '🔍',
-            description: 'Simple, intuitive interface that makes navigation a breeze for everyone.',
-        },
-        {
-            title: 'Highly Accurate',
-            icon: '🎯',
-            description: 'Advanced V-SLAM ensures you always get precise results.',
-        },
-        {
-            title: 'Customizable',
-            icon: '🔧',
-            description: 'Tailor QuestNav to fit your specific needs and preferences.',
-        },
-        {
-            title: 'Robust Integration',
-            icon: '🔄',
-            description: 'Seamlessly connects with your existing systems and workflows.',
-        },
-        {
-            title: 'Continuous Updates',
-            icon: '📈',
-            description: 'Regular improvements and new features to enhance your experience.',
-        },
-    ];
-
-    return (
-        <section className={styles.featuresSection}>
-            <div className={styles.featuresContainer}>
-                <Heading as="h2" className={styles.featuresHeading}>
-                    Why Choose QuestNav?
-                </Heading>
-                <div className={styles.featuresGrid}>
-                    {features.map((feature, idx) => (
-                        <Feature key={idx} {...feature} />
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
-
 export default function Home(): ReactNode {
     const {siteConfig} = useDocusaurusContext();
     return (
@@ -146,8 +87,7 @@ export default function Home(): ReactNode {
             description="QuestNav - The next generation navigation solution">
             <main>
                 <HomepageHeader />
-                <AwardShowcase />
-                <HomepageFeatures />
+                <FeaturesGrid />;
             </main>
         </Layout>
     );
