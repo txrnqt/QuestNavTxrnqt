@@ -184,7 +184,7 @@ public class QuestNav {
    * Resets the MOSI value to zero if MISO is non-zero.
    * <br/><b>MUST BE RUN IN PERIODIC METHOD</b>
    */
-  private void cleanupResponses() {
+  public void cleanupResponses() {
     if (questMiso.get() != Status.READY) {
       switch ((int) questMiso.get()) {
         case Status.POSE_RESET_COMPLETE -> {

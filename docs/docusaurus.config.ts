@@ -54,7 +54,7 @@ const config: Config = {
     // Announcement bar for the rewrite, should be removed when the rewrite is done
     announcementBar: {
       id: 'version_notification',
-      content: '⚠️ This documentation is up to date as of v0.9, but a major rewrite is in progress. <a href="/docs/rewrite">Learn more</a>',
+      content: '⚠️ This documentation is up to date as of v0.9, but a major rewrite is in progress. Much is subject to change! <a href="/docs/rewrite">Learn more</a>',
       backgroundColor: 'var(--ifm-background-color)',
       textColor: 'var(--ifm-color-primary)',
       isCloseable: false,
@@ -120,8 +120,9 @@ const config: Config = {
       copyright: `Licensed under the MIT License. Copyright © ${new Date().getFullYear()} QuestNav.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.vsLight,
+      darkTheme: prismThemes.vsDark,
+      additionalLanguages: ['java']
     },
   } satisfies Preset.ThemeConfig,
 };
