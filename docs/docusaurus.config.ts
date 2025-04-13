@@ -4,7 +4,6 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-import awardsCsvLoaderPlugin from './plugins/awards-csv-loader';
 
 const config: Config = {
   title: 'QuestNav',
@@ -41,7 +40,17 @@ const config: Config = {
     }),
   },
 
-  plugins: [awardsCsvLoaderPlugin],
+  plugins: [
+    require('./plugins/awards-csv-loader'),
+    [
+      require('./plugins/github-releases-loader'),
+      {
+        repository: 'QuestNav/QuestNav',
+        monthsToCheck: 3,
+        defaultCount: 1250 // Fallback if GitHub API fails
+      }
+    ]
+  ],
 
   presets: [
     [

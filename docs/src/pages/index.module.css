@@ -12,7 +12,7 @@
     padding: 4rem 2rem;
     color: white;
     text-align: center;
-    min-height: 70vh;
+    min-height: 85vh;
     position: relative;
     overflow: hidden;
 }
@@ -28,11 +28,13 @@
 
 /* Welcome title */
 .heroTitle {
-    font-size: 4rem;
-    font-weight: 800;
+    font-size: 5rem;
+    font-weight: 1100;
     margin-bottom: 1.5rem;
     letter-spacing: -0.5px;
     z-index: 1;
+    color: transparent;
+    -webkit-text-stroke: 3px white;
 }
 
 /* Subtitle text */

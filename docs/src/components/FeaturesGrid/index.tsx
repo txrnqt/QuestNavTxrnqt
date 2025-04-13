@@ -268,10 +268,18 @@ const FeaturesGrid: React.FC<FeaturesGridProps> = ({
         awardsData: AwardItem[];
     };
 
+    // Get GitHub releases data
+    const { releasesData } = usePluginData('github-releases-loader') as {
+        releasesData: {
+            totalDownloads: number;
+            recentVersionsCount: number;
+        }
+    };
+
     // Convert award data to feature detail items
     const awardFeatureDetails: FeatureDetailItem[] = awardsData.map(award => ({
         icon: "🏆",
-        text: `${award.award_name}\n${award.event_name} ${award.year}\nTeam ${award.team_number}`
+        text: `${award.award_name}\n${award.event_name}\n${award.year} | Team ${award.team_number}`
     }));
 
     // Data for the features
@@ -283,8 +291,8 @@ const FeaturesGrid: React.FC<FeaturesGridProps> = ({
             statSuffix: "Hz",
             statDescription: "Localization updates per second",
             icon: "⚡",
-            colorStart: "var(--ifm-color-primary-darker)",
-            colorEnd: "var(--ifm-color-primary)",
+            colorStart: "var(--ifm-color-primary-darkest)",
+            colorEnd: "var(--ifm-color-primary-darker)",
             details: [
                 { icon: "📊", text: "Position updates faster than possible before" },
                 { icon: "🔄", text: "Runs faster than your RoboRIO" },
@@ -312,12 +320,12 @@ const FeaturesGrid: React.FC<FeaturesGridProps> = ({
         {
             title: "Constant Growth",
             subtitle: "Regular improvements & updates",
-            statValue: 9,
+            statValue: releasesData.recentVersionsCount || 10,
             statSuffix: "ver",
             statDescription: "Released in last 3 months",
             icon: "📈",
-            colorStart: "var(--ifm-color-primary-darker)",
-            colorEnd: "var(--ifm-color-primary)",
+            colorStart: "var--ifm-color-primary-darkest)",
+            colorEnd: "var(--ifm-color-primary-darker)",
             details: [
                 { icon: "🔧", text: "Frequent bug fixes" },
                 { icon: "✨", text: "New features monthly" },
@@ -328,7 +336,7 @@ const FeaturesGrid: React.FC<FeaturesGridProps> = ({
         {
             title: "Open To All",
             subtitle: "Free & open source software",
-            statValue: 1250,
+            statValue: releasesData.totalDownloads || 125,
             statSuffix: "DLs",
             statDescription: "Latest version downloads",
             icon: "🌐",

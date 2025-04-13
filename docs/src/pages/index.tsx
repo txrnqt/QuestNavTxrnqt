@@ -7,7 +7,6 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 import IndexTextScroller from "@site/src/components/IndexTextScroller";
 import IndexBackgroundSlideshow from '@site/src/components/IndexBackgroundSlideshow';
-import AwardShowcase from "@site/src/components/AwardShowcase";
 import FeaturesGrid from "@site/src/components/FeaturesGrid";
 
 // Function to get all media files from a directory
@@ -87,7 +86,7 @@ export default function Home(): ReactNode {
             description="QuestNav - The next generation navigation solution">
             <main>
                 <HomepageHeader />
-                <FeaturesGrid />;
+                <FeaturesGrid />
             </main>
         </Layout>
     );
