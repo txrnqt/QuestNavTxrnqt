@@ -7,6 +7,7 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 import IndexTextScroller from "@site/src/components/IndexTextScroller";
 import IndexBackgroundSlideshow from '@site/src/components/IndexBackgroundSlideshow';
+import AwardShowcase from "@site/src/components/AwardShowcase";
 
 // Function to get all media files from a directory
 function getMediaFiles() {
@@ -59,7 +60,7 @@ function HomepageHeader() {
             <div className={styles.textScrollerWrapper}>
                 <IndexTextScroller
                     staticText="QuestNav is"
-                    movingTextItems={["a winner.", "reliable.", "fast.", "accurate.", "robust.", "unique.", "new."]}
+                    movingTextItems={["a winner.", "fast.", "easy to use.", "new.", "free.", "reliable."]}
                     duration={2000}
                 />
             </div>
@@ -145,6 +146,7 @@ export default function Home(): ReactNode {
             description="QuestNav - The next generation navigation solution">
             <main>
                 <HomepageHeader />
+                <AwardShowcase />
                 <HomepageFeatures />
             </main>
         </Layout>

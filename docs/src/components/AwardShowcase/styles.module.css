@@ -1,0 +1,415 @@
+/**
+ * styles.module.css
+ * Styles for the AwardShowcase component
+ */
+
+.awardShowcaseWrapper {
+    margin: 3rem auto;
+    width: 95%;
+    position: relative;
+}
+
+.awardShowcaseContainer {
+    background: linear-gradient(135deg, var(--ifm-color-primary-darker), var(--ifm-color-primary));
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    color: white;
+    overflow: hidden;
+    padding: 3rem 1.5rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.awardShowcaseContainer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Diagonal lines background */
+.diagonalLines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.diagonalLines::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: -100%;
+    bottom: -100%;
+    background: repeating-linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.05) 0px,
+            rgba(255, 255, 255, 0.05) 2px,
+            transparent 2px,
+            transparent 12px
+    );
+    z-index: 1;
+}
+
+.showcaseHeader {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.showcaseTitle {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #FFFFFF, #E0F2FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.showcaseSubtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.awardStatsContainer {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.awardStatBox {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.statCount {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    position: relative;
+    animation: none;
+}
+
+.visible .statCount {
+    animation: pulsate 1s ease-in-out 1;
+    animation-delay: 2.5s; /* Start after count finishes */
+}
+
+.statCount::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+}
+
+@keyframes pulsate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.statLabel {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.statDescription {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 2rem;
+}
+
+/* Scrolling containers */
+.scrollingContainer {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    margin-top: auto;
+    border-radius: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+}
+
+.scrollTrack {
+    display: flex;
+    position: absolute;
+    animation: scrollItems 40s linear infinite;
+    width: max-content;
+}
+
+/* Award specific styles */
+.awardScroller .scrollTrack {
+    animation-duration: 35s;
+}
+
+.awardItem {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0 15px;
+    width: 220px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: all 0.3s ease;
+}
+
+.awardItem:hover {
+    transform: perspective(800px) rotateY(-15deg) translateY(-5px) scale(1.05);
+    box-shadow: -8px 8px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.awardIcon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+}
+
+.awardContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.awardTitle {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.awardEvent {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Animation keyframes */
+@keyframes scrollItems {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pausing animations when not visible for performance */
+.awardShowcaseContainer:not(.visible) .scrollTrack {
+    animation-play-state: paused;
+}
+
+/* Pulse Wave Effects */
+.pulseWaves {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.awardWaves {
+    top: 25%;
+    right: 25%;
+}
+
+.wave {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    opacity: 0;
+    transform-origin: center;
+    animation: pulseWave 3s ease-out;
+}
+
+.wave1 {
+    width: 100px;
+    height: 100px;
+    animation-delay: 0s;
+}
+
+.wave2 {
+    width: 140px;
+    height: 140px;
+    animation-delay: 0.3s;
+}
+
+.wave3 {
+    width: 180px;
+    height: 180px;
+    animation-delay: 0.6s;
+}
+
+@keyframes pulseWave {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Dynamic shadow effects */
+.shadowAnimator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    animation: moveShadow 15s infinite alternate ease-in-out;
+}
+
+.awardShadow {
+    background: radial-gradient(circle at 70% 30%, rgba(0, 0, 0, 0.4) 0%, transparent 60%);
+    animation-delay: -7.5s;
+}
+
+@keyframes moveShadow {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Micro-interactions for milestone numbers */
+.milestone {
+    animation: milestonePop 0.5s ease-out;
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+@keyframes milestonePop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Timestamp styles */
+.timestampContainer {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.timestampPill {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.timestampPill:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.liveIndicator {
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+    animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+/* Loading state */
+.awardShowcaseContainer.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    opacity: 0.8;
+}
+
+.loadingIndicator {
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 5;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .awardShowcaseContainer {
+        padding: 2rem;
+    }
+
+    .awardStatsContainer {
+        flex-direction: column;
+    }
+
+    .statCount {
+        font-size: 3.5rem;
+    }
+
+    .statLabel {
+        font-size: 1.5rem;
+    }
+
+    .showcaseTitle {
+        font-size: 2.2rem;
+    }
+}

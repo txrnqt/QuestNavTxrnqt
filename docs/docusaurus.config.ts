@@ -4,6 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+import awardsCsvLoaderPlugin from './plugins/awards-csv-loader';
+
 const config: Config = {
   title: 'QuestNav',
   tagline: 'The next generation navigation solution',
@@ -30,6 +32,16 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  customFields: {
+    buildTime: new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    }),
+  },
+
+  plugins: [awardsCsvLoaderPlugin],
 
   presets: [
     [
