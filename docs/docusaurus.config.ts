@@ -8,7 +8,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'QuestNav',
   tagline: 'The next generation navigation solution',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/branding/QuestNavLogoSquare.svg',
 
   // Set the production url of your site here
   url: 'https://questnav.gg',
@@ -83,10 +83,10 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'QuestNav',
+      title: '',
       logo: {
         alt: 'Logo',
-        src: 'img/logo.svg',
+        src: 'img/branding/QuestNavLogo.svg',
       },
       items: [
         {
