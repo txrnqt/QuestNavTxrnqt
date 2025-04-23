@@ -81,12 +81,12 @@ const config: Config = {
       isCloseable: false,
     },
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: '',
       logo: {
         alt: 'Logo',
         src: 'img/branding/QuestNavLogo.svg',
+        srcDark: 'img/branding/QuestNavLogo-Dark.svg',
       },
       items: [
         {
