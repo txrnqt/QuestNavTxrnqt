@@ -9,6 +9,10 @@ on:
     paths:
       - 'docs/**'  # Only trigger when files in the docs directory change
 
+concurrency:
+  group: deploy-docs
+  cancel-in-progress: true
+
 jobs:
   deploy:
     name: Deploy to GitHub Pages
