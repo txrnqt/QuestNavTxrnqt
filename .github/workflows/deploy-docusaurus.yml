@@ -47,6 +47,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs/build
+          name: github-pages-${{ github.run_id }} # Appends the run ID to make the artifact unique
           
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
