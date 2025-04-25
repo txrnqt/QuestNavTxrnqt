@@ -47,9 +47,7 @@ QuestNav implements a simple bidirectional communication structure between the V
 
 Check out this demo video to see QuestNav in action:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Mo0p1GGeasM?si=pigvJwCiWEIoZxlO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-For a more comprehensive demonstration, view the [full video on YouTube](https://youtu.be/Mo0p1GGeasM).
+View the [full video on YouTube](https://youtu.be/Mo0p1GGeasM).
 
 
 ## Thanks
