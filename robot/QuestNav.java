@@ -6,7 +6,6 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.Timer;
-import org.littletonrobotics.junction.Logger;
 
 import static edu.wpi.first.units.Units.Microseconds;
 import static edu.wpi.first.units.Units.Seconds;
@@ -88,6 +87,10 @@ public class QuestNav {
   /** Last processed heartbeat request ID */
   private double lastProcessedHeartbeatId = 0;
 
+  /**
+   * Sets the FRC field relative pose of the Quest. This is the QUESTS POSITION, NOT THE ROBOTS!
+   * Make sure you correctly offset back from the center of your robot first!
+   * */
   public void setPose(Pose2d pose) {
     resetPosePub.set(
             new double[] {
@@ -188,15 +191,12 @@ public class QuestNav {
     if (questMiso.get() != Status.READY) {
       switch ((int) questMiso.get()) {
         case Status.POSE_RESET_COMPLETE -> {
-          Logger.recordOutput("QuestNav/Log", "Pose reset complete");
           questMosi.set(Command.CLEAR);
         }
         case Status.HEADING_RESET_COMPLETE -> {
-          Logger.recordOutput("QuestNav/Log", "Heading reset complete");
           questMosi.set(Command.CLEAR);
         }
         case Status.PING_RESPONSE -> {
-          Logger.recordOutput("QuestNav/Log", "Ping response received");
           questMosi.set(Command.CLEAR);
         }
       }
