@@ -38,7 +38,7 @@ The QuestNav library is provided as a single Java file that you can add to your 
 
 ### Installation Steps
 
-1. Download the `QuestNav.java` file from the [QuestNav GitHub repository](https://github.com/QuestNav/QuestNav)
+1. Download the `QuestNav.java` file from the [QuestNav GitHub repository](https://github.com/QuestNav/QuestNav/blob/main/robot/QuestNav.java)
 2. Add this file to your robot project in the appropriate package (usually `frc.robot`)
 
 :::note
@@ -47,14 +47,18 @@ A VendorDep (vendor dependency) for QuestNav is planned for the upcoming rewrite
 
 ## Basic Usage
 
-QuestNav communicates with your robot through NetworkTables. The class provides methods to access pose data from the Quest headset.
+QuestNav communicates with your robot through NetworkTables. The class provides methods to access pose data from the Quest headset. The majority of the code
+controlling the quest **should not** be contained within the `QuestNav.java` file. The `QuestNav.java` file is only designed to
+facilitate communication between the robot code and the Quest. We recommend you call these methods from a subsystem if possible.
 
 ### Prerequisites
 :::danger
 v0.9 **REQUIRES** the following methods from the `QuestNav` file to be called periodically. Without this, the system
 will not function correctly.
 :::
-```java
+
+Call this in *any* periodic method run by the CommandScheduler.
+```java title="e.g. QuestNavSubsystem.java"
 QuestNav questNav = new QuestNav();
 
 @Override
@@ -68,7 +72,7 @@ public void periodic() {
 The `QuestNav` file provides a method for getting the pose of the Quest itself. In order to estimate the position of the
 robot, we need to transform the Quest's pose to the robot's center.
 
-```java
+```java title="e.g. QuestNavSubsystem.java"
 QuestNav questNav = new QuestNav();
 
 // First, Declare our geometrical transform from the Quest to the robot center
@@ -93,7 +97,7 @@ position, so it's important to reset it at an accurate, known location on the fi
 :::
 Likewise, in order to set the pose of QuestNav, we need to transform that pose back from the robot centric pose to
 the frame of the Quest.
-```java
+```java title="e.g. QuestNavSubsystem.java"
 QuestNav questNav = new QuestNav();
 
 // Assume this is the requested reset pose
@@ -129,8 +133,9 @@ import TabItem from '@theme/TabItem';
         CTRE does not utilize the `SwerveDrivePoseEstimator` class directly, and uses their own timestamp system.
         If you do not convert the Quest's timestamp to CTRE's current time, it will not function correctly!
         :::
-        ```java
+        ```java title="e.g. QuestNavSubsystem.java"
         QuestNav questNav = new QuestNav();
+
         SwerveDriveSubsystem swerveDriveSubsystem = new SwerveDriveSubsystem();
         Matrix<N3, N1> QUESTNAV_STD_DEVS =
             VecBuilder.fill(
@@ -148,13 +153,7 @@ import TabItem from '@theme/TabItem';
             // Convert FPGA timestamp to CTRE's time domain using Phoenix 6 utility
             double ctreTimestamp = Utils.fpgaToCurrentTime(timestamp);
 
-            // Make sure we are inside the field
-            if (pose.getX() < 0.0
-            || pose.getX() > fieldLength
-            || pose.getY() < 0.0
-            || pose.getY() > fieldWidth) {
-                return; // If we aren't return early
-            }
+            // You can put some sort of filtering here if you would like!
 
             // Add the measurement to our estimator
             swerveDriveSubsystem.addVisionMeasurement(pose, ctreTimestamp, QUESTNAV_STD_DEVS);
@@ -168,7 +167,7 @@ import TabItem from '@theme/TabItem';
         This example works for ANY library that utilizes the `SwerveDrivePoseEstimator` class. The most common examples
         are YAGSL and the AdvantageKit template.
         :::
-        ```java
+        ```java title="e.g. QuestNavSubsystem.java"
         QuestNav questNav = new QuestNav();
         SwerveDriveSubsystem swerveDriveSubsystem = new SwerveDriveSubsystem();
         Matrix<N3, N1> QUESTNAV_STD_DEVS =
@@ -184,13 +183,7 @@ import TabItem from '@theme/TabItem';
             // Get timestamp from the QuestNav instance
             double timestamp = questNav.getTimestamp();
 
-            // Make sure we are inside the field
-            if (pose.getX() < 0.0
-            || pose.getX() > fieldLength
-            || pose.getY() < 0.0
-            || pose.getY() > fieldWidth) {
-                return; // If we aren't return early
-            }
+            // You can put some sort of filtering here if you would like!
 
             // Add the measurement to our estimator
             swerveDriveSubsystem.addVisionMeasurement(pose, timestamp, QUESTNAV_STD_DEVS);

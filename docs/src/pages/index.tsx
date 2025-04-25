@@ -54,7 +54,7 @@ function HomepageHeader() {
             />
 
 
-            <img className={styles.heroTitle} src={"img/branding/QuestNavLogo-Dark.svg"} width={'65%'} />
+        <img className={styles.heroTitle} src={"img/branding/QuestNavLogo-Dark.svg"} width={'65%'} alt={'QuestNav'} />
 
             <div className={styles.textScrollerWrapper}>
                 <IndexTextScroller
