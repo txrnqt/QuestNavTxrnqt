@@ -53,9 +53,8 @@ function HomepageHeader() {
                 duration={5000} // 5 seconds per image
             />
 
-            <Heading as="h1" className={styles.heroTitle}>
-                {siteConfig.title}
-            </Heading>
+
+        <img className={styles.heroTitle} src={"img/branding/QuestNavLogo-Dark.svg"} width={'65%'} alt={'QuestNav'} />
 
             <div className={styles.textScrollerWrapper}>
                 <IndexTextScroller

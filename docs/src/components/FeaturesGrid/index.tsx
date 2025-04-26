@@ -193,14 +193,6 @@ const FeatureShowcase: React.FC<FeatureShowcaseProps> = ({ feature }) => {
                 {/* Diagonal background lines */}
                 <div className={styles.diagonalLines}></div>
 
-                {isVisible && hasAnimated && (
-                    <div className={clsx(styles.pulseWaves, styles.featureWaves)}>
-                        <div className={clsx(styles.wave, styles.wave1)}></div>
-                        <div className={clsx(styles.wave, styles.wave2)}></div>
-                        <div className={clsx(styles.wave, styles.wave3)}></div>
-                    </div>
-                )}
-
                 <div className={styles.featureHeader}>
                     <div className={styles.featureIconCircle}>
                         <span className={styles.featureIcon}>{feature.icon}</span>

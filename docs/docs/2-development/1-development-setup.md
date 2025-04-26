@@ -1,6 +1,10 @@
 ---
 title: Development Environment Setup
 ---
+:::warning
+**This section is not necessary for most teams. Only use this guide if you plan to make custom changes to the QuestNav backend!**
+:::
+
 # Development Environment Setup
 
 This guide will help you set up your development environment for working with the QuestNav headset application.

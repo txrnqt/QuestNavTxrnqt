@@ -67,4 +67,5 @@ Once you've selected an appropriate adapter, proceed to the [Device Setup](./dev
 
 ---
 
-> Click the "Edit this page" button to add yours!
+### Have an adapter you tested?
+Click the "Edit this page" button to add yours!

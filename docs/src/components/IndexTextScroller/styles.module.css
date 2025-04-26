@@ -1,21 +1,39 @@
 /* styles.module.css */
-/* CSS Module for AnimatedText component */
 
 .container {
     display: inline-flex;
     align-items: center;
     height: 4rem;
+    position: relative;
+    white-space: nowrap;
+}
+
+.textWrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    min-width: 100%;
 }
 
 .staticText {
     display: inline-block;
-    margin-right: 0.5rem;
+    margin-right: 0.35em; /* Set to exactly one space width */
+    transition: transform 0.3s ease;
+    white-space: nowrap;
+}
+
+.movingTextContainer {
+    overflow: visible;
+    transition: width 0.3s ease;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .movingText {
     display: inline-block;
     font-weight: bold;
     color: var(--ifm-color-primary);
+    white-space: nowrap;
 }
 
 .slideInBounce {
@@ -28,6 +46,15 @@
     animation-name: slideOut;
     animation-fill-mode: both;
     animation-timing-function: ease-out;
+}
+
+.hiddenTexts {
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    pointer-events: none;
 }
 
 @keyframes slideInBounce {

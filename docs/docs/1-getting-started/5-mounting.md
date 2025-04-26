@@ -18,9 +18,9 @@ The specific mount design you need depends on your Quest model. QuestNav is opti
 We provide several 3D printable mount designs optimized for different robot configurations:
 
 1. **Standard Mount**: A basic mount suitable for most robot designs
-2. **Low-Profile Mount**: A slimmer mount
+2. **Low-Profile Mount**: A slimmer mount, designed by 3847 Spectrum.
 
-Download the STL files from the [QuestNav GitHub repository](https://github.com/QuestNav/QuestNav) in the `mounts` directory or from [Printables.com](https://www.printables.com/model/1100711-quest-3s-robot-mount).
+Download the STL files from the [QuestNav GitHub repository](https://github.com/QuestNav/QuestNav/blob/main/mounts) in the `mounts` directory.
 
 :::tip
 If you don't have access to a 3D printer, check with other local FRC teams, your school's engineering department, or local makerspaces that might offer 3D printing services.

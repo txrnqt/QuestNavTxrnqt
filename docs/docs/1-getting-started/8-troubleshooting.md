@@ -164,28 +164,9 @@ The Quest will automatically shut down when battery is critically low. Always en
 If the app was compiled without the "Development Build" flag, it will crash immediately at launch. Make sure you're using the official release or a properly compiled development build.
 :::
 
-## Quest System Configuration
-
-### Persistent Settings Management
-
-Some Quest settings need to be maintained after reboots. You can use Android Debug Bridge (ADB) to manage these settings:
-
-1. **Disabling WiFi**
-   ```
-   adb shell svc wifi disable
-   ```
-   This command persists through reboots, but the Quest UI may not show the updated state until restarted.
-
-2. **Disabling Bluetooth**
-   ```
-   adb shell svc bluetooth disable
-   ```
-   This command persists through reboots, but disabling Bluetooth will break companion app functionality.
-
-
 ### Installing ADB on RoboRIO (Optional)
 
-Installing ADB directly on your RoboRIO can simplify management:
+Installing ADB directly on your RoboRIO can simplify management and troubleshooting:
 
 1. Download the [ADB for RoboRIO fork](https://github.com/juchong/ADB-For-RoboRIO)
 2. Follow the installation instructions in the repository
@@ -211,7 +192,7 @@ For network tables diagnostic information:
 
 ### Performance Metrics
 
-Coming soonQ
+Coming soon!
 
 :::info
 The diagnostic metrics can help identify whether issues are occurring on the Quest side or the robot side of the communication.
