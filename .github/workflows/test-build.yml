@@ -4,7 +4,7 @@ on:
 
 jobs:
   apk:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@Native
+    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
     with:
       versionMajor: 1
       versionMinor: 0
@@ -17,7 +17,7 @@ jobs:
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
   lib:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-lib.yml@Native
+    uses: QuestNav/QuestNav/.github/workflows/build-questnav-lib.yml@main
     with:
       versionMajor: 1
       versionMinor: 0

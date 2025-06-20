@@ -39,7 +39,7 @@ on:
         default: 'dev'
 jobs:
   apk:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@Native
+    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
     with:
       versionMajor: ${{ inputs.versionMajor }}
       versionMinor: ${{ inputs.versionMinor }}
@@ -51,7 +51,7 @@ jobs:
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
   lib:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-lib.yml@Native
+    uses: QuestNav/QuestNav/.github/workflows/build-questnav-lib.yml@main
     with:
       versionMajor: ${{ inputs.versionMajor }}
       versionMinor: ${{ inputs.versionMinor }}
