@@ -1,0 +1,138 @@
+name: Build QuestNavLib
+
+on:
+  workflow_call:
+    inputs:
+      versionYear:
+        description: 'Current FRC Year'
+        required: true
+        default: 2025
+        type: number
+      versionMajor:
+        description: 'Major version'
+        required: true
+        default: 1
+        type: number
+      versionMinor:
+        description: 'Minor version'
+        required: true
+        default: 0
+        type: number
+      versionPatch:
+        description: 'Patch version'
+        required: true
+        default: 0
+        type: number
+      wpilibVersion:
+        description: 'WPILib version to compile for'
+        required: true
+        type: string
+        default: '2025.3.2'
+      versionType:
+        description: 'Type of version'
+        required: false
+        type: string
+      releaseToMaven:
+        description: 'Whether to release the compiled binaries to the maven repository'
+        required: true
+        type: boolean
+    outputs:
+      json-artifact-name:
+        description: The artifact ID for recall of the JSON VendorDep
+        value: ${{ jobs.build-questnavlib.outputs.json-artifact-name }}
+      json-filename:
+        description: The artifact filename for recall of the JSON VendorDep
+        value: ${{ jobs.build-questnavlib.outputs.buildVersion }}
+
+env:
+  GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2
+
+jobs:
+  build-questnavlib:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: questnav-lib
+    outputs:
+      json-artifact-name: ${{ steps.upload.outputs.artifact-id }}
+      json-filename: ${{ steps.buildJava.outputs.buildVersion }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: questnav-lib
+          sparse-checkout-cone-mode: false
+
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-lib-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-lib-
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11'
+
+      - name: Make gradlew Executable
+        run: 'chmod +x ./gradlew'
+
+      - name: Display Build Configuration
+        id: buildInfo
+        run: |
+          VERSION="${{ inputs.versionYear }}-${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}"
+          if [ -n "${{ inputs.versionType }}" ] && [ "${{ inputs.versionType }}" != "release" ]; then
+            VERSION="${VERSION}-${{ inputs.versionType }}"
+          fi
+          echo "buildVersion=${VERSION}" >> $GITHUB_OUTPUT
+          
+          ./gradlew buildInfo \
+            -PquestnavVersion="${{ inputs.versionYear }}-${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}" \
+            -PreleaseType="${{ inputs.versionType }}" \
+            -PfrcYear="${{ inputs.versionYear }}" \
+            -PwpilibVersion="${{ inputs.wpilibVersion }}"
+
+      - name: Build Library
+        id: buildJava
+        run: |
+          VERSION="${{ inputs.versionYear }}-${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}"
+          if [ -n "${{ inputs.versionType }}" ] && [ "${{ inputs.versionType }}" != "release" ]; then
+            VERSION="${VERSION}-${{ inputs.versionType }}"
+          fi
+          echo "buildVersion=${VERSION}" >> $GITHUB_OUTPUT
+          
+          ./gradlew build \
+            -PquestnavVersion="${{ inputs.versionYear }}-${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}" \
+            -PreleaseType="${{ inputs.versionType }}" \
+            -PfrcYear="${{ inputs.versionYear }}" \
+            -PwpilibVersion="${{ inputs.wpilibVersion }}"
+
+      - name: Publish to Maven Repository
+        if: ${{ inputs.releaseToMaven == true }}
+        run: |
+          ./gradlew publish \
+            -PquestnavVersion="${{ inputs.versionYear }}-${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}" \
+            -PreleaseType="${{ inputs.versionType }}" \
+            -PfrcYear="${{ inputs.versionYear }}" \
+            -PwpilibVersion="${{ inputs.wpilibVersion }}" \
+            -PmavenUsername="${{ secrets.MAVEN_USERNAME }}" \
+            -PmavenPassword="${{ secrets.MAVEN_PASSWORD }}"
+
+      - name: Upload Build Artifacts
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'questnavlib.json'
+          path: 'questnav-lib/build/generated/vendordeps/*.json'
+          retention-days: 7

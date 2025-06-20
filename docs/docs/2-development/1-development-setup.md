@@ -77,24 +77,23 @@ These SDKs must be added to your Unity account before you can import the project
    git clone https://github.com/YOUR-USERNAME/QuestNav.git
    ```
 
-### Step 6: Import the Project into Unity
+### Step 6: Restore NuGetForUnity Packages
+- Open a terminal to the root of the cloned repository
+- Install NuGetForUnity
+```
+  dotnet tool install -g NuGetForUnity.Cli
+```
+- Restore the packages
+```
+  dotnet nugetforunity restore unity/
+```
+
+### Step 7: Import the Project into Unity
 
 - Open Unity Hub
 - Click `Add > Add project from disk` and select the unity subfolder in the cloned repository
 - Click on the newly imported project
 - Wait for Unity to compile assets and open the main interface
-
-### Step 7: Install Required Packages
-
-:::danger
-The MessagePack plugin is required for Network Tables communication with the robot. The project will not function without it.
-:::
-
-Install the MessagePack plugin for Unity:
-
-- Download the latest release with a `.unitypackage` extension from [the MessagePack-CSharp GitHub repository](https://github.com/MessagePack-CSharp/MessagePack-CSharp/releases)
-- In Unity, select `Assets > Import Package > Custom Package`
-- Browse to the package you downloaded and click `Import`
 
 ### Step 8: Configure Build Settings for Android
 
@@ -109,6 +108,15 @@ Install the MessagePack plugin for Unity:
 - Apply all the recommended fixes on the default tab (Android)
 - Cycle through the rest of the tabs and apply all fixes
 - Ensure the Android tab shows a green ✅ and reports its status as "XR Ready for Android"
+
+### Step 10: Install Formatting Tools
+
+- Navigate to the root of the git repository
+- Install the C# formatter:
+```
+  dotnet tool install -g csharpier
+```
+
 
 ## Building and Testing
 
@@ -158,4 +166,4 @@ If you encounter any issues during setup, check this section before reaching out
 - **Missing SDK References**: Ensure you've added all required SDKs to your Unity account
 - **Build Fails**: Make sure you've enabled the Development Build option
 - **APK Doesn't Install**: Verify developer mode is enabled on your Quest headset
-- **App Crashes on Launch**: Check that you've installed all required packages, including MessagePack
+- **App Crashes on Launch**: Check that you've restored all packages from NuGetForUnity

@@ -19,7 +19,7 @@ namespace QuestNav.Core
         /// <summary>
         /// Current frame index from Unity's Time.frameCount
         /// </summary>
-        private int frameIndex;
+        private int frameCount;
 
         /// <summary>
         /// Current timestamp from Unity's Time.time
@@ -35,11 +35,6 @@ namespace QuestNav.Core
         /// Current rotation of the VR headset as a Quaternion
         /// </summary>
         private Quaternion rotation;
-
-        /// <summary>
-        /// Current rotation of the VR headset in Euler angles
-        /// </summary>
-        private Vector3 eulerAngles;
 
         /// <summary>
         /// Reference to the OVR Camera Rig for tracking
@@ -74,70 +69,61 @@ namespace QuestNav.Core
         /// <summary>
         /// Reference to the VR camera transform
         /// </summary>
-        [SerializeField] 
+        [SerializeField]
         private Transform vrCamera;
 
         /// <summary>
         /// Reference to the VR camera root transform
         /// </summary>
-        [SerializeField] 
+        [SerializeField]
         private Transform vrCameraRoot;
 
         /// <summary>
         /// Reference to the reset position transform
         /// </summary>
-        [SerializeField] 
+        [SerializeField]
         private Transform resetTransform;
 
         /// <summary>
         /// Current battery percentage of the device
         /// </summary>
-        private float batteryPercent;
+        private int batteryPercent;
 
         /// <summary>
         /// Counter for display update delay
         /// </summary>
         private int delayCounter;
+
         /// <summary>
-        /// Increments once every time tracking is lost after having it aquired
+        /// Increments once every time tracking is lost after having it acquired
         /// </summary>
         private int trackingLostEvents;
-        
+
         ///<summary>
         /// Whether we have tracking
         /// </summary>
-        private bool currentlyTracking = false;
-        
+        private bool currentlyTracking;
+
         ///<summary>
         /// Whether we had tracking
         /// </summary>
-        private bool hadTracking = false;
-
-        // Using display frequency constant from QuestNavConstants
+        private bool hadTracking;
 
         #region Component References
+
         /// <summary>
         /// Reference to the network table connection component
         /// </summary>
-        [SerializeField]
-        private NetworkTableConnection networkConnection;
-
-        /// <summary>
-        /// Reference to the heartbeat manager component
-        /// </summary>
-        [SerializeField]
-        private HeartbeatManager heartbeatManager;
+        private NetworkTableConnection networkTableConnection;
 
         /// <summary>
         /// Reference to the command processor component
         /// </summary>
-        [SerializeField]
         private CommandProcessor commandProcessor;
 
         /// <summary>
         /// Reference to the UI manager component
         /// </summary>
-        [SerializeField]
         private UIManager uiManager;
         #endregion
         #endregion
@@ -146,74 +132,68 @@ namespace QuestNav.Core
         /// <summary>
         /// Initializes the connection and UI components
         /// </summary>
-        void Start()
+        private void Awake()
         {
+            // Initializes components
+            networkTableConnection = new NetworkTableConnection();
+            commandProcessor = new CommandProcessor(
+                networkTableConnection,
+                vrCamera,
+                vrCameraRoot,
+                resetTransform
+            );
+            uiManager = new UIManager(
+                networkTableConnection,
+                teamInput,
+                ipAddressText,
+                conStateText,
+                teamUpdateButton
+            );
+
             // Set Oculus display frequency
             OVRPlugin.systemDisplayFrequency = QuestNavConstants.Display.DISPLAY_FREQUENCY;
-            
-            // Initialize UI manager
-            uiManager.Initialize(teamInput, ipAddressText, conStateText, teamUpdateButton, networkConnection);
-            
-            // Initialize command processor
-            commandProcessor.Initialize(networkConnection, vrCamera, vrCameraRoot, resetTransform);
-            
-            // Initialize heartbeat manager
-            heartbeatManager.Initialize(networkConnection);
-            
-            // Start connection to robot
-            networkConnection.ConnectToRobot();
+            // Schedule "SlowUpdate" loop for non loop critical applications
+            InvokeRepeating(nameof(SlowUpdate), 0, 1f / QuestNavConstants.Timing.SLOW_UPDATE_HZ);
+            InvokeRepeating(nameof(MainUpdate), 0, 1f / QuestNavConstants.Timing.MAIN_UPDATE_HZ);
         }
 
         /// <summary>
         /// Handles frame updates for data publishing and command processing
         /// </summary>
-        void LateUpdate()
+        private void MainUpdate()
         {
-            // Update UI periodically
-            if (delayCounter >= (int)QuestNavConstants.Display.DISPLAY_FREQUENCY)
-            {
-                uiManager.UpdateIPAddressText();
-                uiManager.UpdateConStateText();
-                delayCounter = 0;
-            }
-            else
-            {
-                delayCounter++;
-            }
-            
-            // Check for connection attempt timeout to prevent zombie state
-            if (!networkConnection.IsConnected)
-            {
-                // Only start a new connection attempt if not already trying
-                if (!networkConnection.IsConnectionAttemptInProgress)
-                {
-                    networkConnection.HandleDisconnectedState();
-                }
-                return;
-            }
+            // Collect and publish current frame data
+            UpdateFrameData();
+            networkTableConnection.PublishFrameData(frameCount, timeStamp, position, rotation);
 
-            // Connected - manage heartbeat, publish data, and process commands
-            if (networkConnection.IsConnected)
-            {
-                // Manage heartbeat to detect zombie connections
-                heartbeatManager.ManageHeartbeat();
-                
-                // Collect and publish current frame data
-                UpdateFrameData();
-                networkConnection.PublishFrameData(frameIndex, timeStamp, position, rotation, eulerAngles);
-                
-                // Collect and publish current device data
-                UpdateDeviceData();
-                networkConnection.PublishDeviceData(currentlyTracking, trackingLostEvents, batteryPercent);
-                
-                // Process robot commands
-                commandProcessor.ProcessCommands();
-            }
-            
-            
-            // Check for tracking loss
-            
+            // Process robot commands
+            commandProcessor.ProcessCommands();
         }
+
+        /// <summary>
+        /// This loop runs slower for performance reasons. Expensive methods that aren't loop critical
+        /// should be placed here (e.g. logging)
+        /// </summary>
+        private void SlowUpdate()
+        {
+            // Log internal NetworkTable info
+            networkTableConnection.LoggerPeriodic();
+
+            // Update UI periodically
+            uiManager.UIPeriodic();
+
+            // Collect and publish current device data at a slower rate
+            UpdateDeviceData();
+            networkTableConnection.PublishDeviceData(
+                currentlyTracking,
+                trackingLostEvents,
+                batteryPercent
+            );
+
+            // Flush logs
+            QueuedLogger.Flush();
+        }
+
         #endregion
 
         #region Private Methods
@@ -222,20 +202,21 @@ namespace QuestNav.Core
         /// </summary>
         private void UpdateFrameData()
         {
-            frameIndex = Time.frameCount;
+            frameCount = Time.frameCount;
             timeStamp = Time.time;
             position = cameraRig.centerEyeAnchor.position;
             rotation = cameraRig.centerEyeAnchor.rotation;
-            eulerAngles = cameraRig.centerEyeAnchor.eulerAngles;
         }
+
         /// <summary>
         /// Updates the current device data from the VR headset
         /// </summary>
         private void UpdateDeviceData()
         {
             CheckTrackingLoss();
-            batteryPercent = SystemInfo.batteryLevel * 100;
+            batteryPercent = (int)(SystemInfo.batteryLevel * 100);
         }
+
         /// <summary>
         /// Checks to see if tracking is lost, and increments a counter if so
         /// </summary>
