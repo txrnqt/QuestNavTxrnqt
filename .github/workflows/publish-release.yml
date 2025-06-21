@@ -89,7 +89,6 @@ jobs:
            rm "$file"
           fi
           done
-          ls
           ls -l release/
 
       - name: Calculate Version Tag

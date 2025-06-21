@@ -12,7 +12,7 @@
   "javaDependencies": [
     {
       "groupId": "gg.questnav",
-      "artifactId": "questnavlib",
+      "artifactId": "questnavlib-java",
       "version": "${questnav_version}"
     }
   ],
