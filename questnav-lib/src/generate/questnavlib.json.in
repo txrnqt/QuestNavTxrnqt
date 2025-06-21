@@ -5,7 +5,7 @@
   "uuid": "${questnav_uuid}",
   "frcYear": "${frc_year}",
   "mavenUrls": [
-    "https://maven.questnav.gg/repository/release",
+    "https://maven.questnav.gg/repository/releases",
     "https://maven.questnav.gg/repository/snapshots"
   ],
   "jsonUrl": "${json_url}",

@@ -18,12 +18,15 @@ ext {
     // Vendor dependency configuration
     vendorUuid = 'a706fe68-86e5-4aed-92c5-ce05aca007f0'
     mavenGroupId = 'gg.questnav'
-    artifactId = 'questnav-lib'
+    artifactId = 'questnavlib-java'
 
     // Repository configuration
     mavenRepoUrl = project.findProperty('mavenRepoUrl') ?: 'https://maven.questnav.gg/'
     isSnapshot = releaseType in ['dev', 'snapshot'] || questnavVersion.contains('-SNAPSHOT')
 }
+
+// Set the base name for all archives globally
+archivesBaseName = artifactId
 
 // Java configuration
 java {
@@ -110,7 +113,6 @@ task generateVendorJson() {
 
 // Create publishable artifact
 def vendorJsonArtifact = artifacts.add('archives', vendorJsonOutput) {
-    classifier = 'vendordep'
     type = 'json'
     builtBy generateVendorJson
 }
@@ -120,11 +122,10 @@ publishing {
     publications {
         questnavlib(MavenPublication) {
             groupId = mavenGroupId
-            artifactId = artifactId
+            artifactId = 'questnavlib-java'
             version = questnavVersion
 
             from components.java
-            artifact vendorJsonArtifact
 
             pom {
                 name = 'QuestNavLib'
@@ -141,7 +142,34 @@ publishing {
                 scm {
                     connection = 'scm:git:git://github.com/questnav/questnav.git'
                     developerConnection = 'scm:git:ssh://github.com/questnav/questnav.git'
-                    url = 'https://github.com/questnav/questnav/questnavlib/tree/main/questnav-lib'
+                    url = 'https://github.com/questnav/questnav/tree/main/questnav-lib'
+                }
+            }
+        }
+
+        questnavlibJson(MavenPublication) {
+            groupId = mavenGroupId
+            artifactId = 'questnavlib-json'
+            version = questnavVersion
+
+            artifact vendorJsonArtifact
+
+            pom {
+                name = 'QuestNavLib Vendor JSON'
+                description = 'QuestNav vendor dependency JSON file'
+                url = 'https://github.com/questnav/questnav/tree/main/questnav-lib'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/questnav/questnav.git'
+                    developerConnection = 'scm:git:ssh://github.com/questnav/questnav.git'
+                    url = 'https://github.com/questnav/questnav/tree/main/questnav-lib'
                 }
             }
         }
