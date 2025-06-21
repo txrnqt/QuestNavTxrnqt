@@ -79,6 +79,15 @@ jobs:
           path: 'release'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Unzip artifacts
+        run: |
+          for file in release/*; do
+          if [[ $file == *.zip ]]; then
+           unzip -o "$file" -d release/
+           rm "$file"
+          fi
+          done          
+          
       - name: Calculate Version Tag
         id: version
         run: |
