@@ -65,6 +65,8 @@ jobs:
       MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
   github-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs:
       - apk
       - lib
@@ -108,4 +110,5 @@ jobs:
           prerelease: ${{ inputs.versionType != 'release' }}
           tag_name: ${{ steps.version.outputs.tag }}
           files: release/**
+          draft: true
           token: ${{ secrets.GITHUB_TOKEN }}
