@@ -107,5 +107,5 @@ jobs:
           fail_on_unmatched_files: true
           prerelease: ${{ inputs.versionType != 'release' }}
           tag_name: ${{ steps.version.outputs.tag }}
-          files: 'release/*'
+          files: release/**
           token: ${{ secrets.GITHUB_TOKEN }}
