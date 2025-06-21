@@ -15,5 +15,7 @@
       "artifactId": "questnavlib",
       "version": "${questnav_version}"
     }
-  ]
+  ],
+    "cppDependencies": [],
+    "jniDependencies": []
 }
