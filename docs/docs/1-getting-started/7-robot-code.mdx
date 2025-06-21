@@ -32,7 +32,7 @@ The QuestNav library is provided as a vendor dependency that you can add to your
 
 ### Installation Steps
 
-1. Download the latest `questnav-lib.json` asset from the [QuestNav GitHub releases page](https://github.com/QuestNav/QuestNav/releases)
+1. Download the latest `questnavlib.json` asset from the [QuestNav GitHub releases page](https://github.com/QuestNav/QuestNav/releases)
 2. Add this file to the `vendordeps` folder in your robot project (usually it will contain other JSON files as well)
 3. Rebuild your robot code project
 
@@ -64,14 +64,14 @@ robot, we need to transform the Quest's pose to the robot's center.
 ```java title="e.g. QuestNavSubsystem.java"
 QuestNav questNav = new QuestNav();
 
-// First, Declare our geometrical transform from the Quest to the robot center
-Transform2d QUEST_TO_ROBOT = new Transform2d( /*TODO: Put your x, y, rotational offsets here!*/ )
+// First, Declare our geometrical transform from the robot center to the Quest
+Transform2d ROBOT_TO_QUEST = new Transform2d( /*TODO: Put your x, y, rotational offsets here!*/ )
 
 // Get the Quest pose
 Pose2d questPose = questNav.getPose();
 
 // Transform by the offset to get your final pose!
-Pose2d robotPose = questPose.transformBy(QUEST_TO_ROBOT.inverse());
+Pose2d robotPose = questPose.transformBy(ROBOT_TO_QUEST.inverse());
 ```
 
 :::tip
@@ -96,14 +96,14 @@ the frame of the Quest.
 ```java title="e.g. QuestNavSubsystem.java"
 QuestNav questNav = new QuestNav();
 
-// First, Declare our geometrical transform from the Quest to the robot center
-Transform2d QUEST_TO_ROBOT = new Transform2d( /*TODO: Put your x, y, rotational offsets here!*/ )
+// First, Declare our geometrical transform from the robot center to the quest
+Transform2d ROBOT_TO_QUEST = new Transform2d( /*TODO: Put your x, y, rotational offsets here!*/ )
 
 // Assume this is the requested reset pose
 Pose2d robotPose = new Pose2d( /* Some pose data */ );
 
 // Transform by the offset to get the Quest pose
-Pose2d questPose = questPose.transformBy(QUEST_TO_ROBOT);
+Pose2d questPose = robotPose.transformBy(ROBOT_TO_QUEST);
 
 // Send the reset operation
 questNav.setPose(questPose);
