@@ -36,6 +36,13 @@ on:
         description: 'Whether to release the compiled binaries to the maven repository'
         required: true
         type: boolean
+    secrets:
+      MAVEN_USERNAME:
+        description: 'QuestNav Maven Username'
+        required: true
+      MAVEN_PASSWORD:
+        description: 'QuestNav Maven Password'
+        required: true
     outputs:
       json-artifact-name:
         description: The artifact ID for recall of the JSON VendorDep
