@@ -6,7 +6,7 @@ on:
         description: 'Current FRC Year'
         required: true
         default: 2025
-        type: number
+        type: string
       wpilibVersion:
         description: 'WPILib version to compile for'
         required: true
@@ -16,17 +16,17 @@ on:
         description: 'Major version'
         required: true
         default: 1
-        type: number
+        type: string
       versionMinor:
         description: 'Minor version'
         required: true
         default: 0
-        type: number
+        type: string
       versionPatch:
         description: 'Patch version'
         required: true
         default: 0
-        type: number
+        type: string
       versionType:
         description: 'Type of version'
         required: true
