@@ -86,8 +86,10 @@ jobs:
            unzip -o "$file" -d release/
            rm "$file"
           fi
-          done          
-          
+          done
+          ls
+          ls -l release/
+
       - name: Calculate Version Tag
         id: version
         run: |
