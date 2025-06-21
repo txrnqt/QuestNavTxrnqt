@@ -21,7 +21,7 @@ ext {
     artifactId = 'questnav-lib'
 
     // Repository configuration
-    mavenRepoUrl = project.findProperty('mavenRepoUrl') ?: 'https://maven.questnav.gg/repository'
+    mavenRepoUrl = project.findProperty('mavenRepoUrl') ?: 'https://maven.questnav.gg/'
     isSnapshot = releaseType in ['dev', 'snapshot'] || questnavVersion.contains('-SNAPSHOT')
 }
 
@@ -43,7 +43,7 @@ repositories {
     if (project.hasProperty('mavenRepoUrl')) {
         maven {
             name = "QuestNavRepo"
-            url = mavenRepoUrl + (isSnapshot ? "/snapshots" : "/release")
+            url = mavenRepoUrl + (isSnapshot ? "/snapshots" : "/releases")
         }
     }
 }
@@ -93,8 +93,8 @@ task generateVendorJson() {
         vendorJsonOutput.parentFile.mkdirs()
 
         // Determine repository URL based on release type
-        def repoType = isSnapshot ? "snapshots" : "release"
-        def jsonUrl = "https://maven.questnav.gg/repository/${repoType}/gg/questnav/questnavlib-json/${questnavVersion}/questnavlib-json-${questnavVersion}.json"
+        def repoType = isSnapshot ? "snapshots" : "releases"
+        def jsonUrl = "https://maven.questnav.gg/${repoType}/gg/questnav/questnavlib-json/${questnavVersion}/questnavlib-json-${questnavVersion}.json"
 
         def content = vendorJsonInput.text
                 .replace('${questnav_version}', questnavVersion)
@@ -151,7 +151,7 @@ publishing {
         if (project.hasProperty('mavenRepoUrl')) {
             maven {
                 name = "QuestNavRepo"
-                url = mavenRepoUrl + (isSnapshot ? "/snapshots" : "/release")
+                url = mavenRepoUrl + (isSnapshot ? "/snapshots" : "/releases")
 
                 // Add credentials if provided
                 if (project.hasProperty('mavenUsername') && project.hasProperty('mavenPassword')) {
