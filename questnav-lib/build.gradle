@@ -148,7 +148,6 @@ publishing {
     }
 
     repositories {
-        mavenCentral()
         if (project.hasProperty('mavenRepoUrl')) {
             maven {
                 name = "QuestNavRepo"
