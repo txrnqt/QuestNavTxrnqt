@@ -5,6 +5,12 @@ on:
     paths:
       - '**.java'
       - '**.cs'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.java'
+      - '**.cs'
 
 jobs:
   csharp:
