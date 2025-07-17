@@ -76,11 +76,11 @@ jobs:
             echo "version=$VERSION" >> $GITHUB_OUTPUT
             echo "version-code=$VERSION_CODE" >> $GITHUB_OUTPUT
           else
-            # Use hash-based versioning
+            # Use hash-based versioning - hash first, then dev suffix
             COMMIT_HASH=$(git rev-parse --short=7 HEAD)
-            VERSION="dev-$COMMIT_HASH"
+            VERSION="$COMMIT_HASH-dev"
 
-            # For hash-based versioning, use a simple incrementing version code based on commit count
+            # For hash-based versioning, use commit count for version code
             COMMIT_COUNT=$(git rev-list --count HEAD)
             VERSION_CODE=$((1000000 + $COMMIT_COUNT))
 
