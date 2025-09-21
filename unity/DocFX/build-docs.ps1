@@ -33,6 +33,20 @@ if (Test-Path "../../docs/static/api/csharp") {
     Write-Host "   Generated $apiFiles API pages" -ForegroundColor Green
     Write-Host "   Output: docs/static/api/csharp/" -ForegroundColor Green
     Write-Host ""
+    
+    # Clean up XML files to prevent stale builds
+    Write-Host "Cleaning up XML documentation..." -ForegroundColor Yellow
+    if (Test-Path "preserved-xml/QuestNav.xml") {
+        Remove-Item "preserved-xml/QuestNav.xml"
+        Write-Host "   Removed preserved XML file" -ForegroundColor Yellow
+    }
+    if (Test-Path "../Library/ScriptAssemblies/QuestNav.xml") {
+        Remove-Item "../Library/ScriptAssemblies/QuestNav.xml"
+        Write-Host "   Removed working XML file" -ForegroundColor Yellow
+    }
+    Write-Host "   XML cleanup completed" -ForegroundColor Yellow
+    Write-Host ""
+    
     Write-Host "To preview the documentation:" -ForegroundColor Cyan
     Write-Host "   1. Run 'npm start' in the docs/ directory" -ForegroundColor White
     Write-Host "   2. Navigate to http://localhost:3000/api/csharp/" -ForegroundColor White
@@ -45,6 +59,8 @@ if (Test-Path "../../docs/static/api/csharp") {
     Write-Host "   • QuestNav.Utils - Utility functions" -ForegroundColor White
     Write-Host "   • QuestNav.Native.NTCore - Native NetworkTables" -ForegroundColor White
     Write-Host "   • QuestNav.Protos.Generated - Protocol buffers" -ForegroundColor White
+    Write-Host ""
+    Write-Host "Note: Future builds will require fresh Unity compilation to generate new XML documentation." -ForegroundColor Yellow
 } else {
     Write-Host "Error: Documentation output not found at docs/static/api/csharp/" -ForegroundColor Red
     exit 1

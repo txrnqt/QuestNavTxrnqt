@@ -124,7 +124,6 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_BATCH_MODE: "true"
         with:
           projectPath: unity
           targetPlatform: Android
@@ -170,3 +169,15 @@ jobs:
           name: questnav-apk-${{ steps.version-info.outputs.version }}
           path: build/Android/*.apk
           retention-days: 7
+
+  # Call DocFX workflow after successful Unity build
+  build-docfx:
+    name: Generate API Documentation
+    needs: build-unity
+    if: success()
+    uses: ./.github/workflows/build-docfx-api.yml
+    with:
+      unity-build-completed: true
+    permissions:
+      contents: write
+      pull-requests: write

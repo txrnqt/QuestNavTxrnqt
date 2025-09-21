@@ -53,26 +53,33 @@ After building, the documentation is available at:
 
 ### GitHub Actions Workflow
 
-The DocFX documentation is generated through two coordinated workflows:
+The DocFX documentation is generated through coordinated workflows with proper dependency management:
 
-#### 1. Unity Build Workflow (`build-questnav-apk.yml`)
+#### 1. Main Build Workflow (`test-build.yml`)
+- **Triggers on**: Push to `main` or pull requests
+- **Calls**: Unity build workflow which automatically triggers DocFX generation
+
+#### 2. Unity Build Workflow (`build-questnav-apk.yml`)
 - **Preserves XML Documentation**: After Unity builds, copies `QuestNav.xml` from `Library/ScriptAssemblies/` to `DocFX/preserved-xml/`
 - **Uploads XML Artifact**: Stores the XML file as a workflow artifact for later use
 - **Prevents Cleanup**: Ensures XML documentation survives Unity's build cleanup process
+- **Calls DocFX Workflow**: Automatically triggers DocFX generation after successful Unity build
 
-#### 2. DocFX Build Workflow (`build-docfx-api.yml`)
-- **Triggers on**:
-  - Push to `main` branch with C# source changes
-  - Pull requests with C# source changes
-  - Manual workflow dispatch
+#### 3. DocFX Build Workflow (`build-docfx-api.yml`)
+- **Triggers via**:
+  - Called by Unity build workflow (automatic after Unity builds)
+  - Manual workflow dispatch (with force-build option)
+  - Standalone docs workflow (for DocFX config changes only)
 
 - **Process**:
   - Sets up .NET and DocFX
   - Restores Unity NuGet packages
   - **Checks for preserved XML**: Looks for XML documentation in `preserved-xml/` directory
+  - **Fails if no XML**: Reports failure when XML documentation is not available (unless force-build=true)
   - Copies XML to expected location for DocFX processing
   - Generates API metadata from C# project (only if XML available)
   - Builds HTML documentation
+  - **Cleans up XML files**: Removes preserved and working XML files to prevent stale builds
   - Commits updated docs back to repository
   - Uploads artifacts for review
 
@@ -80,6 +87,11 @@ The DocFX documentation is generated through two coordinated workflows:
   - Updates `docs/static/api/csharp/` with latest API docs
   - Automatically triggers Docusaurus deployment
   - Provides PR comments with build status
+
+#### 4. Standalone Docs Workflow (`build-docs-standalone.yml`)
+- **Triggers on**: Changes to `unity/DocFX/**` files only
+- **Purpose**: Updates documentation when only DocFX configuration changes
+- **Behavior**: Uses existing preserved XML documentation
 
 ### Integration with Docusaurus
 
@@ -89,6 +101,25 @@ The generated documentation integrates seamlessly with the main Docusaurus site:
 - **Served automatically** by Docusaurus at `/api/csharp/`
 - **Search functionality** included with full-text search
 - **Responsive design** matches Docusaurus theme
+
+## XML Documentation Lifecycle
+
+### Automatic XML Management
+
+QuestNav implements automatic XML documentation lifecycle management to ensure documentation is always built from fresh, up-to-date XML:
+
+1. **Generation**: Unity builds generate `QuestNav.xml` in `Library/ScriptAssemblies/`
+2. **Preservation**: Unity workflow copies XML to `DocFX/preserved-xml/` to survive build cleanup
+3. **Consumption**: DocFX workflow uses preserved XML to generate documentation
+4. **Cleanup**: After successful DocFX build, XML files are automatically removed
+5. **Regeneration**: Next Unity build creates fresh XML for subsequent documentation builds
+
+### Why XML Cleanup Matters
+
+- **Prevents Stale Documentation**: Ensures docs always reflect current code state
+- **Forces Fresh Builds**: Requires new Unity compilation for documentation updates
+- **Avoids Inconsistencies**: Eliminates risk of outdated XML generating incorrect docs
+- **Clear Dependencies**: Makes Unity → DocFX dependency explicit and enforceable
 
 ## Configuration
 
@@ -146,6 +177,7 @@ The documentation includes all public APIs from:
    - Enable XML documentation generation in Unity project settings
    - Check that `QuestNav.xml` is generated in `Library/ScriptAssemblies/`
    - Verify XML file is preserved in `DocFX/preserved-xml/` after Unity builds
+   - **Note**: XML files are automatically cleaned up after successful DocFX builds to prevent stale documentation
 
 3. **Broken Links**:
    - Verify relative paths in `index.md`
