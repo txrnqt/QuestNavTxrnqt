@@ -382,7 +382,7 @@ public class QuestNav {
    * Returns the Quest app's uptime timestamp for debugging and diagnostics.
    *
    * <p><strong>Important:</strong> For integration with a pose estimator, use the timestamp from
-   * {@link #getDataTimestamp()} instead! This method provides the Quest's internal
+   * {@link PoseFrame#dataTimestamp()} instead! This method provides the Quest's internal
    * application timestamp, which is useful for:
    *
    * <ul>
@@ -394,11 +394,11 @@ public class QuestNav {
    *
    * <p>The timestamp represents seconds since the Quest application started and is independent of
    * the robot's clock. For pose estimation, always use the NetworkTables timestamp from {@link
-   * #getDataTimestamp()} which is synchronized with robot time.
+   * PoseFrame#dataTimestamp()} which is synchronized with robot time.
    *
    * @return An {@link OptionalDouble} containing the Quest app uptime in seconds, or empty if no
    *     frame data is available
-   * @see #getDataTimestamp()
+   * @see PoseFrame#dataTimestamp()
    * @see #getAllUnreadPoseFrames()
    */
   public OptionalDouble getAppTimestamp() {

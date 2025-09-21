@@ -336,7 +336,9 @@ This ID is used to match commands with their responses in asynchronous
 communication. The client should generate unique IDs for each command
 to avoid confusion. The Quest will echo this ID in the response message.
 
-Recommended: Use incrementing integers or timestamps for uniqueness. </p></td>
+Recommended: Use incrementing integers or timestamps for uniqueness.
+
+Note: For FRC users, the vendor dependency will handle this automatically. </p></td>
                 </tr>
               
                 <tr>
@@ -355,7 +357,7 @@ Set this field when type = POSE_RESET. </p></td>
         
       
         <h3 id="questnav.protos.commands.ProtobufQuestNavCommandResponse">ProtobufQuestNavCommandResponse</h3>
-        <p>Response message sent back after processing a command.</p><p>This message is sent by the Quest back to the client after processing</p><p>a ProtobufQuestNavCommand. It provides status information about whether</p><p>the command was executed successfully and any error details if it failed.</p><p>The response is matched to the original command using the command_id field,</p><p>allowing for proper asynchronous command handling even when multiple</p><p>commands are in flight simultaneously.</p><p>Response Timing:</p><p>- Responses are sent after command processing completes</p><p>- Some commands may take time to execute (e.g., pose reset with validation)</p><p>- Clients should implement timeouts for command responses</p>
+        <p>Response message sent back after processing a command.</p><p>This message is sent by the Quest back to the client after processing</p><p>a ProtobufQuestNavCommand. It provides status information about whether</p><p>the command was executed successfully and any error details if it failed.</p><p>The response is matched to the original command using the command_id field,</p><p>allowing for proper asynchronous command handling even when multiple</p><p>commands are in flight simultaneously.</p><p>Response Timing:</p><p>- Responses are sent after command processing completes</p><p>- Some commands may take time to execute (e.g., pose reset with validation)</p><p>- Clients should implement timeouts for command responses</p><p>Note: For FRC users, the vendor dependency will handle response matching automatically.</p>
 
         
           <table class="field-table">
@@ -490,7 +492,7 @@ Requires: ProtobufQuestNavPoseResetPayload</p></td>
 
       
         <h3 id="questnav.protos.data.ProtobufQuestNavDeviceData">ProtobufQuestNavDeviceData</h3>
-        <p>Lower-frequency device status data sent from Quest to external systems.</p><p>This message contains device health and status information that doesn't need</p><p>to be sent as frequently as tracking data. It's typically sent at 1-10 Hz</p><p>to provide monitoring and diagnostic information without consuming excessive</p><p>bandwidth.</p><p>This data helps external systems:</p><p>- Monitor Quest device health</p><p>- Detect tracking system issues</p><p>- Implement failsafe behaviors</p><p>- Provide user feedback about system status</p><p>The information is useful for both autonomous operation and debugging/</p><p>troubleshooting scenarios.</p>
+        <p>Lower-frequency device status data sent from Quest to external systems.</p><p>This message contains device health and status information that doesn't need</p><p>to be sent as frequently as tracking data. It's sent at 3 Hz (every 333 milliseconds)</p><p>to provide monitoring and diagnostic information without consuming excessive</p><p>bandwidth.</p><p>This data helps external systems:</p><p>- Monitor Quest device health</p><p>- Detect tracking system issues</p><p>- Implement failsafe behaviors</p><p>- Provide user feedback about system status</p><p>The information is useful for both autonomous operation and debugging/</p><p>troubleshooting scenarios.</p>
 
         
           <table class="field-table">
@@ -581,7 +583,7 @@ Note: Battery drain rate depends on:
         
       
         <h3 id="questnav.protos.data.ProtobufQuestNavFrameData">ProtobufQuestNavFrameData</h3>
-        <p>High-frequency tracking data sent from Quest to external systems.</p><p>This message contains the core tracking information that external systems</p><p>(like robot code) need for real-time localization and navigation. It's sent</p><p>at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.</p><p>The data represents the Quest's understanding of the robot's position and</p><p>orientation on the field, derived from visual-inertial odometry using the</p><p>Quest's cameras and IMU sensors.</p><p>Coordinate System:</p><p>- Uses WPILib field-relative coordinate system</p><p>- Origin and axes depend on field setup and calibration</p><p>- Pose represents the robot's position, not the Quest's position</p><p>(accounting for Quest mounting offset)</p>
+        <p>High-frequency tracking data sent from Quest to external systems.</p><p>This message contains the core tracking information that external systems</p><p>(like robot code) need for real-time localization and navigation. It's sent</p><p>at 100 Hz (every 10 milliseconds) to provide smooth, responsive tracking.</p><p>The data represents the Quest's position and orientation on the field,</p><p>derived from visual-inertial odometry using the Quest's cameras and IMU sensors.</p><p>Coordinate System:</p><p>- Uses WPILib field-relative coordinate system</p><p>- Origin and axes depend on field setup and calibration</p><p>- Pose represents the Quest's position; mounting offset to get robot position</p><p>is applied in end user code</p>
 
         
           <table class="field-table">
@@ -598,7 +600,7 @@ Note: Battery drain rate depends on:
 
 This counter increments with each frame processed by the Quest&#39;s tracking
 system. It can be used to:
-- Detect dropped or out-of-order messages
+- Detect dropped messages
 - Calculate effective frame rate
 - Synchronize with other data streams
 
@@ -630,13 +632,15 @@ Resolution: Typically sub-millisecond precision </p></td>
                   <td>pose2d</td>
                   <td><a href="#wpi.proto.ProtobufPose2d">wpi.proto.ProtobufPose2d</a></td>
                   <td></td>
-                  <td><p>Robot&#39;s 2D pose on the field in WPILib coordinates.
+                  <td><p>Quest&#39;s 2D pose on the field in WPILib coordinates.
 
-This represents the robot&#39;s position and orientation as determined by
+This represents the Quest&#39;s position and orientation as determined by
 the Quest&#39;s tracking system. The pose accounts for:
-- Quest mounting position/orientation relative to robot center
 - Coordinate system transformation to WPILib standard
 - Any calibration offsets applied
+
+Note: This is the Quest&#39;s position; end user code applies mounting offset
+to get the robot&#39;s position.
 
 Coordinate System Details:
 - X: Forward direction (towards opposing alliance)

@@ -237,7 +237,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPose(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">setPose</a><wbr>(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Sets the field-relative pose of the robot by commanding the Quest to reset its tracking.</div>
+<div class="block">Sets the field-relative pose of the Quest headset by commanding it to reset its tracking.</div>
 </div>
 </div>
 </div>
@@ -275,10 +275,6 @@ loadScripts(document, 'script');</script>
    <li>Subscribers for frame data, device data, and command responses
    <li>Publisher for sending commands to the Quest
  </ul></div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" title="class or interface in java.lang" class="external-link">RuntimeException</a></code> - if NetworkTables is not available or properly configured</dd>
-</dl>
 </section>
 </li>
 </ul>
@@ -293,39 +289,40 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setPose(edu.wpi.first.math.geometry.Pose2d)">
 <h3>setPose</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPose</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</span></div>
-<div class="block">Sets the field-relative pose of the robot by commanding the Quest to reset its tracking.
+<div class="block">Sets the field-relative pose of the Quest headset by commanding it to reset its tracking.
 
- <p>This method sends a pose reset command to the Quest headset, telling it where the robot is
+ <p>This method sends a pose reset command to the Quest headset, telling it where the Quest is
  currently located on the field. This is essential for establishing field-relative tracking and
  should be called:
 
  <ul>
-   <li>At the start of autonomous or teleop when the robot position is known
-   <li>When the robot is placed at a known location (e.g., against field walls)
+   <li>At the start of autonomous or teleop when the Quest position is known
+   <li>When the robot (and Quest) is placed at a known location (e.g., against field walls)
    <li>After significant tracking drift is detected
    <li>When integrating with other localization systems (vision, odometry)
  </ul>
 
- <p><strong>Important:</strong> This should be the robot's pose, not the Quest's pose. The Quest
- automatically accounts for its mounting position relative to the robot center based on the
- calibration performed during setup.
+ <p><strong>Important:</strong> This should be the Quest's pose, not the robot's pose. If you
+ know the robot's pose, you need to apply the mounting offset to get the Quest's pose before
+ calling this method.
 
  <p>The command is sent asynchronously. Monitor command success/failure by calling <a href="#commandPeriodic()"><code>commandPeriodic()</code></a> regularly, which will log any errors to the DriverStation.
 
  <h4>Usage Example:</h4>
 
  <pre><code>
- // Set robot pose at autonomous start
- Pose2d startPose = new Pose2d(1.5, 5.5, Rotation2d.fromDegrees(0));
- questNav.setPose(startPose);
+ // Set Quest pose at autonomous start (if you know the Quest's position directly)
+ Pose2d questPose = new Pose2d(1.5, 5.5, Rotation2d.fromDegrees(0));
+ questNav.setPose(questPose);
 
- // Integration with pose estimator
- Pose2d estimatedPose = poseEstimator.getEstimatedPosition();
- questNav.setPose(estimatedPose); // Sync Quest with pose estimator
+ // If you know the robot pose, apply mounting offset to get Quest pose
+ Pose2d robotPose = poseEstimator.getEstimatedPosition();
+ Pose2d questPose = robotPose.plus(mountingOffset); // Apply your mounting offset
+ questNav.setPose(questPose);
  </code></pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>pose</code> - The robot's current field-relative pose in WPILib coordinates (meters for
+<dd><code>pose</code> - The Quest's current field-relative pose in WPILib coordinates (meters for
      translation, radians for rotation)</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if pose contains NaN or infinite values</dd>
@@ -547,7 +544,7 @@ loadScripts(document, 'script');</script>
 
  <ul>
    <li>Returns a new array each call - consider caching if called multiple times per loop
-   <li>Frame rate typically 30-90 Hz depending on Quest performance
+   <li>Frame rate is exactly 100 Hz (every 10 milliseconds)
    <li>Empty array returned when no new frames are available
  </ul></div>
 <dl class="notes">
