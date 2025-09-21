@@ -82,7 +82,44 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CommandProto</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements edu.wpi.first.util.protobuf.Protobuf&lt;gg.questnav.questnav.protos.generated.Commands.ProtobufQuestNavCommand,<wbr>gg.questnav.questnav.protos.generated.Commands.ProtobufQuestNavCommand&gt;</span></div>
-<div class="block">WPILib Protobuf layer for Commands Protobuf</div>
+<div class="block">WPILib Protobuf serialization adapter for QuestNav command messages.
+ 
+ <p>This class provides the necessary integration between QuestNav's protocol buffer
+ command definitions and WPILib's NetworkTables protobuf system. It handles the
+ serialization and deserialization of command messages sent from robot code to
+ the Quest headset.
+ 
+ <p>This adapter is used internally by the <a href="../../QuestNav.html" title="class in gg.questnav.questnav"><code>QuestNav</code></a>
+ class and typically does not need to be used directly by robot code.
+ 
+ <h2>Supported Commands</h2>
+ <p>This adapter handles all QuestNav command types including:
+ <ul>
+   <li><strong>Pose Reset:</strong> Commands to reset the Quest's tracking to a known robot pose</li>
+   <li><strong>Future Commands:</strong> Extensible for additional command types as needed</li>
+ </ul>
+ 
+ <h2>Protocol Buffer Integration</h2>
+ <p>The class implements WPILib's <code>Protobuf</code> interface
+ to provide seamless integration with NetworkTables. This enables:
+ <ul>
+   <li>Efficient binary serialization over the network</li>
+   <li>Type-safe message handling</li>
+   <li>Automatic message validation and error handling</li>
+   <li>Cross-platform compatibility (Java robot code â†” C# Quest app)</li>
+ </ul></div>
+<dl class="notes">
+<dt>Since:</dt>
+<dd>2025.1.0</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="../../QuestNav.html#setPose(edu.wpi.first.math.geometry.Pose2d)"><code>QuestNav.setPose(edu.wpi.first.math.geometry.Pose2d)</code></a></li>
+<li><code>Commands.ProtobufQuestNavCommand</code></li>
+<li><code>Protobuf</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">

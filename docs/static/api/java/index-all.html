@@ -61,11 +61,11 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="gg/questnav/questnav/QuestNav.html#commandPeriodic()" class="member-name-link">commandPeriodic()</a> - Method in class gg.questnav.questnav.<a href="gg/questnav/questnav/QuestNav.html" title="class in gg.questnav.questnav">QuestNav</a></dt>
 <dd>
-<div class="block">Cleans up QuestNav responses after processing on the headset.</div>
+<div class="block">Processes command responses from the Quest headset and handles any errors.</div>
 </dd>
 <dt><a href="gg/questnav/questnav/protos/wpilib/CommandProto.html" class="type-name-link" title="class in gg.questnav.questnav.protos.wpilib">CommandProto</a> - Class in <a href="gg/questnav/questnav/protos/wpilib/package-summary.html">gg.questnav.questnav.protos.wpilib</a></dt>
 <dd>
-<div class="block">WPILib Protobuf layer for Commands Protobuf</div>
+<div class="block">WPILib Protobuf serialization adapter for QuestNav command messages.</div>
 </dd>
 <dt><a href="gg/questnav/questnav/protos/wpilib/CommandProto.html#%3Cinit%3E()" class="member-name-link">CommandProto()</a> - Constructor for class gg.questnav.questnav.protos.wpilib.<a href="gg/questnav/questnav/protos/wpilib/CommandProto.html" title="class in gg.questnav.questnav.protos.wpilib">CommandProto</a></dt>
 <dd>&nbsp;</dd>
@@ -121,13 +121,15 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="gg/questnav/questnav/QuestNav.html#getAllUnreadPoseFrames()" class="member-name-link">getAllUnreadPoseFrames()</a> - Method in class gg.questnav.questnav.<a href="gg/questnav/questnav/QuestNav.html" title="class in gg.questnav.questnav">QuestNav</a></dt>
 <dd>
-<div class="block">Gets a list of results sent by the Quest since the last call to getAllUnreadResults().</div>
+<div class="block">Retrieves all new pose frames received from the Quest since the last call to this method.</div>
 </dd>
 <dt><a href="gg/questnav/questnav/QuestNav.html#getAppTimestamp()" class="member-name-link">getAppTimestamp()</a> - Method in class gg.questnav.questnav.<a href="gg/questnav/questnav/QuestNav.html" title="class in gg.questnav.questnav">QuestNav</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the Quest app's uptime timestamp for debugging and diagnostics.</div>
+</dd>
 <dt><a href="gg/questnav/questnav/QuestNav.html#getBatteryPercent()" class="member-name-link">getBatteryPercent()</a> - Method in class gg.questnav.questnav.<a href="gg/questnav/questnav/QuestNav.html" title="class in gg.questnav.questnav">QuestNav</a></dt>
 <dd>
-<div class="block">Returns the Quest's battery level (0-100%)</div>
+<div class="block">Returns the Quest headset's current battery level as a percentage.</div>
 </dd>
 <dt><a href="gg/questnav/questnav/protos/wpilib/CommandProto.html#getDescriptor()" class="member-name-link">getDescriptor()</a> - Method in class gg.questnav.questnav.protos.wpilib.<a href="gg/questnav/questnav/protos/wpilib/CommandProto.html" title="class in gg.questnav.questnav.protos.wpilib">CommandProto</a></dt>
 <dd>&nbsp;</dd>
@@ -196,7 +198,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="gg/questnav/questnav/PoseFrame.html" class="type-name-link" title="class in gg.questnav.questnav">PoseFrame</a> - Record Class in <a href="gg/questnav/questnav/package-summary.html">gg.questnav.questnav</a></dt>
 <dd>
-<div class="block">A frame of data from the Quest.</div>
+<div class="block">Represents a single frame of pose tracking data received from the Quest headset.</div>
 </dd>
 <dt><a href="gg/questnav/questnav/PoseFrame.html#%3Cinit%3E(edu.wpi.first.math.geometry.Pose2d,double,double,int)" class="member-name-link">PoseFrame(Pose2d, double, double, int)</a> - Constructor for record class gg.questnav.questnav.<a href="gg/questnav/questnav/PoseFrame.html" title="class in gg.questnav.questnav">PoseFrame</a></dt>
 <dd>
@@ -207,12 +209,12 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="gg/questnav/questnav/QuestNav.html" class="type-name-link" title="class in gg.questnav.questnav">QuestNav</a> - Class in <a href="gg/questnav/questnav/package-summary.html">gg.questnav.questnav</a></dt>
 <dd>
-<div class="block">The QuestNav class provides an interface to communicate with an Oculus/Meta Quest VR headset for
- robot localization and tracking purposes.</div>
+<div class="block">The QuestNav class provides a comprehensive interface for communicating with an Oculus/Meta Quest VR headset
+ for robot localization and tracking in FRC robotics applications.</div>
 </dd>
 <dt><a href="gg/questnav/questnav/QuestNav.html#%3Cinit%3E()" class="member-name-link">QuestNav()</a> - Constructor for class gg.questnav.questnav.<a href="gg/questnav/questnav/QuestNav.html" title="class in gg.questnav.questnav">QuestNav</a></dt>
 <dd>
-<div class="block">Creates a new QuestNav implementation</div>
+<div class="block">Creates a new QuestNav instance for communicating with a Quest headset.</div>
 </dd>
 <dt><a href="gg/questnav/questnav/PoseFrame.html#questPose()" class="member-name-link">questPose()</a> - Method in record class gg.questnav.questnav.<a href="gg/questnav/questnav/PoseFrame.html" title="class in gg.questnav.questnav">PoseFrame</a></dt>
 <dd>
@@ -223,7 +225,7 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="gg/questnav/questnav/QuestNav.html#setPose(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">setPose(Pose2d)</a> - Method in class gg.questnav.questnav.<a href="gg/questnav/questnav/QuestNav.html" title="class in gg.questnav.questnav">QuestNav</a></dt>
 <dd>
-<div class="block">Sets the field-relative pose of the Quest.</div>
+<div class="block">Sets the field-relative pose of the robot by commanding the Quest to reset its tracking.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
