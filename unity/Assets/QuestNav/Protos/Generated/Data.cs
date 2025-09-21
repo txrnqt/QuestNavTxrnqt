@@ -49,17 +49,16 @@ namespace QuestNav.Protos.Generated {
   /// 
   /// This message contains the core tracking information that external systems
   /// (like robot code) need for real-time localization and navigation. It's sent
-  /// at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.
+  /// at 100 Hz (every 10 milliseconds) to provide smooth, responsive tracking.
   /// 
-  /// The data represents the Quest's understanding of the robot's position and
-  /// orientation on the field, derived from visual-inertial odometry using the
-  /// Quest's cameras and IMU sensors.
+  /// The data represents the Quest's position and orientation on the field,
+  /// derived from visual-inertial odometry using the Quest's cameras and IMU sensors.
   /// 
   /// Coordinate System:
   /// - Uses WPILib field-relative coordinate system
   /// - Origin and axes depend on field setup and calibration
-  /// - Pose represents the robot's position, not the Quest's position
-  ///   (accounting for Quest mounting offset)
+  /// - Pose represents the Quest's position; mounting offset to get robot position
+  ///   is applied in end user code
   /// </summary>
   public sealed partial class ProtobufQuestNavFrameData : pb::IMessage<ProtobufQuestNavFrameData>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -116,7 +115,7 @@ namespace QuestNav.Protos.Generated {
     /// 
     /// This counter increments with each frame processed by the Quest's tracking
     /// system. It can be used to:
-    /// - Detect dropped or out-of-order messages
+    /// - Detect dropped messages
     /// - Calculate effective frame rate
     /// - Synchronize with other data streams
     /// 
@@ -166,13 +165,15 @@ namespace QuestNav.Protos.Generated {
     private global::Wpi.Proto.ProtobufPose2d pose2D_;
     /// <summary>
     ///*
-    /// Robot's 2D pose on the field in WPILib coordinates.
+    /// Quest's 2D pose on the field in WPILib coordinates.
     /// 
-    /// This represents the robot's position and orientation as determined by
+    /// This represents the Quest's position and orientation as determined by
     /// the Quest's tracking system. The pose accounts for:
-    /// - Quest mounting position/orientation relative to robot center
     /// - Coordinate system transformation to WPILib standard
     /// - Any calibration offsets applied
+    /// 
+    /// Note: This is the Quest's position; end user code applies mounting offset
+    /// to get the robot's position.
     /// 
     /// Coordinate System Details:
     /// - X: Forward direction (towards opposing alliance)
@@ -390,7 +391,7 @@ namespace QuestNav.Protos.Generated {
   /// Lower-frequency device status data sent from Quest to external systems.
   /// 
   /// This message contains device health and status information that doesn't need
-  /// to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+  /// to be sent as frequently as tracking data. It's sent at 3 Hz (every 333 milliseconds)
   /// to provide monitoring and diagnostic information without consuming excessive
   /// bandwidth.
   /// 

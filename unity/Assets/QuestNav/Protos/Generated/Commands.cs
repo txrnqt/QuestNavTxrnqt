@@ -409,6 +409,8 @@ namespace QuestNav.Protos.Generated {
     /// to avoid confusion. The Quest will echo this ID in the response message.
     /// 
     /// Recommended: Use incrementing integers or timestamps for uniqueness.
+    /// 
+    /// Note: For FRC users, the vendor dependency will handle this automatically.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -671,6 +673,8 @@ namespace QuestNav.Protos.Generated {
   /// - Responses are sent after command processing completes
   /// - Some commands may take time to execute (e.g., pose reset with validation)
   /// - Clients should implement timeouts for command responses
+  /// 
+  /// Note: For FRC users, the vendor dependency will handle response matching automatically.
   /// </summary>
   public sealed partial class ProtobufQuestNavCommandResponse : pb::IMessage<ProtobufQuestNavCommandResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
