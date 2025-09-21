@@ -16,7 +16,7 @@ import us.hebi.quickbuf.ProtoUtil;
 import us.hebi.quickbuf.RepeatedByte;
 
 public final class Data {
-    private static final RepeatedByte descriptorData = ProtoUtil.decodeBase64(6850,
+    private static final RepeatedByte descriptorData = ProtoUtil.decodeBase64(6841,
         "CgpkYXRhLnByb3RvEhRxdWVzdG5hdi5wcm90b3MuZGF0YRoQZ2VvbWV0cnkyZC5wcm90byKNAQoZUHJv" + 
         "dG9idWZRdWVzdE5hdkZyYW1lRGF0YRIfCgtmcmFtZV9jb3VudBgBIAEoBVIKZnJhbWVDb3VudBIcCgl0" + 
         "aW1lc3RhbXAYAiABKAFSCXRpbWVzdGFtcBIxCgZwb3NlMmQYAyABKAsyGS53cGkucHJvdG8uUHJvdG9i" + 
@@ -24,7 +24,7 @@ public final class Data {
         "bG9zdF9jb3VudGVyGAEgASgFUhN0cmFja2luZ0xvc3RDb3VudGVyEi0KEmN1cnJlbnRseV90cmFja2lu" + 
         "ZxgCIAEoCFIRY3VycmVudGx5VHJhY2tpbmcSJwoPYmF0dGVyeV9wZXJjZW50GAMgASgFUg5iYXR0ZXJ5" + 
         "UGVyY2VudEJDCiVnZy5xdWVzdG5hdi5xdWVzdG5hdi5wcm90b3MuZ2VuZXJhdGVkqgIZUXVlc3ROYXYu" + 
-        "UHJvdG9zLkdlbmVyYXRlZEqDMgoHEgUAA7wBAQoICgEMEgMAAxUK8wYKAQISAxYAHTLoBioKIFF1ZXN0" + 
+        "UHJvdG9zLkdlbmVyYXRlZEr6MQoHEgUAA70BAQoICgEMEgMAAxUK5AYKAQISAxYAHTLZBioKIFF1ZXN0" + 
         "TmF2IERhdGEgUHJvdG9jb2wgQnVmZmVyIERlZmluaXRpb25zCiAKIFRoaXMgZmlsZSBkZWZpbmVzIHRo" + 
         "ZSBkYXRhIHN0cnVjdHVyZXMgdXNlZCBmb3IgdHJhbnNtaXR0aW5nIHRyYWNraW5nIGFuZCBkZXZpY2UK" + 
         "IGluZm9ybWF0aW9uIGZyb20gdGhlIFF1ZXN0IGhlYWRzZXQgdG8gZXh0ZXJuYWwgc3lzdGVtcyAoc3Vj" + 
@@ -36,102 +36,102 @@ public final class Data {
         "YW5kd2lkdGggdXNhZ2UgYnkgc2VuZGluZyBjcml0aWNhbCB0cmFja2luZwogZGF0YSBmcmVxdWVudGx5" + 
         "IHdoaWxlIHNlbmRpbmcgbGVzcyBjcml0aWNhbCBkZXZpY2Ugc3RhdHVzIGRhdGEgYXQgYSBsb3dlciBy" + 
         "YXRlLgogCiBEYXRhIEZsb3c6CiAtIFF1ZXN0IGNvbnRpbnVvdXNseSBwcm9jZXNzZXMgY2FtZXJhL3Nl" + 
-        "bnNvciBkYXRhCiAtIEZyYW1lIGRhdGEgaXMgc2VudCBldmVyeSB0cmFja2luZyB1cGRhdGUgKHR5cGlj",
-        "YWxseSAzMC05MCBIeikKIC0gRGV2aWNlIGRhdGEgaXMgc2VudCBwZXJpb2RpY2FsbHkgKHR5cGljYWxs" + 
-        "eSAxLTEwIEh6KQogLSBFeHRlcm5hbCBzeXN0ZW1zIHJlY2VpdmUgYW5kIHByb2Nlc3MgdGhpcyBkYXRh" + 
-        "IGZvciByb2JvdCBsb2NhbGl6YXRpb24KCggKAQgSAxcANgoJCgIIJRIDFwA2CggKAQgSAxgAPgoJCgII" + 
-        "ARIDGAA+Cj0KAgMAEgMbABoaMiBJbXBvcnQgZ2VvbWV0cnkgbWVzc2FnZXMgZm9yIHBvc2UgcmVwcmVz" + 
-        "ZW50YXRpb24KCuEFCgIEABIELgBlARrUBSoKIEhpZ2gtZnJlcXVlbmN5IHRyYWNraW5nIGRhdGEgc2Vu" + 
-        "dCBmcm9tIFF1ZXN0IHRvIGV4dGVybmFsIHN5c3RlbXMuCiAKIFRoaXMgbWVzc2FnZSBjb250YWlucyB0" + 
-        "aGUgY29yZSB0cmFja2luZyBpbmZvcm1hdGlvbiB0aGF0IGV4dGVybmFsIHN5c3RlbXMKIChsaWtlIHJv" + 
-        "Ym90IGNvZGUpIG5lZWQgZm9yIHJlYWwtdGltZSBsb2NhbGl6YXRpb24gYW5kIG5hdmlnYXRpb24uIEl0" + 
-        "J3Mgc2VudAogYXQgaGlnaCBmcmVxdWVuY3kgKHR5cGljYWxseSAzMC05MCBIeikgdG8gcHJvdmlkZSBz" + 
-        "bW9vdGgsIHJlc3BvbnNpdmUgdHJhY2tpbmcuCiAKIFRoZSBkYXRhIHJlcHJlc2VudHMgdGhlIFF1ZXN0" + 
-        "J3MgdW5kZXJzdGFuZGluZyBvZiB0aGUgcm9ib3QncyBwb3NpdGlvbiBhbmQKIG9yaWVudGF0aW9uIG9u" + 
-        "IHRoZSBmaWVsZCwgZGVyaXZlZCBmcm9tIHZpc3VhbC1pbmVydGlhbCBvZG9tZXRyeSB1c2luZyB0aGUK" + 
-        "IFF1ZXN0J3MgY2FtZXJhcyBhbmQgSU1VIHNlbnNvcnMuCiAKIENvb3JkaW5hdGUgU3lzdGVtOgogLSBV" + 
-        "c2VzIFdQSUxpYiBmaWVsZC1yZWxhdGl2ZSBjb29yZGluYXRlIHN5c3RlbQogLSBPcmlnaW4gYW5kIGF4" + 
-        "ZXMgZGVwZW5kIG9uIGZpZWxkIHNldHVwIGFuZCBjYWxpYnJhdGlvbgogLSBQb3NlIHJlcHJlc2VudHMg" + 
-        "dGhlIHJvYm90J3MgcG9zaXRpb24sIG5vdCB0aGUgUXVlc3QncyBwb3NpdGlvbgogICAoYWNjb3VudGlu" + 
-        "ZyBmb3IgUXVlc3QgbW91bnRpbmcgb2Zmc2V0KQoKCgoDBAABEgMuCCEKyAMKBAQAAgASAzwCGBq6AyoK" + 
-        "IFNlcXVlbnRpYWwgZnJhbWUgY291bnRlciBmb3IgdGhpcyB0cmFja2luZyBzZXNzaW9uLgogCiBUaGlz" + 
-        "IGNvdW50ZXIgaW5jcmVtZW50cyB3aXRoIGVhY2ggZnJhbWUgcHJvY2Vzc2VkIGJ5IHRoZSBRdWVzdCdz" + 
-        "IHRyYWNraW5nCiBzeXN0ZW0uIEl0IGNhbiBiZSB1c2VkIHRvOgogLSBEZXRlY3QgZHJvcHBlZCBvciBv",
-        "dXQtb2Ytb3JkZXIgbWVzc2FnZXMKIC0gQ2FsY3VsYXRlIGVmZmVjdGl2ZSBmcmFtZSByYXRlCiAtIFN5" + 
-        "bmNocm9uaXplIHdpdGggb3RoZXIgZGF0YSBzdHJlYW1zCiAKIFRoZSBjb3VudGVyIHJlc2V0cyB0byAw" + 
-        "IHdoZW4gdGhlIFF1ZXN0TmF2IGFwcCBzdGFydHMgYW5kIGluY3JlbWVudHMKIGNvbnRpbnVvdXNseSBk" + 
-        "dXJpbmcgb3BlcmF0aW9uLiBGcmFtZSBkcm9wcyBpbiB0cmFuc21pc3Npb24gd2lsbCBjcmVhdGUKIGdh" + 
-        "cHMgaW4gdGhlIHNlcXVlbmNlLgoKDAoFBAACAAUSAzwCBwoMCgUEAAIAARIDPAgTCgwKBQQAAgADEgM8" + 
-        "FhcK3wMKBAQAAgESA00CFxrRAyoKIFRpbWVzdGFtcCBpbiBzZWNvbmRzIHNpbmNlIFF1ZXN0TmF2IGFw" + 
-        "cCBzdGFydHVwLgogCiBUaGlzIHByb3ZpZGVzIHRpbWluZyBpbmZvcm1hdGlvbiBmb3IgdGhlIHRyYWNr" + 
-        "aW5nIGRhdGEsIGFsbG93aW5nIGV4dGVybmFsCiBzeXN0ZW1zIHRvOgogLSBDYWxjdWxhdGUgZGF0YSBh" + 
-        "Z2UgYW5kIGxhdGVuY3kKIC0gSW50ZXJwb2xhdGUgb3IgZXh0cmFwb2xhdGUgcG9zZXMgZm9yIHByZWRp" + 
-        "Y3Rpb24KIC0gU3luY2hyb25pemUgd2l0aCBvdGhlciBzZW5zb3IgZGF0YQogLSBJbXBsZW1lbnQgdGlt" + 
-        "ZW91dCBkZXRlY3Rpb24KIAogVGhlIHRpbWVzdGFtcCBpcyByZWxhdGl2ZSB0byBhcHAgc3RhcnR1cCwg" + 
-        "bm90IHN5c3RlbSB0aW1lLCB0byBhdm9pZAogY2xvY2sgc3luY2hyb25pemF0aW9uIGlzc3VlcyBiZXR3" + 
-        "ZWVuIGRldmljZXMuCiAKIFJlc29sdXRpb246IFR5cGljYWxseSBzdWItbWlsbGlzZWNvbmQgcHJlY2lz" + 
-        "aW9uCgoMCgUEAAIBBRIDTQIICgwKBQQAAgEBEgNNCRIKDAoFBAACAQMSA00VFgrUBQoEBAACAhIDZAIm" + 
-        "GsYFKgogUm9ib3QncyAyRCBwb3NlIG9uIHRoZSBmaWVsZCBpbiBXUElMaWIgY29vcmRpbmF0ZXMuCiAK" + 
-        "IFRoaXMgcmVwcmVzZW50cyB0aGUgcm9ib3QncyBwb3NpdGlvbiBhbmQgb3JpZW50YXRpb24gYXMgZGV0" + 
-        "ZXJtaW5lZCBieQogdGhlIFF1ZXN0J3MgdHJhY2tpbmcgc3lzdGVtLiBUaGUgcG9zZSBhY2NvdW50cyBm" + 
-        "b3I6CiAtIFF1ZXN0IG1vdW50aW5nIHBvc2l0aW9uL29yaWVudGF0aW9uIHJlbGF0aXZlIHRvIHJvYm90" + 
-        "IGNlbnRlcgogLSBDb29yZGluYXRlIHN5c3RlbSB0cmFuc2Zvcm1hdGlvbiB0byBXUElMaWIgc3RhbmRh" + 
-        "cmQKIC0gQW55IGNhbGlicmF0aW9uIG9mZnNldHMgYXBwbGllZAogCiBDb29yZGluYXRlIFN5c3RlbSBE",
-        "ZXRhaWxzOgogLSBYOiBGb3J3YXJkIGRpcmVjdGlvbiAodG93YXJkcyBvcHBvc2luZyBhbGxpYW5jZSkK" + 
-        "IC0gWTogTGVmdCBkaXJlY3Rpb24gKHdoZW4gZmFjaW5nIGZvcndhcmQpICAKIC0gUm90YXRpb246IENv" + 
-        "dW50ZXItY2xvY2t3aXNlIHBvc2l0aXZlIChyYWRpYW5zKQogLSBVbml0czogbWV0ZXJzIGZvciB0cmFu" + 
-        "c2xhdGlvbiwgcmFkaWFucyBmb3Igcm90YXRpb24KIAogQWNjdXJhY3kgZGVwZW5kcyBvbjoKIC0gRW52" + 
-        "aXJvbm1lbnRhbCBsaWdodGluZyBhbmQgZmVhdHVyZXMKIC0gUXVlc3QgdHJhY2tpbmcgcXVhbGl0eQog" + 
-        "LSBDYWxpYnJhdGlvbiBhY2N1cmFjeQogLSBUaW1lIHNpbmNlIGxhc3QgcG9zZSByZXNldAoKDAoFBAAC" + 
-        "AgYSA2QCGgoMCgUEAAICARIDZBshCgwKBQQAAgIDEgNkJCUK5gQKAgQBEgV4ALwBARrYBCoKIExvd2Vy" + 
-        "LWZyZXF1ZW5jeSBkZXZpY2Ugc3RhdHVzIGRhdGEgc2VudCBmcm9tIFF1ZXN0IHRvIGV4dGVybmFsIHN5" + 
-        "c3RlbXMuCiAKIFRoaXMgbWVzc2FnZSBjb250YWlucyBkZXZpY2UgaGVhbHRoIGFuZCBzdGF0dXMgaW5m" + 
-        "b3JtYXRpb24gdGhhdCBkb2Vzbid0IG5lZWQKIHRvIGJlIHNlbnQgYXMgZnJlcXVlbnRseSBhcyB0cmFj" + 
-        "a2luZyBkYXRhLiBJdCdzIHR5cGljYWxseSBzZW50IGF0IDEtMTAgSHoKIHRvIHByb3ZpZGUgbW9uaXRv" + 
-        "cmluZyBhbmQgZGlhZ25vc3RpYyBpbmZvcm1hdGlvbiB3aXRob3V0IGNvbnN1bWluZyBleGNlc3NpdmUK" + 
-        "IGJhbmR3aWR0aC4KIAogVGhpcyBkYXRhIGhlbHBzIGV4dGVybmFsIHN5c3RlbXM6CiAtIE1vbml0b3Ig" + 
-        "UXVlc3QgZGV2aWNlIGhlYWx0aAogLSBEZXRlY3QgdHJhY2tpbmcgc3lzdGVtIGlzc3VlcwogLSBJbXBs" + 
-        "ZW1lbnQgZmFpbHNhZmUgYmVoYXZpb3JzCiAtIFByb3ZpZGUgdXNlciBmZWVkYmFjayBhYm91dCBzeXN0" + 
-        "ZW0gc3RhdHVzCiAKIFRoZSBpbmZvcm1hdGlvbiBpcyB1c2VmdWwgZm9yIGJvdGggYXV0b25vbW91cyBv" + 
-        "cGVyYXRpb24gYW5kIGRlYnVnZ2luZy8KIHRyb3VibGVzaG9vdGluZyBzY2VuYXJpb3MuCgoKCgMEAQES" + 
-        "A3gIIgqGBQoEBAECABIEjAECIhr3BCoKIENvdW50IG9mIHRyYWNraW5nIGxvc3MgZXZlbnRzIHNpbmNl" + 
-        "IGFwcCBzdGFydHVwLgogCiBUaGlzIGNvdW50ZXIgaW5jcmVtZW50cyBlYWNoIHRpbWUgdGhlIFF1ZXN0" + 
-        "J3MgdHJhY2tpbmcgc3lzdGVtIGxvc2VzCiB0cmFja2luZyBhZnRlciBoYXZpbmcgZXN0YWJsaXNoZWQg",
-        "aXQuIFRyYWNraW5nIGxvc3MgY2FuIG9jY3VyIGR1ZSB0bzoKIC0gUG9vciBsaWdodGluZyBjb25kaXRp" + 
-        "b25zCiAtIExhY2sgb2YgdmlzdWFsIGZlYXR1cmVzIGluIGVudmlyb25tZW50CiAtIFJhcGlkIG1vdGlv" + 
-        "biBvciBhY2NlbGVyYXRpb24KIC0gT2NjbHVzaW9uIG9mIGNhbWVyYXMKIC0gSGFyZHdhcmUgaXNzdWVz" + 
-        "CiAKIEEgaGlnaCBvciByYXBpZGx5IGluY3JlYXNpbmcgY291bnRlciBtYXkgaW5kaWNhdGU6CiAtIEVu" + 
-        "dmlyb25tZW50YWwgaXNzdWVzIChsaWdodGluZywgZmVhdHVyZXMpCiAtIFF1ZXN0IG1vdW50aW5nIHBy" + 
-        "b2JsZW1zICh2aWJyYXRpb24sIG9ic3RydWN0aW9uKQogLSBIYXJkd2FyZSBkZWdyYWRhdGlvbgogCiBU" + 
-        "aGlzIG1ldHJpYyBoZWxwcyBhc3Nlc3MgdHJhY2tpbmcgc3lzdGVtIHJlbGlhYmlsaXR5IGFuZCBjYW4g" + 
-        "dHJpZ2dlcgogYWxlcnRzIG9yIGZhbGxiYWNrIGJlaGF2aW9ycyBpbiByb2JvdCBjb2RlLgoKDQoFBAEC" + 
-        "AAUSBIwBAgcKDQoFBAECAAESBIwBCB0KDQoFBAECAAMSBIwBICEKugUKBAQBAgESBKIBAh4aqwUqCiBD" + 
-        "dXJyZW50IHRyYWNraW5nIHN0YXR1cyBvZiB0aGUgUXVlc3QgZGV2aWNlLgogCiB0cnVlOiAgUXVlc3Qg" + 
-        "aXMgYWN0aXZlbHkgdHJhY2tpbmcgYW5kIHBvc2UgZGF0YSBpcyByZWxpYWJsZQogZmFsc2U6IFF1ZXN0" + 
-        "IGhhcyBsb3N0IHRyYWNraW5nIGFuZCBwb3NlIGRhdGEgc2hvdWxkIG5vdCBiZSB0cnVzdGVkCiAKIFdo" + 
-        "ZW4gdHJhY2tpbmcgaXMgbG9zdDoKIC0gUG9zZSBkYXRhIGJlY29tZXMgc3RhbGUgYW5kIHVucmVsaWFi" + 
-        "bGUKIC0gUm9ib3Qgc2hvdWxkIHN3aXRjaCB0byBhbHRlcm5hdGl2ZSBsb2NhbGl6YXRpb24gbWV0aG9k" + 
-        "cwogLSBNb3ZlbWVudCBzaG91bGQgYmUgbGltaXRlZCBvciBzdG9wcGVkIGZvciBzYWZldHkKIAogVHJh" + 
-        "Y2tpbmcgY2FuIGJlIHJlY292ZXJlZCBieToKIC0gSW1wcm92aW5nIGxpZ2h0aW5nIGNvbmRpdGlvbnMK" + 
-        "IC0gTW92aW5nIHRvIGFyZWEgd2l0aCBtb3JlIHZpc3VhbCBmZWF0dXJlcwogLSBSZWR1Y2luZyBtb3Rp" + 
-        "b24gdG8gYWxsb3cgc3lzdGVtIHRvIHJlLWluaXRpYWxpemUKIC0gUGVyZm9ybWluZyBwb3NlIHJlc2V0" + 
-        "IHdoZW4gdHJhY2tpbmcgcmVjb3ZlcnMKIAogRXh0ZXJuYWwgc3lzdGVtcyBzaG91bGQgbW9uaXRvciB0" + 
-        "aGlzIGZpZWxkIGFuZCBpbXBsZW1lbnQgYXBwcm9wcmlhdGUKIGZhbGxiYWNrIGJlaGF2aW9ycyB3aGVu",
-        "IHRyYWNraW5nIGlzIGxvc3QuCgoNCgUEAQIBBRIEogECBgoNCgUEAQIBARIEogEHGQoNCgUEAQIBAxIE" + 
-        "ogEcHQraBQoEBAECAhIEuwECHBrLBSoKIFF1ZXN0IGRldmljZSBiYXR0ZXJ5IGxldmVsIGFzIGEgcGVy" + 
-        "Y2VudGFnZSAoMC0xMDApLgogCiBUaGlzIHByb3ZpZGVzIHRoZSBjdXJyZW50IGJhdHRlcnkgY2hhcmdl" + 
-        "IGxldmVsIG9mIHRoZSBRdWVzdCBoZWFkc2V0LAogYWxsb3dpbmcgZXh0ZXJuYWwgc3lzdGVtcyB0bzoK" + 
-        "IC0gTW9uaXRvciBwb3dlciBzdGF0dXMgZHVyaW5nIG9wZXJhdGlvbgogLSBJbXBsZW1lbnQgbG93LWJh" + 
-        "dHRlcnkgd2FybmluZ3Mgb3IgYmVoYXZpb3JzCiAtIFBsYW4gb3BlcmF0aW9uIGR1cmF0aW9uIGFuZCBj" + 
-        "aGFyZ2luZyBuZWVkcwogLSBUcmlnZ2VyIGdyYWNlZnVsIHNodXRkb3duIHByb2NlZHVyZXMKIAogQmF0" + 
-        "dGVyeSBMZXZlbCBHdWlkZWxpbmVzOgogLSAxMDAlOiBGdWxseSBjaGFyZ2VkCiAtIDUwLTEwMCU6IE5v" + 
-        "cm1hbCBvcGVyYXRpb24KIC0gMjAtNTAlOiBDb25zaWRlciBjaGFyZ2luZyBzb29uCiAtIDEwLTIwJTog" + 
-        "TG93IGJhdHRlcnkgd2FybmluZyByZWNvbW1lbmRlZAogLSAwLTEwJTogQ3JpdGljYWwgLSBwbGFuIGlt" + 
-        "bWVkaWF0ZSBzaHV0ZG93bi9jaGFyZ2luZwogCiBOb3RlOiBCYXR0ZXJ5IGRyYWluIHJhdGUgZGVwZW5k" + 
-        "cyBvbjoKIC0gUHJvY2Vzc2luZyBsb2FkICh0cmFja2luZyBjb21wbGV4aXR5KQogLSBEaXNwbGF5IHVz" + 
-        "YWdlIChpZiBhbnkpCiAtIFdpcmVsZXNzIGNvbW11bmljYXRpb24gYWN0aXZpdHkKIC0gRW52aXJvbm1l" + 
-        "bnRhbCB0ZW1wZXJhdHVyZQoKDQoFBAECAgUSBLsBAgcKDQoFBAECAgESBLsBCBcKDQoFBAECAgMSBLsB" + 
-        "GhtiBnByb3RvMw==");
+        "bnNvciBkYXRhCiAtIEZyYW1lIGRhdGEgaXMgc2VudCBldmVyeSAxMCBtaWxsaXNlY29uZHMgKDEwMCBI",
+        "eikKIC0gRGV2aWNlIGRhdGEgaXMgc2VudCBldmVyeSAzMzMgbWlsbGlzZWNvbmRzICgzIEh6KQogLSBF" + 
+        "eHRlcm5hbCBzeXN0ZW1zIHJlY2VpdmUgYW5kIHByb2Nlc3MgdGhpcyBkYXRhIGZvciByb2JvdCBsb2Nh" + 
+        "bGl6YXRpb24KCggKAQgSAxcANgoJCgIIJRIDFwA2CggKAQgSAxgAPgoJCgIIARIDGAA+Cj0KAgMAEgMb" + 
+        "ABoaMiBJbXBvcnQgZ2VvbWV0cnkgbWVzc2FnZXMgZm9yIHBvc2UgcmVwcmVzZW50YXRpb24KCsAFCgIE" + 
+        "ABIELQBmARqzBSoKIEhpZ2gtZnJlcXVlbmN5IHRyYWNraW5nIGRhdGEgc2VudCBmcm9tIFF1ZXN0IHRv" + 
+        "IGV4dGVybmFsIHN5c3RlbXMuCiAKIFRoaXMgbWVzc2FnZSBjb250YWlucyB0aGUgY29yZSB0cmFja2lu" + 
+        "ZyBpbmZvcm1hdGlvbiB0aGF0IGV4dGVybmFsIHN5c3RlbXMKIChsaWtlIHJvYm90IGNvZGUpIG5lZWQg" + 
+        "Zm9yIHJlYWwtdGltZSBsb2NhbGl6YXRpb24gYW5kIG5hdmlnYXRpb24uIEl0J3Mgc2VudAogYXQgMTAw" + 
+        "IEh6IChldmVyeSAxMCBtaWxsaXNlY29uZHMpIHRvIHByb3ZpZGUgc21vb3RoLCByZXNwb25zaXZlIHRy" + 
+        "YWNraW5nLgogCiBUaGUgZGF0YSByZXByZXNlbnRzIHRoZSBRdWVzdCdzIHBvc2l0aW9uIGFuZCBvcmll" + 
+        "bnRhdGlvbiBvbiB0aGUgZmllbGQsCiBkZXJpdmVkIGZyb20gdmlzdWFsLWluZXJ0aWFsIG9kb21ldHJ5" + 
+        "IHVzaW5nIHRoZSBRdWVzdCdzIGNhbWVyYXMgYW5kIElNVSBzZW5zb3JzLgogCiBDb29yZGluYXRlIFN5" + 
+        "c3RlbToKIC0gVXNlcyBXUElMaWIgZmllbGQtcmVsYXRpdmUgY29vcmRpbmF0ZSBzeXN0ZW0KIC0gT3Jp" + 
+        "Z2luIGFuZCBheGVzIGRlcGVuZCBvbiBmaWVsZCBzZXR1cCBhbmQgY2FsaWJyYXRpb24KIC0gUG9zZSBy" + 
+        "ZXByZXNlbnRzIHRoZSBRdWVzdCdzIHBvc2l0aW9uOyBtb3VudGluZyBvZmZzZXQgdG8gZ2V0IHJvYm90" + 
+        "IHBvc2l0aW9uCiAgIGlzIGFwcGxpZWQgaW4gZW5kIHVzZXIgY29kZQoKCgoDBAABEgMtCCEKuAMKBAQA" + 
+        "AgASAzsCGBqqAyoKIFNlcXVlbnRpYWwgZnJhbWUgY291bnRlciBmb3IgdGhpcyB0cmFja2luZyBzZXNz" + 
+        "aW9uLgogCiBUaGlzIGNvdW50ZXIgaW5jcmVtZW50cyB3aXRoIGVhY2ggZnJhbWUgcHJvY2Vzc2VkIGJ5" + 
+        "IHRoZSBRdWVzdCdzIHRyYWNraW5nCiBzeXN0ZW0uIEl0IGNhbiBiZSB1c2VkIHRvOgogLSBEZXRlY3Qg" + 
+        "ZHJvcHBlZCBtZXNzYWdlcwogLSBDYWxjdWxhdGUgZWZmZWN0aXZlIGZyYW1lIHJhdGUKIC0gU3luY2hy",
+        "b25pemUgd2l0aCBvdGhlciBkYXRhIHN0cmVhbXMKIAogVGhlIGNvdW50ZXIgcmVzZXRzIHRvIDAgd2hl" + 
+        "biB0aGUgUXVlc3ROYXYgYXBwIHN0YXJ0cyBhbmQgaW5jcmVtZW50cwogY29udGludW91c2x5IGR1cmlu" + 
+        "ZyBvcGVyYXRpb24uIEZyYW1lIGRyb3BzIGluIHRyYW5zbWlzc2lvbiB3aWxsIGNyZWF0ZQogZ2FwcyBp" + 
+        "biB0aGUgc2VxdWVuY2UuCgoMCgUEAAIABRIDOwIHCgwKBQQAAgABEgM7CBMKDAoFBAACAAMSAzsWFwrf" + 
+        "AwoEBAACARIDTAIXGtEDKgogVGltZXN0YW1wIGluIHNlY29uZHMgc2luY2UgUXVlc3ROYXYgYXBwIHN0" + 
+        "YXJ0dXAuCiAKIFRoaXMgcHJvdmlkZXMgdGltaW5nIGluZm9ybWF0aW9uIGZvciB0aGUgdHJhY2tpbmcg" + 
+        "ZGF0YSwgYWxsb3dpbmcgZXh0ZXJuYWwKIHN5c3RlbXMgdG86CiAtIENhbGN1bGF0ZSBkYXRhIGFnZSBh" + 
+        "bmQgbGF0ZW5jeQogLSBJbnRlcnBvbGF0ZSBvciBleHRyYXBvbGF0ZSBwb3NlcyBmb3IgcHJlZGljdGlv" + 
+        "bgogLSBTeW5jaHJvbml6ZSB3aXRoIG90aGVyIHNlbnNvciBkYXRhCiAtIEltcGxlbWVudCB0aW1lb3V0" + 
+        "IGRldGVjdGlvbgogCiBUaGUgdGltZXN0YW1wIGlzIHJlbGF0aXZlIHRvIGFwcCBzdGFydHVwLCBub3Qg" + 
+        "c3lzdGVtIHRpbWUsIHRvIGF2b2lkCiBjbG9jayBzeW5jaHJvbml6YXRpb24gaXNzdWVzIGJldHdlZW4g" + 
+        "ZGV2aWNlcy4KIAogUmVzb2x1dGlvbjogVHlwaWNhbGx5IHN1Yi1taWxsaXNlY29uZCBwcmVjaXNpb24K" + 
+        "CgwKBQQAAgEFEgNMAggKDAoFBAACAQESA0wJEgoMCgUEAAIBAxIDTBUWCv8FCgQEAAICEgNlAiYa8QUq" + 
+        "CiBRdWVzdCdzIDJEIHBvc2Ugb24gdGhlIGZpZWxkIGluIFdQSUxpYiBjb29yZGluYXRlcy4KIAogVGhp" + 
+        "cyByZXByZXNlbnRzIHRoZSBRdWVzdCdzIHBvc2l0aW9uIGFuZCBvcmllbnRhdGlvbiBhcyBkZXRlcm1p" + 
+        "bmVkIGJ5CiB0aGUgUXVlc3QncyB0cmFja2luZyBzeXN0ZW0uIFRoZSBwb3NlIGFjY291bnRzIGZvcjoK" + 
+        "IC0gQ29vcmRpbmF0ZSBzeXN0ZW0gdHJhbnNmb3JtYXRpb24gdG8gV1BJTGliIHN0YW5kYXJkCiAtIEFu" + 
+        "eSBjYWxpYnJhdGlvbiBvZmZzZXRzIGFwcGxpZWQKIAogTm90ZTogVGhpcyBpcyB0aGUgUXVlc3QncyBw" + 
+        "b3NpdGlvbjsgZW5kIHVzZXIgY29kZSBhcHBsaWVzIG1vdW50aW5nIG9mZnNldAogdG8gZ2V0IHRoZSBy" + 
+        "b2JvdCdzIHBvc2l0aW9uLgogCiBDb29yZGluYXRlIFN5c3RlbSBEZXRhaWxzOgogLSBYOiBGb3J3YXJk",
+        "IGRpcmVjdGlvbiAodG93YXJkcyBvcHBvc2luZyBhbGxpYW5jZSkKIC0gWTogTGVmdCBkaXJlY3Rpb24g" + 
+        "KHdoZW4gZmFjaW5nIGZvcndhcmQpICAKIC0gUm90YXRpb246IENvdW50ZXItY2xvY2t3aXNlIHBvc2l0" + 
+        "aXZlIChyYWRpYW5zKQogLSBVbml0czogbWV0ZXJzIGZvciB0cmFuc2xhdGlvbiwgcmFkaWFucyBmb3Ig" + 
+        "cm90YXRpb24KIAogQWNjdXJhY3kgZGVwZW5kcyBvbjoKIC0gRW52aXJvbm1lbnRhbCBsaWdodGluZyBh" + 
+        "bmQgZmVhdHVyZXMKIC0gUXVlc3QgdHJhY2tpbmcgcXVhbGl0eQogLSBDYWxpYnJhdGlvbiBhY2N1cmFj" + 
+        "eQogLSBUaW1lIHNpbmNlIGxhc3QgcG9zZSByZXNldAoKDAoFBAACAgYSA2UCGgoMCgUEAAICARIDZRsh" + 
+        "CgwKBQQAAgIDEgNlJCUK8gQKAgQBEgV5AL0BARrkBCoKIExvd2VyLWZyZXF1ZW5jeSBkZXZpY2Ugc3Rh" + 
+        "dHVzIGRhdGEgc2VudCBmcm9tIFF1ZXN0IHRvIGV4dGVybmFsIHN5c3RlbXMuCiAKIFRoaXMgbWVzc2Fn" + 
+        "ZSBjb250YWlucyBkZXZpY2UgaGVhbHRoIGFuZCBzdGF0dXMgaW5mb3JtYXRpb24gdGhhdCBkb2Vzbid0" + 
+        "IG5lZWQKIHRvIGJlIHNlbnQgYXMgZnJlcXVlbnRseSBhcyB0cmFja2luZyBkYXRhLiBJdCdzIHNlbnQg" + 
+        "YXQgMyBIeiAoZXZlcnkgMzMzIG1pbGxpc2Vjb25kcykKIHRvIHByb3ZpZGUgbW9uaXRvcmluZyBhbmQg" + 
+        "ZGlhZ25vc3RpYyBpbmZvcm1hdGlvbiB3aXRob3V0IGNvbnN1bWluZyBleGNlc3NpdmUKIGJhbmR3aWR0" + 
+        "aC4KIAogVGhpcyBkYXRhIGhlbHBzIGV4dGVybmFsIHN5c3RlbXM6CiAtIE1vbml0b3IgUXVlc3QgZGV2" + 
+        "aWNlIGhlYWx0aAogLSBEZXRlY3QgdHJhY2tpbmcgc3lzdGVtIGlzc3VlcwogLSBJbXBsZW1lbnQgZmFp" + 
+        "bHNhZmUgYmVoYXZpb3JzCiAtIFByb3ZpZGUgdXNlciBmZWVkYmFjayBhYm91dCBzeXN0ZW0gc3RhdHVz" + 
+        "CiAKIFRoZSBpbmZvcm1hdGlvbiBpcyB1c2VmdWwgZm9yIGJvdGggYXV0b25vbW91cyBvcGVyYXRpb24g" + 
+        "YW5kIGRlYnVnZ2luZy8KIHRyb3VibGVzaG9vdGluZyBzY2VuYXJpb3MuCgoKCgMEAQESA3kIIgqGBQoE" + 
+        "BAECABIEjQECIhr3BCoKIENvdW50IG9mIHRyYWNraW5nIGxvc3MgZXZlbnRzIHNpbmNlIGFwcCBzdGFy" + 
+        "dHVwLgogCiBUaGlzIGNvdW50ZXIgaW5jcmVtZW50cyBlYWNoIHRpbWUgdGhlIFF1ZXN0J3MgdHJhY2tp" + 
+        "bmcgc3lzdGVtIGxvc2VzCiB0cmFja2luZyBhZnRlciBoYXZpbmcgZXN0YWJsaXNoZWQgaXQuIFRyYWNr",
+        "aW5nIGxvc3MgY2FuIG9jY3VyIGR1ZSB0bzoKIC0gUG9vciBsaWdodGluZyBjb25kaXRpb25zCiAtIExh" + 
+        "Y2sgb2YgdmlzdWFsIGZlYXR1cmVzIGluIGVudmlyb25tZW50CiAtIFJhcGlkIG1vdGlvbiBvciBhY2Nl" + 
+        "bGVyYXRpb24KIC0gT2NjbHVzaW9uIG9mIGNhbWVyYXMKIC0gSGFyZHdhcmUgaXNzdWVzCiAKIEEgaGln" + 
+        "aCBvciByYXBpZGx5IGluY3JlYXNpbmcgY291bnRlciBtYXkgaW5kaWNhdGU6CiAtIEVudmlyb25tZW50" + 
+        "YWwgaXNzdWVzIChsaWdodGluZywgZmVhdHVyZXMpCiAtIFF1ZXN0IG1vdW50aW5nIHByb2JsZW1zICh2" + 
+        "aWJyYXRpb24sIG9ic3RydWN0aW9uKQogLSBIYXJkd2FyZSBkZWdyYWRhdGlvbgogCiBUaGlzIG1ldHJp" + 
+        "YyBoZWxwcyBhc3Nlc3MgdHJhY2tpbmcgc3lzdGVtIHJlbGlhYmlsaXR5IGFuZCBjYW4gdHJpZ2dlcgog" + 
+        "YWxlcnRzIG9yIGZhbGxiYWNrIGJlaGF2aW9ycyBpbiByb2JvdCBjb2RlLgoKDQoFBAECAAUSBI0BAgcK" + 
+        "DQoFBAECAAESBI0BCB0KDQoFBAECAAMSBI0BICEKugUKBAQBAgESBKMBAh4aqwUqCiBDdXJyZW50IHRy" + 
+        "YWNraW5nIHN0YXR1cyBvZiB0aGUgUXVlc3QgZGV2aWNlLgogCiB0cnVlOiAgUXVlc3QgaXMgYWN0aXZl" + 
+        "bHkgdHJhY2tpbmcgYW5kIHBvc2UgZGF0YSBpcyByZWxpYWJsZQogZmFsc2U6IFF1ZXN0IGhhcyBsb3N0" + 
+        "IHRyYWNraW5nIGFuZCBwb3NlIGRhdGEgc2hvdWxkIG5vdCBiZSB0cnVzdGVkCiAKIFdoZW4gdHJhY2tp" + 
+        "bmcgaXMgbG9zdDoKIC0gUG9zZSBkYXRhIGJlY29tZXMgc3RhbGUgYW5kIHVucmVsaWFibGUKIC0gUm9i" + 
+        "b3Qgc2hvdWxkIHN3aXRjaCB0byBhbHRlcm5hdGl2ZSBsb2NhbGl6YXRpb24gbWV0aG9kcwogLSBNb3Zl" + 
+        "bWVudCBzaG91bGQgYmUgbGltaXRlZCBvciBzdG9wcGVkIGZvciBzYWZldHkKIAogVHJhY2tpbmcgY2Fu" + 
+        "IGJlIHJlY292ZXJlZCBieToKIC0gSW1wcm92aW5nIGxpZ2h0aW5nIGNvbmRpdGlvbnMKIC0gTW92aW5n" + 
+        "IHRvIGFyZWEgd2l0aCBtb3JlIHZpc3VhbCBmZWF0dXJlcwogLSBSZWR1Y2luZyBtb3Rpb24gdG8gYWxs" + 
+        "b3cgc3lzdGVtIHRvIHJlLWluaXRpYWxpemUKIC0gUGVyZm9ybWluZyBwb3NlIHJlc2V0IHdoZW4gdHJh" + 
+        "Y2tpbmcgcmVjb3ZlcnMKIAogRXh0ZXJuYWwgc3lzdGVtcyBzaG91bGQgbW9uaXRvciB0aGlzIGZpZWxk" + 
+        "IGFuZCBpbXBsZW1lbnQgYXBwcm9wcmlhdGUKIGZhbGxiYWNrIGJlaGF2aW9ycyB3aGVuIHRyYWNraW5n",
+        "IGlzIGxvc3QuCgoNCgUEAQIBBRIEowECBgoNCgUEAQIBARIEowEHGQoNCgUEAQIBAxIEowEcHQraBQoE" + 
+        "BAECAhIEvAECHBrLBSoKIFF1ZXN0IGRldmljZSBiYXR0ZXJ5IGxldmVsIGFzIGEgcGVyY2VudGFnZSAo" + 
+        "MC0xMDApLgogCiBUaGlzIHByb3ZpZGVzIHRoZSBjdXJyZW50IGJhdHRlcnkgY2hhcmdlIGxldmVsIG9m" + 
+        "IHRoZSBRdWVzdCBoZWFkc2V0LAogYWxsb3dpbmcgZXh0ZXJuYWwgc3lzdGVtcyB0bzoKIC0gTW9uaXRv" + 
+        "ciBwb3dlciBzdGF0dXMgZHVyaW5nIG9wZXJhdGlvbgogLSBJbXBsZW1lbnQgbG93LWJhdHRlcnkgd2Fy" + 
+        "bmluZ3Mgb3IgYmVoYXZpb3JzCiAtIFBsYW4gb3BlcmF0aW9uIGR1cmF0aW9uIGFuZCBjaGFyZ2luZyBu" + 
+        "ZWVkcwogLSBUcmlnZ2VyIGdyYWNlZnVsIHNodXRkb3duIHByb2NlZHVyZXMKIAogQmF0dGVyeSBMZXZl" + 
+        "bCBHdWlkZWxpbmVzOgogLSAxMDAlOiBGdWxseSBjaGFyZ2VkCiAtIDUwLTEwMCU6IE5vcm1hbCBvcGVy" + 
+        "YXRpb24KIC0gMjAtNTAlOiBDb25zaWRlciBjaGFyZ2luZyBzb29uCiAtIDEwLTIwJTogTG93IGJhdHRl" + 
+        "cnkgd2FybmluZyByZWNvbW1lbmRlZAogLSAwLTEwJTogQ3JpdGljYWwgLSBwbGFuIGltbWVkaWF0ZSBz" + 
+        "aHV0ZG93bi9jaGFyZ2luZwogCiBOb3RlOiBCYXR0ZXJ5IGRyYWluIHJhdGUgZGVwZW5kcyBvbjoKIC0g" + 
+        "UHJvY2Vzc2luZyBsb2FkICh0cmFja2luZyBjb21wbGV4aXR5KQogLSBEaXNwbGF5IHVzYWdlIChpZiBh" + 
+        "bnkpCiAtIFdpcmVsZXNzIGNvbW11bmljYXRpb24gYWN0aXZpdHkKIC0gRW52aXJvbm1lbnRhbCB0ZW1w" + 
+        "ZXJhdHVyZQoKDQoFBAECAgUSBLwBAgcKDQoFBAECAgESBLwBCBcKDQoFBAECAgMSBLwBGhtiBnByb3Rv" + 
+        "Mw==");
 
     static final Descriptors.FileDescriptor descriptor = Descriptors.FileDescriptor.internalBuildGeneratedFileFrom("data.proto", "questnav.protos.data", descriptorData, Geometry2D.getDescriptor());
 
@@ -153,17 +153,16 @@ public final class Data {
      *  
      *  This message contains the core tracking information that external systems
      *  (like robot code) need for real-time localization and navigation. It's sent
-     *  at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.
+     *  at 100 Hz (every 10 milliseconds) to provide smooth, responsive tracking.
      *  
-     *  The data represents the Quest's understanding of the robot's position and
-     *  orientation on the field, derived from visual-inertial odometry using the
-     *  Quest's cameras and IMU sensors.
+     *  The data represents the Quest's position and orientation on the field,
+     *  derived from visual-inertial odometry using the Quest's cameras and IMU sensors.
      *  
      *  Coordinate System:
      *  - Uses WPILib field-relative coordinate system
      *  - Origin and axes depend on field setup and calibration
-     *  - Pose represents the robot's position, not the Quest's position
-     *    (accounting for Quest mounting offset)
+     *  - Pose represents the Quest's position; mounting offset to get robot position
+     *    is applied in end user code
      * </pre>
      *
      * Protobuf type {@code ProtobufQuestNavFrameData}
@@ -200,7 +199,7 @@ public final class Data {
          *  
          *  This counter increments with each frame processed by the Quest's tracking
          *  system. It can be used to:
-         *  - Detect dropped or out-of-order messages
+         *  - Detect dropped messages
          *  - Calculate effective frame rate
          *  - Synchronize with other data streams
          *  
@@ -216,13 +215,15 @@ public final class Data {
         /**
          * <pre>
          * *
-         *  Robot's 2D pose on the field in WPILib coordinates.
+         *  Quest's 2D pose on the field in WPILib coordinates.
          *  
-         *  This represents the robot's position and orientation as determined by
+         *  This represents the Quest's position and orientation as determined by
          *  the Quest's tracking system. The pose accounts for:
-         *  - Quest mounting position/orientation relative to robot center
          *  - Coordinate system transformation to WPILib standard
          *  - Any calibration offsets applied
+         *  
+         *  Note: This is the Quest's position; end user code applies mounting offset
+         *  to get the robot's position.
          *  
          *  Coordinate System Details:
          *  - X: Forward direction (towards opposing alliance)
@@ -251,17 +252,16 @@ public final class Data {
          *  
          *  This message contains the core tracking information that external systems
          *  (like robot code) need for real-time localization and navigation. It's sent
-         *  at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.
+         *  at 100 Hz (every 10 milliseconds) to provide smooth, responsive tracking.
          *  
-         *  The data represents the Quest's understanding of the robot's position and
-         *  orientation on the field, derived from visual-inertial odometry using the
-         *  Quest's cameras and IMU sensors.
+         *  The data represents the Quest's position and orientation on the field,
+         *  derived from visual-inertial odometry using the Quest's cameras and IMU sensors.
          *  
          *  Coordinate System:
          *  - Uses WPILib field-relative coordinate system
          *  - Origin and axes depend on field setup and calibration
-         *  - Pose represents the robot's position, not the Quest's position
-         *    (accounting for Quest mounting offset)
+         *  - Pose represents the Quest's position; mounting offset to get robot position
+         *    is applied in end user code
          * </pre>
          *
          * @return a new empty instance of {@code ProtobufQuestNavFrameData}
@@ -382,7 +382,7 @@ public final class Data {
          *  
          *  This counter increments with each frame processed by the Quest's tracking
          *  system. It can be used to:
-         *  - Detect dropped or out-of-order messages
+         *  - Detect dropped messages
          *  - Calculate effective frame rate
          *  - Synchronize with other data streams
          *  
@@ -405,7 +405,7 @@ public final class Data {
          *  
          *  This counter increments with each frame processed by the Quest's tracking
          *  system. It can be used to:
-         *  - Detect dropped or out-of-order messages
+         *  - Detect dropped messages
          *  - Calculate effective frame rate
          *  - Synchronize with other data streams
          *  
@@ -430,7 +430,7 @@ public final class Data {
          *  
          *  This counter increments with each frame processed by the Quest's tracking
          *  system. It can be used to:
-         *  - Detect dropped or out-of-order messages
+         *  - Detect dropped messages
          *  - Calculate effective frame rate
          *  - Synchronize with other data streams
          *  
@@ -453,7 +453,7 @@ public final class Data {
          *  
          *  This counter increments with each frame processed by the Quest's tracking
          *  system. It can be used to:
-         *  - Detect dropped or out-of-order messages
+         *  - Detect dropped messages
          *  - Calculate effective frame rate
          *  - Synchronize with other data streams
          *  
@@ -475,13 +475,15 @@ public final class Data {
         /**
          * <pre>
          * *
-         *  Robot's 2D pose on the field in WPILib coordinates.
+         *  Quest's 2D pose on the field in WPILib coordinates.
          *  
-         *  This represents the robot's position and orientation as determined by
+         *  This represents the Quest's position and orientation as determined by
          *  the Quest's tracking system. The pose accounts for:
-         *  - Quest mounting position/orientation relative to robot center
          *  - Coordinate system transformation to WPILib standard
          *  - Any calibration offsets applied
+         *  
+         *  Note: This is the Quest's position; end user code applies mounting offset
+         *  to get the robot's position.
          *  
          *  Coordinate System Details:
          *  - X: Forward direction (towards opposing alliance)
@@ -506,13 +508,15 @@ public final class Data {
         /**
          * <pre>
          * *
-         *  Robot's 2D pose on the field in WPILib coordinates.
+         *  Quest's 2D pose on the field in WPILib coordinates.
          *  
-         *  This represents the robot's position and orientation as determined by
+         *  This represents the Quest's position and orientation as determined by
          *  the Quest's tracking system. The pose accounts for:
-         *  - Quest mounting position/orientation relative to robot center
          *  - Coordinate system transformation to WPILib standard
          *  - Any calibration offsets applied
+         *  
+         *  Note: This is the Quest's position; end user code applies mounting offset
+         *  to get the robot's position.
          *  
          *  Coordinate System Details:
          *  - X: Forward direction (towards opposing alliance)
@@ -539,13 +543,15 @@ public final class Data {
         /**
          * <pre>
          * *
-         *  Robot's 2D pose on the field in WPILib coordinates.
+         *  Quest's 2D pose on the field in WPILib coordinates.
          *  
-         *  This represents the robot's position and orientation as determined by
+         *  This represents the Quest's position and orientation as determined by
          *  the Quest's tracking system. The pose accounts for:
-         *  - Quest mounting position/orientation relative to robot center
          *  - Coordinate system transformation to WPILib standard
          *  - Any calibration offsets applied
+         *  
+         *  Note: This is the Quest's position; end user code applies mounting offset
+         *  to get the robot's position.
          *  
          *  Coordinate System Details:
          *  - X: Forward direction (towards opposing alliance)
@@ -576,13 +582,15 @@ public final class Data {
         /**
          * <pre>
          * *
-         *  Robot's 2D pose on the field in WPILib coordinates.
+         *  Quest's 2D pose on the field in WPILib coordinates.
          *  
-         *  This represents the robot's position and orientation as determined by
+         *  This represents the Quest's position and orientation as determined by
          *  the Quest's tracking system. The pose accounts for:
-         *  - Quest mounting position/orientation relative to robot center
          *  - Coordinate system transformation to WPILib standard
          *  - Any calibration offsets applied
+         *  
+         *  Note: This is the Quest's position; end user code applies mounting offset
+         *  to get the robot's position.
          *  
          *  Coordinate System Details:
          *  - X: Forward direction (towards opposing alliance)
@@ -613,13 +621,15 @@ public final class Data {
         /**
          * <pre>
          * *
-         *  Robot's 2D pose on the field in WPILib coordinates.
+         *  Quest's 2D pose on the field in WPILib coordinates.
          *  
-         *  This represents the robot's position and orientation as determined by
+         *  This represents the Quest's position and orientation as determined by
          *  the Quest's tracking system. The pose accounts for:
-         *  - Quest mounting position/orientation relative to robot center
          *  - Coordinate system transformation to WPILib standard
          *  - Any calibration offsets applied
+         *  
+         *  Note: This is the Quest's position; end user code applies mounting offset
+         *  to get the robot's position.
          *  
          *  Coordinate System Details:
          *  - X: Forward direction (towards opposing alliance)
@@ -924,7 +934,7 @@ public final class Data {
      *  Lower-frequency device status data sent from Quest to external systems.
      *  
      *  This message contains device health and status information that doesn't need
-     *  to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+     *  to be sent as frequently as tracking data. It's sent at 3 Hz (every 333 milliseconds)
      *  to provide monitoring and diagnostic information without consuming excessive
      *  bandwidth.
      *  
@@ -1035,7 +1045,7 @@ public final class Data {
          *  Lower-frequency device status data sent from Quest to external systems.
          *  
          *  This message contains device health and status information that doesn't need
-         *  to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+         *  to be sent as frequently as tracking data. It's sent at 3 Hz (every 333 milliseconds)
          *  to provide monitoring and diagnostic information without consuming excessive
          *  bandwidth.
          *  

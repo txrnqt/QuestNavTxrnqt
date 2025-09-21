@@ -18,7 +18,7 @@ import us.hebi.quickbuf.RepeatedByte;
 import us.hebi.quickbuf.Utf8String;
 
 public final class Commands {
-    private static final RepeatedByte descriptorData = ProtoUtil.decodeBase64(7335,
+    private static final RepeatedByte descriptorData = ProtoUtil.decodeBase64(7504,
         "Cg5jb21tYW5kcy5wcm90bxIYcXVlc3RuYXYucHJvdG9zLmNvbW1hbmRzGhBnZW9tZXRyeTJkLnByb3Rv" + 
         "Il4KIFByb3RvYnVmUXVlc3ROYXZQb3NlUmVzZXRQYXlsb2FkEjoKC3RhcmdldF9wb3NlGAEgASgLMhku" + 
         "d3BpLnByb3RvLlByb3RvYnVmUG9zZTJkUgp0YXJnZXRQb3NlIvIBChdQcm90b2J1ZlF1ZXN0TmF2Q29t" + 
@@ -30,7 +30,7 @@ public final class Commands {
         "IAEoCFIHc3VjY2VzcxIjCg1lcnJvcl9tZXNzYWdlGAMgASgJUgxlcnJvck1lc3NhZ2UqQwoTUXVlc3RO" + 
         "YXZDb21tYW5kVHlwZRIcChhDT01NQU5EX1RZUEVfVU5TUEVDSUZJRUQQABIOCgpQT1NFX1JFU0VUEAFC" + 
         "QwolZ2cucXVlc3RuYXYucXVlc3RuYXYucHJvdG9zLmdlbmVyYXRlZKoCGVF1ZXN0TmF2LlByb3Rvcy5H" + 
-        "ZW5lcmF0ZWRKgDQKBxIFAAPNAQEKCAoBDBIDAAMVCvYFCgECEgMWACEy6wUqCiBRdWVzdE5hdiBDb21t" + 
+        "ZW5lcmF0ZWRKqTUKBxIFAAPRAQEKCAoBDBIDAAMVCvYFCgECEgMWACEy6wUqCiBRdWVzdE5hdiBDb21t" + 
         "YW5kcyBQcm90b2NvbCBCdWZmZXIgRGVmaW5pdGlvbnMKIAogVGhpcyBmaWxlIGRlZmluZXMgdGhlIGNv" + 
         "bW1hbmQgc3lzdGVtIGZvciBRdWVzdE5hdiwgd2hpY2ggYWxsb3dzIGV4dGVybmFsIHN5c3RlbXMKIChz" + 
         "dWNoIGFzIHJvYm90IGNvZGUpIHRvIHNlbmQgY29tbWFuZHMgdG8gdGhlIFF1ZXN0IGhlYWRzZXQgZm9y" + 
@@ -77,7 +77,7 @@ public final class Commands {
         "YXRlIGl0cyBpbnRlcm5hbCB0cmFja2luZwogdG8gbWF0Y2ggdGhpcyBwb3NlLCBlZmZlY3RpdmVseSBj" + 
         "b3JyZWN0aW5nIGFueSBhY2N1bXVsYXRlZCBkcmlmdC4KIAogVW5pdHM6CiAtIFRyYW5zbGF0aW9uOiBt" + 
         "ZXRlcnMKIC0gUm90YXRpb246IHJhZGlhbnMKCgwKBQQAAgAGEgNXAhoKDAoFBAACAAESA1cbJgoMCgUE" + 
-        "AAIAAxIDVykqCqgFCgIEARIFagCWAQEamgUqCiBNYWluIGNvbW1hbmQgbWVzc2FnZSBzZW50IHRvIHRo" + 
+        "AAIAAxIDVykqCqgFCgIEARIFagCYAQEamgUqCiBNYWluIGNvbW1hbmQgbWVzc2FnZSBzZW50IHRvIHRo" + 
         "ZSBRdWVzdE5hdiBzeXN0ZW0uCiAKIFRoaXMgaXMgdGhlIHByaW1hcnkgbWVzc2FnZSB0eXBlIHVzZWQg",
         "dG8gc2VuZCBjb21tYW5kcyBmcm9tIGV4dGVybmFsIHN5c3RlbXMKIChsaWtlIHJvYm90IGNvZGUpIHRv" + 
         "IHRoZSBRdWVzdCBoZWFkc2V0LiBFYWNoIGNvbW1hbmQgaW5jbHVkZXMgYSB0eXBlIGlkZW50aWZpZXIs" + 
@@ -93,55 +93,58 @@ public final class Commands {
         "IHdoaWNoIHBheWxvYWQgKGlmIGFueSkgc2hvdWxkIGJlIHBvcHVsYXRlZCBhbmQKIGhvdyB0aGUgUXVl" + 
         "c3Qgc2hvdWxkIHByb2Nlc3MgdGhlIGNvbW1hbmQuIFNlZSBRdWVzdE5hdkNvbW1hbmRUeXBlCiBlbnVt" + 
         "IGZvciBhdmFpbGFibGUgY29tbWFuZCB0eXBlcy4KCgwKBQQBAgAGEgNyAhUKDAoFBAECAAESA3IWGgoM" + 
-        "CgUEAQIAAxIDch0eCuECCgQEAQIBEgN9Ahga0wIqCiBVbmlxdWUgaWRlbnRpZmllciBmb3IgdGhpcyBj" + 
+        "CgUEAQIAAxIDch0eCq8DCgQEAQIBEgN/AhgaoQMqCiBVbmlxdWUgaWRlbnRpZmllciBmb3IgdGhpcyBj" + 
         "b21tYW5kIGluc3RhbmNlLgogCiBUaGlzIElEIGlzIHVzZWQgdG8gbWF0Y2ggY29tbWFuZHMgd2l0aCB0" + 
         "aGVpciByZXNwb25zZXMgaW4gYXN5bmNocm9ub3VzCiBjb21tdW5pY2F0aW9uLiBUaGUgY2xpZW50IHNo" + 
         "b3VsZCBnZW5lcmF0ZSB1bmlxdWUgSURzIGZvciBlYWNoIGNvbW1hbmQKIHRvIGF2b2lkIGNvbmZ1c2lv" + 
         "bi4gVGhlIFF1ZXN0IHdpbGwgZWNobyB0aGlzIElEIGluIHRoZSByZXNwb25zZSBtZXNzYWdlLgogCiBS" + 
         "ZWNvbW1lbmRlZDogVXNlIGluY3JlbWVudGluZyBpbnRlZ2VycyBvciB0aW1lc3RhbXBzIGZvciB1bmlx",
-        "dWVuZXNzLgoKDAoFBAECAQUSA30CCAoMCgUEAQIBARIDfQkTCgwKBQQBAgEDEgN9FhcK2QIKBAQBCAAS" + 
-        "BogBApUBAxrIAioKIENvbW1hbmQtc3BlY2lmaWMgcGF5bG9hZCBkYXRhLgogCiBUaGlzIG9uZW9mIGZp" + 
-        "ZWxkIGNvbnRhaW5zIHRoZSBzcGVjaWZpYyBkYXRhIG5lZWRlZCBmb3IgZWFjaCBjb21tYW5kIHR5cGUu" + 
-        "CiBPbmx5IG9uZSBwYXlsb2FkIGZpZWxkIHdpbGwgYmUgc2V0LCBjb3JyZXNwb25kaW5nIHRvIHRoZSBj" + 
-        "b21tYW5kIHR5cGUuCiBDb21tYW5kcyB0aGF0IGRvbid0IHJlcXVpcmUgYWRkaXRpb25hbCBkYXRhIGRv" + 
-        "bid0IG5lZWQgYSBwYXlsb2FkIGVudHJ5LgogCiBGaWVsZCBudW1iZXJpbmcgc3RhcnRzIGF0IDEwIHRv" + 
-        "IGxlYXZlIHJvb20gZm9yIGZ1dHVyZSBjb21tb24gZmllbGRzLgoKDQoFBAEIAAESBIgBCA8KWgoEBAEC" + 
-        "AhIEjQEEPRpMKgogUGF5bG9hZCBmb3IgUE9TRV9SRVNFVCBjb21tYW5kcy4KIFNldCB0aGlzIGZpZWxk" + 
-        "IHdoZW4gdHlwZSA9IFBPU0VfUkVTRVQuCgoNCgUEAQICBhIEjQEEJAoNCgUEAQICARIEjQElNwoNCgUE" + 
-        "AQICAxIEjQE6PAq4BQoCBAISBqgBAM0BARqpBSoKIFJlc3BvbnNlIG1lc3NhZ2Ugc2VudCBiYWNrIGFm" + 
-        "dGVyIHByb2Nlc3NpbmcgYSBjb21tYW5kLgogCiBUaGlzIG1lc3NhZ2UgaXMgc2VudCBieSB0aGUgUXVl" + 
-        "c3QgYmFjayB0byB0aGUgY2xpZW50IGFmdGVyIHByb2Nlc3NpbmcKIGEgUHJvdG9idWZRdWVzdE5hdkNv" + 
-        "bW1hbmQuIEl0IHByb3ZpZGVzIHN0YXR1cyBpbmZvcm1hdGlvbiBhYm91dCB3aGV0aGVyCiB0aGUgY29t" + 
-        "bWFuZCB3YXMgZXhlY3V0ZWQgc3VjY2Vzc2Z1bGx5IGFuZCBhbnkgZXJyb3IgZGV0YWlscyBpZiBpdCBm" + 
-        "YWlsZWQuCiAKIFRoZSByZXNwb25zZSBpcyBtYXRjaGVkIHRvIHRoZSBvcmlnaW5hbCBjb21tYW5kIHVz" + 
-        "aW5nIHRoZSBjb21tYW5kX2lkIGZpZWxkLAogYWxsb3dpbmcgZm9yIHByb3BlciBhc3luY2hyb25vdXMg" + 
-        "Y29tbWFuZCBoYW5kbGluZyBldmVuIHdoZW4gbXVsdGlwbGUKIGNvbW1hbmRzIGFyZSBpbiBmbGlnaHQg" + 
-        "c2ltdWx0YW5lb3VzbHkuCiAKIFJlc3BvbnNlIFRpbWluZzoKIC0gUmVzcG9uc2VzIGFyZSBzZW50IGFm" + 
-        "dGVyIGNvbW1hbmQgcHJvY2Vzc2luZyBjb21wbGV0ZXMKIC0gU29tZSBjb21tYW5kcyBtYXkgdGFrZSB0" + 
-        "aW1lIHRvIGV4ZWN1dGUgKGUuZy4sIHBvc2UgcmVzZXQgd2l0aCB2YWxpZGF0aW9uKQogLSBDbGllbnRz",
-        "IHNob3VsZCBpbXBsZW1lbnQgdGltZW91dHMgZm9yIGNvbW1hbmQgcmVzcG9uc2VzCgoLCgMEAgESBKgB" + 
-        "CCcKkwIKBAQCAgASBLABAhgahAIqCiBDb21tYW5kIElEIHRoYXQgbWF0Y2hlcyB0aGUgb3JpZ2luYWwg" + 
-        "Y29tbWFuZC4KIAogVGhpcyBmaWVsZCBlY2hvZXMgdGhlIGNvbW1hbmRfaWQgZnJvbSB0aGUgb3JpZ2lu" + 
-        "YWwgUHJvdG9idWZRdWVzdE5hdkNvbW1hbmQKIHRoYXQgdGhpcyByZXNwb25zZSBjb3JyZXNwb25kcyB0" + 
-        "by4gQ2xpZW50cyB1c2UgdGhpcyB0byBtYXRjaCByZXNwb25zZXMKIHdpdGggdGhlaXIgb3JpZ2luYWwg" + 
-        "Y29tbWFuZHMgaW4gYXN5bmNocm9ub3VzIGNvbW11bmljYXRpb24uCgoNCgUEAgIABRIEsAECCAoNCgUE" + 
-        "AgIAARIEsAEJEwoNCgUEAgIAAxIEsAEWFwqGAwoEBAICARIEvAECExr3AioKIEluZGljYXRlcyB3aGV0" + 
-        "aGVyIHRoZSBjb21tYW5kIHdhcyBleGVjdXRlZCBzdWNjZXNzZnVsbHkuCiAKIHRydWU6ICBDb21tYW5k" + 
-        "IGNvbXBsZXRlZCBzdWNjZXNzZnVsbHkKIGZhbHNlOiBDb21tYW5kIGZhaWxlZCAoc2VlIGVycm9yX21l" + 
-        "c3NhZ2UgZm9yIGRldGFpbHMpCiAKIE5vdGU6IEEgc3VjY2Vzc2Z1bCByZXNwb25zZSBtZWFucyB0aGUg" + 
-        "Y29tbWFuZCB3YXMgcHJvY2Vzc2VkLCBidXQgZG9lc24ndAogbmVjZXNzYXJpbHkgZ3VhcmFudGVlIHRo" + 
-        "ZSBkZXNpcmVkIG91dGNvbWUgKGUuZy4sIHBvc2UgcmVzZXQgbWlnaHQgc3VjY2VlZAogYnV0IHRyYWNr" + 
-        "aW5nIGNvdWxkIHN0aWxsIGJlIHBvb3IgZHVlIHRvIGVudmlyb25tZW50YWwgY29uZGl0aW9ucykuCgoN" + 
-        "CgUEAgIBBRIEvAECBgoNCgUEAgIBARIEvAEHDgoNCgUEAgIBAxIEvAEREgrIAwoEBAICAhIEzAECGxq5" + 
-        "AyoKIEh1bWFuLXJlYWRhYmxlIGVycm9yIG1lc3NhZ2Ugd2hlbiBzdWNjZXNzID0gZmFsc2UuCiAKIFRo" + 
-        "aXMgZmllbGQgcHJvdmlkZXMgZGV0YWlsZWQgaW5mb3JtYXRpb24gYWJvdXQgd2h5IGEgY29tbWFuZCBm" + 
-        "YWlsZWQuCiBJdCBzaG91bGQgYmUgZW1wdHkgb3IgaWdub3JlZCB3aGVuIHN1Y2Nlc3MgPSB0cnVlLgog" + 
-        "CiBFcnJvciBtZXNzYWdlcyBhcmUgaW50ZW5kZWQgZm9yIGRlYnVnZ2luZyBhbmQgbG9nZ2luZyBwdXJw" + 
-        "b3Nlcy4KIFRoZXkgbWF5IGluY2x1ZGUgdGVjaG5pY2FsIGRldGFpbHMgYWJvdXQgdGhlIGZhaWx1cmUg" + 
-        "Y2F1c2UuCiAKIEV4YW1wbGVzOgogLSAiSW52YWxpZCBwb3NlIGNvb3JkaW5hdGVzOiB4IHZhbHVlIG91",
-        "dCBvZiBmaWVsZCBib3VuZHMiCiAtICJUcmFja2luZyBzeXN0ZW0gbm90IGluaXRpYWxpemVkIgogLSAi" + 
-        "VW5rbm93biBjb21tYW5kIHR5cGUiCgoNCgUEAgICBRIEzAECCAoNCgUEAgICARIEzAEJFgoNCgUEAgIC" + 
-        "AxIEzAEZGmIGcHJvdG8z");
+        "dWVuZXNzLgogCiBOb3RlOiBGb3IgRlJDIHVzZXJzLCB0aGUgdmVuZG9yIGRlcGVuZGVuY3kgd2lsbCBo" + 
+        "YW5kbGUgdGhpcyBhdXRvbWF0aWNhbGx5LgoKDAoFBAECAQUSA38CCAoMCgUEAQIBARIDfwkTCgwKBQQB" + 
+        "AgEDEgN/FhcK2QIKBAQBCAASBooBApcBAxrIAioKIENvbW1hbmQtc3BlY2lmaWMgcGF5bG9hZCBkYXRh" + 
+        "LgogCiBUaGlzIG9uZW9mIGZpZWxkIGNvbnRhaW5zIHRoZSBzcGVjaWZpYyBkYXRhIG5lZWRlZCBmb3Ig" + 
+        "ZWFjaCBjb21tYW5kIHR5cGUuCiBPbmx5IG9uZSBwYXlsb2FkIGZpZWxkIHdpbGwgYmUgc2V0LCBjb3Jy" + 
+        "ZXNwb25kaW5nIHRvIHRoZSBjb21tYW5kIHR5cGUuCiBDb21tYW5kcyB0aGF0IGRvbid0IHJlcXVpcmUg" + 
+        "YWRkaXRpb25hbCBkYXRhIGRvbid0IG5lZWQgYSBwYXlsb2FkIGVudHJ5LgogCiBGaWVsZCBudW1iZXJp" + 
+        "bmcgc3RhcnRzIGF0IDEwIHRvIGxlYXZlIHJvb20gZm9yIGZ1dHVyZSBjb21tb24gZmllbGRzLgoKDQoF" + 
+        "BAEIAAESBIoBCA8KWgoEBAECAhIEjwEEPRpMKgogUGF5bG9hZCBmb3IgUE9TRV9SRVNFVCBjb21tYW5k" + 
+        "cy4KIFNldCB0aGlzIGZpZWxkIHdoZW4gdHlwZSA9IFBPU0VfUkVTRVQuCgoNCgUEAQICBhIEjwEEJAoN" + 
+        "CgUEAQICARIEjwElNwoNCgUEAQICAxIEjwE6PAqTBgoCBAISBqwBANEBARqEBioKIFJlc3BvbnNlIG1l" + 
+        "c3NhZ2Ugc2VudCBiYWNrIGFmdGVyIHByb2Nlc3NpbmcgYSBjb21tYW5kLgogCiBUaGlzIG1lc3NhZ2Ug" + 
+        "aXMgc2VudCBieSB0aGUgUXVlc3QgYmFjayB0byB0aGUgY2xpZW50IGFmdGVyIHByb2Nlc3NpbmcKIGEg" + 
+        "UHJvdG9idWZRdWVzdE5hdkNvbW1hbmQuIEl0IHByb3ZpZGVzIHN0YXR1cyBpbmZvcm1hdGlvbiBhYm91" + 
+        "dCB3aGV0aGVyCiB0aGUgY29tbWFuZCB3YXMgZXhlY3V0ZWQgc3VjY2Vzc2Z1bGx5IGFuZCBhbnkgZXJy" + 
+        "b3IgZGV0YWlscyBpZiBpdCBmYWlsZWQuCiAKIFRoZSByZXNwb25zZSBpcyBtYXRjaGVkIHRvIHRoZSBv" + 
+        "cmlnaW5hbCBjb21tYW5kIHVzaW5nIHRoZSBjb21tYW5kX2lkIGZpZWxkLAogYWxsb3dpbmcgZm9yIHBy" + 
+        "b3BlciBhc3luY2hyb25vdXMgY29tbWFuZCBoYW5kbGluZyBldmVuIHdoZW4gbXVsdGlwbGUKIGNvbW1h" + 
+        "bmRzIGFyZSBpbiBmbGlnaHQgc2ltdWx0YW5lb3VzbHkuCiAKIFJlc3BvbnNlIFRpbWluZzoKIC0gUmVz" + 
+        "cG9uc2VzIGFyZSBzZW50IGFmdGVyIGNvbW1hbmQgcHJvY2Vzc2luZyBjb21wbGV0ZXMKIC0gU29tZSBj",
+        "b21tYW5kcyBtYXkgdGFrZSB0aW1lIHRvIGV4ZWN1dGUgKGUuZy4sIHBvc2UgcmVzZXQgd2l0aCB2YWxp" + 
+        "ZGF0aW9uKQogLSBDbGllbnRzIHNob3VsZCBpbXBsZW1lbnQgdGltZW91dHMgZm9yIGNvbW1hbmQgcmVz" + 
+        "cG9uc2VzCiAKIE5vdGU6IEZvciBGUkMgdXNlcnMsIHRoZSB2ZW5kb3IgZGVwZW5kZW5jeSB3aWxsIGhh" + 
+        "bmRsZSByZXNwb25zZSBtYXRjaGluZyBhdXRvbWF0aWNhbGx5LgoKCwoDBAIBEgSsAQgnCpMCCgQEAgIA" + 
+        "EgS0AQIYGoQCKgogQ29tbWFuZCBJRCB0aGF0IG1hdGNoZXMgdGhlIG9yaWdpbmFsIGNvbW1hbmQuCiAK" + 
+        "IFRoaXMgZmllbGQgZWNob2VzIHRoZSBjb21tYW5kX2lkIGZyb20gdGhlIG9yaWdpbmFsIFByb3RvYnVm" + 
+        "UXVlc3ROYXZDb21tYW5kCiB0aGF0IHRoaXMgcmVzcG9uc2UgY29ycmVzcG9uZHMgdG8uIENsaWVudHMg" + 
+        "dXNlIHRoaXMgdG8gbWF0Y2ggcmVzcG9uc2VzCiB3aXRoIHRoZWlyIG9yaWdpbmFsIGNvbW1hbmRzIGlu" + 
+        "IGFzeW5jaHJvbm91cyBjb21tdW5pY2F0aW9uLgoKDQoFBAICAAUSBLQBAggKDQoFBAICAAESBLQBCRMK" + 
+        "DQoFBAICAAMSBLQBFhcKhgMKBAQCAgESBMABAhMa9wIqCiBJbmRpY2F0ZXMgd2hldGhlciB0aGUgY29t" + 
+        "bWFuZCB3YXMgZXhlY3V0ZWQgc3VjY2Vzc2Z1bGx5LgogCiB0cnVlOiAgQ29tbWFuZCBjb21wbGV0ZWQg" + 
+        "c3VjY2Vzc2Z1bGx5CiBmYWxzZTogQ29tbWFuZCBmYWlsZWQgKHNlZSBlcnJvcl9tZXNzYWdlIGZvciBk" + 
+        "ZXRhaWxzKQogCiBOb3RlOiBBIHN1Y2Nlc3NmdWwgcmVzcG9uc2UgbWVhbnMgdGhlIGNvbW1hbmQgd2Fz" + 
+        "IHByb2Nlc3NlZCwgYnV0IGRvZXNuJ3QKIG5lY2Vzc2FyaWx5IGd1YXJhbnRlZSB0aGUgZGVzaXJlZCBv" + 
+        "dXRjb21lIChlLmcuLCBwb3NlIHJlc2V0IG1pZ2h0IHN1Y2NlZWQKIGJ1dCB0cmFja2luZyBjb3VsZCBz" + 
+        "dGlsbCBiZSBwb29yIGR1ZSB0byBlbnZpcm9ubWVudGFsIGNvbmRpdGlvbnMpLgoKDQoFBAICAQUSBMAB" + 
+        "AgYKDQoFBAICAQESBMABBw4KDQoFBAICAQMSBMABERIKyAMKBAQCAgISBNABAhsauQMqCiBIdW1hbi1y" + 
+        "ZWFkYWJsZSBlcnJvciBtZXNzYWdlIHdoZW4gc3VjY2VzcyA9IGZhbHNlLgogCiBUaGlzIGZpZWxkIHBy" + 
+        "b3ZpZGVzIGRldGFpbGVkIGluZm9ybWF0aW9uIGFib3V0IHdoeSBhIGNvbW1hbmQgZmFpbGVkLgogSXQg" + 
+        "c2hvdWxkIGJlIGVtcHR5IG9yIGlnbm9yZWQgd2hlbiBzdWNjZXNzID0gdHJ1ZS4KIAogRXJyb3IgbWVz",
+        "c2FnZXMgYXJlIGludGVuZGVkIGZvciBkZWJ1Z2dpbmcgYW5kIGxvZ2dpbmcgcHVycG9zZXMuCiBUaGV5" + 
+        "IG1heSBpbmNsdWRlIHRlY2huaWNhbCBkZXRhaWxzIGFib3V0IHRoZSBmYWlsdXJlIGNhdXNlLgogCiBF" + 
+        "eGFtcGxlczoKIC0gIkludmFsaWQgcG9zZSBjb29yZGluYXRlczogeCB2YWx1ZSBvdXQgb2YgZmllbGQg" + 
+        "Ym91bmRzIgogLSAiVHJhY2tpbmcgc3lzdGVtIG5vdCBpbml0aWFsaXplZCIKIC0gIlVua25vd24gY29t" + 
+        "bWFuZCB0eXBlIgoKDQoFBAICAgUSBNABAggKDQoFBAICAgESBNABCRYKDQoFBAICAgMSBNABGRpiBnBy" + 
+        "b3RvMw==");
 
     static final Descriptors.FileDescriptor descriptor = Descriptors.FileDescriptor.internalBuildGeneratedFileFrom("commands.proto", "questnav.protos.commands", descriptorData, Geometry2D.getDescriptor());
 
@@ -736,6 +739,8 @@ public final class Commands {
          *  to avoid confusion. The Quest will echo this ID in the response message.
          *  
          *  Recommended: Use incrementing integers or timestamps for uniqueness.
+         *  
+         *  Note: For FRC users, the vendor dependency will handle this automatically.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -816,6 +821,8 @@ public final class Commands {
          *  to avoid confusion. The Quest will echo this ID in the response message.
          *  
          *  Recommended: Use incrementing integers or timestamps for uniqueness.
+         *  
+         *  Note: For FRC users, the vendor dependency will handle this automatically.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -835,6 +842,8 @@ public final class Commands {
          *  to avoid confusion. The Quest will echo this ID in the response message.
          *  
          *  Recommended: Use incrementing integers or timestamps for uniqueness.
+         *  
+         *  Note: For FRC users, the vendor dependency will handle this automatically.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -856,6 +865,8 @@ public final class Commands {
          *  to avoid confusion. The Quest will echo this ID in the response message.
          *  
          *  Recommended: Use incrementing integers or timestamps for uniqueness.
+         *  
+         *  Note: For FRC users, the vendor dependency will handle this automatically.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -875,6 +886,8 @@ public final class Commands {
          *  to avoid confusion. The Quest will echo this ID in the response message.
          *  
          *  Recommended: Use incrementing integers or timestamps for uniqueness.
+         *  
+         *  Note: For FRC users, the vendor dependency will handle this automatically.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -1372,6 +1385,8 @@ public final class Commands {
      *  - Responses are sent after command processing completes
      *  - Some commands may take time to execute (e.g., pose reset with validation)
      *  - Clients should implement timeouts for command responses
+     *  
+     *  Note: For FRC users, the vendor dependency will handle response matching automatically.
      * </pre>
      *
      * Protobuf type {@code ProtobufQuestNavCommandResponse}
@@ -1451,6 +1466,8 @@ public final class Commands {
          *  - Responses are sent after command processing completes
          *  - Some commands may take time to execute (e.g., pose reset with validation)
          *  - Clients should implement timeouts for command responses
+         *  
+         *  Note: For FRC users, the vendor dependency will handle response matching automatically.
          * </pre>
          *
          * @return a new empty instance of {@code ProtobufQuestNavCommandResponse}
