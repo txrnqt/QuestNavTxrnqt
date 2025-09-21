@@ -74,7 +74,7 @@ items:
 
     - X-axis: Points toward red     - X-axis: Points right
 
-    - Y-axis: Points left           - Y-axis: Points up  
+    - Y-axis: Points left           - Y-axis: Points up
 
     - Z-axis: Points up             - Z-axis: Points forward
 

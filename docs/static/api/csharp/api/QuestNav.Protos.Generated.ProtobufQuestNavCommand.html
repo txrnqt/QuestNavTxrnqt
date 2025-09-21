@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuestNavCommand | QuestNav API Documentation ">
     
-    <meta name="description" content="Main Command message">
+    <meta name="description" content="Main command message sent to the QuestNav system. This is the primary message type used to send commands from external systems (like robot code) to the Quest headset. Each command includes a type identifier, a unique tracking ID, and optional payload data specific to the command type. The command system is designed for asynchronous operation - commands are sent and responses are received separately, matched by the command_id field. Message Flow:  Client creates command with unique command_id Client sets appropriate type and payload Client sends command to Quest Quest processes command and sends response with matching command_id">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,22 @@
 
 
   <h1 id="QuestNav_Protos_Generated_ProtobufQuestNavCommand" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavCommand" class="text-break">Class ProtobufQuestNavCommand</h1>
-  <div class="markdown level0 summary"><p>Main Command message</p>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Main command message sent to the QuestNav system.</p>
+<p>This is the primary message type used to send commands from external systems
+(like robot code) to the Quest headset. Each command includes a type identifier,
+a unique tracking ID, and optional payload data specific to the command type.</p>
+<p>The command system is designed for asynchronous operation - commands are sent
+and responses are received separately, matched by the command_id field.</p>
+<p>Message Flow:</p>
+<ol>
+<li>Client creates command with unique command_id</li>
+<li>Client sets appropriate type and payload</li>
+<li>Client sends command to Quest</li>
+<li>Quest processes command and sends response with matching command_id</li>
+</ol>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -225,7 +240,14 @@
 </h3>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavCommand_CommandId_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavCommand.CommandId*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavCommand_CommandId" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavCommand.CommandId">CommandId</h4>
-  <div class="markdown level1 summary"><p>Command ID for tracking/responses</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Unique identifier for this command instance.</p>
+<p>This ID is used to match commands with their responses in asynchronous
+communication. The client should generate unique IDs for each command
+to avoid confusion. The Quest will echo this ID in the response message.</p>
+<p>Recommended: Use incrementing integers or timestamps for uniqueness.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -318,8 +340,11 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavCommand_PoseResetPayload_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavCommand.PoseResetPayload*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavCommand_PoseResetPayload" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavCommand.PoseResetPayload">PoseResetPayload</h4>
-  <div class="markdown level1 summary"><p>Future payloads can be added here:
-(Commands with no payload don't need an entry)</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Payload for POSE_RESET commands.
+Set this field when type = POSE_RESET.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -343,7 +368,13 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavCommand_Type_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavCommand.Type*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavCommand_Type" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavCommand.Type">Type</h4>
-  <div class="markdown level1 summary"><p>The type of command</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>The type of command being sent.</p>
+<p>This field determines which payload (if any) should be populated and
+how the Quest should process the command. See QuestNavCommandType
+enum for available command types.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

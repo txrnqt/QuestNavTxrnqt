@@ -58,7 +58,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: NT_LOG_LEVEL_MIN
     path: ../Assets/QuestNav/Core/QuestNavConstants.cs
-    startLine: 183
+    startLine: 191
   assemblies:
   - QuestNav
   namespace: QuestNav.Core
@@ -87,7 +87,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: NT_LOG_LEVEL_MAX
     path: ../Assets/QuestNav/Core/QuestNavConstants.cs
-    startLine: 188
+    startLine: 196
   assemblies:
   - QuestNav
   namespace: QuestNav.Core

@@ -21,7 +21,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Timing
     path: ../Assets/QuestNav/Core/QuestNavConstants.cs
-    startLine: 194
+    startLine: 202
   assemblies:
   - QuestNav
   namespace: QuestNav.Core
@@ -58,7 +58,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: SLOW_UPDATE_HZ
     path: ../Assets/QuestNav/Core/QuestNavConstants.cs
-    startLine: 199
+    startLine: 207
   assemblies:
   - QuestNav
   namespace: QuestNav.Core
@@ -87,7 +87,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MAIN_UPDATE_HZ
     path: ../Assets/QuestNav/Core/QuestNavConstants.cs
-    startLine: 204
+    startLine: 212
   assemblies:
   - QuestNav
   namespace: QuestNav.Core

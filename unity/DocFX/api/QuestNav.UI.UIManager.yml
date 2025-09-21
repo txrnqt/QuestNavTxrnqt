@@ -111,7 +111,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TeamNumber
     path: ../Assets/QuestNav/UI/UIManager.cs
-    startLine: 131
+    startLine: 133
   assemblies:
   - QuestNav
   namespace: QuestNav.UI
@@ -142,7 +142,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: UIPeriodic
     path: ../Assets/QuestNav/UI/UIManager.cs
-    startLine: 257
+    startLine: 265
   assemblies:
   - QuestNav
   namespace: QuestNav.UI

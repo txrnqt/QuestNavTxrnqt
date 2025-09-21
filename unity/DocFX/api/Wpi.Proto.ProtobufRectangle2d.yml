@@ -38,10 +38,31 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufRectangle2d
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1223
+    startLine: 1452
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 2D rectangle with arbitrary orientation.
+
+     This message defines a rectangular region in 2D space using a center pose
+     and width/height dimensions. The rectangle can be rotated to any orientation
+     based on the center pose's rotation component.
+
+     Geometric Properties:
+     - Center point and orientation defined by pose
+     - Width extends along the pose's X-axis (local forward direction)
+     - Height extends along the pose's Y-axis (local left direction)
+     - Total area = xWidth * yWidth
+
+     Applications:
+     - Robot footprint representation
+     - Obstacle and keep-out zone definitions
+     - Field element boundaries
+     - Collision detection regions
+     - Path planning constraints
+  example: []
   syntax:
     content: 'public sealed class ProtobufRectangle2d : IMessage<ProtobufRectangle2d>, IEquatable<ProtobufRectangle2d>, IDeepCloneable<ProtobufRectangle2d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufRectangle2d Implements IMessage(Of ProtobufRectangle2d), IEquatable(Of ProtobufRectangle2d), IDeepCloneable(Of ProtobufRectangle2d), IBufferMessage, IMessage
@@ -75,7 +96,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1230
+    startLine: 1459
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -104,7 +125,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1234
+    startLine: 1463
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -133,7 +154,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1246
+    startLine: 1475
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -162,7 +183,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1254
+    startLine: 1483
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -194,7 +215,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1263
+    startLine: 1492
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -227,7 +248,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CenterFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1270
+    startLine: 1499
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -256,10 +277,22 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Center
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1272
+    startLine: 1513
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Center pose of the rectangle.
+
+     The translation component specifies the center point of the rectangle
+     in the coordinate system. The rotation component specifies the
+     orientation of the rectangle's local coordinate frame.
+
+     The rectangle's edges are aligned with this local coordinate frame:
+     - Width extends along local X-axis (rotated forward direction)
+     - Height extends along local Y-axis (rotated left direction)
+  example: []
   syntax:
     content: public ProtobufPose2d Center { get; set; }
     parameters: []
@@ -285,7 +318,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: XWidthFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1282
+    startLine: 1523
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -314,10 +347,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: XWidth
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1284
+    startLine: 1536
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Width of the rectangle along its local X-axis.
+
+     This is the dimension of the rectangle in the direction of the
+     center pose's forward direction (after rotation). The rectangle
+     extends ±xWidth/2 from the center along this axis.
+
+     Units: meters
+     Must be positive
+  example: []
   syntax:
     content: public double XWidth { get; set; }
     parameters: []
@@ -343,7 +387,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: YWidthFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1294
+    startLine: 1546
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -372,10 +416,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: YWidth
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1296
+    startLine: 1559
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Height of the rectangle along its local Y-axis.
+
+     This is the dimension of the rectangle in the direction of the
+     center pose's left direction (after rotation). The rectangle
+     extends ±yWidth/2 from the center along this axis.
+
+     Units: meters
+     Must be positive
+  example: []
   syntax:
     content: public double YWidth { get; set; }
     parameters: []
@@ -401,7 +456,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1305
+    startLine: 1568
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -437,7 +492,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1311
+    startLine: 1574
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +526,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1326
+    startLine: 1589
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -501,7 +556,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1339
+    startLine: 1602
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -531,7 +586,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1345
+    startLine: 1608
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -565,7 +620,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1391
+    startLine: 1654
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -600,7 +655,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1410
+    startLine: 1673
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -634,7 +689,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1431
+    startLine: 1694
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

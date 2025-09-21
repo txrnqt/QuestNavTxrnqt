@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufPose3d | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a complete 3D pose (position and orientation). This message combines a 3D position (translation) with a 3D orientation (rotation) to fully describe an object&#39;s pose in 3D space. This extends the 2D pose concept into three dimensions for applications requiring full spatial representation. A 3D pose answers two fundamental questions:  Where is the object in 3D space? (translation component) How is it oriented in 3D space? (rotation component)  Applications:  Camera poses for vision processing AprilTag poses in 3D space Robotic arm end-effector poses Drone/UAV poses (position and attitude) 3D object tracking and localization Sensor mounting positions and orientations  The pose represents the object&#39;s coordinate frame relative to a reference coordinate frame, enabling transformation of points and vectors between the two coordinate systems. Coordinate Frame Transformation: Given a point P in the object&#39;s local frame, the corresponding point in the reference frame is: P_ref = rotation * P_local + translation">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,35 @@
 
 
   <h1 id="Wpi_Proto_ProtobufPose3d" data-uid="Wpi.Proto.ProtobufPose3d" class="text-break">Class ProtobufPose3d</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a complete 3D pose (position and orientation).</p>
+<p>This message combines a 3D position (translation) with a 3D orientation
+(rotation) to fully describe an object's pose in 3D space. This extends
+the 2D pose concept into three dimensions for applications requiring
+full spatial representation.</p>
+<p>A 3D pose answers two fundamental questions:</p>
+<ol>
+<li>Where is the object in 3D space? (translation component)</li>
+<li>How is it oriented in 3D space? (rotation component)</li>
+</ol>
+<p>Applications:</p>
+<ul>
+<li>Camera poses for vision processing</li>
+<li>AprilTag poses in 3D space</li>
+<li>Robotic arm end-effector poses</li>
+<li>Drone/UAV poses (position and attitude)</li>
+<li>3D object tracking and localization</li>
+<li>Sensor mounting positions and orientations</li>
+</ul>
+<p>The pose represents the object's coordinate frame relative to a reference
+coordinate frame, enabling transformation of points and vectors between
+the two coordinate systems.</p>
+<p>Coordinate Frame Transformation:
+Given a point P in the object's local frame, the corresponding point
+in the reference frame is: P_ref = rotation * P_local + translation</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -247,7 +275,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufPose3d_Rotation_" data-uid="Wpi.Proto.ProtobufPose3d.Rotation*"></a>
   <h4 id="Wpi_Proto_ProtobufPose3d_Rotation" data-uid="Wpi.Proto.ProtobufPose3d.Rotation">Rotation</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Orientation component of the 3D pose.</p>
+<p>This specifies how the object is oriented in 3D space relative to
+the reference coordinate system. The rotation represents the orientation
+of the object's coordinate frame relative to the reference frame.</p>
+<p>Combined with translation, this fully defines the object's pose and
+allows for coordinate transformations between object and reference frames.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -270,7 +307,14 @@
   </table>
   <a id="Wpi_Proto_ProtobufPose3d_Translation_" data-uid="Wpi.Proto.ProtobufPose3d.Translation*"></a>
   <h4 id="Wpi_Proto_ProtobufPose3d_Translation" data-uid="Wpi.Proto.ProtobufPose3d.Translation">Translation</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Position component of the 3D pose.</p>
+<p>This specifies where the object is located in 3D space using the
+reference coordinate system. The translation represents the position
+of the object's coordinate frame origin relative to the reference frame.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

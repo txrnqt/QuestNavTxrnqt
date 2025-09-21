@@ -18,8 +18,10 @@ namespace QuestNav.Utils
         {
             /// <summary>Informational messages</summary>
             Info,
+
             /// <summary>Warning messages</summary>
             Warning,
+
             /// <summary>Error messages</summary>
             Error,
         }
@@ -41,12 +43,16 @@ namespace QuestNav.Utils
         {
             /// <summary>The log message content</summary>
             public string Message { get; private set; }
+
             /// <summary>The filename where the log was called from</summary>
             public string CallingFileName { get; private set; }
+
             /// <summary>Number of times this identical message was logged</summary>
             public int Count { get; set; }
+
             /// <summary>The log level of this entry</summary>
             public LogLevel Level { get; private set; }
+
             /// <summary>Associated exception if this is an exception log</summary>
             public System.Exception Exception { get; private set; }
 

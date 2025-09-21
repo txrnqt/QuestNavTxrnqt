@@ -36,10 +36,31 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufPose2d
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 472
+    startLine: 564
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a complete 2D pose (position and orientation).
+
+     This message combines a 2D position (translation) with a 2D orientation
+     (rotation) to fully describe an object's pose in the 2D plane. This is
+     the fundamental representation for robot poses in WPILib and QuestNav.
+
+     A pose answers two questions:
+     1. Where is the object? (translation component)
+     2. Which direction is it facing? (rotation component)
+
+     Applications:
+     - Robot pose on field (primary use in QuestNav)
+     - Waypoint targets for path following
+     - Relative poses between objects
+     - Initial poses for localization
+
+     The pose represents the robot's coordinate frame relative to the field
+     coordinate frame, allowing transformation of points between the two systems.
+  example: []
   syntax:
     content: 'public sealed class ProtobufPose2d : IMessage<ProtobufPose2d>, IEquatable<ProtobufPose2d>, IDeepCloneable<ProtobufPose2d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufPose2d Implements IMessage(Of ProtobufPose2d), IEquatable(Of ProtobufPose2d), IDeepCloneable(Of ProtobufPose2d), IBufferMessage, IMessage
@@ -73,7 +94,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 479
+    startLine: 571
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -102,7 +123,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 483
+    startLine: 575
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -131,7 +152,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 495
+    startLine: 587
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -160,7 +181,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 503
+    startLine: 595
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -192,7 +213,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 511
+    startLine: 603
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -225,7 +246,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TranslationFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 518
+    startLine: 610
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -254,10 +275,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Translation
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 520
+    startLine: 620
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Position component of the pose.
+
+     This specifies where the robot is located on the field using the
+     field coordinate system. The translation represents the position of
+     the robot's coordinate frame origin (typically the robot center).
+  example: []
   syntax:
     content: public ProtobufTranslation2d Translation { get; set; }
     parameters: []
@@ -283,7 +312,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: RotationFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 530
+    startLine: 630
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -312,10 +341,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Rotation
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 532
+    startLine: 643
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Orientation component of the pose.
+
+     This specifies which direction the robot is facing on the field.
+     The rotation represents the angle between the robot's forward direction
+     and the field's positive X-axis (forward direction).
+
+     Combined with translation, this fully defines the robot's pose and
+     allows for coordinate transformations between robot and field frames.
+  example: []
   syntax:
     content: public ProtobufRotation2d Rotation { get; set; }
     parameters: []
@@ -341,7 +381,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 541
+    startLine: 652
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -377,7 +417,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 547
+    startLine: 658
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -411,7 +451,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 561
+    startLine: 672
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -441,7 +481,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 573
+    startLine: 684
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +511,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 579
+    startLine: 690
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -505,7 +545,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 617
+    startLine: 728
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -540,7 +580,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 633
+    startLine: 744
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -574,7 +614,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 654
+    startLine: 765
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

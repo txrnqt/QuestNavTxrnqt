@@ -91,12 +91,12 @@ public class NetworkTableConnection : INetworkTableConnection
     /// Publisher for frame data (position/rotation updates)
     /// </summary>
     private ProtobufPublisher<ProtobufQuestNavFrameData> frameDataPublisher;
-    
+
     /// <summary>
     /// Publisher for device data (tracking status, battery, etc.)
     /// </summary>
     private ProtobufPublisher<ProtobufQuestNavDeviceData> deviceDataPublisher;
-    
+
     /// <summary>
     /// Publisher for command responses (Quest to robot)
     /// </summary>
@@ -111,7 +111,7 @@ public class NetworkTableConnection : INetworkTableConnection
     /// Flag indicating if a team number has been set
     /// </summary>
     private bool teamNumberSet = false;
-    
+
     /// <summary>
     /// Flag indicating if an IP address has been set
     /// </summary>
@@ -120,23 +120,23 @@ public class NetworkTableConnection : INetworkTableConnection
 
     /// <summary>
     /// Initializes a new NetworkTables connection with publishers and subscribers for QuestNav communication.
-    /// 
+    ///
     /// NETWORKTABLES ARCHITECTURE:
     /// NetworkTables is FRC's standard communication protocol, providing:
     /// - Automatic discovery and connection to robot/simulator
     /// - Reliable UDP-based messaging with automatic reconnection
     /// - Topic-based publish/subscribe pattern
     /// - Cross-platform compatibility (Windows, Linux, macOS)
-    /// 
+    ///
     /// QUESTNAV COMMUNICATION TOPICS:
     /// Publishers (Quest → Robot):
     /// - /QuestNav/frameData: High-frequency pose updates (100Hz)
-    /// - /QuestNav/deviceData: Device status updates (3Hz) 
+    /// - /QuestNav/deviceData: Device status updates (3Hz)
     /// - /QuestNav/response: Command execution results
-    /// 
+    ///
     /// Subscribers (Robot → Quest):
     /// - /QuestNav/request: Commands from robot (pose resets, etc.)
-    /// 
+    ///
     /// PROTOBUF SERIALIZATION:
     /// Uses Protocol Buffers for efficient, versioned message serialization.
     /// This provides type safety, backward compatibility, and compact encoding.
@@ -168,14 +168,14 @@ public class NetworkTableConnection : INetworkTableConnection
             "questnav.protos.data.ProtobufQuestNavFrameData",
             QuestNavConstants.Network.NT_PUBLISHER_SETTINGS
         );
-        
+
         // Low-frequency device status (3Hz) - robot uses this for diagnostics
         deviceDataPublisher = ntInstance.GetProtobufPublisher<ProtobufQuestNavDeviceData>(
             QuestNavConstants.Topics.DEVICE_DATA,
             "questnav.protos.data.ProtobufQuestNavDeviceData",
             QuestNavConstants.Network.NT_PUBLISHER_SETTINGS
         );
-        
+
         // Command responses - Quest confirms command execution to robot
         commandResponsePublisher = ntInstance.GetProtobufPublisher<ProtobufQuestNavCommandResponse>(
             QuestNavConstants.Topics.COMMAND_RESPONSE,

@@ -36,10 +36,31 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufTransform2d
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 716
+    startLine: 848
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 2D coordinate transformation.
+
+     This message describes how to transform coordinates from one 2D coordinate
+     frame to another. It combines a translation and rotation to define the
+     relationship between two coordinate systems.
+
+     Mathematical Interpretation:
+     Given a point P in frame A, the corresponding point in frame B is:
+     P_B = Transform2d * P_A = Rotation * P_A + Translation
+
+     Applications:
+     - Transform between robot and field coordinate frames
+     - Relative positioning between objects
+     - Coordinate frame conversions in path planning
+     - Sensor calibration and mounting offsets
+
+     The transform represents "how to get from frame A to frame B" and can be
+     inverted to get the reverse transformation.
+  example: []
   syntax:
     content: 'public sealed class ProtobufTransform2d : IMessage<ProtobufTransform2d>, IEquatable<ProtobufTransform2d>, IDeepCloneable<ProtobufTransform2d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufTransform2d Implements IMessage(Of ProtobufTransform2d), IEquatable(Of ProtobufTransform2d), IDeepCloneable(Of ProtobufTransform2d), IBufferMessage, IMessage
@@ -73,7 +94,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 723
+    startLine: 855
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -102,7 +123,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 727
+    startLine: 859
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -131,7 +152,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 739
+    startLine: 871
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -160,7 +181,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 747
+    startLine: 879
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -192,7 +213,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 755
+    startLine: 887
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -225,7 +246,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TranslationFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 762
+    startLine: 894
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -254,10 +275,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Translation
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 764
+    startLine: 904
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Translation component of the transformation.
+
+     This represents the displacement between the origins of the two
+     coordinate frames. It specifies how far and in which direction
+     the target frame's origin is from the source frame's origin.
+  example: []
   syntax:
     content: public ProtobufTranslation2d Translation { get; set; }
     parameters: []
@@ -283,7 +312,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: RotationFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 774
+    startLine: 914
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -312,10 +341,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Rotation
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 776
+    startLine: 927
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Rotation component of the transformation.
+
+     This represents the angular difference between the two coordinate
+     frames. It specifies how much the target frame is rotated relative
+     to the source frame.
+
+     The rotation is applied before the translation in the transformation
+     sequence (standard mathematical convention).
+  example: []
   syntax:
     content: public ProtobufRotation2d Rotation { get; set; }
     parameters: []
@@ -341,7 +381,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 785
+    startLine: 936
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -377,7 +417,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 791
+    startLine: 942
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -411,7 +451,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 805
+    startLine: 956
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -441,7 +481,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 817
+    startLine: 968
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +511,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 823
+    startLine: 974
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -505,7 +545,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 861
+    startLine: 1012
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -540,7 +580,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 877
+    startLine: 1028
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -574,7 +614,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 898
+    startLine: 1049
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

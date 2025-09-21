@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuaternion | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a quaternion for 3D rotation. Quaternions provide a mathematically robust way to represent 3D rotations without the singularities (gimbal lock) that can occur with Euler angles. They are the preferred representation for 3D rotations in robotics. Mathematical Properties:  Unit quaternion: w&#178; + x&#178; + y&#178; + z&#178; = 1 Represents rotation around axis (x,y,z) by angle θ: w = cos(θ/2), (x,y,z) = sin(θ/2) * unit_axis Identity rotation: (w=1, x=0, y=0, z=0) Conjugate: (w, -x, -y, -z) represents inverse rotation  Applications:  3D object orientations IMU/gyroscope data representation Camera pose orientations Robotic arm joint orientations Smooth rotation interpolation (SLERP)  Advantages over Euler angles:  No gimbal lock singularities Smooth interpolation Efficient composition of rotations Numerically stable">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,37 @@
 
 
   <h1 id="Wpi_Proto_ProtobufQuaternion" data-uid="Wpi.Proto.ProtobufQuaternion" class="text-break">Class ProtobufQuaternion</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a quaternion for 3D rotation.</p>
+<p>Quaternions provide a mathematically robust way to represent 3D rotations
+without the singularities (gimbal lock) that can occur with Euler angles.
+They are the preferred representation for 3D rotations in robotics.</p>
+<p>Mathematical Properties:</p>
+<ul>
+<li>Unit quaternion: w² + x² + y² + z² = 1</li>
+<li>Represents rotation around axis (x,y,z) by angle θ:
+w = cos(θ/2), (x,y,z) = sin(θ/2) * unit_axis</li>
+<li>Identity rotation: (w=1, x=0, y=0, z=0)</li>
+<li>Conjugate: (w, -x, -y, -z) represents inverse rotation</li>
+</ul>
+<p>Applications:</p>
+<ul>
+<li>3D object orientations</li>
+<li>IMU/gyroscope data representation</li>
+<li>Camera pose orientations</li>
+<li>Robotic arm joint orientations</li>
+<li>Smooth rotation interpolation (SLERP)</li>
+</ul>
+<p>Advantages over Euler angles:</p>
+<ul>
+<li>No gimbal lock singularities</li>
+<li>Smooth interpolation</li>
+<li>Efficient composition of rotations</li>
+<li>Numerically stable</li>
+</ul>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -293,7 +323,15 @@
   </table>
   <a id="Wpi_Proto_ProtobufQuaternion_W_" data-uid="Wpi.Proto.ProtobufQuaternion.W*"></a>
   <h4 id="Wpi_Proto_ProtobufQuaternion_W" data-uid="Wpi.Proto.ProtobufQuaternion.W">W</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>W component (scalar/real part) of the quaternion.</p>
+<p>This is the &quot;real&quot; or &quot;scalar&quot; component of the quaternion.
+For a rotation by angle θ around an axis, w = cos(θ/2).</p>
+<p>Range: [-1, 1] for unit quaternions
+Identity rotation: w = 1</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -316,7 +354,15 @@
   </table>
   <a id="Wpi_Proto_ProtobufQuaternion_X_" data-uid="Wpi.Proto.ProtobufQuaternion.X*"></a>
   <h4 id="Wpi_Proto_ProtobufQuaternion_X" data-uid="Wpi.Proto.ProtobufQuaternion.X">X</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>X component (i coefficient) of the quaternion.</p>
+<p>This is the coefficient of the i basis quaternion.
+For a rotation by angle θ around axis (ax, ay, az),
+x = sin(θ/2) * ax (where (ax, ay, az) is unit length).</p>
+<p>Range: [-1, 1] for unit quaternions</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -339,7 +385,15 @@
   </table>
   <a id="Wpi_Proto_ProtobufQuaternion_Y_" data-uid="Wpi.Proto.ProtobufQuaternion.Y*"></a>
   <h4 id="Wpi_Proto_ProtobufQuaternion_Y" data-uid="Wpi.Proto.ProtobufQuaternion.Y">Y</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Y component (j coefficient) of the quaternion.</p>
+<p>This is the coefficient of the j basis quaternion.
+For a rotation by angle θ around axis (ax, ay, az),
+y = sin(θ/2) * ay (where (ax, ay, az) is unit length).</p>
+<p>Range: [-1, 1] for unit quaternions</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -362,7 +416,15 @@
   </table>
   <a id="Wpi_Proto_ProtobufQuaternion_Z_" data-uid="Wpi.Proto.ProtobufQuaternion.Z*"></a>
   <h4 id="Wpi_Proto_ProtobufQuaternion_Z" data-uid="Wpi.Proto.ProtobufQuaternion.Z">Z</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Z component (k coefficient) of the quaternion.</p>
+<p>This is the coefficient of the k basis quaternion.
+For a rotation by angle θ around axis (ax, ay, az),
+z = sin(θ/2) * az (where (ax, ay, az) is unit length).</p>
+<p>Range: [-1, 1] for unit quaternions</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

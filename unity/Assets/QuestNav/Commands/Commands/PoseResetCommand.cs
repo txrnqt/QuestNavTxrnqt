@@ -80,22 +80,22 @@ namespace QuestNav.Commands.Commands
             {
                 /*
                  * POSE RESET ALGORITHM EXPLANATION:
-                 * 
+                 *
                  * The challenge: We need to move the VR camera to a specific field position, but the user
                  * might be standing anywhere in their physical play space. We can't move the user physically,
                  * so we move the virtual world around them.
-                 * 
+                 *
                  * VR Hierarchy:
                  * - vrCameraRoot: The "world origin" that we can move/rotate
                  * - vrCamera: The actual headset position (controlled by VR tracking, we can't move this directly)
-                 * 
+                 *
                  * Algorithm Steps:
                  * 1. Convert target field coordinates to Unity world coordinates
                  * 2. Calculate how much we need to rotate the world to align headset orientation
                  * 3. Capture the headset's offset from world origin BEFORE rotation
                  * 4. Rotate the world origin to align orientations
                  * 5. Move the world origin so the headset ends up at the target position
-                 * 
+                 *
                  * This ensures the user's physical position in their room doesn't change, but their
                  * virtual position on the field matches what the robot expects.
                  */

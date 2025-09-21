@@ -38,11 +38,27 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufQuestNavDeviceData
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 332
+    startLine: 405
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Device data that is sent slower
+  summary: >-
+    *
+     Lower-frequency device status data sent from Quest to external systems.
+
+     This message contains device health and status information that doesn't need
+     to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+     to provide monitoring and diagnostic information without consuming excessive
+     bandwidth.
+
+     This data helps external systems:
+     - Monitor Quest device health
+     - Detect tracking system issues
+     - Implement failsafe behaviors
+     - Provide user feedback about system status
+
+     The information is useful for both autonomous operation and debugging/
+     troubleshooting scenarios.
   example: []
   syntax:
     content: 'public sealed class ProtobufQuestNavDeviceData : IMessage<ProtobufQuestNavDeviceData>, IEquatable<ProtobufQuestNavDeviceData>, IDeepCloneable<ProtobufQuestNavDeviceData>, IBufferMessage, IMessage'
@@ -77,7 +93,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 339
+    startLine: 412
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -106,7 +122,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 343
+    startLine: 416
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -135,7 +151,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 355
+    startLine: 428
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -164,7 +180,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 363
+    startLine: 436
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -196,7 +212,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 372
+    startLine: 445
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -229,7 +245,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TrackingLostCounterFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 379
+    startLine: 452
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -258,11 +274,29 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TrackingLostCounter
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 384
+    startLine: 474
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Number of times the Quest has lost tracking after having it since the app started
+  summary: >-
+    *
+     Count of tracking loss events since app startup.
+
+     This counter increments each time the Quest's tracking system loses
+     tracking after having established it. Tracking loss can occur due to:
+     - Poor lighting conditions
+     - Lack of visual features in environment
+     - Rapid motion or acceleration
+     - Occlusion of cameras
+     - Hardware issues
+
+     A high or rapidly increasing counter may indicate:
+     - Environmental issues (lighting, features)
+     - Quest mounting problems (vibration, obstruction)
+     - Hardware degradation
+
+     This metric helps assess tracking system reliability and can trigger
+     alerts or fallback behaviors in robot code.
   example: []
   syntax:
     content: public int TrackingLostCounter { get; set; }
@@ -289,7 +323,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CurrentlyTrackingFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 394
+    startLine: 484
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -318,11 +352,30 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CurrentlyTracking
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 399
+    startLine: 507
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: If the Quest is currently tracking?
+  summary: >-
+    *
+     Current tracking status of the Quest device.
+
+     true:  Quest is actively tracking and pose data is reliable
+     false: Quest has lost tracking and pose data should not be trusted
+
+     When tracking is lost:
+     - Pose data becomes stale and unreliable
+     - Robot should switch to alternative localization methods
+     - Movement should be limited or stopped for safety
+
+     Tracking can be recovered by:
+     - Improving lighting conditions
+     - Moving to area with more visual features
+     - Reducing motion to allow system to re-initialize
+     - Performing pose reset when tracking recovers
+
+     External systems should monitor this field and implement appropriate
+     fallback behaviors when tracking is lost.
   example: []
   syntax:
     content: public bool CurrentlyTracking { get; set; }
@@ -349,7 +402,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: BatteryPercentFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 409
+    startLine: 517
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -378,11 +431,33 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: BatteryPercent
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 414
+    startLine: 543
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: The battery percentage of the Quest
+  summary: >-
+    *
+     Quest device battery level as a percentage (0-100).
+
+     This provides the current battery charge level of the Quest headset,
+     allowing external systems to:
+     - Monitor power status during operation
+     - Implement low-battery warnings or behaviors
+     - Plan operation duration and charging needs
+     - Trigger graceful shutdown procedures
+
+     Battery Level Guidelines:
+     - 100%: Fully charged
+     - 50-100%: Normal operation
+     - 20-50%: Consider charging soon
+     - 10-20%: Low battery warning recommended
+     - 0-10%: Critical - plan immediate shutdown/charging
+
+     Note: Battery drain rate depends on:
+     - Processing load (tracking complexity)
+     - Display usage (if any)
+     - Wireless communication activity
+     - Environmental temperature
   example: []
   syntax:
     content: public int BatteryPercent { get; set; }
@@ -409,7 +484,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 423
+    startLine: 552
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -445,7 +520,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 429
+    startLine: 558
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -479,7 +554,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 444
+    startLine: 573
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -509,7 +584,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 457
+    startLine: 586
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -539,7 +614,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 463
+    startLine: 592
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -573,7 +648,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 509
+    startLine: 638
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -608,7 +683,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 528
+    startLine: 657
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -642,7 +717,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 546
+    startLine: 675
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

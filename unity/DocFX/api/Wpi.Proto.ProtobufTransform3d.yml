@@ -36,10 +36,38 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufTransform3d
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1060
+    startLine: 1284
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 3D coordinate transformation.
+
+     This message describes how to transform coordinates from one 3D coordinate
+     frame to another. It combines a 3D translation and rotation to define the
+     complete spatial relationship between two coordinate systems.
+
+     Mathematical Interpretation:
+     Given a point P in frame A, the corresponding point in frame B is:
+     P_B = Transform3d * P_A = Rotation * P_A + Translation
+
+     This follows the standard transformation sequence:
+     1. Apply rotation to the point
+     2. Add translation to the rotated point
+
+     Applications:
+     - Transform between robot and world coordinate frames
+     - Camera calibration and extrinsic parameters
+     - Sensor mounting transformations
+     - Relative positioning between 3D objects
+     - Coordinate frame conversions in 3D path planning
+     - Multi-robot relative localization
+
+     The transform represents "how to get from frame A to frame B" and can be
+     inverted to get the reverse transformation. Transforms can also be composed
+     to create transformation chains through multiple coordinate frames.
+  example: []
   syntax:
     content: 'public sealed class ProtobufTransform3d : IMessage<ProtobufTransform3d>, IEquatable<ProtobufTransform3d>, IDeepCloneable<ProtobufTransform3d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufTransform3d Implements IMessage(Of ProtobufTransform3d), IEquatable(Of ProtobufTransform3d), IDeepCloneable(Of ProtobufTransform3d), IBufferMessage, IMessage
@@ -73,7 +101,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1067
+    startLine: 1291
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -102,7 +130,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1071
+    startLine: 1295
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -131,7 +159,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1083
+    startLine: 1307
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -160,7 +188,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1091
+    startLine: 1315
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -192,7 +220,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1099
+    startLine: 1323
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -225,7 +253,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TranslationFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1106
+    startLine: 1330
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -254,10 +282,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Translation
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1108
+    startLine: 1340
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Translation component of the 3D transformation.
+
+     This represents the displacement between the origins of the two
+     coordinate frames in 3D space. It specifies how far and in which
+     direction the target frame's origin is from the source frame's origin.
+  example: []
   syntax:
     content: public ProtobufTranslation3d Translation { get; set; }
     parameters: []
@@ -283,7 +319,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: RotationFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1118
+    startLine: 1350
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -312,10 +348,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Rotation
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1120
+    startLine: 1363
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Rotation component of the 3D transformation.
+
+     This represents the angular difference between the two coordinate
+     frames in 3D space. It specifies how the target frame is rotated
+     relative to the source frame.
+
+     The rotation is applied before the translation in the transformation
+     sequence (standard mathematical convention for homogeneous transforms).
+  example: []
   syntax:
     content: public ProtobufRotation3d Rotation { get; set; }
     parameters: []
@@ -341,7 +388,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1129
+    startLine: 1372
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -377,7 +424,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1135
+    startLine: 1378
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -411,7 +458,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1149
+    startLine: 1392
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -441,7 +488,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1161
+    startLine: 1404
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +518,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1167
+    startLine: 1410
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -505,7 +552,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1205
+    startLine: 1448
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -540,7 +587,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1221
+    startLine: 1464
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -574,7 +621,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1242
+    startLine: 1485
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

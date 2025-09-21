@@ -21,7 +21,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PayloadOneofCase
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 375
+    startLine: 440
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -48,7 +48,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: None
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 376
+    startLine: 441
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -74,7 +74,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PoseResetPayload
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 377
+    startLine: 442
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

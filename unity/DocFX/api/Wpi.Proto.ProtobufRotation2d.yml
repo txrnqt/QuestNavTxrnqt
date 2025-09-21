@@ -34,10 +34,31 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufRotation2d
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 283
+    startLine: 339
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 2D rotation angle.
+
+     This message encodes a rotation in the 2D plane using a single angle value.
+     It follows the standard mathematical convention for angle measurement and
+     is used to represent orientations and rotational displacements.
+
+     Applications:
+     - Robot heading/orientation on field
+     - Rotational component of poses and transforms
+     - Angular displacement between orientations
+     - Waypoint headings
+
+     Angle Convention:
+     - 0 radians: Facing positive X direction (forward on field)
+     - π/2 radians: Facing positive Y direction (left on field)
+     - π radians: Facing negative X direction (backward on field)
+     - 3π/2 radians: Facing negative Y direction (right on field)
+     - Counter-clockwise rotation is positive
+  example: []
   syntax:
     content: 'public sealed class ProtobufRotation2d : IMessage<ProtobufRotation2d>, IEquatable<ProtobufRotation2d>, IDeepCloneable<ProtobufRotation2d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufRotation2d Implements IMessage(Of ProtobufRotation2d), IEquatable(Of ProtobufRotation2d), IDeepCloneable(Of ProtobufRotation2d), IBufferMessage, IMessage
@@ -71,7 +92,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 290
+    startLine: 346
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -100,7 +121,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 294
+    startLine: 350
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -129,7 +150,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 306
+    startLine: 362
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -158,7 +179,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 314
+    startLine: 370
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -190,7 +211,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 321
+    startLine: 377
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -223,7 +244,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ValueFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 328
+    startLine: 384
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -252,10 +273,25 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Value
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 330
+    startLine: 401
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Rotation angle in radians.
+
+     The angle is measured counter-clockwise from the positive X-axis.
+     Range: Typically -π to π, but can represent any angle value.
+
+     Examples:
+     - 0.0: Facing forward (positive X)
+     - π/2: Facing left (positive Y)
+     - π: Facing backward (negative X)
+     - -π/2 or 3π/2: Facing right (negative Y)
+
+     Units: radians
+  example: []
   syntax:
     content: public double Value { get; set; }
     parameters: []
@@ -281,7 +317,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 339
+    startLine: 410
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -317,7 +353,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 345
+    startLine: 416
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -351,7 +387,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 358
+    startLine: 429
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -381,7 +417,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 369
+    startLine: 440
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -411,7 +447,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 375
+    startLine: 446
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -445,7 +481,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 405
+    startLine: 476
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -480,7 +516,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 418
+    startLine: 489
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -514,7 +550,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 430
+    startLine: 501
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

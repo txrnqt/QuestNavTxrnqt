@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuestNavDeviceData | QuestNav API Documentation ">
     
-    <meta name="description" content="Device data that is sent slower">
+    <meta name="description" content="Lower-frequency device status data sent from Quest to external systems. This message contains device health and status information that doesn&#39;t need to be sent as frequently as tracking data. It&#39;s typically sent at 1-10 Hz to provide monitoring and diagnostic information without consuming excessive bandwidth. This data helps external systems:  Monitor Quest device health Detect tracking system issues Implement failsafe behaviors Provide user feedback about system status  The information is useful for both autonomous operation and debugging/ troubleshooting scenarios.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,23 @@
 
 
   <h1 id="QuestNav_Protos_Generated_ProtobufQuestNavDeviceData" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData" class="text-break">Class ProtobufQuestNavDeviceData</h1>
-  <div class="markdown level0 summary"><p>Device data that is sent slower</p>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Lower-frequency device status data sent from Quest to external systems.</p>
+<p>This message contains device health and status information that doesn't need
+to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+to provide monitoring and diagnostic information without consuming excessive
+bandwidth.</p>
+<p>This data helps external systems:</p>
+<ul>
+<li>Monitor Quest device health</li>
+<li>Detect tracking system issues</li>
+<li>Implement failsafe behaviors</li>
+<li>Provide user feedback about system status</li>
+</ul>
+<p>The information is useful for both autonomous operation and debugging/
+troubleshooting scenarios.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -225,7 +241,33 @@
 </h3>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_BatteryPercent_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.BatteryPercent*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_BatteryPercent" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.BatteryPercent">BatteryPercent</h4>
-  <div class="markdown level1 summary"><p>The battery percentage of the Quest</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Quest device battery level as a percentage (0-100).</p>
+<p>This provides the current battery charge level of the Quest headset,
+allowing external systems to:</p>
+<ul>
+<li>Monitor power status during operation</li>
+<li>Implement low-battery warnings or behaviors</li>
+<li>Plan operation duration and charging needs</li>
+<li>Trigger graceful shutdown procedures</li>
+</ul>
+<p>Battery Level Guidelines:</p>
+<ul>
+<li>100%: Fully charged</li>
+<li>50-100%: Normal operation</li>
+<li>20-50%: Consider charging soon</li>
+<li>10-20%: Low battery warning recommended</li>
+<li>0-10%: Critical - plan immediate shutdown/charging</li>
+</ul>
+<p>Note: Battery drain rate depends on:</p>
+<ul>
+<li>Processing load (tracking complexity)</li>
+<li>Display usage (if any)</li>
+<li>Wireless communication activity</li>
+<li>Environmental temperature</li>
+</ul>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -249,7 +291,27 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_CurrentlyTracking_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CurrentlyTracking*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_CurrentlyTracking" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CurrentlyTracking">CurrentlyTracking</h4>
-  <div class="markdown level1 summary"><p>If the Quest is currently tracking?</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Current tracking status of the Quest device.</p>
+<p>true:  Quest is actively tracking and pose data is reliable
+false: Quest has lost tracking and pose data should not be trusted</p>
+<p>When tracking is lost:</p>
+<ul>
+<li>Pose data becomes stale and unreliable</li>
+<li>Robot should switch to alternative localization methods</li>
+<li>Movement should be limited or stopped for safety</li>
+</ul>
+<p>Tracking can be recovered by:</p>
+<ul>
+<li>Improving lighting conditions</li>
+<li>Moving to area with more visual features</li>
+<li>Reducing motion to allow system to re-initialize</li>
+<li>Performing pose reset when tracking recovers</li>
+</ul>
+<p>External systems should monitor this field and implement appropriate
+fallback behaviors when tracking is lost.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -319,7 +381,27 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_TrackingLostCounter_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.TrackingLostCounter*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_TrackingLostCounter" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.TrackingLostCounter">TrackingLostCounter</h4>
-  <div class="markdown level1 summary"><p>Number of times the Quest has lost tracking after having it since the app started</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Count of tracking loss events since app startup.</p>
+<p>This counter increments each time the Quest's tracking system loses
+tracking after having established it. Tracking loss can occur due to:</p>
+<ul>
+<li>Poor lighting conditions</li>
+<li>Lack of visual features in environment</li>
+<li>Rapid motion or acceleration</li>
+<li>Occlusion of cameras</li>
+<li>Hardware issues</li>
+</ul>
+<p>A high or rapidly increasing counter may indicate:</p>
+<ul>
+<li>Environmental issues (lighting, features)</li>
+<li>Quest mounting problems (vibration, obstruction)</li>
+<li>Hardware degradation</li>
+</ul>
+<p>This metric helps assess tracking system reliability and can trigger
+alerts or fallback behaviors in robot code.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

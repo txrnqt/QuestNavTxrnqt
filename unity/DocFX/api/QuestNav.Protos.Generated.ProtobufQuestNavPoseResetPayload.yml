@@ -34,11 +34,24 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufQuestNavPoseResetPayload
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 72
+    startLine: 101
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Payload for pose reset command
+  summary: >-
+    *
+     Payload message for the POSE_RESET command.
+
+     This message contains the data needed to execute a pose reset operation.
+     The pose reset command allows external systems to correct the Quest's
+     understanding of the robot's position and orientation on the field.
+
+     Coordinate System:
+     - Uses WPILib field-relative coordinate system
+     - X-axis: Forward (towards opposing alliance)
+     - Y-axis: Left (when facing forward)
+     - Rotation: Counter-clockwise positive (standard mathematical convention)
+     - Origin: Typically at one corner of the field (see field layout documentation)
   example: []
   syntax:
     content: 'public sealed class ProtobufQuestNavPoseResetPayload : IMessage<ProtobufQuestNavPoseResetPayload>, IEquatable<ProtobufQuestNavPoseResetPayload>, IDeepCloneable<ProtobufQuestNavPoseResetPayload>, IBufferMessage, IMessage'
@@ -73,7 +86,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 79
+    startLine: 108
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -102,7 +115,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 83
+    startLine: 112
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -131,7 +144,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 95
+    startLine: 124
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -160,7 +173,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 103
+    startLine: 132
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -192,7 +205,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 110
+    startLine: 139
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -225,7 +238,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TargetPoseFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 117
+    startLine: 146
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -254,11 +267,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TargetPose
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 122
+    startLine: 160
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)
+  summary: >-
+    *
+     The target pose to reset the robot to.
+
+     This should represent the robot's actual position and orientation on the field
+     in the WPILib coordinate system. The Quest will update its internal tracking
+     to match this pose, effectively correcting any accumulated drift.
+
+     Units:
+     - Translation: meters
+     - Rotation: radians
   example: []
   syntax:
     content: public ProtobufPose2d TargetPose { get; set; }
@@ -285,7 +308,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 131
+    startLine: 169
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -321,7 +344,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 137
+    startLine: 175
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -355,7 +378,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 150
+    startLine: 188
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -385,7 +408,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 161
+    startLine: 199
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -415,7 +438,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 167
+    startLine: 205
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -449,7 +472,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 197
+    startLine: 235
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -484,7 +507,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 210
+    startLine: 248
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -518,7 +541,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 225
+    startLine: 263
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

@@ -77,7 +77,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Warning
     path: ../Assets/QuestNav/Logging/QueuedLogger.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - QuestNav
   namespace: QuestNav.Utils
@@ -105,7 +105,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Error
     path: ../Assets/QuestNav/Logging/QueuedLogger.cs
-    startLine: 23
+    startLine: 25
   assemblies:
   - QuestNav
   namespace: QuestNav.Utils

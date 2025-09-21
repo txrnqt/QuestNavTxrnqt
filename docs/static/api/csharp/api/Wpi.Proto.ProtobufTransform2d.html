@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufTransform2d | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a 2D coordinate transformation. This message describes how to transform coordinates from one 2D coordinate frame to another. It combines a translation and rotation to define the relationship between two coordinate systems. Mathematical Interpretation: Given a point P in frame A, the corresponding point in frame B is: P_B = Transform2d * P_A = Rotation * P_A + Translation Applications:  Transform between robot and field coordinate frames Relative positioning between objects Coordinate frame conversions in path planning Sensor calibration and mounting offsets  The transform represents &amp;quot;how to get from frame A to frame B&amp;quot; and can be inverted to get the reverse transformation.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,26 @@
 
 
   <h1 id="Wpi_Proto_ProtobufTransform2d" data-uid="Wpi.Proto.ProtobufTransform2d" class="text-break">Class ProtobufTransform2d</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a 2D coordinate transformation.</p>
+<p>This message describes how to transform coordinates from one 2D coordinate
+frame to another. It combines a translation and rotation to define the
+relationship between two coordinate systems.</p>
+<p>Mathematical Interpretation:
+Given a point P in frame A, the corresponding point in frame B is:
+P_B = Transform2d * P_A = Rotation * P_A + Translation</p>
+<p>Applications:</p>
+<ul>
+<li>Transform between robot and field coordinate frames</li>
+<li>Relative positioning between objects</li>
+<li>Coordinate frame conversions in path planning</li>
+<li>Sensor calibration and mounting offsets</li>
+</ul>
+<p>The transform represents &quot;how to get from frame A to frame B&quot; and can be
+inverted to get the reverse transformation.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -247,7 +266,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufTransform2d_Rotation_" data-uid="Wpi.Proto.ProtobufTransform2d.Rotation*"></a>
   <h4 id="Wpi_Proto_ProtobufTransform2d_Rotation" data-uid="Wpi.Proto.ProtobufTransform2d.Rotation">Rotation</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Rotation component of the transformation.</p>
+<p>This represents the angular difference between the two coordinate
+frames. It specifies how much the target frame is rotated relative
+to the source frame.</p>
+<p>The rotation is applied before the translation in the transformation
+sequence (standard mathematical convention).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -270,7 +298,14 @@
   </table>
   <a id="Wpi_Proto_ProtobufTransform2d_Translation_" data-uid="Wpi.Proto.ProtobufTransform2d.Translation*"></a>
   <h4 id="Wpi_Proto_ProtobufTransform2d_Translation" data-uid="Wpi.Proto.ProtobufTransform2d.Translation">Translation</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Translation component of the transformation.</p>
+<p>This represents the displacement between the origins of the two
+coordinate frames. It specifies how far and in which direction
+the target frame's origin is from the source frame's origin.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

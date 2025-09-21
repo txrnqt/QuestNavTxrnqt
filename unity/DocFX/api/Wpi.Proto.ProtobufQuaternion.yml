@@ -40,10 +40,38 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufQuaternion
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 318
+    startLine: 391
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a quaternion for 3D rotation.
+
+     Quaternions provide a mathematically robust way to represent 3D rotations
+     without the singularities (gimbal lock) that can occur with Euler angles.
+     They are the preferred representation for 3D rotations in robotics.
+
+     Mathematical Properties:
+     - Unit quaternion: w² + x² + y² + z² = 1
+     - Represents rotation around axis (x,y,z) by angle θ:
+       w = cos(θ/2), (x,y,z) = sin(θ/2) * unit_axis
+     - Identity rotation: (w=1, x=0, y=0, z=0)
+     - Conjugate: (w, -x, -y, -z) represents inverse rotation
+
+     Applications:
+     - 3D object orientations
+     - IMU/gyroscope data representation
+     - Camera pose orientations
+     - Robotic arm joint orientations
+     - Smooth rotation interpolation (SLERP)
+
+     Advantages over Euler angles:
+     - No gimbal lock singularities
+     - Smooth interpolation
+     - Efficient composition of rotations
+     - Numerically stable
+  example: []
   syntax:
     content: 'public sealed class ProtobufQuaternion : IMessage<ProtobufQuaternion>, IEquatable<ProtobufQuaternion>, IDeepCloneable<ProtobufQuaternion>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufQuaternion Implements IMessage(Of ProtobufQuaternion), IEquatable(Of ProtobufQuaternion), IDeepCloneable(Of ProtobufQuaternion), IBufferMessage, IMessage
@@ -77,7 +105,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 325
+    startLine: 398
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -106,7 +134,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 329
+    startLine: 402
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -135,7 +163,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 341
+    startLine: 414
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -164,7 +192,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 349
+    startLine: 422
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -196,7 +224,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 359
+    startLine: 432
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -229,7 +257,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 366
+    startLine: 439
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -258,10 +286,20 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: W
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 368
+    startLine: 451
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     W component (scalar/real part) of the quaternion.
+
+     This is the "real" or "scalar" component of the quaternion.
+     For a rotation by angle θ around an axis, w = cos(θ/2).
+
+     Range: [-1, 1] for unit quaternions
+     Identity rotation: w = 1
+  example: []
   syntax:
     content: public double W { get; set; }
     parameters: []
@@ -287,7 +325,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: XFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 378
+    startLine: 461
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -316,10 +354,20 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: X
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 380
+    startLine: 473
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     X component (i coefficient) of the quaternion.
+
+     This is the coefficient of the i basis quaternion.
+     For a rotation by angle θ around axis (ax, ay, az),
+     x = sin(θ/2) * ax (where (ax, ay, az) is unit length).
+
+     Range: [-1, 1] for unit quaternions
+  example: []
   syntax:
     content: public double X { get; set; }
     parameters: []
@@ -345,7 +393,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: YFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 390
+    startLine: 483
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -374,10 +422,20 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Y
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 392
+    startLine: 495
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Y component (j coefficient) of the quaternion.
+
+     This is the coefficient of the j basis quaternion.
+     For a rotation by angle θ around axis (ax, ay, az),
+     y = sin(θ/2) * ay (where (ax, ay, az) is unit length).
+
+     Range: [-1, 1] for unit quaternions
+  example: []
   syntax:
     content: public double Y { get; set; }
     parameters: []
@@ -403,7 +461,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ZFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 402
+    startLine: 505
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -432,10 +490,20 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Z
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 404
+    startLine: 517
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Z component (k coefficient) of the quaternion.
+
+     This is the coefficient of the k basis quaternion.
+     For a rotation by angle θ around axis (ax, ay, az),
+     z = sin(θ/2) * az (where (ax, ay, az) is unit length).
+
+     Range: [-1, 1] for unit quaternions
+  example: []
   syntax:
     content: public double Z { get; set; }
     parameters: []
@@ -461,7 +529,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 413
+    startLine: 526
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -497,7 +565,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 419
+    startLine: 532
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -531,7 +599,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 435
+    startLine: 548
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -561,7 +629,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 449
+    startLine: 562
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -591,7 +659,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 455
+    startLine: 568
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -625,7 +693,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 509
+    startLine: 622
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -660,7 +728,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 531
+    startLine: 644
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -694,7 +762,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 552
+    startLine: 665
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

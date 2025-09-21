@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuestNavPoseResetPayload | QuestNav API Documentation ">
     
-    <meta name="description" content="Payload for pose reset command">
+    <meta name="description" content="Payload message for the POSE_RESET command. This message contains the data needed to execute a pose reset operation. The pose reset command allows external systems to correct the Quest&#39;s understanding of the robot&#39;s position and orientation on the field. Coordinate System:  Uses WPILib field-relative coordinate system X-axis: Forward (towards opposing alliance) Y-axis: Left (when facing forward) Rotation: Counter-clockwise positive (standard mathematical convention) Origin: Typically at one corner of the field (see field layout documentation)">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,21 @@
 
 
   <h1 id="QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload" class="text-break">Class ProtobufQuestNavPoseResetPayload</h1>
-  <div class="markdown level0 summary"><p>Payload for pose reset command</p>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Payload message for the POSE_RESET command.</p>
+<p>This message contains the data needed to execute a pose reset operation.
+The pose reset command allows external systems to correct the Quest's
+understanding of the robot's position and orientation on the field.</p>
+<p>Coordinate System:</p>
+<ul>
+<li>Uses WPILib field-relative coordinate system</li>
+<li>X-axis: Forward (towards opposing alliance)</li>
+<li>Y-axis: Left (when facing forward)</li>
+<li>Rotation: Counter-clockwise positive (standard mathematical convention)</li>
+<li>Origin: Typically at one corner of the field (see field layout documentation)</li>
+</ul>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -225,7 +239,18 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_TargetPose_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.TargetPose*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_TargetPose" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.TargetPose">TargetPose</h4>
-  <div class="markdown level1 summary"><p>Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>The target pose to reset the robot to.</p>
+<p>This should represent the robot's actual position and orientation on the field
+in the WPILib coordinate system. The Quest will update its internal tracking
+to match this pose, effectively correcting any accumulated drift.</p>
+<p>Units:</p>
+<ul>
+<li>Translation: meters</li>
+<li>Rotation: radians</li>
+</ul>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

@@ -38,11 +38,27 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufQuestNavFrameData
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 48
+    startLine: 63
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Tracking data that is sent every loop
+  summary: >-
+    *
+     High-frequency tracking data sent from Quest to external systems.
+
+     This message contains the core tracking information that external systems
+     (like robot code) need for real-time localization and navigation. It's sent
+     at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.
+
+     The data represents the Quest's understanding of the robot's position and
+     orientation on the field, derived from visual-inertial odometry using the
+     Quest's cameras and IMU sensors.
+
+     Coordinate System:
+     - Uses WPILib field-relative coordinate system
+     - Origin and axes depend on field setup and calibration
+     - Pose represents the robot's position, not the Quest's position
+       (accounting for Quest mounting offset)
   example: []
   syntax:
     content: 'public sealed class ProtobufQuestNavFrameData : IMessage<ProtobufQuestNavFrameData>, IEquatable<ProtobufQuestNavFrameData>, IDeepCloneable<ProtobufQuestNavFrameData>, IBufferMessage, IMessage'
@@ -77,7 +93,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 55
+    startLine: 70
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -106,7 +122,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 59
+    startLine: 74
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -135,7 +151,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 71
+    startLine: 86
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -164,7 +180,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 79
+    startLine: 94
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -196,7 +212,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 88
+    startLine: 103
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -229,7 +245,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: FrameCountFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 95
+    startLine: 110
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -258,11 +274,23 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: FrameCount
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 100
+    startLine: 126
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Number of frames processed by the Quest
+  summary: >-
+    *
+     Sequential frame counter for this tracking session.
+
+     This counter increments with each frame processed by the Quest's tracking
+     system. It can be used to:
+     - Detect dropped or out-of-order messages
+     - Calculate effective frame rate
+     - Synchronize with other data streams
+
+     The counter resets to 0 when the QuestNav app starts and increments
+     continuously during operation. Frame drops in transmission will create
+     gaps in the sequence.
   example: []
   syntax:
     content: public int FrameCount { get; set; }
@@ -289,7 +317,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TimestampFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 110
+    startLine: 136
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -318,11 +346,25 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Timestamp
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 115
+    startLine: 154
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Time (in seconds) since the QuestNav app started
+  summary: >-
+    *
+     Timestamp in seconds since QuestNav app startup.
+
+     This provides timing information for the tracking data, allowing external
+     systems to:
+     - Calculate data age and latency
+     - Interpolate or extrapolate poses for prediction
+     - Synchronize with other sensor data
+     - Implement timeout detection
+
+     The timestamp is relative to app startup, not system time, to avoid
+     clock synchronization issues between devices.
+
+     Resolution: Typically sub-millisecond precision
   example: []
   syntax:
     content: public double Timestamp { get; set; }
@@ -349,7 +391,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Pose2DFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 125
+    startLine: 164
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -378,11 +420,31 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Pose2D
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 130
+    startLine: 188
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: The 2d field-relative position of the quest
+  summary: >-
+    *
+     Robot's 2D pose on the field in WPILib coordinates.
+
+     This represents the robot's position and orientation as determined by
+     the Quest's tracking system. The pose accounts for:
+     - Quest mounting position/orientation relative to robot center
+     - Coordinate system transformation to WPILib standard
+     - Any calibration offsets applied
+
+     Coordinate System Details:
+     - X: Forward direction (towards opposing alliance)
+     - Y: Left direction (when facing forward)  
+     - Rotation: Counter-clockwise positive (radians)
+     - Units: meters for translation, radians for rotation
+
+     Accuracy depends on:
+     - Environmental lighting and features
+     - Quest tracking quality
+     - Calibration accuracy
+     - Time since last pose reset
   example: []
   syntax:
     content: public ProtobufPose2d Pose2D { get; set; }
@@ -409,7 +471,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 139
+    startLine: 197
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -445,7 +507,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 145
+    startLine: 203
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -479,7 +541,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 160
+    startLine: 218
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -509,7 +571,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 173
+    startLine: 231
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -539,7 +601,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 179
+    startLine: 237
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -573,7 +635,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 225
+    startLine: 283
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -608,7 +670,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 244
+    startLine: 302
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -642,7 +704,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 265
+    startLine: 323
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

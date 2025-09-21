@@ -32,74 +32,81 @@ import java.util.OptionalDouble;
 import java.util.OptionalInt;
 
 /**
- * The QuestNav class provides a comprehensive interface for communicating with an Oculus/Meta Quest VR headset
- * for robot localization and tracking in FRC robotics applications.
- * 
+ * The QuestNav class provides a comprehensive interface for communicating with an Oculus/Meta Quest
+ * VR headset for robot localization and tracking in FRC robotics applications.
+ *
  * <p>This class handles all aspects of Quest-robot communication including:
+ *
  * <ul>
- *   <li>Real-time pose tracking and localization data</li>
- *   <li>Command sending and response handling</li>
- *   <li>Device status monitoring (battery, tracking state, connectivity)</li>
- *   <li>NetworkTables-based communication protocol</li>
+ *   <li>Real-time pose tracking and localization data
+ *   <li>Command sending and response handling
+ *   <li>Device status monitoring (battery, tracking state, connectivity)
+ *   <li>NetworkTables-based communication protocol
  * </ul>
- * 
+ *
  * <h2>Basic Usage</h2>
+ *
  * <pre>{@code
  * // Create QuestNav instance
  * QuestNav questNav = new QuestNav();
- * 
+ *
  * // Set initial robot pose (required for field-relative tracking)
  * Pose2d initialPose = new Pose2d(1.0, 2.0, Rotation2d.fromDegrees(90));
  * questNav.setPose(initialPose);
- * 
+ *
  * // In robot periodic methods
  * public void robotPeriodic() {
  *   questNav.commandPeriodic(); // Process command responses
- *   
+ *
  *   // Get latest pose data
  *   PoseFrame[] newFrames = questNav.getAllUnreadPoseFrames();
  *   for (PoseFrame frame : newFrames) {
  *     // Use frame.questPose() and frame.dataTimestamp() with pose estimator
  *   }
- *   
+ *
  *   // Monitor connection and device status
  *   if (questNav.isConnected() && questNav.isTracking()) {
  *     // Quest is connected and tracking - safe to use pose data
  *   }
  * }
  * }</pre>
- * 
+ *
  * <h2>Coordinate Systems</h2>
+ *
  * <p>QuestNav uses the WPILib field coordinate system:
+ *
  * <ul>
- *   <li><strong>X-axis:</strong> Forward direction (towards opposing alliance)</li>
- *   <li><strong>Y-axis:</strong> Left direction (when facing forward)</li>
- *   <li><strong>Rotation:</strong> Counter-clockwise positive (standard mathematical convention)</li>
- *   <li><strong>Units:</strong> Meters for translation, radians for rotation</li>
+ *   <li><strong>X-axis:</strong> Forward direction (towards opposing alliance)
+ *   <li><strong>Y-axis:</strong> Left direction (when facing forward)
+ *   <li><strong>Rotation:</strong> Counter-clockwise positive (standard mathematical convention)
+ *   <li><strong>Units:</strong> Meters for translation, radians for rotation
  * </ul>
- * 
+ *
  * <h2>Threading and Performance</h2>
+ *
  * <p>This class is designed for use in FRC robot code and follows WPILib threading conventions:
+ *
  * <ul>
- *   <li>All methods are thread-safe for typical FRC usage patterns</li>
- *   <li>Uses cached objects to minimize garbage collection pressure</li>
- *   <li>NetworkTables handles the underlying communication asynchronously</li>
- *   <li>Call {@link #commandPeriodic()} regularly to process command responses</li>
+ *   <li>All methods are thread-safe for typical FRC usage patterns
+ *   <li>Uses cached objects to minimize garbage collection pressure
+ *   <li>NetworkTables handles the underlying communication asynchronously
+ *   <li>Call {@link #commandPeriodic()} regularly to process command responses
  * </ul>
- * 
+ *
  * <h2>Error Handling</h2>
+ *
  * <p>The class provides robust error handling:
+ *
  * <ul>
- *   <li>Methods return {@link java.util.Optional} types when data might not be available</li>
- *   <li>Connection status can be checked with {@link #isConnected()}</li>
- *   <li>Tracking status can be monitored with {@link #isTracking()}</li>
- *   <li>Command failures are reported through DriverStation error logging</li>
+ *   <li>Methods return {@link java.util.Optional} types when data might not be available
+ *   <li>Connection status can be checked with {@link #isConnected()}
+ *   <li>Tracking status can be monitored with {@link #isTracking()}
+ *   <li>Command failures are reported through DriverStation error logging
  * </ul>
- * 
+ *
  * @see PoseFrame
  * @see edu.wpi.first.math.geometry.Pose2d
  * @see edu.wpi.first.networktables.NetworkTableInstance
- * 
  * @since 2025.1.0
  * @author QuestNav Team
  */
@@ -171,61 +178,61 @@ public class QuestNav {
 
   /**
    * Creates a new QuestNav instance for communicating with a Quest headset.
-   * 
-   * <p>This constructor initializes all necessary NetworkTables subscribers and publishers
-   * for communication with the Quest device. The instance is ready to use immediately,
-   * but you should call {@link #setPose(Pose2d)} to establish field-relative tracking
-   * before relying on pose data.
-   * 
+   *
+   * <p>This constructor initializes all necessary NetworkTables subscribers and publishers for
+   * communication with the Quest device. The instance is ready to use immediately, but you should
+   * call {@link #setPose(Pose2d)} to establish field-relative tracking before relying on pose data.
+   *
    * <p>The constructor sets up:
+   *
    * <ul>
-   *   <li>NetworkTables communication on the "QuestNav" table</li>
-   *   <li>Protobuf serialization for efficient data transfer</li>
-   *   <li>Cached objects to minimize garbage collection</li>
-   *   <li>Subscribers for frame data, device data, and command responses</li>
-   *   <li>Publisher for sending commands to the Quest</li>
+   *   <li>NetworkTables communication on the "QuestNav" table
+   *   <li>Protobuf serialization for efficient data transfer
+   *   <li>Cached objects to minimize garbage collection
+   *   <li>Subscribers for frame data, device data, and command responses
+   *   <li>Publisher for sending commands to the Quest
    * </ul>
-   * 
+   *
    * @throws RuntimeException if NetworkTables is not available or properly configured
    */
   public QuestNav() {}
 
   /**
    * Sets the field-relative pose of the robot by commanding the Quest to reset its tracking.
-   * 
-   * <p>This method sends a pose reset command to the Quest headset, telling it where the robot
-   * is currently located on the field. This is essential for establishing field-relative tracking
-   * and should be called:
+   *
+   * <p>This method sends a pose reset command to the Quest headset, telling it where the robot is
+   * currently located on the field. This is essential for establishing field-relative tracking and
+   * should be called:
+   *
    * <ul>
-   *   <li>At the start of autonomous or teleop when the robot position is known</li>
-   *   <li>When the robot is placed at a known location (e.g., against field walls)</li>
-   *   <li>After significant tracking drift is detected</li>
-   *   <li>When integrating with other localization systems (vision, odometry)</li>
+   *   <li>At the start of autonomous or teleop when the robot position is known
+   *   <li>When the robot is placed at a known location (e.g., against field walls)
+   *   <li>After significant tracking drift is detected
+   *   <li>When integrating with other localization systems (vision, odometry)
    * </ul>
-   * 
-   * <p><strong>Important:</strong> This should be the robot's pose, not the Quest's pose.
-   * The Quest automatically accounts for its mounting position relative to the robot center
-   * based on the calibration performed during setup.
-   * 
-   * <p>The command is sent asynchronously. Monitor command success/failure by calling
-   * {@link #commandPeriodic()} regularly, which will log any errors to the DriverStation.
-   * 
+   *
+   * <p><strong>Important:</strong> This should be the robot's pose, not the Quest's pose. The Quest
+   * automatically accounts for its mounting position relative to the robot center based on the
+   * calibration performed during setup.
+   *
+   * <p>The command is sent asynchronously. Monitor command success/failure by calling {@link
+   * #commandPeriodic()} regularly, which will log any errors to the DriverStation.
+   *
    * <h4>Usage Example:</h4>
+   *
    * <pre>{@code
    * // Set robot pose at autonomous start
    * Pose2d startPose = new Pose2d(1.5, 5.5, Rotation2d.fromDegrees(0));
    * questNav.setPose(startPose);
-   * 
+   *
    * // Integration with pose estimator
    * Pose2d estimatedPose = poseEstimator.getEstimatedPosition();
    * questNav.setPose(estimatedPose); // Sync Quest with pose estimator
    * }</pre>
-   * 
-   * @param pose The robot's current field-relative pose in WPILib coordinates
-   *             (meters for translation, radians for rotation)
-   * 
+   *
+   * @param pose The robot's current field-relative pose in WPILib coordinates (meters for
+   *     translation, radians for rotation)
    * @throws IllegalArgumentException if pose contains NaN or infinite values
-   * 
    * @see #commandPeriodic()
    * @see #isConnected()
    * @see edu.wpi.first.math.geometry.Pose2d
@@ -245,28 +252,29 @@ public class QuestNav {
 
   /**
    * Returns the Quest headset's current battery level as a percentage.
-   * 
-   * <p>This method provides real-time battery status information from the Quest device,
-   * which is useful for:
+   *
+   * <p>This method provides real-time battery status information from the Quest device, which is
+   * useful for:
+   *
    * <ul>
-   *   <li>Monitoring device health during matches</li>
-   *   <li>Implementing low-battery warnings or behaviors</li>
-   *   <li>Planning charging schedules between matches</li>
-   *   <li>Triggering graceful shutdown procedures when battery is critical</li>
+   *   <li>Monitoring device health during matches
+   *   <li>Implementing low-battery warnings or behaviors
+   *   <li>Planning charging schedules between matches
+   *   <li>Triggering graceful shutdown procedures when battery is critical
    * </ul>
-   * 
+   *
    * <p>Battery level guidelines:
+   *
    * <ul>
-   *   <li><strong>80-100%:</strong> Excellent - full match capability</li>
-   *   <li><strong>50-80%:</strong> Good - normal operation expected</li>
-   *   <li><strong>20-50%:</strong> Fair - consider charging after match</li>
-   *   <li><strong>10-20%:</strong> Low - charge soon, monitor closely</li>
-   *   <li><strong>0-10%:</strong> Critical - immediate charging required</li>
+   *   <li><strong>80-100%:</strong> Excellent - full match capability
+   *   <li><strong>50-80%:</strong> Good - normal operation expected
+   *   <li><strong>20-50%:</strong> Fair - consider charging after match
+   *   <li><strong>10-20%:</strong> Low - charge soon, monitor closely
+   *   <li><strong>0-10%:</strong> Critical - immediate charging required
    * </ul>
-   * 
-   * @return An {@link OptionalInt} containing the battery percentage (0-100),
-   *         or empty if no device data is available or Quest is disconnected
-   * 
+   *
+   * @return An {@link OptionalInt} containing the battery percentage (0-100), or empty if no device
+   *     data is available or Quest is disconnected
    * @see #isConnected()
    * @see #getLatency()
    */
@@ -280,33 +288,34 @@ public class QuestNav {
 
   /**
    * Gets the current tracking state of the Quest headset.
-   * 
-   * <p>This method indicates whether the Quest's visual-inertial tracking system is
-   * currently functioning and providing reliable pose data. Tracking can be lost due to:
+   *
+   * <p>This method indicates whether the Quest's visual-inertial tracking system is currently
+   * functioning and providing reliable pose data. Tracking can be lost due to:
+   *
    * <ul>
-   *   <li>Poor lighting conditions (too dark or too bright)</li>
-   *   <li>Lack of visual features in the environment</li>
-   *   <li>Rapid motion or high acceleration</li>
-   *   <li>Camera occlusion or obstruction</li>
-   *   <li>Hardware issues or overheating</li>
+   *   <li>Poor lighting conditions (too dark or too bright)
+   *   <li>Lack of visual features in the environment
+   *   <li>Rapid motion or high acceleration
+   *   <li>Camera occlusion or obstruction
+   *   <li>Hardware issues or overheating
    * </ul>
-   * 
-   * <p><strong>Important:</strong> When tracking is lost, pose data becomes unreliable
-   * and should not be used for robot control. Implement fallback localization methods
-   * (wheel odometry, vision, etc.) for when Quest tracking is unavailable.
-   * 
+   *
+   * <p><strong>Important:</strong> When tracking is lost, pose data becomes unreliable and should
+   * not be used for robot control. Implement fallback localization methods (wheel odometry, vision,
+   * etc.) for when Quest tracking is unavailable.
+   *
    * <p>To recover tracking:
+   *
    * <ul>
-   *   <li>Improve lighting conditions</li>
-   *   <li>Move to an area with more visual features</li>
-   *   <li>Reduce robot motion to allow re-initialization</li>
-   *   <li>Clear any obstructions from Quest cameras</li>
-   *   <li>Call {@link #setPose(Pose2d)} once tracking recovers</li>
+   *   <li>Improve lighting conditions
+   *   <li>Move to an area with more visual features
+   *   <li>Reduce robot motion to allow re-initialization
+   *   <li>Clear any obstructions from Quest cameras
+   *   <li>Call {@link #setPose(Pose2d)} once tracking recovers
    * </ul>
-   * 
-   * @return {@code true} if the Quest is actively tracking and pose data is reliable,
-   *         {@code false} if tracking is lost or no device data is available
-   * 
+   *
+   * @return {@code true} if the Quest is actively tracking and pose data is reliable, {@code false}
+   *     if tracking is lost or no device data is available
    * @see #isConnected()
    * @see #getTrackingLostCounter()
    * @see #getAllUnreadPoseFrames()
@@ -371,24 +380,24 @@ public class QuestNav {
 
   /**
    * Returns the Quest app's uptime timestamp for debugging and diagnostics.
-   * 
-   * <p><strong>Important:</strong> For integration with a pose estimator, use the timestamp
-   * from {@link PoseFrame#dataTimestamp()} instead! This method provides the Quest's
-   * internal application timestamp, which is useful for:
-   * <ul>
-   *   <li>Debugging timing issues between Quest and robot</li>
-   *   <li>Calculating Quest-side processing latency</li>
-   *   <li>Monitoring Quest application uptime</li>
-   *   <li>Correlating with Quest-side logs</li>
-   * </ul>
-   * 
-   * <p>The timestamp represents seconds since the Quest application started and is
-   * independent of the robot's clock. For pose estimation, always use the NetworkTables
-   * timestamp from {@link PoseFrame#dataTimestamp()} which is synchronized with robot time.
    *
-   * @return An {@link OptionalDouble} containing the Quest app uptime in seconds,
-   *         or empty if no frame data is available
-   * 
+   * <p><strong>Important:</strong> For integration with a pose estimator, use the timestamp from
+   * {@link PoseFrame#dataTimestamp()} instead! This method provides the Quest's internal
+   * application timestamp, which is useful for:
+   *
+   * <ul>
+   *   <li>Debugging timing issues between Quest and robot
+   *   <li>Calculating Quest-side processing latency
+   *   <li>Monitoring Quest application uptime
+   *   <li>Correlating with Quest-side logs
+   * </ul>
+   *
+   * <p>The timestamp represents seconds since the Quest application started and is independent of
+   * the robot's clock. For pose estimation, always use the NetworkTables timestamp from {@link
+   * PoseFrame#dataTimestamp()} which is synchronized with robot time.
+   *
+   * @return An {@link OptionalDouble} containing the Quest app uptime in seconds, or empty if no
+   *     frame data is available
    * @see PoseFrame#dataTimestamp()
    * @see #getAllUnreadPoseFrames()
    */
@@ -402,23 +411,26 @@ public class QuestNav {
 
   /**
    * Retrieves all new pose frames received from the Quest since the last call to this method.
-   * 
-   * <p>This is the primary method for integrating QuestNav with FRC pose estimation systems.
-   * It returns an array of {@link PoseFrame} objects containing pose data and timestamps
-   * that can be fed directly into a {@link edu.wpi.first.math.estimator.PoseEstimator}.
-   * 
+   *
+   * <p>This is the primary method for integrating QuestNav with FRC pose estimation systems. It
+   * returns an array of {@link PoseFrame} objects containing pose data and timestamps that can be
+   * fed directly into a {@link edu.wpi.first.math.estimator.PoseEstimator}.
+   *
    * <p>Each frame contains:
+   *
    * <ul>
-   *   <li><strong>Pose data:</strong> Robot position and orientation in field coordinates</li>
-   *   <li><strong>NetworkTables timestamp:</strong> When the data was received (use this for pose estimation)</li>
-   *   <li><strong>App timestamp:</strong> Quest internal timestamp (for debugging only)</li>
-   *   <li><strong>Frame count:</strong> Sequential frame number for detecting drops</li>
+   *   <li><strong>Pose data:</strong> Robot position and orientation in field coordinates
+   *   <li><strong>NetworkTables timestamp:</strong> When the data was received (use this for pose
+   *       estimation)
+   *   <li><strong>App timestamp:</strong> Quest internal timestamp (for debugging only)
+   *   <li><strong>Frame count:</strong> Sequential frame number for detecting drops
    * </ul>
-   * 
+   *
    * <p><strong>Important:</strong> This method consumes the frame queue, so each frame is only
    * returned once. Call this method regularly (every robot loop) to avoid missing frames.
-   * 
+   *
    * <h4>Integration with Pose Estimator:</h4>
+   *
    * <pre>{@code
    * // In robotPeriodic() or subsystem periodic()
    * PoseFrame[] newFrames = questNav.getAllUnreadPoseFrames();
@@ -433,17 +445,17 @@ public class QuestNav {
    *   }
    * }
    * }</pre>
-   * 
+   *
    * <p>Performance notes:
+   *
    * <ul>
-   *   <li>Returns a new array each call - consider caching if called multiple times per loop</li>
-   *   <li>Frame rate typically 30-90 Hz depending on Quest performance</li>
-   *   <li>Empty array returned when no new frames are available</li>
+   *   <li>Returns a new array each call - consider caching if called multiple times per loop
+   *   <li>Frame rate typically 30-90 Hz depending on Quest performance
+   *   <li>Empty array returned when no new frames are available
    * </ul>
-   * 
-   * @return Array of new {@link PoseFrame} objects received since the last call.
-   *         Empty array if no new frames are available or Quest is disconnected.
-   * 
+   *
+   * @return Array of new {@link PoseFrame} objects received since the last call. Empty array if no
+   *     new frames are available or Quest is disconnected.
    * @see PoseFrame
    * @see #isTracking()
    * @see #isConnected()
@@ -466,40 +478,43 @@ public class QuestNav {
 
   /**
    * Processes command responses from the Quest headset and handles any errors.
-   * 
+   *
    * <p>This method must be called regularly (typically in {@code robotPeriodic()}) to:
+   *
    * <ul>
-   *   <li>Process responses to commands sent via {@link #setPose(Pose2d)}</li>
-   *   <li>Log command failures to the DriverStation for debugging</li>
-   *   <li>Maintain proper command/response synchronization</li>
-   *   <li>Prevent command response queue overflow</li>
+   *   <li>Process responses to commands sent via {@link #setPose(Pose2d)}
+   *   <li>Log command failures to the DriverStation for debugging
+   *   <li>Maintain proper command/response synchronization
+   *   <li>Prevent command response queue overflow
    * </ul>
-   * 
+   *
    * <p>The method automatically handles:
+   *
    * <ul>
-   *   <li><strong>Success responses:</strong> Silently acknowledged</li>
-   *   <li><strong>Error responses:</strong> Logged to DriverStation with error details</li>
-   *   <li><strong>Duplicate responses:</strong> Ignored to prevent spam</li>
-   *   <li><strong>Out-of-order responses:</strong> Handled gracefully</li>
+   *   <li><strong>Success responses:</strong> Silently acknowledged
+   *   <li><strong>Error responses:</strong> Logged to DriverStation with error details
+   *   <li><strong>Duplicate responses:</strong> Ignored to prevent spam
+   *   <li><strong>Out-of-order responses:</strong> Handled gracefully
    * </ul>
-   * 
+   *
    * <h4>Usage Pattern:</h4>
+   *
    * <pre>{@code
    * public class Robot extends TimedRobot {
    *   private QuestNav questNav = new QuestNav();
-   *   
+   *
    *   @Override
    *   public void robotPeriodic() {
    *     questNav.commandPeriodic(); // Call every loop
-   *     
+   *
    *     // Other periodic tasks...
    *   }
    * }
    * }</pre>
-   * 
-   * <p><strong>Performance:</strong> This method is lightweight and safe to call every
-   * robot loop (20ms). It only processes new responses and exits quickly when none are available.
-   * 
+   *
+   * <p><strong>Performance:</strong> This method is lightweight and safe to call every robot loop
+   * (20ms). It only processes new responses and exits quickly when none are available.
+   *
    * @see #setPose(Pose2d)
    * @see edu.wpi.first.wpilibj.DriverStation#reportError(String, boolean)
    */

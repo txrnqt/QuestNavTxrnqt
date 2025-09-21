@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Enum QuestNavCommandType | QuestNav API Documentation ">
     
-    <meta name="description" content="Enum for command types (extensible for future commands)">
+    <meta name="description" content="Enumeration of available command types in the QuestNav system. This enum defines all the different types of commands that can be sent to the Quest headset. The enum is designed to be extensible - new command types can be added without breaking existing clients. Design Notes:  Values start from 0 as required by proto3 UNSPECIFIED value (0) is reserved for error handling Command values should be assigned incrementally for clarity">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -82,7 +82,19 @@
 
 
   <h1 id="QuestNav_Protos_Generated_QuestNavCommandType" data-uid="QuestNav.Protos.Generated.QuestNavCommandType" class="text-break">Enum QuestNavCommandType</h1>
-  <div class="markdown level0 summary"><p>Enum for command types (extensible for future commands)</p>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Enumeration of available command types in the QuestNav system.</p>
+<p>This enum defines all the different types of commands that can be sent to
+the Quest headset. The enum is designed to be extensible - new command types
+can be added without breaking existing clients.</p>
+<p>Design Notes:</p>
+<ul>
+<li>Values start from 0 as required by proto3</li>
+<li>UNSPECIFIED value (0) is reserved for error handling</li>
+<li>Command values should be assigned incrementally for clarity</li>
+</ul>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="QuestNav.html">QuestNav</a>.<a class="xref" href="QuestNav.Protos.html">Protos</a>.<a class="xref" href="QuestNav.Protos.Generated.html">Generated</a></h6>
@@ -103,12 +115,19 @@
     </thead></thead><tbody>
       <tr>
         <td id="QuestNav_Protos_Generated_QuestNavCommandType_CommandTypeUnspecified">CommandTypeUnspecified</td>
-        <td><p>Default value required in proto3</p>
+        <td><p>Default/invalid command type (required by proto3)</p>
 </td>
       </tr>
       <tr>
         <td id="QuestNav_Protos_Generated_QuestNavCommandType_PoseReset">PoseReset</td>
-        <td><p>Reset robot pose to target pose</p>
+        <td><ul>
+<li></li>
+</ul>
+<p>POSE_RESET: Resets the robot's pose estimation to a specified target pose.</p>
+<p>This command is used to correct drift in the tracking system by setting
+the robot's position and orientation to known values. Typically used when
+the robot is placed at a known location on the field.</p>
+<p>Requires: ProtobufQuestNavPoseResetPayload</p>
 </td>
       </tr>
     </tbody>

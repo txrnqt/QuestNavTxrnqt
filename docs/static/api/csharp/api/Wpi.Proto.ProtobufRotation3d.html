@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufRotation3d | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a 3D rotation using a quaternion. This message wraps a quaternion to represent 3D rotations in a standardized way. It provides a clean interface for 3D rotation operations while leveraging the mathematical advantages of quaternions internally. The rotation represents the orientation of a coordinate frame relative to a reference frame, or the rotation needed to transform vectors from one coordinate system to another. Applications:  Object orientations in 3D space Camera pose rotations IMU orientation data Robotic arm end-effector orientations Transformation between coordinate frames  Mathematical Operations:  Composition: R3 = R2 * R1 (apply R1 first, then R2) Inverse: R^(-1) represents the opposite rotation Identity: No rotation (quaternion w=1, x=y=z=0)">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,31 @@
 
 
   <h1 id="Wpi_Proto_ProtobufRotation3d" data-uid="Wpi.Proto.ProtobufRotation3d" class="text-break">Class ProtobufRotation3d</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a 3D rotation using a quaternion.</p>
+<p>This message wraps a quaternion to represent 3D rotations in a standardized
+way. It provides a clean interface for 3D rotation operations while
+leveraging the mathematical advantages of quaternions internally.</p>
+<p>The rotation represents the orientation of a coordinate frame relative to
+a reference frame, or the rotation needed to transform vectors from one
+coordinate system to another.</p>
+<p>Applications:</p>
+<ul>
+<li>Object orientations in 3D space</li>
+<li>Camera pose rotations</li>
+<li>IMU orientation data</li>
+<li>Robotic arm end-effector orientations</li>
+<li>Transformation between coordinate frames</li>
+</ul>
+<p>Mathematical Operations:</p>
+<ul>
+<li>Composition: R3 = R2 * R1 (apply R1 first, then R2)</li>
+<li>Inverse: R^(-1) represents the opposite rotation</li>
+<li>Identity: No rotation (quaternion w=1, x=y=z=0)</li>
+</ul>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -224,7 +248,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufRotation3d_Q_" data-uid="Wpi.Proto.ProtobufRotation3d.Q*"></a>
   <h4 id="Wpi_Proto_ProtobufRotation3d_Q" data-uid="Wpi.Proto.ProtobufRotation3d.Q">Q</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Quaternion representing the 3D rotation.</p>
+<p>This quaternion should be normalized (unit quaternion) to represent
+a valid rotation. Non-unit quaternions may lead to scaling effects
+in addition to rotation.</p>
+<p>The quaternion represents the rotation from the reference coordinate
+frame to the rotated coordinate frame.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

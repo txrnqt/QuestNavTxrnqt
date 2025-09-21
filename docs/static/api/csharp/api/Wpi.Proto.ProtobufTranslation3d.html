@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufTranslation3d | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a 3D translation (displacement) vector. This message encodes a 3D displacement or position vector using Cartesian coordinates. It extends the 2D translation concept into three dimensions and serves as a building block for more complex 3D geometric representations. Applications:  3D object positions in space Displacement vectors between 3D points 3D velocity vectors (when representing change in position) Camera/sensor positions relative to robot AprilTag positions in 3D space  Coordinate System:  X: Forward/backward displacement (positive = forward) Y: Left/right displacement (positive = left) Z: Up/down displacement (positive = up) Units: meters">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,29 @@
 
 
   <h1 id="Wpi_Proto_ProtobufTranslation3d" data-uid="Wpi.Proto.ProtobufTranslation3d" class="text-break">Class ProtobufTranslation3d</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a 3D translation (displacement) vector.</p>
+<p>This message encodes a 3D displacement or position vector using Cartesian
+coordinates. It extends the 2D translation concept into three dimensions
+and serves as a building block for more complex 3D geometric representations.</p>
+<p>Applications:</p>
+<ul>
+<li>3D object positions in space</li>
+<li>Displacement vectors between 3D points</li>
+<li>3D velocity vectors (when representing change in position)</li>
+<li>Camera/sensor positions relative to robot</li>
+<li>AprilTag positions in 3D space</li>
+</ul>
+<p>Coordinate System:</p>
+<ul>
+<li>X: Forward/backward displacement (positive = forward)</li>
+<li>Y: Left/right displacement (positive = left)</li>
+<li>Z: Up/down displacement (positive = up)</li>
+<li>Units: meters</li>
+</ul>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -270,7 +292,14 @@
   </table>
   <a id="Wpi_Proto_ProtobufTranslation3d_X_" data-uid="Wpi.Proto.ProtobufTranslation3d.X*"></a>
   <h4 id="Wpi_Proto_ProtobufTranslation3d_X" data-uid="Wpi.Proto.ProtobufTranslation3d.X">X</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>X-coordinate (forward/backward displacement).</p>
+<p>Positive values indicate forward direction.
+Negative values indicate backward direction.
+Units: meters</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -293,7 +322,14 @@
   </table>
   <a id="Wpi_Proto_ProtobufTranslation3d_Y_" data-uid="Wpi.Proto.ProtobufTranslation3d.Y*"></a>
   <h4 id="Wpi_Proto_ProtobufTranslation3d_Y" data-uid="Wpi.Proto.ProtobufTranslation3d.Y">Y</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Y-coordinate (left/right displacement).</p>
+<p>Positive values indicate leftward direction.
+Negative values indicate rightward direction.
+Units: meters</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -316,7 +352,14 @@
   </table>
   <a id="Wpi_Proto_ProtobufTranslation3d_Z_" data-uid="Wpi.Proto.ProtobufTranslation3d.Z*"></a>
   <h4 id="Wpi_Proto_ProtobufTranslation3d_Z" data-uid="Wpi.Proto.ProtobufTranslation3d.Z">Z</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Z-coordinate (up/down displacement).</p>
+<p>Positive values indicate upward direction.
+Negative values indicate downward direction.
+Units: meters</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

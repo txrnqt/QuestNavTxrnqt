@@ -38,10 +38,31 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufTranslation3d
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 55
+    startLine: 76
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 3D translation (displacement) vector.
+
+     This message encodes a 3D displacement or position vector using Cartesian
+     coordinates. It extends the 2D translation concept into three dimensions
+     and serves as a building block for more complex 3D geometric representations.
+
+     Applications:
+     - 3D object positions in space
+     - Displacement vectors between 3D points
+     - 3D velocity vectors (when representing change in position)
+     - Camera/sensor positions relative to robot
+     - AprilTag positions in 3D space
+
+     Coordinate System:
+     - X: Forward/backward displacement (positive = forward)
+     - Y: Left/right displacement (positive = left)
+     - Z: Up/down displacement (positive = up)
+     - Units: meters
+  example: []
   syntax:
     content: 'public sealed class ProtobufTranslation3d : IMessage<ProtobufTranslation3d>, IEquatable<ProtobufTranslation3d>, IDeepCloneable<ProtobufTranslation3d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufTranslation3d Implements IMessage(Of ProtobufTranslation3d), IEquatable(Of ProtobufTranslation3d), IDeepCloneable(Of ProtobufTranslation3d), IBufferMessage, IMessage
@@ -75,7 +96,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 62
+    startLine: 83
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -104,7 +125,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 66
+    startLine: 87
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -133,7 +154,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 78
+    startLine: 99
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -162,7 +183,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 86
+    startLine: 107
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -194,7 +215,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 95
+    startLine: 116
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -227,7 +248,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: XFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 102
+    startLine: 123
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -256,10 +277,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: X
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 104
+    startLine: 133
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     X-coordinate (forward/backward displacement).
+
+     Positive values indicate forward direction.
+     Negative values indicate backward direction.
+     Units: meters
+  example: []
   syntax:
     content: public double X { get; set; }
     parameters: []
@@ -285,7 +314,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: YFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 114
+    startLine: 143
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -314,10 +343,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Y
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 116
+    startLine: 153
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Y-coordinate (left/right displacement).
+
+     Positive values indicate leftward direction.
+     Negative values indicate rightward direction.
+     Units: meters
+  example: []
   syntax:
     content: public double Y { get; set; }
     parameters: []
@@ -343,7 +380,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ZFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 126
+    startLine: 163
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -372,10 +409,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Z
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 128
+    startLine: 173
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Z-coordinate (up/down displacement).
+
+     Positive values indicate upward direction.
+     Negative values indicate downward direction.
+     Units: meters
+  example: []
   syntax:
     content: public double Z { get; set; }
     parameters: []
@@ -401,7 +446,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 137
+    startLine: 182
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -437,7 +482,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 143
+    startLine: 188
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +516,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 158
+    startLine: 203
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -501,7 +546,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 171
+    startLine: 216
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -531,7 +576,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 177
+    startLine: 222
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -565,7 +610,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 223
+    startLine: 268
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -600,7 +645,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 242
+    startLine: 287
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -634,7 +679,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 260
+    startLine: 305
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

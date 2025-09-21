@@ -38,10 +38,36 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufEllipse2d
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1495
+    startLine: 1784
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 2D ellipse with arbitrary orientation.
+
+     This message defines an elliptical region in 2D space using a center pose
+     and semi-axis lengths. The ellipse can be rotated to any orientation
+     based on the center pose's rotation component.
+
+     Geometric Properties:
+     - Center point and orientation defined by pose
+     - Major/minor axes aligned with pose's local coordinate frame
+     - X semi-axis extends along pose's X-axis (local forward direction)
+     - Y semi-axis extends along pose's Y-axis (local left direction)
+     - Total area = π * xSemiAxis * ySemiAxis
+
+     Applications:
+     - Uncertainty ellipses for localization
+     - Smooth obstacle representations
+     - Robot operating regions
+     - Sensor coverage areas
+     - Path planning with uncertainty
+
+     Special Cases:
+     - Circle: xSemiAxis = ySemiAxis
+     - Degenerate ellipse: one semi-axis approaches zero (becomes a line)
+  example: []
   syntax:
     content: 'public sealed class ProtobufEllipse2d : IMessage<ProtobufEllipse2d>, IEquatable<ProtobufEllipse2d>, IDeepCloneable<ProtobufEllipse2d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufEllipse2d Implements IMessage(Of ProtobufEllipse2d), IEquatable(Of ProtobufEllipse2d), IDeepCloneable(Of ProtobufEllipse2d), IBufferMessage, IMessage
@@ -75,7 +101,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1502
+    startLine: 1791
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -104,7 +130,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1506
+    startLine: 1795
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -133,7 +159,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1518
+    startLine: 1807
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -162,7 +188,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1526
+    startLine: 1815
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -194,7 +220,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1535
+    startLine: 1824
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -227,7 +253,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CenterFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1542
+    startLine: 1831
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -256,10 +282,22 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Center
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1544
+    startLine: 1845
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Center pose of the ellipse.
+
+     The translation component specifies the center point of the ellipse
+     in the coordinate system. The rotation component specifies the
+     orientation of the ellipse's local coordinate frame.
+
+     The ellipse's axes are aligned with this local coordinate frame:
+     - X semi-axis extends along local X-axis (rotated forward direction)
+     - Y semi-axis extends along local Y-axis (rotated left direction)
+  example: []
   syntax:
     content: public ProtobufPose2d Center { get; set; }
     parameters: []
@@ -285,7 +323,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: XSemiAxisFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1554
+    startLine: 1855
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -314,10 +352,24 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: XSemiAxis
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1556
+    startLine: 1871
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Semi-axis length along the ellipse's local X-axis.
+
+     This is half the width of the ellipse in the direction of the
+     center pose's forward direction (after rotation). The ellipse
+     extends ±xSemiAxis from the center along this axis.
+
+     Units: meters
+     Must be positive
+
+     Note: This is the semi-axis, not the full width. The full width
+     along this axis is 2 * xSemiAxis.
+  example: []
   syntax:
     content: public double XSemiAxis { get; set; }
     parameters: []
@@ -343,7 +395,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: YSemiAxisFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1566
+    startLine: 1881
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -372,10 +424,24 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: YSemiAxis
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1568
+    startLine: 1897
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Semi-axis length along the ellipse's local Y-axis.
+
+     This is half the height of the ellipse in the direction of the
+     center pose's left direction (after rotation). The ellipse
+     extends ±ySemiAxis from the center along this axis.
+
+     Units: meters
+     Must be positive
+
+     Note: This is the semi-axis, not the full height. The full height
+     along this axis is 2 * ySemiAxis.
+  example: []
   syntax:
     content: public double YSemiAxis { get; set; }
     parameters: []
@@ -401,7 +467,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1577
+    startLine: 1906
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -437,7 +503,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1583
+    startLine: 1912
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +537,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1598
+    startLine: 1927
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -501,7 +567,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1611
+    startLine: 1940
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -531,7 +597,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1617
+    startLine: 1946
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -565,7 +631,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1663
+    startLine: 1992
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -600,7 +666,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1682
+    startLine: 2011
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -634,7 +700,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1703
+    startLine: 2032
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

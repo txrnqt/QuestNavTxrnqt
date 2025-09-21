@@ -40,11 +40,26 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufQuestNavCommand
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 276
+    startLine: 328
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Main Command message
+  summary: >-
+    *
+     Main command message sent to the QuestNav system.
+
+     This is the primary message type used to send commands from external systems
+     (like robot code) to the Quest headset. Each command includes a type identifier,
+     a unique tracking ID, and optional payload data specific to the command type.
+
+     The command system is designed for asynchronous operation - commands are sent
+     and responses are received separately, matched by the command_id field.
+
+     Message Flow:
+     1. Client creates command with unique command_id
+     2. Client sets appropriate type and payload
+     3. Client sends command to Quest
+     4. Quest processes command and sends response with matching command_id
   example: []
   syntax:
     content: 'public sealed class ProtobufQuestNavCommand : IMessage<ProtobufQuestNavCommand>, IEquatable<ProtobufQuestNavCommand>, IDeepCloneable<ProtobufQuestNavCommand>, IBufferMessage, IMessage'
@@ -79,7 +94,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 283
+    startLine: 335
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -108,7 +123,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 287
+    startLine: 339
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -137,7 +152,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 299
+    startLine: 351
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -166,7 +181,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 307
+    startLine: 359
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -198,7 +213,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 321
+    startLine: 373
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -231,7 +246,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TypeFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 328
+    startLine: 380
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -260,11 +275,17 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Type
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 333
+    startLine: 390
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: The type of command
+  summary: >-
+    *
+     The type of command being sent.
+
+     This field determines which payload (if any) should be populated and
+     how the Quest should process the command. See QuestNavCommandType
+     enum for available command types.
   example: []
   syntax:
     content: public QuestNavCommandType Type { get; set; }
@@ -291,7 +312,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CommandIdFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 343
+    startLine: 400
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -320,11 +341,19 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CommandId
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 348
+    startLine: 412
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Command ID for tracking/responses
+  summary: >-
+    *
+     Unique identifier for this command instance.
+
+     This ID is used to match commands with their responses in asynchronous
+     communication. The client should generate unique IDs for each command
+     to avoid confusion. The Quest will echo this ID in the response message.
+
+     Recommended: Use incrementing integers or timestamps for uniqueness.
   example: []
   syntax:
     content: public uint CommandId { get; set; }
@@ -351,7 +380,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PoseResetPayloadFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 358
+    startLine: 422
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -380,14 +409,14 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PoseResetPayload
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 363
+    startLine: 428
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
   summary: >-
-    Future payloads can be added here:
-
-    (Commands with no payload don't need an entry)
+    *
+     Payload for POSE_RESET commands.
+     Set this field when type = POSE_RESET.
   example: []
   syntax:
     content: public ProtobufQuestNavPoseResetPayload PoseResetPayload { get; set; }
@@ -414,7 +443,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PayloadCase
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 380
+    startLine: 445
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -443,7 +472,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ClearPayload
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 386
+    startLine: 451
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -469,7 +498,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 393
+    startLine: 458
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -505,7 +534,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 399
+    startLine: 464
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -539,7 +568,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 415
+    startLine: 480
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -569,7 +598,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 429
+    startLine: 494
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -599,7 +628,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 435
+    startLine: 500
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -633,7 +662,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 481
+    startLine: 546
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -668,7 +697,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 500
+    startLine: 565
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -702,7 +731,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 524
+    startLine: 589
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

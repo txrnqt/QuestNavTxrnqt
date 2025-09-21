@@ -21,11 +21,22 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: QuestNavCommandType
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 55
+    startLine: 65
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Enum for command types (extensible for future commands)
+  summary: >-
+    *
+     Enumeration of available command types in the QuestNav system.
+
+     This enum defines all the different types of commands that can be sent to
+     the Quest headset. The enum is designed to be extensible - new command types
+     can be added without breaking existing clients.
+
+     Design Notes:
+     - Values start from 0 as required by proto3
+     - UNSPECIFIED value (0) is reserved for error handling
+     - Command values should be assigned incrementally for clarity
   example: []
   syntax:
     content: public enum QuestNavCommandType
@@ -48,11 +59,11 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CommandTypeUnspecified
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 59
+    startLine: 69
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Default value required in proto3
+  summary: Default/invalid command type (required by proto3)
   example: []
   syntax:
     content: >-
@@ -89,11 +100,19 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PoseReset
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 63
+    startLine: 80
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
-  summary: Reset robot pose to target pose
+  summary: >-
+    *
+     POSE_RESET: Resets the robot's pose estimation to a specified target pose.
+
+     This command is used to correct drift in the tracking system by setting
+     the robot's position and orientation to known values. Typically used when
+     the robot is placed at a known location on the field.
+
+     Requires: ProtobufQuestNavPoseResetPayload
   example: []
   syntax:
     content: >-

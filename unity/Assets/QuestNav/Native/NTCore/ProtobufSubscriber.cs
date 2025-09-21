@@ -14,7 +14,7 @@ namespace QuestNav.Native.NTCore
         /// The underlying raw subscriber for byte array data
         /// </summary>
         private readonly RawSubscriber rawSubscriber;
-        
+
         /// <summary>
         /// Parser for deserializing byte arrays to protobuf messages
         /// </summary>

@@ -44,10 +44,37 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufTwist3d
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1304
+    startLine: 1574
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 3D twist (velocity in 3D space).
+
+     This message encodes the instantaneous velocity of an object in 3D space,
+     including both linear and angular velocity components. It describes how
+     an object's 3D pose is changing over time, extending the 2D twist concept
+     into three dimensions.
+
+     Mathematical Interpretation:
+     The twist represents the time derivative of 3D pose:
+     - Linear velocity: (dx/dt, dy/dt, dz/dt)
+     - Angular velocity: (rx, ry, rz) as rotation rates about each axis
+
+     Applications:
+     - 3D robot velocity commands (drones, robotic arms)
+     - 3D velocity feedback from odometry systems
+     - Velocity constraints in 3D path planning
+     - Dynamic modeling and simulation in 3D
+     - IMU angular velocity data representation
+     - Camera motion estimation
+
+     Coordinate Frame:
+     The twist can be expressed in different coordinate frames (body-relative
+     or world-relative) depending on the application context. The angular
+     velocity components represent rotation rates about the coordinate axes.
+  example: []
   syntax:
     content: 'public sealed class ProtobufTwist3d : IMessage<ProtobufTwist3d>, IEquatable<ProtobufTwist3d>, IDeepCloneable<ProtobufTwist3d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufTwist3d Implements IMessage(Of ProtobufTwist3d), IEquatable(Of ProtobufTwist3d), IDeepCloneable(Of ProtobufTwist3d), IBufferMessage, IMessage
@@ -81,7 +108,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1311
+    startLine: 1581
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -110,7 +137,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1315
+    startLine: 1585
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -139,7 +166,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1327
+    startLine: 1597
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -168,7 +195,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1335
+    startLine: 1605
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -200,7 +227,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1347
+    startLine: 1617
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -233,7 +260,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: DxFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1354
+    startLine: 1624
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -262,10 +289,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Dx
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1356
+    startLine: 1637
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Linear velocity in X direction.
+
+     Rate of change of X position over time. In world coordinates,
+     this represents forward/backward velocity.
+
+     Positive values: Moving in positive X direction (forward)
+     Negative values: Moving in negative X direction (backward)
+     Units: meters per second
+  example: []
   syntax:
     content: public double Dx { get; set; }
     parameters: []
@@ -291,7 +329,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: DyFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1366
+    startLine: 1647
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -320,10 +358,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Dy
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1368
+    startLine: 1660
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Linear velocity in Y direction.
+
+     Rate of change of Y position over time. In world coordinates,
+     this represents left/right velocity (strafing).
+
+     Positive values: Moving in positive Y direction (left)
+     Negative values: Moving in negative Y direction (right)
+     Units: meters per second
+  example: []
   syntax:
     content: public double Dy { get; set; }
     parameters: []
@@ -349,7 +398,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: DzFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1378
+    startLine: 1670
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -378,10 +427,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Dz
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1380
+    startLine: 1683
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Linear velocity in Z direction.
+
+     Rate of change of Z position over time. In world coordinates,
+     this represents up/down velocity (climbing/descending).
+
+     Positive values: Moving in positive Z direction (up)
+     Negative values: Moving in negative Z direction (down)
+     Units: meters per second
+  example: []
   syntax:
     content: public double Dz { get; set; }
     parameters: []
@@ -407,7 +467,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: RxFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1390
+    startLine: 1693
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -436,10 +496,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Rx
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1392
+    startLine: 1706
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Angular velocity about X-axis (roll rate).
+
+     Rate of rotation about the X-axis. This represents how fast
+     the object is rolling (rotating around its forward axis).
+
+     Positive values: Counter-clockwise rotation when looking down the positive X-axis
+     Negative values: Clockwise rotation when looking down the positive X-axis
+     Units: radians per second
+  example: []
   syntax:
     content: public double Rx { get; set; }
     parameters: []
@@ -465,7 +536,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: RyFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1402
+    startLine: 1716
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -494,10 +565,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Ry
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1404
+    startLine: 1729
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Angular velocity about Y-axis (pitch rate).
+
+     Rate of rotation about the Y-axis. This represents how fast
+     the object is pitching (nose up/down motion).
+
+     Positive values: Counter-clockwise rotation when looking down the positive Y-axis
+     Negative values: Clockwise rotation when looking down the positive Y-axis
+     Units: radians per second
+  example: []
   syntax:
     content: public double Ry { get; set; }
     parameters: []
@@ -523,7 +605,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: RzFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1414
+    startLine: 1739
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -552,10 +634,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Rz
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1416
+    startLine: 1752
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Angular velocity about Z-axis (yaw rate).
+
+     Rate of rotation about the Z-axis. This represents how fast
+     the object is yawing (turning left/right).
+
+     Positive values: Counter-clockwise rotation when looking down the positive Z-axis
+     Negative values: Clockwise rotation when looking down the positive Z-axis
+     Units: radians per second
+  example: []
   syntax:
     content: public double Rz { get; set; }
     parameters: []
@@ -581,7 +674,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1425
+    startLine: 1761
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -617,7 +710,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1431
+    startLine: 1767
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -651,7 +744,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1449
+    startLine: 1785
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -681,7 +774,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1465
+    startLine: 1801
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -711,7 +804,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1471
+    startLine: 1807
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -745,7 +838,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1541
+    startLine: 1877
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -780,7 +873,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1569
+    startLine: 1905
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -814,7 +907,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry3D.cs
-    startLine: 1596
+    startLine: 1932
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

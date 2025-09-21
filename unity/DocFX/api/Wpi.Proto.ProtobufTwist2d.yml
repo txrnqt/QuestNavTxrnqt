@@ -38,10 +38,34 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufTwist2d
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 960
+    startLine: 1135
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 2D twist (velocity in 2D space).
+
+     This message encodes the instantaneous velocity of an object in 2D space,
+     including both linear and angular velocity components. It describes how
+     an object's pose is changing over time.
+
+     Mathematical Interpretation:
+     The twist represents the time derivative of pose:
+     - dx/dt: Rate of change in X position
+     - dy/dt: Rate of change in Y position  
+     - dθ/dt: Rate of change in orientation
+
+     Applications:
+     - Robot velocity commands for motion control
+     - Velocity feedback from odometry systems
+     - Velocity constraints in path planning
+     - Dynamic modeling and simulation
+
+     Coordinate Frame:
+     The twist can be expressed in different coordinate frames (robot-relative
+     or field-relative) depending on the application context.
+  example: []
   syntax:
     content: 'public sealed class ProtobufTwist2d : IMessage<ProtobufTwist2d>, IEquatable<ProtobufTwist2d>, IDeepCloneable<ProtobufTwist2d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufTwist2d Implements IMessage(Of ProtobufTwist2d), IEquatable(Of ProtobufTwist2d), IDeepCloneable(Of ProtobufTwist2d), IBufferMessage, IMessage
@@ -75,7 +99,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 967
+    startLine: 1142
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -104,7 +128,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 971
+    startLine: 1146
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -133,7 +157,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 983
+    startLine: 1158
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -162,7 +186,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 991
+    startLine: 1166
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -194,7 +218,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1000
+    startLine: 1175
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -227,7 +251,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: DxFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1007
+    startLine: 1182
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -256,10 +280,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Dx
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1009
+    startLine: 1195
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Linear velocity in X direction.
+
+     Rate of change of X position over time. In field coordinates,
+     this represents forward/backward velocity.
+
+     Positive values: Moving in positive X direction (forward)
+     Negative values: Moving in negative X direction (backward)
+     Units: meters per second
+  example: []
   syntax:
     content: public double Dx { get; set; }
     parameters: []
@@ -285,7 +320,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: DyFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1019
+    startLine: 1205
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -314,10 +349,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Dy
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1021
+    startLine: 1218
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Linear velocity in Y direction.
+
+     Rate of change of Y position over time. In field coordinates,
+     this represents left/right velocity (strafing).
+
+     Positive values: Moving in positive Y direction (left)
+     Negative values: Moving in negative Y direction (right)
+     Units: meters per second
+  example: []
   syntax:
     content: public double Dy { get; set; }
     parameters: []
@@ -343,7 +389,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: DthetaFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1031
+    startLine: 1228
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -372,10 +418,21 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Dtheta
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1033
+    startLine: 1241
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Angular velocity (rate of rotation).
+
+     Rate of change of orientation over time. This represents how
+     fast the object is rotating in the 2D plane.
+
+     Positive values: Counter-clockwise rotation
+     Negative values: Clockwise rotation
+     Units: radians per second
+  example: []
   syntax:
     content: public double Dtheta { get; set; }
     parameters: []
@@ -401,7 +458,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1042
+    startLine: 1250
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -437,7 +494,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1048
+    startLine: 1256
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +528,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1063
+    startLine: 1271
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -501,7 +558,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1076
+    startLine: 1284
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -531,7 +588,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1082
+    startLine: 1290
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -565,7 +622,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1128
+    startLine: 1336
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -600,7 +657,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1147
+    startLine: 1355
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -634,7 +691,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 1165
+    startLine: 1373
   assemblies:
   - QuestNav
   namespace: Wpi.Proto

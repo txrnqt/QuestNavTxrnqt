@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufTranslation2d | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a 2D translation (displacement) vector. This message encodes a 2D displacement or position vector using Cartesian coordinates. It&#39;s used as a building block for more complex geometric representations like poses and transforms. Applications:  Robot position on field Displacement between two points Velocity vectors (when representing change in position) Waypoint coordinates  Coordinate System:  X: Forward/backward displacement (positive = forward) Y: Left/right displacement (positive = left) Units: meters">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,27 @@
 
 
   <h1 id="Wpi_Proto_ProtobufTranslation2d" data-uid="Wpi.Proto.ProtobufTranslation2d" class="text-break">Class ProtobufTranslation2d</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a 2D translation (displacement) vector.</p>
+<p>This message encodes a 2D displacement or position vector using Cartesian
+coordinates. It's used as a building block for more complex geometric
+representations like poses and transforms.</p>
+<p>Applications:</p>
+<ul>
+<li>Robot position on field</li>
+<li>Displacement between two points</li>
+<li>Velocity vectors (when representing change in position)</li>
+<li>Waypoint coordinates</li>
+</ul>
+<p>Coordinate System:</p>
+<ul>
+<li>X: Forward/backward displacement (positive = forward)</li>
+<li>Y: Left/right displacement (positive = left)</li>
+<li>Units: meters</li>
+</ul>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -247,7 +267,14 @@
   </table>
   <a id="Wpi_Proto_ProtobufTranslation2d_X_" data-uid="Wpi.Proto.ProtobufTranslation2d.X*"></a>
   <h4 id="Wpi_Proto_ProtobufTranslation2d_X" data-uid="Wpi.Proto.ProtobufTranslation2d.X">X</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>X-coordinate (forward/backward displacement).</p>
+<p>Positive values indicate forward direction (towards opposing alliance).
+Negative values indicate backward direction.
+Units: meters</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -270,7 +297,14 @@
   </table>
   <a id="Wpi_Proto_ProtobufTranslation2d_Y_" data-uid="Wpi.Proto.ProtobufTranslation2d.Y*"></a>
   <h4 id="Wpi_Proto_ProtobufTranslation2d_Y" data-uid="Wpi.Proto.ProtobufTranslation2d.Y">Y</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Y-coordinate (left/right displacement).</p>
+<p>Positive values indicate leftward direction (when facing forward).
+Negative values indicate rightward direction.
+Units: meters</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

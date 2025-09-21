@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuestNavFrameData | QuestNav API Documentation ">
     
-    <meta name="description" content="Tracking data that is sent every loop">
+    <meta name="description" content="High-frequency tracking data sent from Quest to external systems. This message contains the core tracking information that external systems (like robot code) need for real-time localization and navigation. It&#39;s sent at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking. The data represents the Quest&#39;s understanding of the robot&#39;s position and orientation on the field, derived from visual-inertial odometry using the Quest&#39;s cameras and IMU sensors. Coordinate System:  Uses WPILib field-relative coordinate system Origin and axes depend on field setup and calibration Pose represents the robot&#39;s position, not the Quest&#39;s position (accounting for Quest mounting offset)">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,23 @@
 
 
   <h1 id="QuestNav_Protos_Generated_ProtobufQuestNavFrameData" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavFrameData" class="text-break">Class ProtobufQuestNavFrameData</h1>
-  <div class="markdown level0 summary"><p>Tracking data that is sent every loop</p>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>High-frequency tracking data sent from Quest to external systems.</p>
+<p>This message contains the core tracking information that external systems
+(like robot code) need for real-time localization and navigation. It's sent
+at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.</p>
+<p>The data represents the Quest's understanding of the robot's position and
+orientation on the field, derived from visual-inertial odometry using the
+Quest's cameras and IMU sensors.</p>
+<p>Coordinate System:</p>
+<ul>
+<li>Uses WPILib field-relative coordinate system</li>
+<li>Origin and axes depend on field setup and calibration</li>
+<li>Pose represents the robot's position, not the Quest's position
+(accounting for Quest mounting offset)</li>
+</ul>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -248,7 +264,20 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavFrameData_FrameCount_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavFrameData.FrameCount*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavFrameData_FrameCount" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavFrameData.FrameCount">FrameCount</h4>
-  <div class="markdown level1 summary"><p>Number of frames processed by the Quest</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Sequential frame counter for this tracking session.</p>
+<p>This counter increments with each frame processed by the Quest's tracking
+system. It can be used to:</p>
+<ul>
+<li>Detect dropped or out-of-order messages</li>
+<li>Calculate effective frame rate</li>
+<li>Synchronize with other data streams</li>
+</ul>
+<p>The counter resets to 0 when the QuestNav app starts and increments
+continuously during operation. Frame drops in transmission will create
+gaps in the sequence.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -295,7 +324,31 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Pose2D_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Pose2D*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Pose2D" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Pose2D">Pose2D</h4>
-  <div class="markdown level1 summary"><p>The 2d field-relative position of the quest</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Robot's 2D pose on the field in WPILib coordinates.</p>
+<p>This represents the robot's position and orientation as determined by
+the Quest's tracking system. The pose accounts for:</p>
+<ul>
+<li>Quest mounting position/orientation relative to robot center</li>
+<li>Coordinate system transformation to WPILib standard</li>
+<li>Any calibration offsets applied</li>
+</ul>
+<p>Coordinate System Details:</p>
+<ul>
+<li>X: Forward direction (towards opposing alliance)</li>
+<li>Y: Left direction (when facing forward)</li>
+<li>Rotation: Counter-clockwise positive (radians)</li>
+<li>Units: meters for translation, radians for rotation</li>
+</ul>
+<p>Accuracy depends on:</p>
+<ul>
+<li>Environmental lighting and features</li>
+<li>Quest tracking quality</li>
+<li>Calibration accuracy</li>
+<li>Time since last pose reset</li>
+</ul>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
@@ -319,7 +372,21 @@
   </table>
   <a id="QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Timestamp_" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Timestamp*"></a>
   <h4 id="QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Timestamp" data-uid="QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Timestamp">Timestamp</h4>
-  <div class="markdown level1 summary"><p>Time (in seconds) since the QuestNav app started</p>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Timestamp in seconds since QuestNav app startup.</p>
+<p>This provides timing information for the tracking data, allowing external
+systems to:</p>
+<ul>
+<li>Calculate data age and latency</li>
+<li>Interpolate or extrapolate poses for prediction</li>
+<li>Synchronize with other sensor data</li>
+<li>Implement timeout detection</li>
+</ul>
+<p>The timestamp is relative to app startup, not system time, to avoid
+clock synchronization issues between devices.</p>
+<p>Resolution: Typically sub-millisecond precision</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>

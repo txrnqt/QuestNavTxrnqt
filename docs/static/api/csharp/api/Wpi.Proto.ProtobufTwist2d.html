@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufTwist2d | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a 2D twist (velocity in 2D space). This message encodes the instantaneous velocity of an object in 2D space, including both linear and angular velocity components. It describes how an object&#39;s pose is changing over time. Mathematical Interpretation: The twist represents the time derivative of pose:  dx/dt: Rate of change in X position dy/dt: Rate of change in Y position dθ/dt: Rate of change in orientation  Applications:  Robot velocity commands for motion control Velocity feedback from odometry systems Velocity constraints in path planning Dynamic modeling and simulation  Coordinate Frame: The twist can be expressed in different coordinate frames (robot-relative or field-relative) depending on the application context.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,31 @@
 
 
   <h1 id="Wpi_Proto_ProtobufTwist2d" data-uid="Wpi.Proto.ProtobufTwist2d" class="text-break">Class ProtobufTwist2d</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a 2D twist (velocity in 2D space).</p>
+<p>This message encodes the instantaneous velocity of an object in 2D space,
+including both linear and angular velocity components. It describes how
+an object's pose is changing over time.</p>
+<p>Mathematical Interpretation:
+The twist represents the time derivative of pose:</p>
+<ul>
+<li>dx/dt: Rate of change in X position</li>
+<li>dy/dt: Rate of change in Y position</li>
+<li>dθ/dt: Rate of change in orientation</li>
+</ul>
+<p>Applications:</p>
+<ul>
+<li>Robot velocity commands for motion control</li>
+<li>Velocity feedback from odometry systems</li>
+<li>Velocity constraints in path planning</li>
+<li>Dynamic modeling and simulation</li>
+</ul>
+<p>Coordinate Frame:
+The twist can be expressed in different coordinate frames (robot-relative
+or field-relative) depending on the application context.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -247,7 +271,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufTwist2d_Dtheta_" data-uid="Wpi.Proto.ProtobufTwist2d.Dtheta*"></a>
   <h4 id="Wpi_Proto_ProtobufTwist2d_Dtheta" data-uid="Wpi.Proto.ProtobufTwist2d.Dtheta">Dtheta</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Angular velocity (rate of rotation).</p>
+<p>Rate of change of orientation over time. This represents how
+fast the object is rotating in the 2D plane.</p>
+<p>Positive values: Counter-clockwise rotation
+Negative values: Clockwise rotation
+Units: radians per second</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -270,7 +303,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufTwist2d_Dx_" data-uid="Wpi.Proto.ProtobufTwist2d.Dx*"></a>
   <h4 id="Wpi_Proto_ProtobufTwist2d_Dx" data-uid="Wpi.Proto.ProtobufTwist2d.Dx">Dx</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Linear velocity in X direction.</p>
+<p>Rate of change of X position over time. In field coordinates,
+this represents forward/backward velocity.</p>
+<p>Positive values: Moving in positive X direction (forward)
+Negative values: Moving in negative X direction (backward)
+Units: meters per second</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -293,7 +335,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufTwist2d_Dy_" data-uid="Wpi.Proto.ProtobufTwist2d.Dy*"></a>
   <h4 id="Wpi_Proto_ProtobufTwist2d_Dy" data-uid="Wpi.Proto.ProtobufTwist2d.Dy">Dy</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Linear velocity in Y direction.</p>
+<p>Rate of change of Y position over time. In field coordinates,
+this represents left/right velocity (strafing).</p>
+<p>Positive values: Moving in positive Y direction (left)
+Negative values: Moving in negative Y direction (right)
+Units: meters per second</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

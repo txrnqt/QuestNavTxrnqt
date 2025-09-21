@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufRectangle2d | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a 2D rectangle with arbitrary orientation. This message defines a rectangular region in 2D space using a center pose and width/height dimensions. The rectangle can be rotated to any orientation based on the center pose&#39;s rotation component. Geometric Properties:  Center point and orientation defined by pose Width extends along the pose&#39;s X-axis (local forward direction) Height extends along the pose&#39;s Y-axis (local left direction) Total area = xWidth * yWidth  Applications:  Robot footprint representation Obstacle and keep-out zone definitions Field element boundaries Collision detection regions Path planning constraints">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,29 @@
 
 
   <h1 id="Wpi_Proto_ProtobufRectangle2d" data-uid="Wpi.Proto.ProtobufRectangle2d" class="text-break">Class ProtobufRectangle2d</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><ul>
+<li></li>
+</ul>
+<p>Represents a 2D rectangle with arbitrary orientation.</p>
+<p>This message defines a rectangular region in 2D space using a center pose
+and width/height dimensions. The rectangle can be rotated to any orientation
+based on the center pose's rotation component.</p>
+<p>Geometric Properties:</p>
+<ul>
+<li>Center point and orientation defined by pose</li>
+<li>Width extends along the pose's X-axis (local forward direction)</li>
+<li>Height extends along the pose's Y-axis (local left direction)</li>
+<li>Total area = xWidth * yWidth</li>
+</ul>
+<p>Applications:</p>
+<ul>
+<li>Robot footprint representation</li>
+<li>Obstacle and keep-out zone definitions</li>
+<li>Field element boundaries</li>
+<li>Collision detection regions</li>
+<li>Path planning constraints</li>
+</ul>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -224,7 +246,19 @@
 </h3>
   <a id="Wpi_Proto_ProtobufRectangle2d_Center_" data-uid="Wpi.Proto.ProtobufRectangle2d.Center*"></a>
   <h4 id="Wpi_Proto_ProtobufRectangle2d_Center" data-uid="Wpi.Proto.ProtobufRectangle2d.Center">Center</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Center pose of the rectangle.</p>
+<p>The translation component specifies the center point of the rectangle
+in the coordinate system. The rotation component specifies the
+orientation of the rectangle's local coordinate frame.</p>
+<p>The rectangle's edges are aligned with this local coordinate frame:</p>
+<ul>
+<li>Width extends along local X-axis (rotated forward direction)</li>
+<li>Height extends along local Y-axis (rotated left direction)</li>
+</ul>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -293,7 +327,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufRectangle2d_XWidth_" data-uid="Wpi.Proto.ProtobufRectangle2d.XWidth*"></a>
   <h4 id="Wpi_Proto_ProtobufRectangle2d_XWidth" data-uid="Wpi.Proto.ProtobufRectangle2d.XWidth">XWidth</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Width of the rectangle along its local X-axis.</p>
+<p>This is the dimension of the rectangle in the direction of the
+center pose's forward direction (after rotation). The rectangle
+extends ±xWidth/2 from the center along this axis.</p>
+<p>Units: meters
+Must be positive</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -316,7 +359,16 @@
   </table>
   <a id="Wpi_Proto_ProtobufRectangle2d_YWidth_" data-uid="Wpi.Proto.ProtobufRectangle2d.YWidth*"></a>
   <h4 id="Wpi_Proto_ProtobufRectangle2d_YWidth" data-uid="Wpi.Proto.ProtobufRectangle2d.YWidth">YWidth</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><ul>
+<li></li>
+</ul>
+<p>Height of the rectangle along its local Y-axis.</p>
+<p>This is the dimension of the rectangle in the direction of the
+center pose's left direction (after rotation). The rectangle
+extends ±yWidth/2 from the center along this axis.</p>
+<p>Units: meters
+Must be positive</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

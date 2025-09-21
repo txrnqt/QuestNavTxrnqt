@@ -92,19 +92,95 @@ Classes
       <section><p>Holder for reflection information generated from data.proto</p>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.ProtobufQuestNavCommand.html">ProtobufQuestNavCommand</a></h4>
-      <section><p>Main Command message</p>
+      <section><ul>
+<li></li>
+</ul>
+<p>Main command message sent to the QuestNav system.</p>
+<p>This is the primary message type used to send commands from external systems
+(like robot code) to the Quest headset. Each command includes a type identifier,
+a unique tracking ID, and optional payload data specific to the command type.</p>
+<p>The command system is designed for asynchronous operation - commands are sent
+and responses are received separately, matched by the command_id field.</p>
+<p>Message Flow:</p>
+<ol>
+<li>Client creates command with unique command_id</li>
+<li>Client sets appropriate type and payload</li>
+<li>Client sends command to Quest</li>
+<li>Quest processes command and sends response with matching command_id</li>
+</ol>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html">ProtobufQuestNavCommandResponse</a></h4>
-      <section><p>Response message for commands</p>
+      <section><ul>
+<li></li>
+</ul>
+<p>Response message sent back after processing a command.</p>
+<p>This message is sent by the Quest back to the client after processing
+a ProtobufQuestNavCommand. It provides status information about whether
+the command was executed successfully and any error details if it failed.</p>
+<p>The response is matched to the original command using the command_id field,
+allowing for proper asynchronous command handling even when multiple
+commands are in flight simultaneously.</p>
+<p>Response Timing:</p>
+<ul>
+<li>Responses are sent after command processing completes</li>
+<li>Some commands may take time to execute (e.g., pose reset with validation)</li>
+<li>Clients should implement timeouts for command responses</li>
+</ul>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html">ProtobufQuestNavDeviceData</a></h4>
-      <section><p>Device data that is sent slower</p>
+      <section><ul>
+<li></li>
+</ul>
+<p>Lower-frequency device status data sent from Quest to external systems.</p>
+<p>This message contains device health and status information that doesn't need
+to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+to provide monitoring and diagnostic information without consuming excessive
+bandwidth.</p>
+<p>This data helps external systems:</p>
+<ul>
+<li>Monitor Quest device health</li>
+<li>Detect tracking system issues</li>
+<li>Implement failsafe behaviors</li>
+<li>Provide user feedback about system status</li>
+</ul>
+<p>The information is useful for both autonomous operation and debugging/
+troubleshooting scenarios.</p>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html">ProtobufQuestNavFrameData</a></h4>
-      <section><p>Tracking data that is sent every loop</p>
+      <section><ul>
+<li></li>
+</ul>
+<p>High-frequency tracking data sent from Quest to external systems.</p>
+<p>This message contains the core tracking information that external systems
+(like robot code) need for real-time localization and navigation. It's sent
+at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.</p>
+<p>The data represents the Quest's understanding of the robot's position and
+orientation on the field, derived from visual-inertial odometry using the
+Quest's cameras and IMU sensors.</p>
+<p>Coordinate System:</p>
+<ul>
+<li>Uses WPILib field-relative coordinate system</li>
+<li>Origin and axes depend on field setup and calibration</li>
+<li>Pose represents the robot's position, not the Quest's position
+(accounting for Quest mounting offset)</li>
+</ul>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html">ProtobufQuestNavPoseResetPayload</a></h4>
-      <section><p>Payload for pose reset command</p>
+      <section><ul>
+<li></li>
+</ul>
+<p>Payload message for the POSE_RESET command.</p>
+<p>This message contains the data needed to execute a pose reset operation.
+The pose reset command allows external systems to correct the Quest's
+understanding of the robot's position and orientation on the field.</p>
+<p>Coordinate System:</p>
+<ul>
+<li>Uses WPILib field-relative coordinate system</li>
+<li>X-axis: Forward (towards opposing alliance)</li>
+<li>Y-axis: Left (when facing forward)</li>
+<li>Rotation: Counter-clockwise positive (standard mathematical convention)</li>
+<li>Origin: Typically at one corner of the field (see field layout documentation)</li>
+</ul>
 </section>
     <h3 id="enums">
 Enums
@@ -113,7 +189,19 @@ Enums
       <section><p>Enum of possible cases for the &quot;payload&quot; oneof.</p>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.QuestNavCommandType.html">QuestNavCommandType</a></h4>
-      <section><p>Enum for command types (extensible for future commands)</p>
+      <section><ul>
+<li></li>
+</ul>
+<p>Enumeration of available command types in the QuestNav system.</p>
+<p>This enum defines all the different types of commands that can be sent to
+the Quest headset. The enum is designed to be extensible - new command types
+can be added without breaking existing clients.</p>
+<p>Design Notes:</p>
+<ul>
+<li>Values start from 0 as required by proto3</li>
+<li>UNSPECIFIED value (0) is reserved for error handling</li>
+<li>Command values should be assigned incrementally for clarity</li>
+</ul>
 </section>
 
 

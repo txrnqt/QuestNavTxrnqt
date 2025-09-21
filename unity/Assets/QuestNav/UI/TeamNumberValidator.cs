@@ -11,13 +11,13 @@ public class TeamNumberValidator : TMP_InputValidator
 {
     /// <summary>
     /// Regular expression that matches a complete positive integer between 1 and 25599 (valid FRC team number range).
-    /// 
+    ///
     /// REGEX BREAKDOWN: ^(?:[1-9]\d{0,3}|1\d{4}|2(?:[0-4]\d{3}|5[0-5]\d{2}))$
     /// - [1-9]\d{0,3}: Matches 1-4 digits starting with 1-9 (covers 1-9999)
-    /// - 1\d{4}: Matches 5 digits starting with 1 (covers 10000-19999)  
+    /// - 1\d{4}: Matches 5 digits starting with 1 (covers 10000-19999)
     /// - 2[0-4]\d{3}: Matches 5 digits starting with 20-24 (covers 20000-24999)
     /// - 25[0-5]\d{2}: Matches 5 digits starting with 250-255 (covers 25000-25599)
-    /// 
+    ///
     /// This covers the complete valid range of FRC team numbers as allocated by FIRST.
     /// </summary>
     private Regex completeRegex = new Regex(

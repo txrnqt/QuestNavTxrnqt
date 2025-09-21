@@ -36,10 +36,29 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufTranslation2d
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 57
+    startLine: 76
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Represents a 2D translation (displacement) vector.
+
+     This message encodes a 2D displacement or position vector using Cartesian
+     coordinates. It's used as a building block for more complex geometric
+     representations like poses and transforms.
+
+     Applications:
+     - Robot position on field
+     - Displacement between two points
+     - Velocity vectors (when representing change in position)
+     - Waypoint coordinates
+
+     Coordinate System:
+     - X: Forward/backward displacement (positive = forward)
+     - Y: Left/right displacement (positive = left)
+     - Units: meters
+  example: []
   syntax:
     content: 'public sealed class ProtobufTranslation2d : IMessage<ProtobufTranslation2d>, IEquatable<ProtobufTranslation2d>, IDeepCloneable<ProtobufTranslation2d>, IBufferMessage, IMessage'
     content.vb: Public NotInheritable Class ProtobufTranslation2d Implements IMessage(Of ProtobufTranslation2d), IEquatable(Of ProtobufTranslation2d), IDeepCloneable(Of ProtobufTranslation2d), IBufferMessage, IMessage
@@ -73,7 +92,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 64
+    startLine: 83
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -102,7 +121,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 68
+    startLine: 87
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -131,7 +150,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 80
+    startLine: 99
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -160,7 +179,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 88
+    startLine: 107
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -192,7 +211,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 96
+    startLine: 115
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -225,7 +244,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: XFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 103
+    startLine: 122
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -254,10 +273,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: X
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 105
+    startLine: 132
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     X-coordinate (forward/backward displacement).
+
+     Positive values indicate forward direction (towards opposing alliance).
+     Negative values indicate backward direction.
+     Units: meters
+  example: []
   syntax:
     content: public double X { get; set; }
     parameters: []
@@ -283,7 +310,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: YFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 115
+    startLine: 142
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -312,10 +339,18 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Y
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 117
+    startLine: 152
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
+  summary: >-
+    *
+     Y-coordinate (left/right displacement).
+
+     Positive values indicate leftward direction (when facing forward).
+     Negative values indicate rightward direction.
+     Units: meters
+  example: []
   syntax:
     content: public double Y { get; set; }
     parameters: []
@@ -341,7 +376,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 126
+    startLine: 161
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -377,7 +412,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 132
+    startLine: 167
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -411,7 +446,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 146
+    startLine: 181
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -441,7 +476,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 158
+    startLine: 193
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -471,7 +506,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 164
+    startLine: 199
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -505,7 +540,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 202
+    startLine: 237
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -540,7 +575,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 218
+    startLine: 253
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
@@ -574,7 +609,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Geometry2D.cs
-    startLine: 233
+    startLine: 268
   assemblies:
   - QuestNav
   namespace: Wpi.Proto
