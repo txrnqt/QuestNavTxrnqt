@@ -175,6 +175,23 @@ const config: Config = {
           ],
         },
         {
+          title: 'Need Help?',
+          items: [
+            {
+              label: 'Report Issues',
+              href: 'https://github.com/QuestNav/QuestNav/issues',
+            },
+            {
+              label: 'GitHub Discussions',
+              href: 'https://github.com/QuestNav/QuestNav/discussions',
+            },
+            {
+              label: 'Contributing Guide',
+              to: '/docs/development/contributing',
+            },
+          ],
+        },
+        {
           title: 'More',
           items: [
             {

@@ -122,6 +122,8 @@ message ProtobufQuestNavCommand {
    * to avoid confusion. The Quest will echo this ID in the response message.
    * 
    * Recommended: Use incrementing integers or timestamps for uniqueness.
+   * 
+   * Note: For FRC users, the vendor dependency will handle this automatically.
    */
   uint32 command_id = 2;
 
@@ -165,6 +167,8 @@ message ProtobufQuestNavCommand {
  * - Responses are sent after command processing completes
  * - Some commands may take time to execute (e.g., pose reset with validation)
  * - Clients should implement timeouts for command responses
+ * 
+ * Note: For FRC users, the vendor dependency will handle response matching automatically.
  */
 message ProtobufQuestNavCommandResponse {
   /**

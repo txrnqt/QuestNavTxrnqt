@@ -193,27 +193,26 @@ public class QuestNav {
    *   <li>Publisher for sending commands to the Quest
    * </ul>
    *
-   * @throws RuntimeException if NetworkTables is not available or properly configured
    */
   public QuestNav() {}
 
   /**
-   * Sets the field-relative pose of the robot by commanding the Quest to reset its tracking.
+   * Sets the field-relative pose of the Quest headset by commanding it to reset its tracking.
    *
-   * <p>This method sends a pose reset command to the Quest headset, telling it where the robot is
+   * <p>This method sends a pose reset command to the Quest headset, telling it where the Quest is
    * currently located on the field. This is essential for establishing field-relative tracking and
    * should be called:
    *
    * <ul>
-   *   <li>At the start of autonomous or teleop when the robot position is known
-   *   <li>When the robot is placed at a known location (e.g., against field walls)
+   *   <li>At the start of autonomous or teleop when the Quest position is known
+   *   <li>When the robot (and Quest) is placed at a known location (e.g., against field walls)
    *   <li>After significant tracking drift is detected
    *   <li>When integrating with other localization systems (vision, odometry)
    * </ul>
    *
-   * <p><strong>Important:</strong> This should be the robot's pose, not the Quest's pose. The Quest
-   * automatically accounts for its mounting position relative to the robot center based on the
-   * calibration performed during setup.
+   * <p><strong>Important:</strong> This should be the Quest's pose, not the robot's pose. If you
+   * know the robot's pose, you need to apply the mounting offset to get the Quest's pose before
+   * calling this method.
    *
    * <p>The command is sent asynchronously. Monitor command success/failure by calling {@link
    * #commandPeriodic()} regularly, which will log any errors to the DriverStation.
@@ -221,16 +220,17 @@ public class QuestNav {
    * <h4>Usage Example:</h4>
    *
    * <pre>{@code
-   * // Set robot pose at autonomous start
-   * Pose2d startPose = new Pose2d(1.5, 5.5, Rotation2d.fromDegrees(0));
-   * questNav.setPose(startPose);
+   * // Set Quest pose at autonomous start (if you know the Quest's position directly)
+   * Pose2d questPose = new Pose2d(1.5, 5.5, Rotation2d.fromDegrees(0));
+   * questNav.setPose(questPose);
    *
-   * // Integration with pose estimator
-   * Pose2d estimatedPose = poseEstimator.getEstimatedPosition();
-   * questNav.setPose(estimatedPose); // Sync Quest with pose estimator
+   * // If you know the robot pose, apply mounting offset to get Quest pose
+   * Pose2d robotPose = poseEstimator.getEstimatedPosition();
+   * Pose2d questPose = robotPose.plus(mountingOffset); // Apply your mounting offset
+   * questNav.setPose(questPose);
    * }</pre>
    *
-   * @param pose The robot's current field-relative pose in WPILib coordinates (meters for
+   * @param pose The Quest's current field-relative pose in WPILib coordinates (meters for
    *     translation, radians for rotation)
    * @throws IllegalArgumentException if pose contains NaN or infinite values
    * @see #commandPeriodic()
@@ -382,7 +382,7 @@ public class QuestNav {
    * Returns the Quest app's uptime timestamp for debugging and diagnostics.
    *
    * <p><strong>Important:</strong> For integration with a pose estimator, use the timestamp from
-   * {@link PoseFrame#dataTimestamp()} instead! This method provides the Quest's internal
+   * {@link #getDataTimestamp()} instead! This method provides the Quest's internal
    * application timestamp, which is useful for:
    *
    * <ul>
@@ -394,11 +394,11 @@ public class QuestNav {
    *
    * <p>The timestamp represents seconds since the Quest application started and is independent of
    * the robot's clock. For pose estimation, always use the NetworkTables timestamp from {@link
-   * PoseFrame#dataTimestamp()} which is synchronized with robot time.
+   * #getDataTimestamp()} which is synchronized with robot time.
    *
    * @return An {@link OptionalDouble} containing the Quest app uptime in seconds, or empty if no
    *     frame data is available
-   * @see PoseFrame#dataTimestamp()
+   * @see #getDataTimestamp()
    * @see #getAllUnreadPoseFrames()
    */
   public OptionalDouble getAppTimestamp() {
@@ -446,13 +446,13 @@ public class QuestNav {
    * }
    * }</pre>
    *
-   * <p>Performance notes:
-   *
-   * <ul>
-   *   <li>Returns a new array each call - consider caching if called multiple times per loop
-   *   <li>Frame rate typically 30-90 Hz depending on Quest performance
-   *   <li>Empty array returned when no new frames are available
-   * </ul>
+ * <p>Performance notes:
+ *
+ * <ul>
+ *   <li>Returns a new array each call - consider caching if called multiple times per loop
+ *   <li>Frame rate is exactly 100 Hz (every 10 milliseconds)
+ *   <li>Empty array returned when no new frames are available
+ * </ul>
    *
    * @return Array of new {@link PoseFrame} objects received since the last call. Empty array if no
    *     new frames are available or Quest is disconnected.

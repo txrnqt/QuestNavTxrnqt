@@ -121,13 +121,6 @@ public class NetworkTableConnection : INetworkTableConnection
     /// <summary>
     /// Initializes a new NetworkTables connection with publishers and subscribers for QuestNav communication.
     ///
-    /// NETWORKTABLES ARCHITECTURE:
-    /// NetworkTables is FRC's standard communication protocol, providing:
-    /// - Automatic discovery and connection to robot/simulator
-    /// - Reliable UDP-based messaging with automatic reconnection
-    /// - Topic-based publish/subscribe pattern
-    /// - Cross-platform compatibility (Windows, Linux, macOS)
-    ///
     /// QUESTNAV COMMUNICATION TOPICS:
     /// Publishers (Quest → Robot):
     /// - /QuestNav/frameData: High-frequency pose updates (100Hz)
