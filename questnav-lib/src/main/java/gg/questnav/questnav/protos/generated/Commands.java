@@ -18,7 +18,7 @@ import us.hebi.quickbuf.RepeatedByte;
 import us.hebi.quickbuf.Utf8String;
 
 public final class Commands {
-    private static final RepeatedByte descriptorData = ProtoUtil.decodeBase64(2020,
+    private static final RepeatedByte descriptorData = ProtoUtil.decodeBase64(7335,
         "Cg5jb21tYW5kcy5wcm90bxIYcXVlc3RuYXYucHJvdG9zLmNvbW1hbmRzGhBnZW9tZXRyeTJkLnByb3Rv" + 
         "Il4KIFByb3RvYnVmUXVlc3ROYXZQb3NlUmVzZXRQYXlsb2FkEjoKC3RhcmdldF9wb3NlGAEgASgLMhku" + 
         "d3BpLnByb3RvLlByb3RvYnVmUG9zZTJkUgp0YXJnZXRQb3NlIvIBChdQcm90b2J1ZlF1ZXN0TmF2Q29t" + 
@@ -30,29 +30,118 @@ public final class Commands {
         "IAEoCFIHc3VjY2VzcxIjCg1lcnJvcl9tZXNzYWdlGAMgASgJUgxlcnJvck1lc3NhZ2UqQwoTUXVlc3RO" + 
         "YXZDb21tYW5kVHlwZRIcChhDT01NQU5EX1RZUEVfVU5TUEVDSUZJRUQQABIOCgpQT1NFX1JFU0VUEAFC" + 
         "QwolZ2cucXVlc3RuYXYucXVlc3RuYXYucHJvdG9zLmdlbmVyYXRlZKoCGVF1ZXN0TmF2LlByb3Rvcy5H" + 
-        "ZW5lcmF0ZWRKvQoKBhIEAAMwAQoICgEMEgMAAxUKCAoBAhIDAgAhCggKAQgSAwMANgoJCgIIJRIDAwA2" + 
-        "CggKAQgSAwQAPgoJCgIIARIDBAA+CiUKAgMAEgMHABoaGiBJbXBvcnQgZ2VvbWV0cnkgbWVzc2FnZXMK" + 
-        "CkUKAgUAEgQKAA4BGjkgRW51bSBmb3IgY29tbWFuZCB0eXBlcyAoZXh0ZW5zaWJsZSBmb3IgZnV0dXJl" + 
-        "IGNvbW1hbmRzKQoKCgoDBQABEgMKBRgKLwoEBQACABIDCwIfIiIgRGVmYXVsdCB2YWx1ZSByZXF1aXJl" + 
-        "ZCBpbiBwcm90bzMKCgwKBQUAAgABEgMLAhoKDAoFBQACAAISAwsdHgouCgQFAAIBEgMMAhEiISBSZXNl" + 
-        "dCByb2JvdCBwb3NlIHRvIHRhcmdldCBwb3NlCgoMCgUFAAIBARIDDAIMCgwKBQUAAgECEgMMDxAKLAoC" + 
-        "BAASBBEAFAEaICBQYXlsb2FkIGZvciBwb3NlIHJlc2V0IGNvbW1hbmQKCgoKAwQAARIDEQgoCmcKBAQA" + 
-        "AgASAxMCKxpaIFRhcmdldCBwb3NlIGluIGZpZWxkLXJlbGF0aXZlIFdQSUxpYiBjb29yZGluYXRlIHNw" + 
-        "YWNlICh4IGZvcndhcmQsIHkgbGVmdCwgcm90YXRpb24gQ0NXKykKCgwKBQQAAgAGEgMTAhoKDAoFBAAC",
-        "AAESAxMbJgoMCgUEAAIAAxIDEykqCiIKAgQBEgQXACQBGhYgTWFpbiBDb21tYW5kIG1lc3NhZ2UKCgoK" + 
-        "AwQBARIDFwgfCiIKBAQBAgASAxkCHxoVIFRoZSB0eXBlIG9mIGNvbW1hbmQKCgwKBQQBAgAGEgMZAhUK" + 
-        "DAoFBAECAAESAxkWGgoMCgUEAQIAAxIDGR0eCjAKBAQBAgESAxwCGBojIENvbW1hbmQgSUQgZm9yIHRy" + 
-        "YWNraW5nL3Jlc3BvbnNlcwoKDAoFBAECAQUSAxwCCAoMCgUEAQIBARIDHAkTCgwKBQQBAgEDEgMcFhcK" + 
-        "VQoEBAEIABIEHwIjAxpHIENvbW1hbmQtc3BlY2lmaWMgcGF5bG9hZCAob25seSBvbmUgd2lsbCBiZSBz" + 
-        "ZXQgYmFzZWQgb24gY29tbWFuZCB0eXBlKQoKDAoFBAEIAAESAx8IDwphCgQEAQICEgMgBD0iVCBGdXR1" + 
-        "cmUgcGF5bG9hZHMgY2FuIGJlIGFkZGVkIGhlcmU6CiAoQ29tbWFuZHMgd2l0aCBubyBwYXlsb2FkIGRv" + 
-        "bid0IG5lZWQgYW4gZW50cnkpCgoMCgUEAQICBhIDIAQkCgwKBQQBAgIBEgMgJTcKDAoFBAECAgMSAyA6" + 
-        "PAorCgIEAhIEJwAwARofIFJlc3BvbnNlIG1lc3NhZ2UgZm9yIGNvbW1hbmRzCgoKCgMEAgESAycIJwou" + 
-        "CgQEAgIAEgMpAhgaISBNYXRjaGVzIHRoZSBvcmlnaW5hbCBjb21tYW5kIElECgoMCgUEAgIABRIDKQII" + 
-        "CgwKBQQCAgABEgMpCRMKDAoFBAICAAMSAykWFwoxCgQEAgIBEgMsAhMaJCBXaGV0aGVyIHRoZSBjb21t" + 
-        "YW5kIHdhcyBzdWNjZXNzZnVsCgoMCgUEAgIBBRIDLAIGCgwKBQQCAgEBEgMsBw4KDAoFBAICAQMSAywR" + 
-        "EgovCgQEAgICEgMvAhsaIiBFcnJvciBtZXNzYWdlIGlmIHN1Y2Nlc3MgPSBmYWxzZQoKDAoFBAICAgUS" + 
-        "Ay8CCAoMCgUEAgICARIDLwkWCgwKBQQCAgIDEgMvGRpiBnByb3RvMw==");
+        "ZW5lcmF0ZWRKgDQKBxIFAAPNAQEKCAoBDBIDAAMVCvYFCgECEgMWACEy6wUqCiBRdWVzdE5hdiBDb21t" + 
+        "YW5kcyBQcm90b2NvbCBCdWZmZXIgRGVmaW5pdGlvbnMKIAogVGhpcyBmaWxlIGRlZmluZXMgdGhlIGNv" + 
+        "bW1hbmQgc3lzdGVtIGZvciBRdWVzdE5hdiwgd2hpY2ggYWxsb3dzIGV4dGVybmFsIHN5c3RlbXMKIChz" + 
+        "dWNoIGFzIHJvYm90IGNvZGUpIHRvIHNlbmQgY29tbWFuZHMgdG8gdGhlIFF1ZXN0IGhlYWRzZXQgZm9y" + 
+        "IHZhcmlvdXMgb3BlcmF0aW9ucy4KIFRoZSBjb21tYW5kIHN5c3RlbSBpcyBkZXNpZ25lZCB0byBiZSBl" + 
+        "eHRlbnNpYmxlLCBhbGxvd2luZyBuZXcgY29tbWFuZCB0eXBlcyB0byBiZQogYWRkZWQgd2l0aG91dCBi" + 
+        "cmVha2luZyBleGlzdGluZyBpbXBsZW1lbnRhdGlvbnMuCiAKIEtleSBGZWF0dXJlczoKIC0gQXN5bmNo" + 
+        "cm9ub3VzIGNvbW1hbmQgZXhlY3V0aW9uIHdpdGggcmVzcG9uc2UgdHJhY2tpbmcKIC0gRXh0ZW5zaWJs" + 
+        "ZSBjb21tYW5kIHR5cGUgc3lzdGVtCiAtIFR5cGUtc2FmZSBwYXlsb2FkIHN5c3RlbSB1c2luZyBvbmVv",
+        "ZgogLSBFcnJvciBoYW5kbGluZyBhbmQgc3RhdHVzIHJlcG9ydGluZwogCiBVc2FnZSBGbG93OgogMS4g" + 
+        "Q2xpZW50IHNlbmRzIFByb3RvYnVmUXVlc3ROYXZDb21tYW5kIHdpdGggdW5pcXVlIGNvbW1hbmRfaWQK" + 
+        "IDIuIFF1ZXN0TmF2IHByb2Nlc3NlcyB0aGUgY29tbWFuZCBhc3luY2hyb25vdXNseQogMy4gUXVlc3RO" + 
+        "YXYgc2VuZHMgYmFjayBQcm90b2J1ZlF1ZXN0TmF2Q29tbWFuZFJlc3BvbnNlIHdpdGggbWF0Y2hpbmcg" + 
+        "Y29tbWFuZF9pZAoKCAoBCBIDFwA2CgkKAgglEgMXADYKCAoBCBIDGAA+CgkKAggBEgMYAD4KPwoCAwAS" + 
+        "AxsAGho0IEltcG9ydCBnZW9tZXRyeSBtZXNzYWdlcyBmb3IgcG9zZS1yZWxhdGVkIGNvbW1hbmRzCgrQ" + 
+        "AwoCBQASBCkAOwEawwMqCiBFbnVtZXJhdGlvbiBvZiBhdmFpbGFibGUgY29tbWFuZCB0eXBlcyBpbiB0" + 
+        "aGUgUXVlc3ROYXYgc3lzdGVtLgogCiBUaGlzIGVudW0gZGVmaW5lcyBhbGwgdGhlIGRpZmZlcmVudCB0" + 
+        "eXBlcyBvZiBjb21tYW5kcyB0aGF0IGNhbiBiZSBzZW50IHRvCiB0aGUgUXVlc3QgaGVhZHNldC4gVGhl" + 
+        "IGVudW0gaXMgZGVzaWduZWQgdG8gYmUgZXh0ZW5zaWJsZSAtIG5ldyBjb21tYW5kIHR5cGVzCiBjYW4g" + 
+        "YmUgYWRkZWQgd2l0aG91dCBicmVha2luZyBleGlzdGluZyBjbGllbnRzLgogCiBEZXNpZ24gTm90ZXM6" + 
+        "CiAtIFZhbHVlcyBzdGFydCBmcm9tIDAgYXMgcmVxdWlyZWQgYnkgcHJvdG8zCiAtIFVOU1BFQ0lGSUVE" + 
+        "IHZhbHVlICgwKSBpcyByZXNlcnZlZCBmb3IgZXJyb3IgaGFuZGxpbmcKIC0gQ29tbWFuZCB2YWx1ZXMg" + 
+        "c2hvdWxkIGJlIGFzc2lnbmVkIGluY3JlbWVudGFsbHkgZm9yIGNsYXJpdHkKCgoKAwUAARIDKQUYCkAK" + 
+        "BAUAAgASAyoCHyIzIERlZmF1bHQvaW52YWxpZCBjb21tYW5kIHR5cGUgKHJlcXVpcmVkIGJ5IHByb3Rv" + 
+        "MykKCgwKBQUAAgABEgMqAhoKDAoFBQACAAISAyodHgrXAgoEBQACARIDNQIRGskCKgogUE9TRV9SRVNF" + 
+        "VDogUmVzZXRzIHRoZSByb2JvdCdzIHBvc2UgZXN0aW1hdGlvbiB0byBhIHNwZWNpZmllZCB0YXJnZXQg" + 
+        "cG9zZS4KIAogVGhpcyBjb21tYW5kIGlzIHVzZWQgdG8gY29ycmVjdCBkcmlmdCBpbiB0aGUgdHJhY2tp" + 
+        "bmcgc3lzdGVtIGJ5IHNldHRpbmcKIHRoZSByb2JvdCdzIHBvc2l0aW9uIGFuZCBvcmllbnRhdGlvbiB0" + 
+        "byBrbm93biB2YWx1ZXMuIFR5cGljYWxseSB1c2VkIHdoZW4KIHRoZSByb2JvdCBpcyBwbGFjZWQgYXQg",
+        "YSBrbm93biBsb2NhdGlvbiBvbiB0aGUgZmllbGQuCiAKIFJlcXVpcmVzOiBQcm90b2J1ZlF1ZXN0TmF2" + 
+        "UG9zZVJlc2V0UGF5bG9hZAoKDAoFBQACAQESAzUCDAoMCgUFAAIBAhIDNQ8QCssECgIEABIESwBYARq+" + 
+        "BCoKIFBheWxvYWQgbWVzc2FnZSBmb3IgdGhlIFBPU0VfUkVTRVQgY29tbWFuZC4KIAogVGhpcyBtZXNz" + 
+        "YWdlIGNvbnRhaW5zIHRoZSBkYXRhIG5lZWRlZCB0byBleGVjdXRlIGEgcG9zZSByZXNldCBvcGVyYXRp" + 
+        "b24uCiBUaGUgcG9zZSByZXNldCBjb21tYW5kIGFsbG93cyBleHRlcm5hbCBzeXN0ZW1zIHRvIGNvcnJl" + 
+        "Y3QgdGhlIFF1ZXN0J3MKIHVuZGVyc3RhbmRpbmcgb2YgdGhlIHJvYm90J3MgcG9zaXRpb24gYW5kIG9y" + 
+        "aWVudGF0aW9uIG9uIHRoZSBmaWVsZC4KIAogQ29vcmRpbmF0ZSBTeXN0ZW06CiAtIFVzZXMgV1BJTGli" + 
+        "IGZpZWxkLXJlbGF0aXZlIGNvb3JkaW5hdGUgc3lzdGVtCiAtIFgtYXhpczogRm9yd2FyZCAodG93YXJk" + 
+        "cyBvcHBvc2luZyBhbGxpYW5jZSkKIC0gWS1heGlzOiBMZWZ0ICh3aGVuIGZhY2luZyBmb3J3YXJkKQog" + 
+        "LSBSb3RhdGlvbjogQ291bnRlci1jbG9ja3dpc2UgcG9zaXRpdmUgKHN0YW5kYXJkIG1hdGhlbWF0aWNh" + 
+        "bCBjb252ZW50aW9uKQogLSBPcmlnaW46IFR5cGljYWxseSBhdCBvbmUgY29ybmVyIG9mIHRoZSBmaWVs" + 
+        "ZCAoc2VlIGZpZWxkIGxheW91dCBkb2N1bWVudGF0aW9uKQoKCgoDBAABEgNLCCgK0QIKBAQAAgASA1cC" + 
+        "KxrDAioKIFRoZSB0YXJnZXQgcG9zZSB0byByZXNldCB0aGUgcm9ib3QgdG8uCiAKIFRoaXMgc2hvdWxk" + 
+        "IHJlcHJlc2VudCB0aGUgcm9ib3QncyBhY3R1YWwgcG9zaXRpb24gYW5kIG9yaWVudGF0aW9uIG9uIHRo" + 
+        "ZSBmaWVsZAogaW4gdGhlIFdQSUxpYiBjb29yZGluYXRlIHN5c3RlbS4gVGhlIFF1ZXN0IHdpbGwgdXBk" + 
+        "YXRlIGl0cyBpbnRlcm5hbCB0cmFja2luZwogdG8gbWF0Y2ggdGhpcyBwb3NlLCBlZmZlY3RpdmVseSBj" + 
+        "b3JyZWN0aW5nIGFueSBhY2N1bXVsYXRlZCBkcmlmdC4KIAogVW5pdHM6CiAtIFRyYW5zbGF0aW9uOiBt" + 
+        "ZXRlcnMKIC0gUm90YXRpb246IHJhZGlhbnMKCgwKBQQAAgAGEgNXAhoKDAoFBAACAAESA1cbJgoMCgUE" + 
+        "AAIAAxIDVykqCqgFCgIEARIFagCWAQEamgUqCiBNYWluIGNvbW1hbmQgbWVzc2FnZSBzZW50IHRvIHRo" + 
+        "ZSBRdWVzdE5hdiBzeXN0ZW0uCiAKIFRoaXMgaXMgdGhlIHByaW1hcnkgbWVzc2FnZSB0eXBlIHVzZWQg",
+        "dG8gc2VuZCBjb21tYW5kcyBmcm9tIGV4dGVybmFsIHN5c3RlbXMKIChsaWtlIHJvYm90IGNvZGUpIHRv" + 
+        "IHRoZSBRdWVzdCBoZWFkc2V0LiBFYWNoIGNvbW1hbmQgaW5jbHVkZXMgYSB0eXBlIGlkZW50aWZpZXIs" + 
+        "CiBhIHVuaXF1ZSB0cmFja2luZyBJRCwgYW5kIG9wdGlvbmFsIHBheWxvYWQgZGF0YSBzcGVjaWZpYyB0" + 
+        "byB0aGUgY29tbWFuZCB0eXBlLgogCiBUaGUgY29tbWFuZCBzeXN0ZW0gaXMgZGVzaWduZWQgZm9yIGFz" + 
+        "eW5jaHJvbm91cyBvcGVyYXRpb24gLSBjb21tYW5kcyBhcmUgc2VudAogYW5kIHJlc3BvbnNlcyBhcmUg" + 
+        "cmVjZWl2ZWQgc2VwYXJhdGVseSwgbWF0Y2hlZCBieSB0aGUgY29tbWFuZF9pZCBmaWVsZC4KIAogTWVz" + 
+        "c2FnZSBGbG93OgogMS4gQ2xpZW50IGNyZWF0ZXMgY29tbWFuZCB3aXRoIHVuaXF1ZSBjb21tYW5kX2lk" + 
+        "CiAyLiBDbGllbnQgc2V0cyBhcHByb3ByaWF0ZSB0eXBlIGFuZCBwYXlsb2FkCiAzLiBDbGllbnQgc2Vu" + 
+        "ZHMgY29tbWFuZCB0byBRdWVzdAogNC4gUXVlc3QgcHJvY2Vzc2VzIGNvbW1hbmQgYW5kIHNlbmRzIHJl" + 
+        "c3BvbnNlIHdpdGggbWF0Y2hpbmcgY29tbWFuZF9pZAoKCgoDBAEBEgNqCB8K3wEKBAQBAgASA3ICHxrR" + 
+        "ASoKIFRoZSB0eXBlIG9mIGNvbW1hbmQgYmVpbmcgc2VudC4KIAogVGhpcyBmaWVsZCBkZXRlcm1pbmVz" + 
+        "IHdoaWNoIHBheWxvYWQgKGlmIGFueSkgc2hvdWxkIGJlIHBvcHVsYXRlZCBhbmQKIGhvdyB0aGUgUXVl" + 
+        "c3Qgc2hvdWxkIHByb2Nlc3MgdGhlIGNvbW1hbmQuIFNlZSBRdWVzdE5hdkNvbW1hbmRUeXBlCiBlbnVt" + 
+        "IGZvciBhdmFpbGFibGUgY29tbWFuZCB0eXBlcy4KCgwKBQQBAgAGEgNyAhUKDAoFBAECAAESA3IWGgoM" + 
+        "CgUEAQIAAxIDch0eCuECCgQEAQIBEgN9Ahga0wIqCiBVbmlxdWUgaWRlbnRpZmllciBmb3IgdGhpcyBj" + 
+        "b21tYW5kIGluc3RhbmNlLgogCiBUaGlzIElEIGlzIHVzZWQgdG8gbWF0Y2ggY29tbWFuZHMgd2l0aCB0" + 
+        "aGVpciByZXNwb25zZXMgaW4gYXN5bmNocm9ub3VzCiBjb21tdW5pY2F0aW9uLiBUaGUgY2xpZW50IHNo" + 
+        "b3VsZCBnZW5lcmF0ZSB1bmlxdWUgSURzIGZvciBlYWNoIGNvbW1hbmQKIHRvIGF2b2lkIGNvbmZ1c2lv" + 
+        "bi4gVGhlIFF1ZXN0IHdpbGwgZWNobyB0aGlzIElEIGluIHRoZSByZXNwb25zZSBtZXNzYWdlLgogCiBS" + 
+        "ZWNvbW1lbmRlZDogVXNlIGluY3JlbWVudGluZyBpbnRlZ2VycyBvciB0aW1lc3RhbXBzIGZvciB1bmlx",
+        "dWVuZXNzLgoKDAoFBAECAQUSA30CCAoMCgUEAQIBARIDfQkTCgwKBQQBAgEDEgN9FhcK2QIKBAQBCAAS" + 
+        "BogBApUBAxrIAioKIENvbW1hbmQtc3BlY2lmaWMgcGF5bG9hZCBkYXRhLgogCiBUaGlzIG9uZW9mIGZp" + 
+        "ZWxkIGNvbnRhaW5zIHRoZSBzcGVjaWZpYyBkYXRhIG5lZWRlZCBmb3IgZWFjaCBjb21tYW5kIHR5cGUu" + 
+        "CiBPbmx5IG9uZSBwYXlsb2FkIGZpZWxkIHdpbGwgYmUgc2V0LCBjb3JyZXNwb25kaW5nIHRvIHRoZSBj" + 
+        "b21tYW5kIHR5cGUuCiBDb21tYW5kcyB0aGF0IGRvbid0IHJlcXVpcmUgYWRkaXRpb25hbCBkYXRhIGRv" + 
+        "bid0IG5lZWQgYSBwYXlsb2FkIGVudHJ5LgogCiBGaWVsZCBudW1iZXJpbmcgc3RhcnRzIGF0IDEwIHRv" + 
+        "IGxlYXZlIHJvb20gZm9yIGZ1dHVyZSBjb21tb24gZmllbGRzLgoKDQoFBAEIAAESBIgBCA8KWgoEBAEC" + 
+        "AhIEjQEEPRpMKgogUGF5bG9hZCBmb3IgUE9TRV9SRVNFVCBjb21tYW5kcy4KIFNldCB0aGlzIGZpZWxk" + 
+        "IHdoZW4gdHlwZSA9IFBPU0VfUkVTRVQuCgoNCgUEAQICBhIEjQEEJAoNCgUEAQICARIEjQElNwoNCgUE" + 
+        "AQICAxIEjQE6PAq4BQoCBAISBqgBAM0BARqpBSoKIFJlc3BvbnNlIG1lc3NhZ2Ugc2VudCBiYWNrIGFm" + 
+        "dGVyIHByb2Nlc3NpbmcgYSBjb21tYW5kLgogCiBUaGlzIG1lc3NhZ2UgaXMgc2VudCBieSB0aGUgUXVl" + 
+        "c3QgYmFjayB0byB0aGUgY2xpZW50IGFmdGVyIHByb2Nlc3NpbmcKIGEgUHJvdG9idWZRdWVzdE5hdkNv" + 
+        "bW1hbmQuIEl0IHByb3ZpZGVzIHN0YXR1cyBpbmZvcm1hdGlvbiBhYm91dCB3aGV0aGVyCiB0aGUgY29t" + 
+        "bWFuZCB3YXMgZXhlY3V0ZWQgc3VjY2Vzc2Z1bGx5IGFuZCBhbnkgZXJyb3IgZGV0YWlscyBpZiBpdCBm" + 
+        "YWlsZWQuCiAKIFRoZSByZXNwb25zZSBpcyBtYXRjaGVkIHRvIHRoZSBvcmlnaW5hbCBjb21tYW5kIHVz" + 
+        "aW5nIHRoZSBjb21tYW5kX2lkIGZpZWxkLAogYWxsb3dpbmcgZm9yIHByb3BlciBhc3luY2hyb25vdXMg" + 
+        "Y29tbWFuZCBoYW5kbGluZyBldmVuIHdoZW4gbXVsdGlwbGUKIGNvbW1hbmRzIGFyZSBpbiBmbGlnaHQg" + 
+        "c2ltdWx0YW5lb3VzbHkuCiAKIFJlc3BvbnNlIFRpbWluZzoKIC0gUmVzcG9uc2VzIGFyZSBzZW50IGFm" + 
+        "dGVyIGNvbW1hbmQgcHJvY2Vzc2luZyBjb21wbGV0ZXMKIC0gU29tZSBjb21tYW5kcyBtYXkgdGFrZSB0" + 
+        "aW1lIHRvIGV4ZWN1dGUgKGUuZy4sIHBvc2UgcmVzZXQgd2l0aCB2YWxpZGF0aW9uKQogLSBDbGllbnRz",
+        "IHNob3VsZCBpbXBsZW1lbnQgdGltZW91dHMgZm9yIGNvbW1hbmQgcmVzcG9uc2VzCgoLCgMEAgESBKgB" + 
+        "CCcKkwIKBAQCAgASBLABAhgahAIqCiBDb21tYW5kIElEIHRoYXQgbWF0Y2hlcyB0aGUgb3JpZ2luYWwg" + 
+        "Y29tbWFuZC4KIAogVGhpcyBmaWVsZCBlY2hvZXMgdGhlIGNvbW1hbmRfaWQgZnJvbSB0aGUgb3JpZ2lu" + 
+        "YWwgUHJvdG9idWZRdWVzdE5hdkNvbW1hbmQKIHRoYXQgdGhpcyByZXNwb25zZSBjb3JyZXNwb25kcyB0" + 
+        "by4gQ2xpZW50cyB1c2UgdGhpcyB0byBtYXRjaCByZXNwb25zZXMKIHdpdGggdGhlaXIgb3JpZ2luYWwg" + 
+        "Y29tbWFuZHMgaW4gYXN5bmNocm9ub3VzIGNvbW11bmljYXRpb24uCgoNCgUEAgIABRIEsAECCAoNCgUE" + 
+        "AgIAARIEsAEJEwoNCgUEAgIAAxIEsAEWFwqGAwoEBAICARIEvAECExr3AioKIEluZGljYXRlcyB3aGV0" + 
+        "aGVyIHRoZSBjb21tYW5kIHdhcyBleGVjdXRlZCBzdWNjZXNzZnVsbHkuCiAKIHRydWU6ICBDb21tYW5k" + 
+        "IGNvbXBsZXRlZCBzdWNjZXNzZnVsbHkKIGZhbHNlOiBDb21tYW5kIGZhaWxlZCAoc2VlIGVycm9yX21l" + 
+        "c3NhZ2UgZm9yIGRldGFpbHMpCiAKIE5vdGU6IEEgc3VjY2Vzc2Z1bCByZXNwb25zZSBtZWFucyB0aGUg" + 
+        "Y29tbWFuZCB3YXMgcHJvY2Vzc2VkLCBidXQgZG9lc24ndAogbmVjZXNzYXJpbHkgZ3VhcmFudGVlIHRo" + 
+        "ZSBkZXNpcmVkIG91dGNvbWUgKGUuZy4sIHBvc2UgcmVzZXQgbWlnaHQgc3VjY2VlZAogYnV0IHRyYWNr" + 
+        "aW5nIGNvdWxkIHN0aWxsIGJlIHBvb3IgZHVlIHRvIGVudmlyb25tZW50YWwgY29uZGl0aW9ucykuCgoN" + 
+        "CgUEAgIBBRIEvAECBgoNCgUEAgIBARIEvAEHDgoNCgUEAgIBAxIEvAEREgrIAwoEBAICAhIEzAECGxq5" + 
+        "AyoKIEh1bWFuLXJlYWRhYmxlIGVycm9yIG1lc3NhZ2Ugd2hlbiBzdWNjZXNzID0gZmFsc2UuCiAKIFRo" + 
+        "aXMgZmllbGQgcHJvdmlkZXMgZGV0YWlsZWQgaW5mb3JtYXRpb24gYWJvdXQgd2h5IGEgY29tbWFuZCBm" + 
+        "YWlsZWQuCiBJdCBzaG91bGQgYmUgZW1wdHkgb3IgaWdub3JlZCB3aGVuIHN1Y2Nlc3MgPSB0cnVlLgog" + 
+        "CiBFcnJvciBtZXNzYWdlcyBhcmUgaW50ZW5kZWQgZm9yIGRlYnVnZ2luZyBhbmQgbG9nZ2luZyBwdXJw" + 
+        "b3Nlcy4KIFRoZXkgbWF5IGluY2x1ZGUgdGVjaG5pY2FsIGRldGFpbHMgYWJvdXQgdGhlIGZhaWx1cmUg" + 
+        "Y2F1c2UuCiAKIEV4YW1wbGVzOgogLSAiSW52YWxpZCBwb3NlIGNvb3JkaW5hdGVzOiB4IHZhbHVlIG91",
+        "dCBvZiBmaWVsZCBib3VuZHMiCiAtICJUcmFja2luZyBzeXN0ZW0gbm90IGluaXRpYWxpemVkIgogLSAi" + 
+        "VW5rbm93biBjb21tYW5kIHR5cGUiCgoNCgUEAgICBRIEzAECCAoNCgUEAgICARIEzAEJFgoNCgUEAgIC" + 
+        "AxIEzAEZGmIGcHJvdG8z");
 
     static final Descriptors.FileDescriptor descriptor = Descriptors.FileDescriptor.internalBuildGeneratedFileFrom("commands.proto", "questnav.protos.commands", descriptorData, Geometry2D.getDescriptor());
 
@@ -71,7 +160,17 @@ public final class Commands {
 
     /**
      * <pre>
-     *  Enum for command types (extensible for future commands)
+     * *
+     *  Enumeration of available command types in the QuestNav system.
+     *  
+     *  This enum defines all the different types of commands that can be sent to
+     *  the Quest headset. The enum is designed to be extensible - new command types
+     *  can be added without breaking existing clients.
+     *  
+     *  Design Notes:
+     *  - Values start from 0 as required by proto3
+     *  - UNSPECIFIED value (0) is reserved for error handling
+     *  - Command values should be assigned incrementally for clarity
      * </pre>
      *
      * Protobuf enum {@code QuestNavCommandType}
@@ -79,7 +178,7 @@ public final class Commands {
     public enum QuestNavCommandType implements ProtoEnum<QuestNavCommandType> {
         /**
          * <pre>
-         *  Default value required in proto3
+         *  Default/invalid command type (required by proto3)
          * </pre>
          *
          * <code>COMMAND_TYPE_UNSPECIFIED = 0;</code>
@@ -88,7 +187,14 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Reset robot pose to target pose
+         * *
+         *  POSE_RESET: Resets the robot's pose estimation to a specified target pose.
+         *  
+         *  This command is used to correct drift in the tracking system by setting
+         *  the robot's position and orientation to known values. Typically used when
+         *  the robot is placed at a known location on the field.
+         *  
+         *  Requires: ProtobufQuestNavPoseResetPayload
          * </pre>
          *
          * <code>POSE_RESET = 1;</code>
@@ -97,7 +203,7 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Default value required in proto3
+         *  Default/invalid command type (required by proto3)
          * </pre>
          *
          * <code>COMMAND_TYPE_UNSPECIFIED = 0;</code>
@@ -106,7 +212,14 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Reset robot pose to target pose
+         * *
+         *  POSE_RESET: Resets the robot's pose estimation to a specified target pose.
+         *  
+         *  This command is used to correct drift in the tracking system by setting
+         *  the robot's position and orientation to known values. Typically used when
+         *  the robot is placed at a known location on the field.
+         *  
+         *  Requires: ProtobufQuestNavPoseResetPayload
          * </pre>
          *
          * <code>POSE_RESET = 1;</code>
@@ -200,7 +313,19 @@ public final class Commands {
 
     /**
      * <pre>
-     *  Payload for pose reset command
+     * *
+     *  Payload message for the POSE_RESET command.
+     *  
+     *  This message contains the data needed to execute a pose reset operation.
+     *  The pose reset command allows external systems to correct the Quest's
+     *  understanding of the robot's position and orientation on the field.
+     *  
+     *  Coordinate System:
+     *  - Uses WPILib field-relative coordinate system
+     *  - X-axis: Forward (towards opposing alliance)
+     *  - Y-axis: Left (when facing forward)
+     *  - Rotation: Counter-clockwise positive (standard mathematical convention)
+     *  - Origin: Typically at one corner of the field (see field layout documentation)
      * </pre>
      *
      * Protobuf type {@code ProtobufQuestNavPoseResetPayload}
@@ -210,7 +335,16 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)
+         * *
+         *  The target pose to reset the robot to.
+         *  
+         *  This should represent the robot's actual position and orientation on the field
+         *  in the WPILib coordinate system. The Quest will update its internal tracking
+         *  to match this pose, effectively correcting any accumulated drift.
+         *  
+         *  Units:
+         *  - Translation: meters
+         *  - Rotation: radians
          * </pre>
          *
          * <code>optional .wpi.proto.ProtobufPose2d target_pose = 1;</code>
@@ -222,7 +356,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Payload for pose reset command
+         * *
+         *  Payload message for the POSE_RESET command.
+         *  
+         *  This message contains the data needed to execute a pose reset operation.
+         *  The pose reset command allows external systems to correct the Quest's
+         *  understanding of the robot's position and orientation on the field.
+         *  
+         *  Coordinate System:
+         *  - Uses WPILib field-relative coordinate system
+         *  - X-axis: Forward (towards opposing alliance)
+         *  - Y-axis: Left (when facing forward)
+         *  - Rotation: Counter-clockwise positive (standard mathematical convention)
+         *  - Origin: Typically at one corner of the field (see field layout documentation)
          * </pre>
          *
          * @return a new empty instance of {@code ProtobufQuestNavPoseResetPayload}
@@ -233,7 +379,16 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)
+         * *
+         *  The target pose to reset the robot to.
+         *  
+         *  This should represent the robot's actual position and orientation on the field
+         *  in the WPILib coordinate system. The Quest will update its internal tracking
+         *  to match this pose, effectively correcting any accumulated drift.
+         *  
+         *  Units:
+         *  - Translation: meters
+         *  - Rotation: radians
          * </pre>
          *
          * <code>optional .wpi.proto.ProtobufPose2d target_pose = 1;</code>
@@ -245,7 +400,16 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)
+         * *
+         *  The target pose to reset the robot to.
+         *  
+         *  This should represent the robot's actual position and orientation on the field
+         *  in the WPILib coordinate system. The Quest will update its internal tracking
+         *  to match this pose, effectively correcting any accumulated drift.
+         *  
+         *  Units:
+         *  - Translation: meters
+         *  - Rotation: radians
          * </pre>
          *
          * <code>optional .wpi.proto.ProtobufPose2d target_pose = 1;</code>
@@ -259,7 +423,16 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)
+         * *
+         *  The target pose to reset the robot to.
+         *  
+         *  This should represent the robot's actual position and orientation on the field
+         *  in the WPILib coordinate system. The Quest will update its internal tracking
+         *  to match this pose, effectively correcting any accumulated drift.
+         *  
+         *  Units:
+         *  - Translation: meters
+         *  - Rotation: radians
          * </pre>
          *
          * <code>optional .wpi.proto.ProtobufPose2d target_pose = 1;</code>
@@ -277,7 +450,16 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)
+         * *
+         *  The target pose to reset the robot to.
+         *  
+         *  This should represent the robot's actual position and orientation on the field
+         *  in the WPILib coordinate system. The Quest will update its internal tracking
+         *  to match this pose, effectively correcting any accumulated drift.
+         *  
+         *  Units:
+         *  - Translation: meters
+         *  - Rotation: radians
          * </pre>
          *
          * <code>optional .wpi.proto.ProtobufPose2d target_pose = 1;</code>
@@ -295,7 +477,16 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Target pose in field-relative WPILib coordinate space (x forward, y left, rotation CCW+)
+         * *
+         *  The target pose to reset the robot to.
+         *  
+         *  This should represent the robot's actual position and orientation on the field
+         *  in the WPILib coordinate system. The Quest will update its internal tracking
+         *  to match this pose, effectively correcting any accumulated drift.
+         *  
+         *  Units:
+         *  - Translation: meters
+         *  - Rotation: radians
          * </pre>
          *
          * <code>optional .wpi.proto.ProtobufPose2d target_pose = 1;</code>
@@ -513,7 +704,21 @@ public final class Commands {
 
     /**
      * <pre>
-     *  Main Command message
+     * *
+     *  Main command message sent to the QuestNav system.
+     *  
+     *  This is the primary message type used to send commands from external systems
+     *  (like robot code) to the Quest headset. Each command includes a type identifier,
+     *  a unique tracking ID, and optional payload data specific to the command type.
+     *  
+     *  The command system is designed for asynchronous operation - commands are sent
+     *  and responses are received separately, matched by the command_id field.
+     *  
+     *  Message Flow:
+     *  1. Client creates command with unique command_id
+     *  2. Client sets appropriate type and payload
+     *  3. Client sends command to Quest
+     *  4. Quest processes command and sends response with matching command_id
      * </pre>
      *
      * Protobuf type {@code ProtobufQuestNavCommand}
@@ -523,7 +728,14 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Command ID for tracking/responses
+         * *
+         *  Unique identifier for this command instance.
+         *  
+         *  This ID is used to match commands with their responses in asynchronous
+         *  communication. The client should generate unique IDs for each command
+         *  to avoid confusion. The Quest will echo this ID in the response message.
+         *  
+         *  Recommended: Use incrementing integers or timestamps for uniqueness.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -532,7 +744,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  The type of command
+         * *
+         *  The type of command being sent.
+         *  
+         *  This field determines which payload (if any) should be populated and
+         *  how the Quest should process the command. See QuestNavCommandType
+         *  enum for available command types.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.QuestNavCommandType type = 1;</code>
@@ -541,8 +758,9 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Future payloads can be added here:
-         *  (Commands with no payload don't need an entry)
+         * *
+         *  Payload for POSE_RESET commands.
+         *  Set this field when type = POSE_RESET.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.ProtobufQuestNavPoseResetPayload pose_reset_payload = 10;</code>
@@ -554,7 +772,21 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Main Command message
+         * *
+         *  Main command message sent to the QuestNav system.
+         *  
+         *  This is the primary message type used to send commands from external systems
+         *  (like robot code) to the Quest headset. Each command includes a type identifier,
+         *  a unique tracking ID, and optional payload data specific to the command type.
+         *  
+         *  The command system is designed for asynchronous operation - commands are sent
+         *  and responses are received separately, matched by the command_id field.
+         *  
+         *  Message Flow:
+         *  1. Client creates command with unique command_id
+         *  2. Client sets appropriate type and payload
+         *  3. Client sends command to Quest
+         *  4. Quest processes command and sends response with matching command_id
          * </pre>
          *
          * @return a new empty instance of {@code ProtobufQuestNavCommand}
@@ -576,7 +808,14 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Command ID for tracking/responses
+         * *
+         *  Unique identifier for this command instance.
+         *  
+         *  This ID is used to match commands with their responses in asynchronous
+         *  communication. The client should generate unique IDs for each command
+         *  to avoid confusion. The Quest will echo this ID in the response message.
+         *  
+         *  Recommended: Use incrementing integers or timestamps for uniqueness.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -588,7 +827,14 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Command ID for tracking/responses
+         * *
+         *  Unique identifier for this command instance.
+         *  
+         *  This ID is used to match commands with their responses in asynchronous
+         *  communication. The client should generate unique IDs for each command
+         *  to avoid confusion. The Quest will echo this ID in the response message.
+         *  
+         *  Recommended: Use incrementing integers or timestamps for uniqueness.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -602,7 +848,14 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Command ID for tracking/responses
+         * *
+         *  Unique identifier for this command instance.
+         *  
+         *  This ID is used to match commands with their responses in asynchronous
+         *  communication. The client should generate unique IDs for each command
+         *  to avoid confusion. The Quest will echo this ID in the response message.
+         *  
+         *  Recommended: Use incrementing integers or timestamps for uniqueness.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -614,7 +867,14 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Command ID for tracking/responses
+         * *
+         *  Unique identifier for this command instance.
+         *  
+         *  This ID is used to match commands with their responses in asynchronous
+         *  communication. The client should generate unique IDs for each command
+         *  to avoid confusion. The Quest will echo this ID in the response message.
+         *  
+         *  Recommended: Use incrementing integers or timestamps for uniqueness.
          * </pre>
          *
          * <code>optional uint32 command_id = 2;</code>
@@ -629,7 +889,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  The type of command
+         * *
+         *  The type of command being sent.
+         *  
+         *  This field determines which payload (if any) should be populated and
+         *  how the Quest should process the command. See QuestNavCommandType
+         *  enum for available command types.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.QuestNavCommandType type = 1;</code>
@@ -641,7 +906,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  The type of command
+         * *
+         *  The type of command being sent.
+         *  
+         *  This field determines which payload (if any) should be populated and
+         *  how the Quest should process the command. See QuestNavCommandType
+         *  enum for available command types.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.QuestNavCommandType type = 1;</code>
@@ -655,7 +925,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  The type of command
+         * *
+         *  The type of command being sent.
+         *  
+         *  This field determines which payload (if any) should be populated and
+         *  how the Quest should process the command. See QuestNavCommandType
+         *  enum for available command types.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.QuestNavCommandType type = 1;</code>
@@ -692,7 +967,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  The type of command
+         * *
+         *  The type of command being sent.
+         *  
+         *  This field determines which payload (if any) should be populated and
+         *  how the Quest should process the command. See QuestNavCommandType
+         *  enum for available command types.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.QuestNavCommandType type = 1;</code>
@@ -707,8 +987,9 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Future payloads can be added here:
-         *  (Commands with no payload don't need an entry)
+         * *
+         *  Payload for POSE_RESET commands.
+         *  Set this field when type = POSE_RESET.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.ProtobufQuestNavPoseResetPayload pose_reset_payload = 10;</code>
@@ -720,8 +1001,9 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Future payloads can be added here:
-         *  (Commands with no payload don't need an entry)
+         * *
+         *  Payload for POSE_RESET commands.
+         *  Set this field when type = POSE_RESET.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.ProtobufQuestNavPoseResetPayload pose_reset_payload = 10;</code>
@@ -735,8 +1017,9 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Future payloads can be added here:
-         *  (Commands with no payload don't need an entry)
+         * *
+         *  Payload for POSE_RESET commands.
+         *  Set this field when type = POSE_RESET.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.ProtobufQuestNavPoseResetPayload pose_reset_payload = 10;</code>
@@ -754,8 +1037,9 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Future payloads can be added here:
-         *  (Commands with no payload don't need an entry)
+         * *
+         *  Payload for POSE_RESET commands.
+         *  Set this field when type = POSE_RESET.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.ProtobufQuestNavPoseResetPayload pose_reset_payload = 10;</code>
@@ -773,8 +1057,9 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Future payloads can be added here:
-         *  (Commands with no payload don't need an entry)
+         * *
+         *  Payload for POSE_RESET commands.
+         *  Set this field when type = POSE_RESET.
          * </pre>
          *
          * <code>optional .questnav.protos.commands.ProtobufQuestNavPoseResetPayload pose_reset_payload = 10;</code>
@@ -1072,7 +1357,21 @@ public final class Commands {
 
     /**
      * <pre>
-     *  Response message for commands
+     * *
+     *  Response message sent back after processing a command.
+     *  
+     *  This message is sent by the Quest back to the client after processing
+     *  a ProtobufQuestNavCommand. It provides status information about whether
+     *  the command was executed successfully and any error details if it failed.
+     *  
+     *  The response is matched to the original command using the command_id field,
+     *  allowing for proper asynchronous command handling even when multiple
+     *  commands are in flight simultaneously.
+     *  
+     *  Response Timing:
+     *  - Responses are sent after command processing completes
+     *  - Some commands may take time to execute (e.g., pose reset with validation)
+     *  - Clients should implement timeouts for command responses
      * </pre>
      *
      * Protobuf type {@code ProtobufQuestNavCommandResponse}
@@ -1082,7 +1381,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Matches the original command ID
+         * *
+         *  Command ID that matches the original command.
+         *  
+         *  This field echoes the command_id from the original ProtobufQuestNavCommand
+         *  that this response corresponds to. Clients use this to match responses
+         *  with their original commands in asynchronous communication.
          * </pre>
          *
          * <code>optional uint32 command_id = 1;</code>
@@ -1091,7 +1395,15 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Whether the command was successful
+         * *
+         *  Indicates whether the command was executed successfully.
+         *  
+         *  true:  Command completed successfully
+         *  false: Command failed (see error_message for details)
+         *  
+         *  Note: A successful response means the command was processed, but doesn't
+         *  necessarily guarantee the desired outcome (e.g., pose reset might succeed
+         *  but tracking could still be poor due to environmental conditions).
          * </pre>
          *
          * <code>optional bool success = 2;</code>
@@ -1100,7 +1412,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
@@ -1112,7 +1436,21 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Response message for commands
+         * *
+         *  Response message sent back after processing a command.
+         *  
+         *  This message is sent by the Quest back to the client after processing
+         *  a ProtobufQuestNavCommand. It provides status information about whether
+         *  the command was executed successfully and any error details if it failed.
+         *  
+         *  The response is matched to the original command using the command_id field,
+         *  allowing for proper asynchronous command handling even when multiple
+         *  commands are in flight simultaneously.
+         *  
+         *  Response Timing:
+         *  - Responses are sent after command processing completes
+         *  - Some commands may take time to execute (e.g., pose reset with validation)
+         *  - Clients should implement timeouts for command responses
          * </pre>
          *
          * @return a new empty instance of {@code ProtobufQuestNavCommandResponse}
@@ -1123,7 +1461,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Matches the original command ID
+         * *
+         *  Command ID that matches the original command.
+         *  
+         *  This field echoes the command_id from the original ProtobufQuestNavCommand
+         *  that this response corresponds to. Clients use this to match responses
+         *  with their original commands in asynchronous communication.
          * </pre>
          *
          * <code>optional uint32 command_id = 1;</code>
@@ -1135,7 +1478,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Matches the original command ID
+         * *
+         *  Command ID that matches the original command.
+         *  
+         *  This field echoes the command_id from the original ProtobufQuestNavCommand
+         *  that this response corresponds to. Clients use this to match responses
+         *  with their original commands in asynchronous communication.
          * </pre>
          *
          * <code>optional uint32 command_id = 1;</code>
@@ -1149,7 +1497,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Matches the original command ID
+         * *
+         *  Command ID that matches the original command.
+         *  
+         *  This field echoes the command_id from the original ProtobufQuestNavCommand
+         *  that this response corresponds to. Clients use this to match responses
+         *  with their original commands in asynchronous communication.
          * </pre>
          *
          * <code>optional uint32 command_id = 1;</code>
@@ -1161,7 +1514,12 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Matches the original command ID
+         * *
+         *  Command ID that matches the original command.
+         *  
+         *  This field echoes the command_id from the original ProtobufQuestNavCommand
+         *  that this response corresponds to. Clients use this to match responses
+         *  with their original commands in asynchronous communication.
          * </pre>
          *
          * <code>optional uint32 command_id = 1;</code>
@@ -1176,7 +1534,15 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Whether the command was successful
+         * *
+         *  Indicates whether the command was executed successfully.
+         *  
+         *  true:  Command completed successfully
+         *  false: Command failed (see error_message for details)
+         *  
+         *  Note: A successful response means the command was processed, but doesn't
+         *  necessarily guarantee the desired outcome (e.g., pose reset might succeed
+         *  but tracking could still be poor due to environmental conditions).
          * </pre>
          *
          * <code>optional bool success = 2;</code>
@@ -1188,7 +1554,15 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Whether the command was successful
+         * *
+         *  Indicates whether the command was executed successfully.
+         *  
+         *  true:  Command completed successfully
+         *  false: Command failed (see error_message for details)
+         *  
+         *  Note: A successful response means the command was processed, but doesn't
+         *  necessarily guarantee the desired outcome (e.g., pose reset might succeed
+         *  but tracking could still be poor due to environmental conditions).
          * </pre>
          *
          * <code>optional bool success = 2;</code>
@@ -1202,7 +1576,15 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Whether the command was successful
+         * *
+         *  Indicates whether the command was executed successfully.
+         *  
+         *  true:  Command completed successfully
+         *  false: Command failed (see error_message for details)
+         *  
+         *  Note: A successful response means the command was processed, but doesn't
+         *  necessarily guarantee the desired outcome (e.g., pose reset might succeed
+         *  but tracking could still be poor due to environmental conditions).
          * </pre>
          *
          * <code>optional bool success = 2;</code>
@@ -1214,7 +1596,15 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Whether the command was successful
+         * *
+         *  Indicates whether the command was executed successfully.
+         *  
+         *  true:  Command completed successfully
+         *  false: Command failed (see error_message for details)
+         *  
+         *  Note: A successful response means the command was processed, but doesn't
+         *  necessarily guarantee the desired outcome (e.g., pose reset might succeed
+         *  but tracking could still be poor due to environmental conditions).
          * </pre>
          *
          * <code>optional bool success = 2;</code>
@@ -1229,7 +1619,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
@@ -1241,7 +1643,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
@@ -1255,7 +1669,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
@@ -1267,7 +1693,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
@@ -1279,7 +1717,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
@@ -1292,7 +1742,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
@@ -1307,7 +1769,19 @@ public final class Commands {
 
         /**
          * <pre>
-         *  Error message if success = false
+         * *
+         *  Human-readable error message when success = false.
+         *  
+         *  This field provides detailed information about why a command failed.
+         *  It should be empty or ignored when success = true.
+         *  
+         *  Error messages are intended for debugging and logging purposes.
+         *  They may include technical details about the failure cause.
+         *  
+         *  Examples:
+         *  - "Invalid pose coordinates: x value out of field bounds"
+         *  - "Tracking system not initialized"
+         *  - "Unknown command type"
          * </pre>
          *
          * <code>optional string error_message = 3;</code>
