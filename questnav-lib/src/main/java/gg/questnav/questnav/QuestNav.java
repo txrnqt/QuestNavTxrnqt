@@ -192,7 +192,6 @@ public class QuestNav {
    *   <li>Subscribers for frame data, device data, and command responses
    *   <li>Publisher for sending commands to the Quest
    * </ul>
-   *
    */
   public QuestNav() {}
 
@@ -446,13 +445,13 @@ public class QuestNav {
    * }
    * }</pre>
    *
- * <p>Performance notes:
- *
- * <ul>
- *   <li>Returns a new array each call - consider caching if called multiple times per loop
- *   <li>Frame rate is exactly 100 Hz (every 10 milliseconds)
- *   <li>Empty array returned when no new frames are available
- * </ul>
+   * <p>Performance notes:
+   *
+   * <ul>
+   *   <li>Returns a new array each call - consider caching if called multiple times per loop
+   *   <li>Frame rate is exactly 100 Hz (every 10 milliseconds)
+   *   <li>Empty array returned when no new frames are available
+   * </ul>
    *
    * @return Array of new {@link PoseFrame} objects received since the last call. Empty array if no
    *     new frames are available or Quest is disconnected.
