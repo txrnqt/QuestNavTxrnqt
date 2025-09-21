@@ -76,6 +76,7 @@ namespace QuestNav.UI
         /// <param name="ipAddressText">Text for IP address display</param>
         /// <param name="conStateText">Text for connection state display</param>
         /// <param name="teamUpdateButton">Button for updating team number</param>
+        /// <param name="autoStartToggle">Toggle for auto-start on boot functionality</param>
         public UIManager(
             INetworkTableConnection networkTableConnection,
             TMP_InputField teamInput,
@@ -85,6 +86,14 @@ namespace QuestNav.UI
             Toggle autoStartToggle
         )
         {
+            // Validate required dependencies
+            if (networkTableConnection == null)
+                throw new ArgumentNullException(nameof(networkTableConnection));
+            if (teamInput == null)
+                throw new ArgumentNullException(nameof(teamInput));
+            if (teamUpdateButton == null)
+                throw new ArgumentNullException(nameof(teamUpdateButton));
+            
             this.networkTableConnection = networkTableConnection;
             this.teamInput = teamInput;
             this.autoStartToggle = autoStartToggle;
@@ -96,6 +105,14 @@ namespace QuestNav.UI
                 "TeamNumber",
                 QuestNavConstants.Network.DEFAULT_TEAM_NUMBER
             );
+            
+            // Ensure team number is valid
+            if (teamNumber < 1)
+            {
+                QueuedLogger.LogWarning($"Invalid team number {teamNumber} loaded from PlayerPrefs, using default.");
+                teamNumber = QuestNavConstants.Network.DEFAULT_TEAM_NUMBER;
+            }
+            
             teamInput.text = teamNumber.ToString();
             setTeamNumberFromUI();
 
@@ -122,7 +139,36 @@ namespace QuestNav.UI
         private void setTeamNumberFromUI()
         {
             QueuedLogger.Log("Updating Team Number");
-            teamNumber = int.Parse(teamInput.text);
+            
+            // Safety check for null teamInput
+            if (teamInput == null)
+            {
+                QueuedLogger.LogError("Team input field is null, cannot update team number");
+                return;
+            }
+            
+            // Validate and parse team number input
+            if (string.IsNullOrWhiteSpace(teamInput.text))
+            {
+                QueuedLogger.LogWarning("Team number input is empty, using current team number: " + teamNumber);
+                teamInput.text = teamNumber.ToString();
+                return;
+            }
+
+            if (!int.TryParse(teamInput.text, out int newTeamNumber))
+            {
+                QueuedLogger.LogError($"Invalid team number format: '{teamInput.text}'. Please enter a valid number.");
+                teamInput.text = teamNumber.ToString(); // Reset to current valid value
+                return;
+            }
+
+            // Validate team number range (typical FRC team numbers are 1-9999)
+            if (newTeamNumber < 1 || newTeamNumber > 9999)
+            {
+                QueuedLogger.LogWarning($"Team number {newTeamNumber} is outside typical range (1-9999). Using anyway.");
+            }
+
+            teamNumber = newTeamNumber;
             PlayerPrefs.SetInt("TeamNumber", teamNumber);
             PlayerPrefs.Save();
             updateTeamNumberInputBoxPlaceholder(teamNumber);
