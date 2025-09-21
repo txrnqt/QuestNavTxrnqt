@@ -1,0 +1,1246 @@
+{
+  "source_base_path": "C:/Users/Juan/Documents/GitHub/QuestNav/unity/DocFX",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Commands.CommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Commands.CommandProcessor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Commands.CommandProcessor",
+      "Summary": "<p sourcefile=\"api/QuestNav.Commands.CommandProcessor.yml\" sourcestartlinenumber=\"1\">Processes commands received from the robot and executes appropriate actions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Commands.Commands.PoseResetCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Commands.Commands.PoseResetCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Commands.Commands.PoseResetCommand",
+      "Summary": "<p sourcefile=\"api/QuestNav.Commands.Commands.PoseResetCommand.yml\" sourcestartlinenumber=\"1\">Resets the VR camera pose to a specified position</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Commands.Commands.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Commands.Commands.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Commands.Commands",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Commands.ICommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Commands.ICommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Commands.ICommand",
+      "Summary": "<p sourcefile=\"api/QuestNav.Commands.ICommand.yml\" sourcestartlinenumber=\"1\">Interface for individual command implementations</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Commands.ICommandProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Commands.ICommandProcessor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Commands.ICommandProcessor",
+      "Summary": "<p sourcefile=\"api/QuestNav.Commands.ICommandProcessor.yml\" sourcestartlinenumber=\"1\">Interface for command processing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Commands.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Commands.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Commands",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNav.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNav.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNav",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNav.yml\" sourcestartlinenumber=\"1\">Main controller class for QuestNav application.\nManages streaming of VR motion data to a FRC robot through NetworkTables.\nOrchestrates pose tracking, reset operations, and network communication.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.Commands.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.Commands.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants.Commands",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.Commands.yml\" sourcestartlinenumber=\"1\">Constants related to command processing.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.Display.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.Display.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants.Display",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.Display.yml\" sourcestartlinenumber=\"1\">Constants related to the display and update frequency.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.Field.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.Field.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants.Field",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.Field.yml\" sourcestartlinenumber=\"1\">Constants related to FRC field dimensions and pose resets.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.Logging.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants.Logging",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.Logging.yml\" sourcestartlinenumber=\"1\">Constants related to logging</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.Network.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants.Network",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.Network.yml\" sourcestartlinenumber=\"1\">Constants related to network configuration and communication.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.Timing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.Timing.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants.Timing",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.Timing.yml\" sourcestartlinenumber=\"1\">Constants related to non-main loop timing</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.Topics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.Topics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants.Topics",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.Topics.yml\" sourcestartlinenumber=\"1\">Constants related to NetworkTables topics and paths.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.QuestNavConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.QuestNavConstants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core.QuestNavConstants",
+      "Summary": "<p sourcefile=\"api/QuestNav.Core.QuestNavConstants.yml\" sourcestartlinenumber=\"1\">Contains all constants used by the QuestNav application.\nOrganized by functional category for easier maintenance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Core.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Core",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.DoublePublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.DoublePublisher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.DoublePublisher",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.DoubleSubscriber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.DoubleSubscriber.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.DoubleSubscriber",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.FloatArrayPublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.FloatArrayPublisher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.FloatArrayPublisher",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.FloatArraySubscriber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.FloatArraySubscriber.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.FloatArraySubscriber",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.IntegerPublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.IntegerPublisher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.IntegerPublisher",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.IntegerSubscriber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.IntegerSubscriber.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.IntegerSubscriber",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeConnectionInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeConnectionInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeConnectionInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueBooleanArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueBooleanArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueBooleanArray",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueDoubleArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueDoubleArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueDoubleArray",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueFloatArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueFloatArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueFloatArray",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueIntArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueIntArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueIntArray",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueRaw.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueRaw.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueRaw",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueStringArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueStringArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.NtValueStringArray",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue.NtValueUnion",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNetworkTableValue.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNetworkTableValue",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNtEvent.NtEventUnion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNtEvent.NtEventUnion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNtEvent.NtEventUnion",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNtEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNtEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNtEvent",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeNtLogMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeNtLogMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeNtLogMessage",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativePubSubOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativePubSubOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativePubSubOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeTimeSyncEventData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeTimeSyncEventData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeTimeSyncEventData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeTopicInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeTopicInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeTopicInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NativeValueEventData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NativeValueEventData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NativeValueEventData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NtCoreNatives.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NtCoreNatives.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NtCoreNatives",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NtInstance.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NtInstance.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NtInstance",
+      "Summary": "<p sourcefile=\"api/QuestNav.Native.NTCore.NtInstance.yml\" sourcestartlinenumber=\"1\">Represents a NetworkTables instance for communication with FRC robots.\nProvides methods for creating publishers, subscribers, and managing connections.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.NtType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.NtType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.NtType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.PolledLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.PolledLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.PolledLogger",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.ProtobufPublisher-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.ProtobufPublisher-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.ProtobufPublisher<T>",
+      "Summary": "<p sourcefile=\"api/QuestNav.Native.NTCore.ProtobufPublisher-1.yml\" sourcestartlinenumber=\"1\">Publisher for protobuf messages over NetworkTables. Handles serialization of protobuf messages to byte arrays.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.ProtobufSubscriber-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.ProtobufSubscriber-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.ProtobufSubscriber<T>",
+      "Summary": "<p sourcefile=\"api/QuestNav.Native.NTCore.ProtobufSubscriber-1.yml\" sourcestartlinenumber=\"1\">Subscriber for protobuf messages over NetworkTables. Handles deserialization of byte arrays to protobuf messages.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.PubSubOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.PubSubOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.PubSubOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.RawPublisher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.RawPublisher.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.RawPublisher",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.RawSubscriber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.RawSubscriber.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.RawSubscriber",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.WpiString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.WpiString.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore.WpiString",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Native.NTCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Native.NTCore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Native.NTCore",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Network.INetworkTableConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Network.INetworkTableConnection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Network.INetworkTableConnection",
+      "Summary": "<p sourcefile=\"api/QuestNav.Network.INetworkTableConnection.yml\" sourcestartlinenumber=\"1\">Interface for NetworkTables connection management.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Network.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Network",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.CommandsReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.CommandsReflection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.CommandsReflection",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.CommandsReflection.yml\" sourcestartlinenumber=\"1\">Holder for reflection information generated from commands.proto</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.DataReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.DataReflection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.DataReflection",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.DataReflection.yml\" sourcestartlinenumber=\"1\">Holder for reflection information generated from data.proto</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadOneofCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadOneofCase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadOneofCase",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadOneofCase.yml\" sourcestartlinenumber=\"1\">Enum of possible cases for the &quot;payload&quot; oneof.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.ProtobufQuestNavCommand",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.yml\" sourcestartlinenumber=\"1\">Main Command message</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.yml\" sourcestartlinenumber=\"1\">Response message for commands</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.ProtobufQuestNavDeviceData",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.yml\" sourcestartlinenumber=\"1\">Device data that is sent slower</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.ProtobufQuestNavFrameData",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.yml\" sourcestartlinenumber=\"1\">Tracking data that is sent every loop</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.yml\" sourcestartlinenumber=\"1\">Payload for pose reset command</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.QuestNavCommandType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.QuestNavCommandType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated.QuestNavCommandType",
+      "Summary": "<p sourcefile=\"api/QuestNav.Protos.Generated.QuestNavCommandType.yml\" sourcestartlinenumber=\"1\">Enum for command types (extensible for future commands)</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Protos.Generated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Protos.Generated.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Protos.Generated",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.UI.IUIManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.UI.IUIManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.UI.IUIManager",
+      "Summary": "<p sourcefile=\"api/QuestNav.UI.IUIManager.yml\" sourcestartlinenumber=\"1\">Interface for UI management.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.UI.UIManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.UI.UIManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.UI.UIManager",
+      "Summary": "<p sourcefile=\"api/QuestNav.UI.UIManager.yml\" sourcestartlinenumber=\"1\">Manages UI elements and user interactions for the QuestNav application.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.UI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.UI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.UI",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Utils.Conversions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Utils.Conversions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Utils.Conversions",
+      "Summary": "<p sourcefile=\"api/QuestNav.Utils.Conversions.yml\" sourcestartlinenumber=\"1\">Provides utility methods for converting between FRC and Unity coordinate systems.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Utils.QuaternionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Utils.QuaternionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Utils.QuaternionExtensions",
+      "Summary": "<p sourcefile=\"api/QuestNav.Utils.QuaternionExtensions.yml\" sourcestartlinenumber=\"1\">Extension methods for Unity's Quaternion class to convert to array format.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Utils.QueuedLogger.LogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Utils.QueuedLogger.LogLevel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Utils.QueuedLogger.LogLevel",
+      "Summary": "<p sourcefile=\"api/QuestNav.Utils.QueuedLogger.LogLevel.yml\" sourcestartlinenumber=\"1\">Defines the supported log levels for the queued logger</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Utils.QueuedLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Utils.QueuedLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Utils.QueuedLogger",
+      "Summary": "<p sourcefile=\"api/QuestNav.Utils.QueuedLogger.yml\" sourcestartlinenumber=\"1\">A thread-safe logging system that queues log messages and supports deduplication of identical messages.\nMessages are batched and flushed to Unity's Debug system periodically.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Utils.VectorExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Utils.VectorExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Utils.VectorExtensions",
+      "Summary": "<p sourcefile=\"api/QuestNav.Utils.VectorExtensions.yml\" sourcestartlinenumber=\"1\">Extension methods for Unity's Vector3 class to convert to array format.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuestNav.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuestNav.Utils.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuestNav.Utils",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.Geometry2DReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.Geometry2DReflection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.Geometry2DReflection",
+      "Summary": "<p sourcefile=\"api/Wpi.Proto.Geometry2DReflection.yml\" sourcestartlinenumber=\"1\">Holder for reflection information generated from geometry2d.proto</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.Geometry3DReflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.Geometry3DReflection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.Geometry3DReflection",
+      "Summary": "<p sourcefile=\"api/Wpi.Proto.Geometry3DReflection.yml\" sourcestartlinenumber=\"1\">Holder for reflection information generated from geometry3d.proto</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufEllipse2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufEllipse2d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufEllipse2d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufPose2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufPose2d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufPose2d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufPose3d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufPose3d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufPose3d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufQuaternion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufQuaternion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufQuaternion",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufRectangle2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufRectangle2d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufRectangle2d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufRotation2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufRotation2d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufRotation2d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufRotation3d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufRotation3d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufRotation3d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufTransform2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufTransform2d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufTransform2d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufTransform3d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufTransform3d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufTransform3d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufTranslation2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufTranslation2d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufTranslation2d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufTranslation3d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufTranslation3d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufTranslation3d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufTwist2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufTwist2d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufTwist2d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.ProtobufTwist3d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.ProtobufTwist3d.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto.ProtobufTwist3d",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Wpi.Proto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Wpi.Proto.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Wpi.Proto",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

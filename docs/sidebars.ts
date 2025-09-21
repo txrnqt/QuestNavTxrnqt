@@ -40,6 +40,32 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'API Reference',
+      items: [
+        {
+          type: 'doc',
+          id: 'api-reference/index',
+          label: 'Overview',
+        },
+        {
+          type: 'link',
+          label: 'Protocol Buffers →',
+          href: '/api/proto/',
+        },
+        {
+          type: 'link',
+          label: 'Java API →',
+          href: '/api/java/',
+        },
+        {
+          type: 'link',
+          label: 'C# API →',
+          href: '/api/csharp/',
+        },
+      ],
+    },
   ],
 };
 
