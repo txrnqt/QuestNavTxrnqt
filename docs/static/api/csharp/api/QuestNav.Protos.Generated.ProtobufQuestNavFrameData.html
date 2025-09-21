@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuestNavFrameData | QuestNav API Documentation ">
     
-    <meta name="description" content="High-frequency tracking data sent from Quest to external systems. This message contains the core tracking information that external systems (like robot code) need for real-time localization and navigation. It&#39;s sent at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking. The data represents the Quest&#39;s understanding of the robot&#39;s position and orientation on the field, derived from visual-inertial odometry using the Quest&#39;s cameras and IMU sensors. Coordinate System:  Uses WPILib field-relative coordinate system Origin and axes depend on field setup and calibration Pose represents the robot&#39;s position, not the Quest&#39;s position (accounting for Quest mounting offset)">
+    <meta name="description" content="High-frequency tracking data sent from Quest to external systems. This message contains the core tracking information that external systems (like robot code) need for real-time localization and navigation. It&#39;s sent at 100 Hz (every 10 milliseconds) to provide smooth, responsive tracking. The data represents the Quest&#39;s position and orientation on the field, derived from visual-inertial odometry using the Quest&#39;s cameras and IMU sensors. Coordinate System:  Uses WPILib field-relative coordinate system Origin and axes depend on field setup and calibration Pose represents the Quest&#39;s position; mounting offset to get robot position is applied in end user code">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -87,16 +87,15 @@
 <p>High-frequency tracking data sent from Quest to external systems.</p>
 <p>This message contains the core tracking information that external systems
 (like robot code) need for real-time localization and navigation. It's sent
-at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.</p>
-<p>The data represents the Quest's understanding of the robot's position and
-orientation on the field, derived from visual-inertial odometry using the
-Quest's cameras and IMU sensors.</p>
+at 100 Hz (every 10 milliseconds) to provide smooth, responsive tracking.</p>
+<p>The data represents the Quest's position and orientation on the field,
+derived from visual-inertial odometry using the Quest's cameras and IMU sensors.</p>
 <p>Coordinate System:</p>
 <ul>
 <li>Uses WPILib field-relative coordinate system</li>
 <li>Origin and axes depend on field setup and calibration</li>
-<li>Pose represents the robot's position, not the Quest's position
-(accounting for Quest mounting offset)</li>
+<li>Pose represents the Quest's position; mounting offset to get robot position
+is applied in end user code</li>
 </ul>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -271,7 +270,7 @@ Quest's cameras and IMU sensors.</p>
 <p>This counter increments with each frame processed by the Quest's tracking
 system. It can be used to:</p>
 <ul>
-<li>Detect dropped or out-of-order messages</li>
+<li>Detect dropped messages</li>
 <li>Calculate effective frame rate</li>
 <li>Synchronize with other data streams</li>
 </ul>
@@ -327,14 +326,15 @@ gaps in the sequence.</p>
   <div class="markdown level1 summary"><ul>
 <li></li>
 </ul>
-<p>Robot's 2D pose on the field in WPILib coordinates.</p>
-<p>This represents the robot's position and orientation as determined by
+<p>Quest's 2D pose on the field in WPILib coordinates.</p>
+<p>This represents the Quest's position and orientation as determined by
 the Quest's tracking system. The pose accounts for:</p>
 <ul>
-<li>Quest mounting position/orientation relative to robot center</li>
 <li>Coordinate system transformation to WPILib standard</li>
 <li>Any calibration offsets applied</li>
 </ul>
+<p>Note: This is the Quest's position; end user code applies mounting offset
+to get the robot's position.</p>
 <p>Coordinate System Details:</p>
 <ul>
 <li>X: Forward direction (towards opposing alliance)</li>

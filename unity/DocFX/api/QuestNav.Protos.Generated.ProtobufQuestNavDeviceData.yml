@@ -38,7 +38,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufQuestNavDeviceData
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 405
+    startLine: 406
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -47,7 +47,7 @@ items:
      Lower-frequency device status data sent from Quest to external systems.
 
      This message contains device health and status information that doesn't need
-     to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+     to be sent as frequently as tracking data. It's sent at 3 Hz (every 333 milliseconds)
      to provide monitoring and diagnostic information without consuming excessive
      bandwidth.
 
@@ -93,7 +93,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 412
+    startLine: 413
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -122,7 +122,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 416
+    startLine: 417
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -151,7 +151,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 428
+    startLine: 429
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -180,7 +180,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 436
+    startLine: 437
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -212,7 +212,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 445
+    startLine: 446
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -245,7 +245,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TrackingLostCounterFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 452
+    startLine: 453
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -274,7 +274,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: TrackingLostCounter
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 474
+    startLine: 475
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -323,7 +323,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CurrentlyTrackingFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 484
+    startLine: 485
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -352,7 +352,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CurrentlyTracking
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 507
+    startLine: 508
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -402,7 +402,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: BatteryPercentFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 517
+    startLine: 518
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -431,7 +431,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: BatteryPercent
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 543
+    startLine: 544
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -484,7 +484,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 552
+    startLine: 553
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -520,7 +520,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 558
+    startLine: 559
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -554,7 +554,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 573
+    startLine: 574
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -584,7 +584,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 586
+    startLine: 587
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -614,7 +614,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 592
+    startLine: 593
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -648,7 +648,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 638
+    startLine: 639
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -683,7 +683,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 657
+    startLine: 658
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -717,7 +717,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Data.cs
-    startLine: 675
+    startLine: 676
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

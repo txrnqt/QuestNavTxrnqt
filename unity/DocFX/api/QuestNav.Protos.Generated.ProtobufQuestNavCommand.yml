@@ -341,7 +341,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CommandId
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 412
+    startLine: 414
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -354,6 +354,8 @@ items:
      to avoid confusion. The Quest will echo this ID in the response message.
 
      Recommended: Use incrementing integers or timestamps for uniqueness.
+
+     Note: For FRC users, the vendor dependency will handle this automatically.
   example: []
   syntax:
     content: public uint CommandId { get; set; }
@@ -380,7 +382,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PoseResetPayloadFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 422
+    startLine: 424
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -409,7 +411,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PoseResetPayload
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 428
+    startLine: 430
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -443,7 +445,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: PayloadCase
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 445
+    startLine: 447
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -472,7 +474,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ClearPayload
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 451
+    startLine: 453
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -498,7 +500,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 458
+    startLine: 460
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -534,7 +536,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 464
+    startLine: 466
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -568,7 +570,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 480
+    startLine: 482
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -598,7 +600,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 494
+    startLine: 496
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -628,7 +630,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 500
+    startLine: 502
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -662,7 +664,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 546
+    startLine: 548
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -697,7 +699,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 565
+    startLine: 567
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -731,7 +733,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 589
+    startLine: 591
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

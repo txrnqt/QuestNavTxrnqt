@@ -126,6 +126,7 @@ commands are in flight simultaneously.</p>
 <li>Some commands may take time to execute (e.g., pose reset with validation)</li>
 <li>Clients should implement timeouts for command responses</li>
 </ul>
+<p>Note: For FRC users, the vendor dependency will handle response matching automatically.</p>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html">ProtobufQuestNavDeviceData</a></h4>
       <section><ul>
@@ -133,7 +134,7 @@ commands are in flight simultaneously.</p>
 </ul>
 <p>Lower-frequency device status data sent from Quest to external systems.</p>
 <p>This message contains device health and status information that doesn't need
-to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+to be sent as frequently as tracking data. It's sent at 3 Hz (every 333 milliseconds)
 to provide monitoring and diagnostic information without consuming excessive
 bandwidth.</p>
 <p>This data helps external systems:</p>
@@ -153,16 +154,15 @@ troubleshooting scenarios.</p>
 <p>High-frequency tracking data sent from Quest to external systems.</p>
 <p>This message contains the core tracking information that external systems
 (like robot code) need for real-time localization and navigation. It's sent
-at high frequency (typically 30-90 Hz) to provide smooth, responsive tracking.</p>
-<p>The data represents the Quest's understanding of the robot's position and
-orientation on the field, derived from visual-inertial odometry using the
-Quest's cameras and IMU sensors.</p>
+at 100 Hz (every 10 milliseconds) to provide smooth, responsive tracking.</p>
+<p>The data represents the Quest's position and orientation on the field,
+derived from visual-inertial odometry using the Quest's cameras and IMU sensors.</p>
 <p>Coordinate System:</p>
 <ul>
 <li>Uses WPILib field-relative coordinate system</li>
 <li>Origin and axes depend on field setup and calibration</li>
-<li>Pose represents the robot's position, not the Quest's position
-(accounting for Quest mounting offset)</li>
+<li>Pose represents the Quest's position; mounting offset to get robot position
+is applied in end user code</li>
 </ul>
 </section>
       <h4><a class="xref" href="QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html">ProtobufQuestNavPoseResetPayload</a></h4>

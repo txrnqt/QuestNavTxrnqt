@@ -132,6 +132,36 @@ jobs:
           version: ${{ steps.version-info.outputs.version }}
           androidVersionCode: ${{ steps.version-info.outputs.version-code }}
 
+      - name: Preserve XML Documentation
+        run: |
+          echo "Preserving XML documentation file for DocFX..."
+          
+          # Check if XML documentation was generated
+          if [ -f "unity/Library/ScriptAssemblies/QuestNav.xml" ]; then
+            echo "Found QuestNav.xml, copying to persistent location..."
+            
+            # Create directory for preserved documentation
+            mkdir -p unity/DocFX/preserved-xml/
+            
+            # Copy the XML file to a location that won't be cleaned up
+            cp unity/Library/ScriptAssemblies/QuestNav.xml unity/DocFX/preserved-xml/QuestNav.xml
+            
+            echo "XML documentation preserved at unity/DocFX/preserved-xml/QuestNav.xml"
+            ls -la unity/DocFX/preserved-xml/
+          else
+            echo "Warning: QuestNav.xml not found at unity/Library/ScriptAssemblies/QuestNav.xml"
+            echo "Available files in ScriptAssemblies:"
+            ls -la unity/Library/ScriptAssemblies/ | grep -E "\.(xml|dll)$" || echo "No XML or DLL files found"
+          fi
+
+      - name: Upload XML Documentation Artifact
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: questnav-xml-docs-${{ steps.version-info.outputs.version }}
+          path: unity/DocFX/preserved-xml/QuestNav.xml
+          retention-days: 30
+
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         id: upload

@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuestNavCommandResponse | QuestNav API Documentation ">
     
-    <meta name="description" content="Response message sent back after processing a command. This message is sent by the Quest back to the client after processing a ProtobufQuestNavCommand. It provides status information about whether the command was executed successfully and any error details if it failed. The response is matched to the original command using the command_id field, allowing for proper asynchronous command handling even when multiple commands are in flight simultaneously. Response Timing:  Responses are sent after command processing completes Some commands may take time to execute (e.g., pose reset with validation) Clients should implement timeouts for command responses">
+    <meta name="description" content="Response message sent back after processing a command. This message is sent by the Quest back to the client after processing a ProtobufQuestNavCommand. It provides status information about whether the command was executed successfully and any error details if it failed. The response is matched to the original command using the command_id field, allowing for proper asynchronous command handling even when multiple commands are in flight simultaneously. Response Timing:  Responses are sent after command processing completes Some commands may take time to execute (e.g., pose reset with validation) Clients should implement timeouts for command responses  Note: For FRC users, the vendor dependency will handle response matching automatically.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -97,6 +97,7 @@ commands are in flight simultaneously.</p>
 <li>Some commands may take time to execute (e.g., pose reset with validation)</li>
 <li>Clients should implement timeouts for command responses</li>
 </ul>
+<p>Note: For FRC users, the vendor dependency will handle response matching automatically.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">

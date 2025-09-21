@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufQuestNavDeviceData | QuestNav API Documentation ">
     
-    <meta name="description" content="Lower-frequency device status data sent from Quest to external systems. This message contains device health and status information that doesn&#39;t need to be sent as frequently as tracking data. It&#39;s typically sent at 1-10 Hz to provide monitoring and diagnostic information without consuming excessive bandwidth. This data helps external systems:  Monitor Quest device health Detect tracking system issues Implement failsafe behaviors Provide user feedback about system status  The information is useful for both autonomous operation and debugging/ troubleshooting scenarios.">
+    <meta name="description" content="Lower-frequency device status data sent from Quest to external systems. This message contains device health and status information that doesn&#39;t need to be sent as frequently as tracking data. It&#39;s sent at 3 Hz (every 333 milliseconds) to provide monitoring and diagnostic information without consuming excessive bandwidth. This data helps external systems:  Monitor Quest device health Detect tracking system issues Implement failsafe behaviors Provide user feedback about system status  The information is useful for both autonomous operation and debugging/ troubleshooting scenarios.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -86,7 +86,7 @@
 </ul>
 <p>Lower-frequency device status data sent from Quest to external systems.</p>
 <p>This message contains device health and status information that doesn't need
-to be sent as frequently as tracking data. It's typically sent at 1-10 Hz
+to be sent as frequently as tracking data. It's sent at 3 Hz (every 333 milliseconds)
 to provide monitoring and diagnostic information without consuming excessive
 bandwidth.</p>
 <p>This data helps external systems:</p>

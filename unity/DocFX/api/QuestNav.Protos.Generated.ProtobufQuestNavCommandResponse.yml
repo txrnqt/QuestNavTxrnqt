@@ -38,7 +38,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ProtobufQuestNavCommandResponse
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 674
+    startLine: 678
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -58,6 +58,8 @@ items:
      - Responses are sent after command processing completes
      - Some commands may take time to execute (e.g., pose reset with validation)
      - Clients should implement timeouts for command responses
+
+     Note: For FRC users, the vendor dependency will handle response matching automatically.
   example: []
   syntax:
     content: 'public sealed class ProtobufQuestNavCommandResponse : IMessage<ProtobufQuestNavCommandResponse>, IEquatable<ProtobufQuestNavCommandResponse>, IDeepCloneable<ProtobufQuestNavCommandResponse>, IBufferMessage, IMessage'
@@ -92,7 +94,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Parser
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 681
+    startLine: 685
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -121,7 +123,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Descriptor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 685
+    startLine: 689
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -150,7 +152,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 697
+    startLine: 701
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -179,7 +181,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: .ctor
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 705
+    startLine: 709
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -211,7 +213,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Clone
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 714
+    startLine: 718
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -244,7 +246,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CommandIdFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 721
+    startLine: 725
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -273,7 +275,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CommandId
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 731
+    startLine: 735
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -310,7 +312,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: SuccessFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 741
+    startLine: 745
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -339,7 +341,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Success
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 754
+    startLine: 758
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -379,7 +381,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ErrorMessageFieldNumber
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 764
+    startLine: 768
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -408,7 +410,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ErrorMessage
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 781
+    startLine: 785
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -452,7 +454,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 790
+    startLine: 794
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -488,7 +490,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: Equals
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 796
+    startLine: 800
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -522,7 +524,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: GetHashCode
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 811
+    startLine: 815
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -552,7 +554,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: ToString
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 824
+    startLine: 828
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -582,7 +584,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: WriteTo
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 830
+    startLine: 834
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -616,7 +618,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: CalculateSize
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 876
+    startLine: 880
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -651,7 +653,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 895
+    startLine: 899
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated
@@ -685,7 +687,7 @@ items:
       repo: https://github.com/QuestNav/QuestNav.git
     id: MergeFrom
     path: ../Assets/QuestNav/Protos/Generated/Commands.cs
-    startLine: 913
+    startLine: 917
   assemblies:
   - QuestNav
   namespace: QuestNav.Protos.Generated

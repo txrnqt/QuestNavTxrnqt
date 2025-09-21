@@ -6,3 +6,6 @@ oculus-frc-streamer_*/
 *.zip
 
 .idea/
+
+# DocFX preserved XML documentation files
+unity/DocFX/preserved-xml/*.xml

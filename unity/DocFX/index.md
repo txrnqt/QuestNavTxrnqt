@@ -8,7 +8,7 @@ QuestNav is a Unity-based VR application that streams real-time position and ori
 
 ## API Reference
 
-Browse the [API Documentation](api/) to explore all available classes, methods, and properties.
+Explore the API documentation to browse all available classes, methods, and properties. Use the navigation menu to access different namespaces and types.
 
 ## Key Namespaces
 
