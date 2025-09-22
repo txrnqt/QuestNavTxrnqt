@@ -2,7 +2,6 @@
   "dependencies": {
     "com.boxqkrtm.ide.cursor": "https://github.com/boxqkrtm/com.unity.ide.cursor.git",
     "com.meta.xr.mrutilitykit": "78.0.0",
-    "com.meta.xr.sdk.audio": "78.0.0",
     "com.meta.xr.sdk.core": "78.0.0",
     "com.meta.xr.sdk.interaction": "78.0.0",
     "com.meta.xr.sdk.interaction.ovr": "78.0.0",

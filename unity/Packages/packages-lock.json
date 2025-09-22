@@ -21,13 +21,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.meta.xr.sdk.audio": {
-      "version": "78.0.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.meta.xr.sdk.core": {
       "version": "78.0.0",
       "depth": 0,

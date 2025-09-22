@@ -85,3 +85,6 @@ crashlytics-build.properties
 # NuGetForUnity Packages
 Packages/*
 !Packages/*.json
+
+# Secrets file for debugging CI builds
+.secrets

@@ -119,7 +119,7 @@ jobs:
 
       - name: Build Unity Project for Android
         uses: game-ci/unity-builder@v4
-        # Unity 6.1+ recommended by Meta for XR SDK 78.0.0
+        # Unity 6000.0.58f1 with OVR headless build fix
         id: buildUnity
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -174,10 +174,22 @@ jobs:
 
   # Call DocFX workflow after successful Unity build
   build-docfx:
-    name: Generate API Documentation
+    name: Generate C# API Documentation
     needs: build-unity
     if: success()
     uses: ./.github/workflows/build-docfx-api.yml
+    with:
+      unity-build-completed: true
+    permissions:
+      contents: write
+      pull-requests: write
+
+  # Call Javadoc workflow after successful Unity build
+  build-javadoc:
+    name: Generate Java API Documentation
+    needs: build-unity
+    if: success()
+    uses: ./.github/workflows/build-javadoc-api.yml
     with:
       unity-build-completed: true
     permissions:
