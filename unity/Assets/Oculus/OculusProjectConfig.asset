@@ -34,7 +34,7 @@ MonoBehaviour:
   horizonOsSdkEnabled: 0
   minHorizonOsSdkVersion: 68
   targetHorizonOsSdkVersion: 78
-  skipUnneededShaders: 1
+  skipUnneededShaders: 0
   enableIL2CPPLTO: 0
   removeGradleManifest: 1
   focusAware: 1
