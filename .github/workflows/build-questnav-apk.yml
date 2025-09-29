@@ -42,7 +42,7 @@ on:
 
 jobs:
   build-unity:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     outputs:
       apk-artifact-name: ${{ steps.upload.outputs.artifact-id }}
       apk-filename: ${{ steps.version-info.outputs.version }}.apk
@@ -57,45 +57,31 @@ jobs:
 
       - name: Determine Version Strategy
         id: version-info
+        shell: pwsh
         run: |
-          # Check if all required version components are provided
-          if [ -n "${{ inputs.versionYear }}" ] && [ -n "${{ inputs.versionMajor }}" ] && [ -n "${{ inputs.versionMinor }}" ] && [ -n "${{ inputs.versionPatch }}" ]; then
-            # Use semantic versioning
-            VERSION="${{ inputs.versionYear }}.${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}"
-            if [ -n "${{ inputs.versionType }}" ]; then
-              VERSION="${VERSION}-${{ inputs.versionType }}"
-            fi
+          if ('${{ inputs.versionYear }}' -ne '' -and '${{ inputs.versionMajor }}' -ne '' -and '${{ inputs.versionMinor }}' -ne '' -and '${{ inputs.versionPatch }}' -ne '') {
+            $VERSION = "${{ inputs.versionYear }}.${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}"
+            if ('${{ inputs.versionType }}' -ne '') { $VERSION = "$VERSION-${{ inputs.versionType }}" }
+            $YEAR = [int]'${{ inputs.versionYear }}'
+            $MAJOR = [int]'${{ inputs.versionMajor }}'
+            $MINOR = [int]'${{ inputs.versionMinor }}'
+            $PATCH = [int]'${{ inputs.versionPatch }}'
+            $VERSION_CODE = (($YEAR - 2020) * 100000000 + $MAJOR * 1000000 + $MINOR * 1000 + $PATCH)
+            "strategy=semantic" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+            "version=$VERSION" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+            "version-code=$VERSION_CODE" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          }
+          else {
+            $COMMIT_HASH = (git rev-parse --short=7 HEAD).Trim()
+            $VERSION = "$COMMIT_HASH-dev"
+            $COMMIT_COUNT = [int](git rev-list --count HEAD)
+            $VERSION_CODE = 1000000 + $COMMIT_COUNT
+            "strategy=hash" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+            "version=$VERSION" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+            "version-code=$VERSION_CODE" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          }
 
-            # Calculate Android version code for semantic versioning
-            YEAR=${{ inputs.versionYear }}
-            MAJOR=${{ inputs.versionMajor }}
-            MINOR=${{ inputs.versionMinor }}
-            PATCH=${{ inputs.versionPatch }}
-            VERSION_CODE=$(( ($YEAR - 2020) * 100000000 + $MAJOR * 1000000 + $MINOR * 1000 + $PATCH ))
-
-            echo "strategy=semantic" >> $GITHUB_OUTPUT
-            echo "version=$VERSION" >> $GITHUB_OUTPUT
-            echo "version-code=$VERSION_CODE" >> $GITHUB_OUTPUT
-          else
-            # Use hash-based versioning - hash first, then dev suffix
-            COMMIT_HASH=$(git rev-parse --short=7 HEAD)
-            VERSION="$COMMIT_HASH-dev"
-
-            # For hash-based versioning, use commit count for version code
-            COMMIT_COUNT=$(git rev-list --count HEAD)
-            VERSION_CODE=$((1000000 + $COMMIT_COUNT))
-
-            echo "strategy=hash" >> $GITHUB_OUTPUT
-            echo "version=$VERSION" >> $GITHUB_OUTPUT
-            echo "version-code=$VERSION_CODE" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@v1.3.1
-        with:
-          tool-cache: false
-          android: false
-          dotnet: false
+      # (Windows runners generally have sufficient space; skip linux-only disk cleanup)
 
       - name: Setup Caching
         uses: actions/cache@v3
@@ -117,6 +103,12 @@ jobs:
       - name: Restore NuGetForUnity Packages
         run: nugetforunity restore unity/
 
+      - name: Setup Unity Editor (Windows) with Android module
+        uses: game-ci/unity-setup@v4
+        with:
+          unityVersion: 6000.0.58f1
+          modules: android
+
       - name: Build Unity Project for Android
         uses: game-ci/unity-builder@v4
         # Unity 6000.0.58f1 with OVR headless build fix
@@ -128,33 +120,28 @@ jobs:
         with:
           projectPath: unity
           targetPlatform: Android
-          unityVersion: 6000.0.58f1
           customParameters: -developmentBuild
           versioning: Custom
           version: ${{ steps.version-info.outputs.version }}
           androidVersionCode: ${{ steps.version-info.outputs.version-code }}
 
       - name: Preserve XML Documentation
+        shell: pwsh
         run: |
-          echo "Preserving XML documentation file for DocFX..."
-          
-          # Check if XML documentation was generated
-          if [ -f "unity/Library/ScriptAssemblies/QuestNav.xml" ]; then
-            echo "Found QuestNav.xml, copying to persistent location..."
-            
-            # Create directory for preserved documentation
-            mkdir -p unity/DocFX/preserved-xml/
-            
-            # Copy the XML file to a location that won't be cleaned up
-            cp unity/Library/ScriptAssemblies/QuestNav.xml unity/DocFX/preserved-xml/QuestNav.xml
-            
-            echo "XML documentation preserved at unity/DocFX/preserved-xml/QuestNav.xml"
-            ls -la unity/DocFX/preserved-xml/
-          else
-            echo "Warning: QuestNav.xml not found at unity/Library/ScriptAssemblies/QuestNav.xml"
-            echo "Available files in ScriptAssemblies:"
-            ls -la unity/Library/ScriptAssemblies/ | grep -E "\.(xml|dll)$" || echo "No XML or DLL files found"
-          fi
+          Write-Host "Preserving XML documentation file for DocFX..."
+          $xmlPath = "unity/Library/ScriptAssemblies/QuestNav.xml"
+          if (Test-Path $xmlPath) {
+            Write-Host "Found QuestNav.xml, copying to persistent location..."
+            New-Item -ItemType Directory -Force -Path "unity/DocFX/preserved-xml" | Out-Null
+            Copy-Item $xmlPath "unity/DocFX/preserved-xml/QuestNav.xml" -Force
+            Write-Host "XML documentation preserved at unity/DocFX/preserved-xml/QuestNav.xml"
+            Get-ChildItem "unity/DocFX/preserved-xml/" | Format-Table -AutoSize
+          }
+          else {
+            Write-Warning "QuestNav.xml not found at $xmlPath"
+            Write-Host "Available files in ScriptAssemblies:"
+            Get-ChildItem "unity/Library/ScriptAssemblies/" -File | Where-Object { $_.Extension -in '.xml','.dll' } | Format-Table -AutoSize
+          }
 
       - name: Upload XML Documentation Artifact
         uses: actions/upload-artifact@v4

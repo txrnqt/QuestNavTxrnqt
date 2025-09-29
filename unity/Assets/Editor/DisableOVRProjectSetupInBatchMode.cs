@@ -1,6 +1,8 @@
+// Disables Meta XR's OVR Project Setup background checks during batch/CI builds
+#if UNITY_EDITOR
+using System;
 using System.Reflection;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [InitializeOnLoad]
@@ -8,63 +10,48 @@ public static class DisableOVRProjectSetupInBatchMode
 {
     static DisableOVRProjectSetupInBatchMode()
     {
-        if (Application.isBatchMode)
+        if (!Application.isBatchMode && !IsCiEnvironment())
         {
-            Debug.Log("Batch mode detected - disabling OVRProjectSetupUpdater");
-            DisableOVRProjectSetupUpdater();
+            return;
         }
+
+        // Disable background checks by swapping to temporary registry defaults
+        TryInvokeStatic("OVRProjectSetupUpdater", "SetupTemporaryRegistry");
+        // Also align OVRProjectSetup registry to temporary to avoid throwing errors
+        TryInvokeStatic("OVRProjectSetup", "SetupTemporaryRegistry");
     }
 
-    private static void DisableOVRProjectSetupUpdater()
+    private static bool IsCiEnvironment()
+    {
+        var ci = Environment.GetEnvironmentVariable("CI");
+        var gha = Environment.GetEnvironmentVariable("GITHUB_ACTIONS");
+        return string.Equals(ci, "true", StringComparison.OrdinalIgnoreCase)
+            || !string.IsNullOrEmpty(gha);
+    }
+
+    private static void TryInvokeStatic(string typeName, string methodName)
     {
         try
         {
-            // Root cause: OVRProjectSetupUpdater.OnEditorSceneManagerSceneOpened is triggered during build
-            // which calls OVRProjectConfig static constructor, which fails because OVRPlugin isn't initialized.
-            //
-            // Solution: Unregister the OVRProjectSetupUpdater from scene events during batch mode
-
-            var updaterType = System.Type.GetType(
-                "OVRProjectSetupUpdater, com.meta.xr.sdk.core.Editor"
-            );
-            if (updaterType != null)
+            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
             {
-                // Find the OnEditorSceneManagerSceneOpened method
-                var sceneOpenedMethod = updaterType.GetMethod(
-                    "OnEditorSceneManagerSceneOpened",
-                    BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public
+                var t = asm.GetType(typeName, false);
+                if (t == null)
+                    continue;
+                var m = t.GetMethod(
+                    methodName,
+                    BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic
                 );
-
-                if (sceneOpenedMethod != null)
-                {
-                    // Create a delegate for the method using the correct delegate type
-                    var methodDelegate = (EditorSceneManager.SceneOpenedCallback)System.Delegate.CreateDelegate(
-                        typeof(EditorSceneManager.SceneOpenedCallback),
-                        sceneOpenedMethod
-                    );
-
-                    // Unregister it from the sceneOpened event
-                    EditorSceneManager.sceneOpened -= methodDelegate;
-
-                    Debug.Log(
-                        "Successfully disabled OVRProjectSetupUpdater.OnEditorSceneManagerSceneOpened for batch mode"
-                    );
-                }
-                else
-                {
-                    Debug.LogWarning(
-                        "Could not find OVRProjectSetupUpdater.OnEditorSceneManagerSceneOpened method"
-                    );
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Could not find OVRProjectSetupUpdater type");
+                if (m == null)
+                    continue;
+                m.Invoke(null, null);
+                return;
             }
         }
-        catch (System.Exception e)
+        catch
         {
-            Debug.LogError($"Failed to disable OVRProjectSetupUpdater: {e.Message}");
+            // Swallow any reflection failures; best-effort disable only
         }
     }
 }
+#endif
