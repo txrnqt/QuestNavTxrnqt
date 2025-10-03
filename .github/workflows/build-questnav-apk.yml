@@ -117,13 +117,14 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          OVR_DISABLE_PROJECT_SETUP: 1
+          QUESTNAV_VERSION: ${{ steps.version-info.outputs.version }}
+          QUESTNAV_VERSION_CODE: ${{ steps.version-info.outputs.version-code }}
+          QUESTNAV_DEVELOPMENT_BUILD: 1
         with:
           projectPath: unity
           targetPlatform: Android
-          customParameters: -developmentBuild
-          versioning: Custom
-          version: ${{ steps.version-info.outputs.version }}
-          androidVersionCode: ${{ steps.version-info.outputs.version-code }}
+          buildMethod: CI.Build.PerformAndroid
 
       - name: Preserve XML Documentation
         shell: pwsh

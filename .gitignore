@@ -4,8 +4,12 @@ oculus-frc-streamer_*/
 # Ignore .apk and .zip files
 *.apk
 *.zip
-
+*.log
+.secrets
 .idea/
 
 # DocFX preserved XML documentation files
 unity/DocFX/preserved-xml/*.xml
+unity/Assets/Resources/PerformanceTestRunInfo.*
+unity/Assets/Resources/PerformanceTestRunSettings.*
+unity/Assets/StreamingAssets/RuntimeActionBindings.*
