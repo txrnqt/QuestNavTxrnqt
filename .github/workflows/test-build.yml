@@ -9,14 +9,14 @@ on:
 
 jobs:
   apk:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml
+    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
     secrets:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
   lib:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-lib.yml
+    uses: QuestNav/QuestNav/.github/workflows/build-questnav-lib.yml@main
     with:
       wpilibVersion: '2025.3.2'
       releaseToMaven: false
