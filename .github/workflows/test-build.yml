@@ -9,7 +9,7 @@ on:
 
 jobs:
   apk:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@doc-updates
+    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
     secrets:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}

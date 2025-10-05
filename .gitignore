@@ -7,6 +7,7 @@ oculus-frc-streamer_*/
 *.log
 .secrets
 .idea/
+.DS_Store
 
 # DocFX preserved XML documentation files
 unity/DocFX/preserved-xml/*.xml
