@@ -103,12 +103,6 @@ jobs:
       - name: Restore NuGetForUnity Packages
         run: nugetforunity restore unity/
 
-      - name: Setup Unity Editor (Windows) with Android module
-        uses: game-ci/unity-setup@v4
-        with:
-          unityVersion: 6000.0.58f1
-          modules: android
-
       - name: Build Unity Project for Android
         uses: game-ci/unity-builder@v4
         # Unity 6000.0.58f1 with OVR headless build fix
