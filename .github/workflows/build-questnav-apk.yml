@@ -42,7 +42,7 @@ on:
 
 jobs:
   build-unity:
-    runs-on: windows-latest
+    runs-on: [self-hosted, windows, x64]
     outputs:
       apk-artifact-name: ${{ steps.upload.outputs.artifact-id }}
       apk-filename: ${{ steps.version-info.outputs.version }}.apk
