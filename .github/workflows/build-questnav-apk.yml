@@ -92,13 +92,15 @@ jobs:
             Library-
             Library-Questnav-
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.x'
+      # .NET 8.x is pre-installed on the self-hosted Windows runner
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: '8.x'
 
-      - name: Install NuGetForUnity
-        run: dotnet tool install --global NuGetForUnity.Cli
+      # NuGetForUnity is pre-installed on the self-hosted Windows runner
+      # - name: Install NuGetForUnity
+      #   run: dotnet tool install --global NuGetForUnity.Cli
 
       - name: Restore NuGetForUnity Packages
         run: nugetforunity restore unity/
