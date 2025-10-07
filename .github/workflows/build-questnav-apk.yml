@@ -189,7 +189,7 @@ jobs:
           $ver = (Get-Item $dll.FullName).VersionInfo.FileVersion
           Write-Host "Found Google.Protobuf at $($dll.FullName) (FileVersion=$ver)"
 
-      - name: Fallback: vendor Google.Protobuf.dll (3.24.4)
+      - name: Vendor Google.Protobuf.dll (3.24.4)
         if: failure()
         shell: pwsh
         run: |
