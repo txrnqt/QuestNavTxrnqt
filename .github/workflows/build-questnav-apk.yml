@@ -180,6 +180,30 @@ jobs:
             nugetforunity restore $proj
           }
 
+      - name: Verify Google.Protobuf presence
+        shell: pwsh
+        run: |
+          $dlls = Get-ChildItem -Path unity -Recurse -Filter Google.Protobuf.dll -ErrorAction SilentlyContinue
+          if (-not $dlls) { Write-Error "Google.Protobuf.dll NOT found after restore."; exit 1 }
+          $dll = $dlls | Select-Object -First 1
+          $ver = (Get-Item $dll.FullName).VersionInfo.FileVersion
+          Write-Host "Found Google.Protobuf at $($dll.FullName) (FileVersion=$ver)"
+
+      - name: Fallback: vendor Google.Protobuf.dll (3.24.4)
+        if: failure()
+        shell: pwsh
+        run: |
+          $nupkg = "$PWD\google.protobuf.nupkg"
+          Invoke-WebRequest -Uri https://www.nuget.org/api/v2/package/Google.Protobuf/3.24.4 -OutFile $nupkg
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $dest = "$PWD\.nupkg_gp"
+          if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
+          [System.IO.Compression.ZipFile]::ExtractToDirectory($nupkg, $dest)
+          $src = Join-Path $dest "lib\netstandard2.0\Google.Protobuf.dll"
+          $plug = "unity\Assets\Plugins\Google.Protobuf"
+          New-Item -ItemType Directory -Force -Path $plug | Out-Null
+          Copy-Item $src $plug -Force
+
       - name: Verify Unity Android modules
         shell: pwsh
         run: |
