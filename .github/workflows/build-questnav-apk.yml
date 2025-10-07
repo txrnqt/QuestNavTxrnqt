@@ -131,6 +131,9 @@ jobs:
           projectPath: unity
           targetPlatform: Android
           buildMethod: CI.Build.PerformAndroid
+          providerStrategy: local
+          unityVersion: 6000.0.58f1
+          unityEditorsPath: 'C:\\Program Files\\Unity\\Hub\\Editor'
 
       - name: Preserve XML Documentation
         shell: pwsh
