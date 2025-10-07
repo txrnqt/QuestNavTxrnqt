@@ -14,3 +14,4 @@ unity/DocFX/preserved-xml/*.xml
 unity/Assets/Resources/PerformanceTestRunInfo.*
 unity/Assets/Resources/PerformanceTestRunSettings.*
 unity/Assets/StreamingAssets/RuntimeActionBindings.*
+/.cursor
