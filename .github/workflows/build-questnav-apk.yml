@@ -189,12 +189,12 @@ jobs:
           $ver = (Get-Item $dll.FullName).VersionInfo.FileVersion
           Write-Host "Found Google.Protobuf at $($dll.FullName) (FileVersion=$ver)"
 
-      - name: Vendor Google.Protobuf.dll (3.24.4)
+      - name: Vendor Google.Protobuf.dll (3.31.0)
         if: failure()
         shell: pwsh
         run: |
           $nupkg = "$PWD\google.protobuf.nupkg"
-          Invoke-WebRequest -Uri https://www.nuget.org/api/v2/package/Google.Protobuf/3.24.4 -OutFile $nupkg
+          Invoke-WebRequest -Uri https://www.nuget.org/api/v2/package/Google.Protobuf/3.31.0 -OutFile $nupkg
           Add-Type -AssemblyName System.IO.Compression.FileSystem
           $dest = "$PWD\.nupkg_gp"
           if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }

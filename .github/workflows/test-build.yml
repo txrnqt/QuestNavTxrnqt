@@ -8,7 +8,13 @@ on:
       - main
 
 jobs:
+  protos:
+    uses: QuestNav/QuestNav/.github/workflows/compile-protobufs.yml@main
+    permissions:
+      contents: write
+
   apk:
+    needs: protos
     uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
     permissions:
       contents: write
