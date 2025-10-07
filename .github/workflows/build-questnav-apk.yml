@@ -149,6 +149,7 @@ jobs:
           buildMethod: CI.Build.PerformAndroid
           providerStrategy: local
           unityVersion: auto
+          skipActivation: true
 
       - name: Preserve XML Documentation
         shell: pwsh
