@@ -167,16 +167,17 @@ jobs:
       - name: NuGetForUnity restore
         shell: pwsh
         run: |
-          $nugetConfig = "unity\Packages\NuGet.config"
-          if (Test-Path $nugetConfig) {
-            Write-Host "NuGetForUnity detected. Restoring packages..."
-            try { dotnet tool install --global NuGetForUnity.Cli | Out-Null } catch { Write-Warning $_.Exception.Message }
+          $proj = "unity"
+          # Find NuGet.config anywhere under the project (path can vary)
+          $nugetConfig = Get-ChildItem -Path $proj -Recurse -Filter NuGet.config -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $nugetConfig) {
+            Write-Host "NuGetForUnity config not found; skipping restore."
+          } else {
+            Write-Host "NuGetForUnity config at $($nugetConfig.FullName)"
+            dotnet tool install --global NuGetForUnity.Cli | Out-Null
             $toolPath = Join-Path $env:USERPROFILE ".dotnet\tools"
             $env:PATH = "$toolPath;$env:PATH"
-            $nugetCli = Join-Path $toolPath "nugetforunity.exe"
-            if (Test-Path $nugetCli) { & $nugetCli restore unity } else { nugetforunity restore unity }
-          } else {
-            Write-Host "NuGetForUnity not detected; skipping restore."
+            nugetforunity restore $proj
           }
 
       - name: Verify Unity Android modules
