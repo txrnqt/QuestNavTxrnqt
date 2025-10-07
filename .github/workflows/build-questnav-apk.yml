@@ -115,6 +115,22 @@ jobs:
           "$env:ProgramFiles\Git\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           & "$env:ProgramFiles\Git\usr\bin\sh.exe" --version
 
+      - name: Discover local Unity editor
+        shell: pwsh
+        run: |
+          $projVersionPath = "unity/ProjectSettings/ProjectVersion.txt"
+          if (-not (Test-Path $projVersionPath)) { throw "ProjectVersion.txt not found at $projVersionPath" }
+          $versionLine = (Select-String -Path $projVersionPath -Pattern '^m_EditorVersion:\s*(.+)$').Matches[0].Groups[1].Value
+          if (-not $versionLine) { throw "Unable to read Unity version from ProjectVersion.txt" }
+          $candidates = @(
+            "C:\\Program Files\\Unity\\Hub\\Editor\\$versionLine\\Editor\\Unity.exe",
+            "C:\\Program Files\\Unity\\Editor\\$versionLine\\Editor\\Unity.exe"
+          )
+          $unityPath = $null
+          foreach ($p in $candidates) { if (Test-Path $p) { $unityPath = $p; break } }
+          if (-not $unityPath) { throw "Unity $versionLine not found in standard locations. Install via Unity Hub or adjust the path." }
+          "UNITY_EDITOR_PATH=$unityPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
       - name: Build Unity Project for Android
         uses: game-ci/unity-builder@v4
         # Unity 6000.0.58f1 with OVR headless build fix
@@ -132,8 +148,7 @@ jobs:
           targetPlatform: Android
           buildMethod: CI.Build.PerformAndroid
           providerStrategy: local
-          unityVersion: 6000.0.58f1
-          unityEditorsPath: 'C:\\Program Files\\Unity\\Hub\\Editor'
+          unityVersion: auto
 
       - name: Preserve XML Documentation
         shell: pwsh
