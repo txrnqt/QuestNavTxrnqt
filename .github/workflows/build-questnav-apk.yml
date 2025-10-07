@@ -131,25 +131,25 @@ jobs:
           if (-not $unityPath) { throw "Unity $versionLine not found in standard locations. Install via Unity Hub or adjust the path." }
           "UNITY_EDITOR_PATH=$unityPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      - name: Build Unity Project for Android
-        uses: game-ci/unity-builder@v4
-        # Unity 6000.0.58f1 with OVR headless build fix
-        id: buildUnity
+      - name: Build (Unity batchmode, no Docker)
+        shell: pwsh
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          OVR_DISABLE_PROJECT_SETUP: 1
-          QUESTNAV_VERSION: ${{ steps.version-info.outputs.version }}
+          UNITY_EDITOR_PATH: ${{ env.UNITY_EDITOR_PATH }}
+          QUESTNAV_VERSION:  ${{ steps.version-info.outputs.version }}
           QUESTNAV_VERSION_CODE: ${{ steps.version-info.outputs.version-code }}
-          QUESTNAV_DEVELOPMENT_BUILD: 1
-        with:
-          projectPath: unity
-          targetPlatform: Android
-          buildMethod: CI.Build.PerformAndroid
-          providerStrategy: local
-          unityVersion: auto
-          skipActivation: true
+          OVR_DISABLE_PROJECT_SETUP: 1
+        run: |
+          $unity = "$env:UNITY_EDITOR_PATH"
+          if (-not (Test-Path $unity)) { throw "Unity editor not found at $unity" }
+          & $unity -quit -batchmode -nographics `
+            -projectPath "unity" `
+            -executeMethod "CI.Build.PerformAndroid" `
+            -buildTarget Android `
+            -logFile "$PWD/unity_build.log" `
+            -customBuildName "QuestNav" `
+            -customBuildPath "$PWD/build/Android/QuestNav-${{ steps.version-info.outputs.version }}.apk" `
+            -customBuildVersion "$env:QUESTNAV_VERSION" `
+            -customBuildVersionCode "$env:QUESTNAV_VERSION_CODE"
 
       - name: Preserve XML Documentation
         shell: pwsh
