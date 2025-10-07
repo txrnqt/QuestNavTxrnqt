@@ -215,7 +215,7 @@ jobs:
           if (-not $pick) { $pick = $all | Select-Object -First 1 }
       
           # Put a canonical copy where Unity will always see it
-          $plugins = Join-Path $proj "unity/Assets/Plugins/Google.Protobuf"
+          $plugins = Join-Path $proj "Assets/Plugins/Google.Protobuf"
           New-Item -ItemType Directory -Force -Path $plugins | Out-Null
           Copy-Item $pick.FullName (Join-Path $plugins "Google.Protobuf.dll") -Force
       
