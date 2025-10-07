@@ -187,21 +187,6 @@ jobs:
           $ver = (Get-Item $dll.FullName).VersionInfo.FileVersion
           Write-Host "Found Google.Protobuf at $($dll.FullName) (FileVersion=$ver)"
 
-      - name: Vendor Google.Protobuf.dll (3.31.0)
-        if: failure()
-        shell: pwsh
-        run: |
-          $nupkg = "$PWD\google.protobuf.nupkg"
-          Invoke-WebRequest -Uri https://www.nuget.org/api/v2/package/Google.Protobuf/3.31.0 -OutFile $nupkg
-          Add-Type -AssemblyName System.IO.Compression.FileSystem
-          $dest = "$PWD\.nupkg_gp"
-          if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
-          [System.IO.Compression.ZipFile]::ExtractToDirectory($nupkg, $dest)
-          $src = Join-Path $dest "lib\netstandard2.0\Google.Protobuf.dll"
-          $plug = "unity\Assets\Plugins\Google.Protobuf"
-          New-Item -ItemType Directory -Force -Path $plug | Out-Null
-          Copy-Item $src $plug -Force
-
       - name: Ensure Google.Protobuf.dll is visible to Unity
         shell: pwsh
         run: |
@@ -229,18 +214,63 @@ jobs:
             $others | ForEach-Object { Write-Host " - $($_.FullName)" }
           }
 
+      - name: Remove duplicate Google.Protobuf copies (keep Plugins)
+        shell: pwsh
+        run: |
+          $keep = "unity/Assets/Plugins/Google.Protobuf/Google.Protobuf.dll"
+          $dupes = Get-ChildItem -Path unity -Recurse -Filter Google.Protobuf.dll |
+                    Where-Object { $_.FullName -ne (Resolve-Path $keep) }
+          if ($dupes) {
+            Write-Host "Removing duplicate copies to avoid resolver ambiguity:"
+            $dupes | ForEach-Object { Write-Host " - $($_.FullName)"; Remove-Item $_.FullName -Force }
+          } else { Write-Host "No duplicate copies found." }
+
+          
+      - name: Force global C# reference to Google.Protobuf
+        shell: pwsh
+        run: |
+          $rspPath = "unity/Assets/csc.rsp"
+          $line = "-r:Assets/Plugins/Google.Protobuf/Google.Protobuf.dll"
+          if (Test-Path $rspPath) {
+            if (-not (Select-String -Path $rspPath -SimpleMatch $line -Quiet)) { Add-Content $rspPath $line }
+          } else {
+            Set-Content $rspPath $line
+          }
+          Write-Host "Wrote $rspPath with $line"
+
       - name: Verify Unity Android modules
         shell: pwsh
         run: |
           $editorDir = Split-Path $env:UNITY_EDITOR_PATH -Parent
           $android   = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer'
-          if (-not (Test-Path $android)) { Write-Error "Missing Android module: $android"; exit 1 }
+          if (-not (Test-Path $android)) { Write-Error "Missing AndroidPlayer folder: $android"; exit 1 }
+      
+          $ok = $true
           $paths = @(
-            'SDK','NDK','OpenJDK','Tools','Gradle'
+            'SDK',         # Embedded Android SDK
+            'NDK',         # Embedded NDK
+            'OpenJDK',     # Embedded JDK
+            'Tools\gradle' # Gradle lives here in modern Unity
           ) | ForEach-Object { Join-Path $android $_ }
+      
           foreach ($p in $paths) {
-            if (-not (Test-Path $p)) { Write-Warning "Android component missing: $p" }
+            if (-not (Test-Path $p)) {
+              Write-Warning "Android component missing (or different layout): $p"
+              $ok = $false
+            }
           }
+      
+          # Legacy fallback: some versions used ...\AndroidPlayer\Gradle
+          $legacyGradle = Join-Path $android 'Gradle'
+          if (-not (Test-Path (Join-Path $android 'Tools\gradle')) -and (Test-Path $legacyGradle)) {
+            Write-Host "Using legacy Gradle path: $legacyGradle"
+            $ok = $true
+          }
+      
+          Write-Host "AndroidPlayer contents:"
+          Get-ChildItem $android -Depth 2 | Select-Object FullName, PSIsContainer | Format-Table -AutoSize
+      
+          if (-not $ok) { Write-Error "Android modules look incomplete for this Unity install."; exit 1 }
 
       - name: Build with Unity (stream logs)
         id: unity-build
