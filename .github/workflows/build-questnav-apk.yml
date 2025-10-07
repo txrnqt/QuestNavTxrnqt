@@ -37,46 +37,90 @@ on:
         description: 'Unity password'
         required: false
     outputs:
-      questnav_version:
-        description: "Computed version string"
-        value: ${{ jobs.build-unity.outputs.questnav_version }}
-      questnav_version_code:
-        description: "Computed version code"
-        value: ${{ jobs.build-unity.outputs.questnav_version_code }}
-      apk_path:
-        description: "Built APK path"
-        value: ${{ jobs.build-unity.outputs.apk_path }}
+        version:
+          description: "Computed version string"
+          value: ${{ jobs.build-unity.outputs.version }}
+        version-code:
+          description: "Computed Android versionCode"
+          value: ${{ jobs.build-unity.outputs.version-code }}
+        strategy:
+          description: "Version strategy used (semantic|hash)"
+          value: ${{ jobs.build-unity.outputs.strategy }}
+        apk_path:
+          description: "Built APK path (in the runner workspace)"
+          value: ${{ jobs.build-unity.outputs.apk_path }}
 
 jobs:
   build-unity:
     runs-on: [self-hosted, Windows]
     outputs:
-      questnav_version: ${{ steps.set-version.outputs.QUESTNAV_VERSION }}
-      questnav_version_code: ${{ steps.set-version.outputs.QUESTNAV_VERSION_CODE }}
-      apk_path: ${{ steps.unity-build.outputs.APK_PATH }}
+      version: ${{ steps.set-version.outputs.version }}
+      version-code: ${{ steps.set-version.outputs['version-code'] }}
+      strategy: ${{ steps.set-version.outputs.strategy }}
+      apk_path: ${{ steps.unity-build.outputs.apk_path }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Compute QUESTNAV versioning
+      - name: Determine version strategy
         id: set-version
         shell: pwsh
         run: |
-          $commitHash  = (git rev-parse --short=7 HEAD).Trim()
-          $commitCount = [int](git rev-list --count HEAD)
-          $version     = "$commitHash-dev"
-          $code        = 1000000 + $commitCount
-          $isDev       = ("${{ inputs.devBuild }}".ToLower() -eq "true")
-
-          # Step outputs
-          "QUESTNAV_VERSION=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-          "QUESTNAV_VERSION_CODE=$code" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-          if ($isDev) { "QUESTNAV_DEVELOPMENT_BUILD=1" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8 }
-
-          # Export to env for subsequent steps
-          "QUESTNAV_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          "QUESTNAV_VERSION_CODE=$code" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-          if ($isDev) { "QUESTNAV_DEVELOPMENT_BUILD=1" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8 }
+          # Read inputs as strings (may be empty in workflow_call)
+          $year  = "${{ inputs.versionYear }}"
+          $major = "${{ inputs.versionMajor }}"
+          $minor = "${{ inputs.versionMinor }}"
+          $patch = "${{ inputs.versionPatch }}"
+          $vtype = "${{ inputs.versionType }}"
+          $isDevInput = "${{ inputs.devBuild }}"
+      
+          $haveSem = -not [string]::IsNullOrWhiteSpace($year) `
+                     -and -not [string]::IsNullOrWhiteSpace($major) `
+                     -and -not [string]::IsNullOrWhiteSpace($minor) `
+                     -and -not [string]::IsNullOrWhiteSpace($patch)
+      
+          if ($haveSem) {
+            # Semantic versioning: YEAR.MAJOR.MINOR.PATCH[-TYPE]
+            $version = "$year.$major.$minor.$patch"
+            if (-not [string]::IsNullOrWhiteSpace($vtype)) { $version = "$version-$vtype" }
+      
+            # Android versionCode = (YEAR-2020)*100000000 + MAJOR*1000000 + MINOR*1000 + PATCH
+            $yearI  = [int]$year
+            $majorI = [int]$major
+            $minorI = [int]$minor
+            $patchI = [int]$patch
+            $code   = (($yearI - 2020) * 100000000) + ($majorI * 1000000) + ($minorI * 1000) + $patchI
+            $strategy = 'semantic'
+          } else {
+            # Hash-based: <7-char-hash>-dev  and versionCode = 1_000_000 + commitCount
+            $commitHash  = (git rev-parse --short=7 HEAD).Trim()
+            $commitCount = [int](git rev-list --count HEAD)
+            $version = "$commitHash-dev"
+            $code    = 1000000 + $commitCount
+            $strategy = 'hash'
+          }
+      
+          # Optional development flag passthrough
+          $isDev = ($isDevInput.ToString().ToLower() -eq 'true')
+      
+          # ---- Step outputs expected by new logic ----
+          "strategy=$strategy"          | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "version=$version"            | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "version-code=$code"          | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+      
+          # ---- Back-compat outputs for the rest of your workflow ----
+          "QUESTNAV_VERSION=$version"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "QUESTNAV_VERSION_CODE=$code"     | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          if ($isDev) {
+            "QUESTNAV_DEVELOPMENT_BUILD=1"  | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          }
+      
+          # ---- Also export to env for subsequent steps ----
+          "QUESTNAV_VERSION=$version"       | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "QUESTNAV_VERSION_CODE=$code"     | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          if ($isDev) {
+            "QUESTNAV_DEVELOPMENT_BUILD=1"  | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          }
 
       - name: Resolve Unity.exe
         id: unity-path
@@ -161,8 +205,6 @@ jobs:
           $proc = Start-Process -FilePath $unity `
                                 -ArgumentList $args `
                                 -WorkingDirectory $PWD `
-                                -WindowStyle Hidden `
-                                -NoNewWindow `
                                 -PassThru `
                                 -Wait
       
@@ -186,7 +228,7 @@ jobs:
         id: artifact
         shell: pwsh
         run: |
-          $name = "QuestNav-${{ steps.set-version.outputs.QUESTNAV_VERSION }}-${{ steps.set-version.outputs.QUESTNAV_VERSION_CODE }}"
+          $name = "QuestNav-${{ steps.set-version.outputs.version }}-${{ steps.set-version.outputs['version-code'] }}"
           if ("${{ inputs.devBuild }}".ToLower() -eq "true") { $name = "$name-dev" }
           "ARTIFACT_NAME=$name" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
 
@@ -201,7 +243,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: unity-build-log-${{ steps.set-version.outputs.QUESTNAV_VERSION }}
+          name: unity-build-log-${{ steps.set-version.outputs.version }}
           path: local-unity-build.log
           retention-days: 7
 
@@ -227,7 +269,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: questnav-xml-docs-${{ steps.set-version.outputs.QUESTNAV_VERSION }}
+          name: questnav-xml-docs-${{ steps.set-version.outputs.version }}
           path: unity/DocFX/preserved-xml/QuestNav.xml
           retention-days: 30
 
