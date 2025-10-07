@@ -106,8 +106,7 @@ jobs:
         shell: pwsh
         run: "& $env:USERPROFILE\\.dotnet\\tools\\nugetforunity.exe restore unity/"
 
-      - name: Ensure sh is available (self-hosted)
-        if: ${{ contains(runner.labels, 'self-hosted') }}
+      - name: Ensure sh is available
         shell: pwsh
         run: |
           if (-not (Test-Path "$env:ProgramFiles\Git\usr\bin\sh.exe")) {
