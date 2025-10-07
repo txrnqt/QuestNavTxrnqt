@@ -29,18 +29,31 @@ on:
     secrets:
       UNITY_LICENSE:
         description: 'Unity license'
-        required: true
+        required: false
       UNITY_EMAIL:
         description: 'Unity email'
-        required: true
+        required: false
       UNITY_PASSWORD:
         description: 'Unity password'
-        required: true
+        required: false
+    outputs:
+      questnav_version:
+        description: "Computed version string"
+        value: ${{ jobs.build-unity.outputs.questnav_version }}
+      questnav_version_code:
+        description: "Computed version code"
+        value: ${{ jobs.build-unity.outputs.questnav_version_code }}
+      apk_path:
+        description: "Built APK path"
+        value: ${{ jobs.build-unity.outputs.apk_path }}
 
 jobs:
   build-unity:
     runs-on: [self-hosted, Windows]
-
+    outputs:
+      questnav_version: ${{ steps.set-version.outputs.QUESTNAV_VERSION }}
+      questnav_version_code: ${{ steps.set-version.outputs.QUESTNAV_VERSION_CODE }}
+      apk_path: ${{ steps.unity-build.outputs.APK_PATH }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -88,18 +101,26 @@ jobs:
           if (-not (Test-Path $unity)) { throw "Unity Editor not found at: $unity" }
           "UNITY_EDITOR_PATH=$unity" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
-      - name: Clean Unity artifacts (fresh build)
+      - name: Clean Unity artifacts
         shell: pwsh
         run: |
           $proj = "unity"
           @('Library','Temp','obj','Logs','build') | ForEach-Object {
             $p = Join-Path $proj $_
             if (Test-Path $p) {
-              try { Remove-Item -Recurse -Force -LiteralPath $p } catch { Write-Warning "Failed to remove $p: $($_.Exception.Message)" }
+              try {
+                Remove-Item -Recurse -Force -LiteralPath -ErrorAction Stop $p
+                Write-Host "Removed: $p"
+              } catch {
+                # Either wrap the var...
+                # Write-Warning "Failed to remove $($p): $($_.Exception.Message)"
+                # ...or use -f formatting (recommended)
+                Write-Warning ("Failed to remove {0}: {1}" -f $p, $_.Exception.Message)
+              }
             }
           }
 
-      - name: NuGetForUnity restore (only if present)
+      - name: NuGetForUnity restore
         shell: pwsh
         run: |
           $nugetConfig = "unity\Packages\NuGet.config"
@@ -107,6 +128,7 @@ jobs:
             Write-Host "NuGetForUnity detected. Restoring packages..."
             try { dotnet tool install --global NuGetForUnity.Cli | Out-Null } catch { Write-Warning $_.Exception.Message }
             $toolPath = Join-Path $env:USERPROFILE ".dotnet\tools"
+            $env:PATH = "$toolPath;$env:PATH"
             $nugetCli = Join-Path $toolPath "nugetforunity.exe"
             if (Test-Path $nugetCli) { & $nugetCli restore unity } else { nugetforunity restore unity }
           } else {
@@ -124,39 +146,48 @@ jobs:
           $logPath = Join-Path $PWD "local-unity-build.log"
           if (Test-Path $logPath) { Remove-Item $logPath -Force }
           $null = New-Item -ItemType File -Path $logPath -Force
-
-          # Exact flags from your script:
-          & "$unity" `
-            -batchmode `
-            -nographics `
-            -quit `
-            -projectPath "$proj" `
-            -executeMethod "CI.Build.PerformAndroid" `
-            -logFile "$logPath"
-
-          $exit = $LASTEXITCODE
+      
+          # Build args (exactly as before)
+          $args = @(
+            '-batchmode',
+            '-nographics',
+            '-quit',
+            '-projectPath', $proj,
+            '-executeMethod', 'CI.Build.PerformAndroid',
+            '-logFile', $logPath
+          )
+      
+          # Start Unity "in the background" and BLOCK until it finishes
+          $proc = Start-Process -FilePath $unity `
+                                -ArgumentList $args `
+                                -WorkingDirectory $PWD `
+                                -WindowStyle Hidden `
+                                -NoNewWindow `
+                                -PassThru `
+                                -Wait
+      
+          $exit = $proc.ExitCode
+      
           Write-Host "---- Tail of Unity log ----"
           if (Test-Path $logPath) { Get-Content $logPath -Tail 200 } else { Write-Warning "Unity log file not found at $logPath" }
+      
           if ($exit -ne 0) { throw "Unity build failed with exit code $exit. See $logPath" }
-
-          # Wait for APK to appear (Unity process may linger while writing files)
+      
+          # After Unity exits, give the filesystem a short grace period for the APK to appear
           $apk = Join-Path $proj "build/Android/QuestNav-local.apk"
-          $deadline = (Get-Date).AddMinutes(60)
-          while (-not (Test-Path $apk) -and (Get-Date) -lt $deadline) {
-            $u = Get-Process -Name Unity -ErrorAction SilentlyContinue
-            if (-not $u) { break }
-            Start-Sleep -Seconds 10
-          }
-
+          $graceSeconds = 10
+          for ($i=0; $i -lt $graceSeconds -and -not (Test-Path $apk); $i++) { Start-Sleep -Seconds 1 }
+      
           if (-not (Test-Path $apk)) { throw "Expected APK not found at $apk. See $logPath" }
+      
           "APK_PATH=$apk" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-
+        
       - name: Compute artifact name
         id: artifact
         shell: pwsh
         run: |
           $name = "QuestNav-${{ steps.set-version.outputs.QUESTNAV_VERSION }}-${{ steps.set-version.outputs.QUESTNAV_VERSION_CODE }}"
-          if ("${{ steps.set-version.outputs.QUESTNAV_DEVELOPMENT_BUILD }}") { $name = "$name-dev" }
+          if ("${{ inputs.devBuild }}".ToLower() -eq "true") { $name = "$name-dev" }
           "ARTIFACT_NAME=$name" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
 
       - name: Upload APK
