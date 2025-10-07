@@ -104,7 +104,7 @@ jobs:
 
       - name: Restore NuGetForUnity Packages
         shell: pwsh
-        run: "& $env:USERPROFILE\\.dotnet\\tools\\nugetforunity.exe restore unity/"
+        run: "& $env:C:\\Users\\Administrator\\.dotnet\\tools\\nugetforunity.exe restore unity/"
 
       - name: Build Unity Project for Android
         uses: game-ci/unity-builder@v4
