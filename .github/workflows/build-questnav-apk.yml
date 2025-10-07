@@ -164,20 +164,18 @@ jobs:
             }
           }
 
-      - name: NuGetForUnity restore
+      - name: Restore NuGetForUnity
         shell: pwsh
         run: |
           $proj = "unity"
-          # Find NuGet.config anywhere under the project (path can vary)
-          $nugetConfig = Get-ChildItem -Path $proj -Recurse -Filter NuGet.config -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $nugetConfig) {
-            Write-Host "NuGetForUnity config not found; skipping restore."
-          } else {
-            Write-Host "NuGetForUnity config at $($nugetConfig.FullName)"
+          $cfg = Get-ChildItem -Path $proj -Recurse -Filter NuGet.config -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($cfg) {
+            Write-Host "NuGetForUnity config: $($cfg.FullName)"
             dotnet tool install --global NuGetForUnity.Cli | Out-Null
-            $toolPath = Join-Path $env:USERPROFILE ".dotnet\tools"
-            $env:PATH = "$toolPath;$env:PATH"
+            $env:PATH = "$($env:USERPROFILE)\.dotnet\tools;$env:PATH"
             nugetforunity restore $proj
+          } else {
+            Write-Host "NuGetForUnity config not found; skipping restore."
           }
 
       - name: Verify Google.Protobuf presence
@@ -203,6 +201,33 @@ jobs:
           $plug = "unity\Assets\Plugins\Google.Protobuf"
           New-Item -ItemType Directory -Force -Path $plug | Out-Null
           Copy-Item $src $plug -Force
+
+      - name: Ensure Google.Protobuf.dll is visible to Unity
+        shell: pwsh
+        run: |
+          $proj = "unity"
+          # Find every copy of Google.Protobuf.dll in the project
+          $all = Get-ChildItem -Path $proj -Recurse -Filter Google.Protobuf.dll -ErrorAction SilentlyContinue
+          if (-not $all) { Write-Error "Google.Protobuf.dll not found under $proj"; exit 1 }
+      
+          # Prefer a netstandard2.0 (or net6/net472 if needed) path
+          $pick = $all | Where-Object { $_.FullName -match '\\lib\\netstandard2\.0\\' } | Select-Object -First 1
+          if (-not $pick) { $pick = $all | Select-Object -First 1 }
+      
+          # Put a canonical copy where Unity will always see it
+          $plugins = Join-Path $proj "unity/Assets/Plugins/Google.Protobuf"
+          New-Item -ItemType Directory -Force -Path $plugins | Out-Null
+          Copy-Item $pick.FullName (Join-Path $plugins "Google.Protobuf.dll") -Force
+      
+          Write-Host "Using Google.Protobuf from: $($pick.FullName)"
+          Write-Host "Placed at: $plugins\Google.Protobuf.dll"
+      
+          # Optional: fail if there are multiple copies (can confuse Unity)
+          $others = $all | Where-Object { $_.FullName -ne $pick.FullName }
+          if ($others) {
+            Write-Warning "Other copies exist (may cause ambiguity):"
+            $others | ForEach-Object { Write-Host " - $($_.FullName)" }
+          }
 
       - name: Verify Unity Android modules
         shell: pwsh
