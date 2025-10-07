@@ -42,7 +42,7 @@ on:
 
 jobs:
   build-unity:
-    runs-on: windows-latest
+    runs-on: [self-hosted, windows, x64]
     outputs:
       apk-artifact-name: ${{ steps.upload.outputs.artifact-id }}
       apk-filename: ${{ steps.version-info.outputs.version }}.apk
@@ -92,16 +92,44 @@ jobs:
             Library-
             Library-Questnav-
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.x'
+      # .NET 8.x is pre-installed on the self-hosted Windows runner
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: '8.x'
 
-      - name: Install NuGetForUnity
-        run: dotnet tool install --global NuGetForUnity.Cli
+      # NuGetForUnity is pre-installed on the self-hosted Windows runner
+      # - name: Install NuGetForUnity
+      #   run: dotnet tool install --global NuGetForUnity.Cli
 
       - name: Restore NuGetForUnity Packages
-        run: nugetforunity restore unity/
+        shell: pwsh
+        run: "& $env:USERPROFILE\\.dotnet\\tools\\nugetforunity.exe restore unity/"
+
+      - name: Ensure sh is available
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "$env:ProgramFiles\Git\usr\bin\sh.exe")) {
+            throw "sh.exe not found. Install Git for Windows on this runner."
+          }
+          "$env:ProgramFiles\Git\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          & "$env:ProgramFiles\Git\usr\bin\sh.exe" --version
+
+      - name: Discover local Unity editor
+        shell: pwsh
+        run: |
+          $projVersionPath = "unity/ProjectSettings/ProjectVersion.txt"
+          if (-not (Test-Path $projVersionPath)) { throw "ProjectVersion.txt not found at $projVersionPath" }
+          $versionLine = (Select-String -Path $projVersionPath -Pattern '^m_EditorVersion:\s*(.+)$').Matches[0].Groups[1].Value
+          if (-not $versionLine) { throw "Unable to read Unity version from ProjectVersion.txt" }
+          $candidates = @(
+            "C:\\Program Files\\Unity\\Hub\\Editor\\$versionLine\\Editor\\Unity.exe",
+            "C:\\Program Files\\Unity\\Editor\\$versionLine\\Editor\\Unity.exe"
+          )
+          $unityPath = $null
+          foreach ($p in $candidates) { if (Test-Path $p) { $unityPath = $p; break } }
+          if (-not $unityPath) { throw "Unity $versionLine not found in standard locations. Install via Unity Hub or adjust the path." }
+          "UNITY_EDITOR_PATH=$unityPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Build Unity Project for Android
         uses: game-ci/unity-builder@v4
@@ -119,6 +147,8 @@ jobs:
           projectPath: unity
           targetPlatform: Android
           buildMethod: CI.Build.PerformAndroid
+          providerStrategy: local
+          unityVersion: auto
 
       - name: Preserve XML Documentation
         shell: pwsh
