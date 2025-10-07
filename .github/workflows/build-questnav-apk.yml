@@ -179,50 +179,59 @@ jobs:
             Write-Host "NuGetForUnity not detected; skipping restore."
           }
 
-      - name: Build with Unity (batchmode, no Docker)
+      - name: Verify Unity Android modules
+        shell: pwsh
+        run: |
+          $editorDir = Split-Path $env:UNITY_EDITOR_PATH -Parent
+          $android   = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer'
+          if (-not (Test-Path $android)) { Write-Error "Missing Android module: $android"; exit 1 }
+          $paths = @(
+            'SDK','NDK','OpenJDK','Tools','Gradle'
+          ) | ForEach-Object { Join-Path $android $_ }
+          foreach ($p in $paths) {
+            if (-not (Test-Path $p)) { Write-Warning "Android component missing: $p" }
+          }
+
+      - name: Build with Unity (stream logs)
         id: unity-build
+        timeout-minutes: 90
         shell: pwsh
         env:
           OVR_DISABLE_PROJECT_SETUP: "1"
+          UPM_LOG_LEVEL: debug
         run: |
           $proj    = "unity"
           $unity   = $env:UNITY_EDITOR_PATH
           $logPath = Join-Path $PWD "local-unity-build.log"
           if (Test-Path $logPath) { Remove-Item $logPath -Force }
-          $null = New-Item -ItemType File -Path $logPath -Force
       
-          # Build args (exactly as before)
+          # We'll tee console output into a file for artifact upload
           $args = @(
-            '-batchmode',
-            '-nographics',
-            '-quit',
+            '-batchmode','-nographics','-quit',
+            '-accept-apiupdate',               # avoid API Updater prompt
+            '-enablePackageManagerTraces',     # extra package manager logs
+            '-buildTarget','Android',          # make target explicit
             '-projectPath', $proj,
-            '-executeMethod', 'CI.Build.PerformAndroid',
-            '-logFile', $logPath
+            '-executeMethod','CI.Build.PerformAndroid',
+            '-logFile','-'                     # <-- stream to stdout
           )
       
-          # Start Unity "in the background" and BLOCK until it finishes
-          $proc = Start-Process -FilePath $unity `
-                                -ArgumentList $args `
-                                -WorkingDirectory $PWD `
-                                -PassThru `
-                                -Wait
+          # Run Unity and tee output to our log file
+          # (&) blocks until Unity exits; $LASTEXITCODE will have Unity's exit code
+          & "$unity" @args 2>&1 | Tee-Object -FilePath $logPath
+          $exit = $LASTEXITCODE
       
-          $exit = $proc.ExitCode
-      
-          Write-Host "---- Tail of Unity log ----"
+          Write-Host "---- Tail of Unity log (from file) ----"
           if (Test-Path $logPath) { Get-Content $logPath -Tail 200 } else { Write-Warning "Unity log file not found at $logPath" }
-      
           if ($exit -ne 0) { throw "Unity build failed with exit code $exit. See $logPath" }
       
-          # After Unity exits, give the filesystem a short grace period for the APK to appear
+          # Short post-exit grace period for file flush
           $apk = Join-Path $proj "build/Android/QuestNav-local.apk"
-          $graceSeconds = 10
-          for ($i=0; $i -lt $graceSeconds -and -not (Test-Path $apk); $i++) { Start-Sleep -Seconds 1 }
+          for ($i=0; $i -lt 30 -and -not (Test-Path $apk); $i++) { Start-Sleep -Seconds 1 }
       
           if (-not (Test-Path $apk)) { throw "Expected APK not found at $apk. See $logPath" }
-      
           "APK_PATH=$apk" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+        
         
       - name: Compute artifact name
         id: artifact
@@ -246,6 +255,22 @@ jobs:
           name: unity-build-log-${{ steps.set-version.outputs.version }}
           path: local-unity-build.log
           retention-days: 7
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-diagnostics-${{ steps.set-version.outputs.version || 'unknown' }}
+          if-no-files-found: warn
+          retention-days: 7
+          path: |
+            local-unity-build.log
+            ${{ env.LOCALAPPDATA }}\Unity\Editor\Editor.log
+            ${{ env.LOCALAPPDATA }}\Unity\cache\logs\*
+            ${{ env.APPDATA }}\Unity\Packages\logs\*
+            unity\Library\**\*.log
+            unity\Logs\**\*
+            ${{ env.LOCALAPPDATA }}\Temp\Unity\Editor\Crashes\**
 
       - name: Preserve XML Documentation
         shell: pwsh
