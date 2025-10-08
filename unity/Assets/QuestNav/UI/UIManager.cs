@@ -76,6 +76,7 @@ namespace QuestNav.UI
         /// <param name="ipAddressText">Text for IP address display</param>
         /// <param name="conStateText">Text for connection state display</param>
         /// <param name="teamUpdateButton">Button for updating team number</param>
+        /// <param name="autoStartToggle">Toggle for auto-start on boot functionality</param>
         public UIManager(
             INetworkTableConnection networkTableConnection,
             TMP_InputField teamInput,

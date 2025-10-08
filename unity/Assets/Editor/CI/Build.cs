@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
-using UnityEditor.XR.Management;
+using UnityEngine.XR.Management;
 
 namespace CI
 {
