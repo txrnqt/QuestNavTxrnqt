@@ -371,6 +371,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
 
   # Call Javadoc workflow after successful Unity build
   build-javadoc:
@@ -383,3 +384,4 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
