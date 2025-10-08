@@ -261,6 +261,8 @@ jobs:
     needs: build-docfx
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      actions: write  # Required to trigger other workflows
     
     steps:
       - name: Trigger Docusaurus Deployment
