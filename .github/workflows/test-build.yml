@@ -6,6 +6,7 @@ on:
   pull_request_target:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   UNITY_VERSION: 6000.2.6f2
