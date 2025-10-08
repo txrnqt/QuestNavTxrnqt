@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       versionYear:
-        description: 'Current FRC Year'
+        description: 'Current FRC year'
         required: false
         type: string
       versionMajor:
@@ -22,133 +22,261 @@ on:
         description: 'Type of version'
         required: false
         type: string
+      devBuild:
+        type: boolean
+        default: true
+        description: "Build a development variant"
     secrets:
       UNITY_LICENSE:
-        description: 'Unity License'
-        required: true
+        description: 'Unity license'
+        required: false
       UNITY_EMAIL:
-        description: 'Unity Email'
-        required: true
+        description: 'Unity email'
+        required: false
       UNITY_PASSWORD:
-        description: 'Unity Password'
-        required: true
+        description: 'Unity password'
+        required: false
     outputs:
-      apk-artifact-name:
-        description: "Name of the uploaded APK artifact"
-        value: ${{ jobs.build-unity.outputs.apk-artifact-name }}
-      apk-filename:
-        description: "Filename of the built APK"
-        value: ${{ jobs.build-unity.outputs.apk-filename }}
+        version:
+          description: "Computed version string"
+          value: ${{ jobs.build-unity.outputs.version }}
+        version-code:
+          description: "Computed Android versionCode"
+          value: ${{ jobs.build-unity.outputs.version-code }}
+        strategy:
+          description: "Version strategy used (semantic|hash)"
+          value: ${{ jobs.build-unity.outputs.strategy }}
+        apk_path:
+          description: "Built APK path (in the runner workspace)"
+          value: ${{ jobs.build-unity.outputs.apk_path }}
 
 jobs:
   build-unity:
-    runs-on: [self-hosted, windows, x64]
+    runs-on: [self-hosted, Windows]
     outputs:
-      apk-artifact-name: ${{ steps.upload.outputs.artifact-id }}
-      apk-filename: ${{ steps.version-info.outputs.version }}.apk
+      version: ${{ steps.set-version.outputs.version }}
+      version-code: ${{ steps.set-version.outputs['version-code'] }}
+      strategy: ${{ steps.set-version.outputs.strategy }}
+      apk_path: ${{ steps.unity-build.outputs.apk_path }}
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.ref }}
-          sparse-checkout: unity
-          sparse-checkout-cone-mode: false
-          lfs: true
 
-      - name: Determine Version Strategy
-        id: version-info
+      - name: Determine version strategy
+        id: set-version
         shell: pwsh
         run: |
-          if ('${{ inputs.versionYear }}' -ne '' -and '${{ inputs.versionMajor }}' -ne '' -and '${{ inputs.versionMinor }}' -ne '' -and '${{ inputs.versionPatch }}' -ne '') {
-            $VERSION = "${{ inputs.versionYear }}.${{ inputs.versionMajor }}.${{ inputs.versionMinor }}.${{ inputs.versionPatch }}"
-            if ('${{ inputs.versionType }}' -ne '') { $VERSION = "$VERSION-${{ inputs.versionType }}" }
-            $YEAR = [int]'${{ inputs.versionYear }}'
-            $MAJOR = [int]'${{ inputs.versionMajor }}'
-            $MINOR = [int]'${{ inputs.versionMinor }}'
-            $PATCH = [int]'${{ inputs.versionPatch }}'
-            $VERSION_CODE = (($YEAR - 2020) * 100000000 + $MAJOR * 1000000 + $MINOR * 1000 + $PATCH)
-            "strategy=semantic" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-            "version=$VERSION" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-            "version-code=$VERSION_CODE" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          # Read inputs as strings (may be empty in workflow_call)
+          $year  = "${{ inputs.versionYear }}"
+          $major = "${{ inputs.versionMajor }}"
+          $minor = "${{ inputs.versionMinor }}"
+          $patch = "${{ inputs.versionPatch }}"
+          $vtype = "${{ inputs.versionType }}"
+          $isDevInput = "${{ inputs.devBuild }}"
+      
+          $haveSem = -not [string]::IsNullOrWhiteSpace($year) `
+                     -and -not [string]::IsNullOrWhiteSpace($major) `
+                     -and -not [string]::IsNullOrWhiteSpace($minor) `
+                     -and -not [string]::IsNullOrWhiteSpace($patch)
+      
+          if ($haveSem) {
+            # Semantic versioning: YEAR.MAJOR.MINOR.PATCH[-TYPE]
+            $version = "$year.$major.$minor.$patch"
+            if (-not [string]::IsNullOrWhiteSpace($vtype)) { $version = "$version-$vtype" }
+      
+            # Android versionCode = (YEAR-2020)*100000000 + MAJOR*1000000 + MINOR*1000 + PATCH
+            $yearI  = [int]$year
+            $majorI = [int]$major
+            $minorI = [int]$minor
+            $patchI = [int]$patch
+            $code   = (($yearI - 2020) * 100000000) + ($majorI * 1000000) + ($minorI * 1000) + $patchI
+            $strategy = 'semantic'
+          } else {
+            # Hash-based: <7-char-hash>-dev  and versionCode = 1_000_000 + commitCount
+            $commitHash  = (git rev-parse --short=7 HEAD).Trim()
+            $commitCount = [int](git rev-list --count HEAD)
+            $version = "$commitHash-dev"
+            $code    = 1000000 + $commitCount
+            $strategy = 'hash'
           }
-          else {
-            $COMMIT_HASH = (git rev-parse --short=7 HEAD).Trim()
-            $VERSION = "$COMMIT_HASH-dev"
-            $COMMIT_COUNT = [int](git rev-list --count HEAD)
-            $VERSION_CODE = 1000000 + $COMMIT_COUNT
-            "strategy=hash" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-            "version=$VERSION" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
-            "version-code=$VERSION_CODE" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+      
+          # Optional development flag passthrough
+          $isDev = ($isDevInput.ToString().ToLower() -eq 'true')
+      
+          # ---- Step outputs expected by new logic ----
+          "strategy=$strategy"          | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "version=$version"            | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "version-code=$code"          | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+      
+          # ---- Back-compat outputs for the rest of your workflow ----
+          "QUESTNAV_VERSION=$version"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "QUESTNAV_VERSION_CODE=$code"     | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          if ($isDev) {
+            "QUESTNAV_DEVELOPMENT_BUILD=1"  | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          }
+      
+          # ---- Also export to env for subsequent steps ----
+          "QUESTNAV_VERSION=$version"       | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "QUESTNAV_VERSION_CODE=$code"     | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          if ($isDev) {
+            "QUESTNAV_DEVELOPMENT_BUILD=1"  | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
           }
 
-      # (Windows runners generally have sufficient space; skip linux-only disk cleanup)
-
-      - name: Setup Caching
-        uses: actions/cache@v3
-        with:
-          path: unity/Library
-          key: Library-QuestNav-Android
-          restore-keys: |
-            Library-
-            Library-Questnav-
-
-      # .NET 8.x is pre-installed on the self-hosted Windows runner
-      # - name: Setup .NET
-      #   uses: actions/setup-dotnet@v4
-      #   with:
-      #     dotnet-version: '8.x'
-
-      # NuGetForUnity is pre-installed on the self-hosted Windows runner
-      # - name: Install NuGetForUnity
-      #   run: dotnet tool install --global NuGetForUnity.Cli
-
-      - name: Restore NuGetForUnity Packages
-        shell: pwsh
-        run: "& $env:USERPROFILE\\.dotnet\\tools\\nugetforunity.exe restore unity/"
-
-      - name: Ensure sh is available
+      - name: Resolve Unity.exe
+        id: unity-path
         shell: pwsh
         run: |
-          if (-not (Test-Path "$env:ProgramFiles\Git\usr\bin\sh.exe")) {
-            throw "sh.exe not found. Install Git for Windows on this runner."
+          function Get-UnityVersionFromWorkflow([string]$ymlPath) {
+            if (-not (Test-Path $ymlPath)) { return $null }
+            $content = Get-Content -Raw -Path $ymlPath
+            $m = [regex]::Match($content, "unityVersion:\s*([0-9\.a-zA-Z\-]+)")
+            if ($m.Success) { return $m.Groups[1].Value } else { return $null }
           }
-          "$env:ProgramFiles\Git\usr\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          & "$env:ProgramFiles\Git\usr\bin\sh.exe" --version
 
-      - name: Discover local Unity editor
+          $unity = $env:UNITY_EDITOR_PATH
+          if (-not $unity) {
+            $wfVersion = Get-UnityVersionFromWorkflow ".github/workflows/build-questnav-apk.yml"
+            if ($wfVersion) {
+              $candidate = "C:\Program Files\Unity\Hub\Editor\$wfVersion\Editor\Unity.exe"
+              if (Test-Path $candidate) { $unity = $candidate }
+            }
+          }
+          if (-not $unity) { $unity = "C:\Program Files\Unity\Hub\Editor\6000.0.58f1\Editor\Unity.exe" }
+          if (-not (Test-Path $unity)) { throw "Unity Editor not found at: $unity" }
+          "UNITY_EDITOR_PATH=$unity" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+      - name: Clean Unity artifacts
         shell: pwsh
         run: |
-          $projVersionPath = "unity/ProjectSettings/ProjectVersion.txt"
-          if (-not (Test-Path $projVersionPath)) { throw "ProjectVersion.txt not found at $projVersionPath" }
-          $versionLine = (Select-String -Path $projVersionPath -Pattern '^m_EditorVersion:\s*(.+)$').Matches[0].Groups[1].Value
-          if (-not $versionLine) { throw "Unable to read Unity version from ProjectVersion.txt" }
-          $candidates = @(
-            "C:\\Program Files\\Unity\\Hub\\Editor\\$versionLine\\Editor\\Unity.exe",
-            "C:\\Program Files\\Unity\\Editor\\$versionLine\\Editor\\Unity.exe"
-          )
-          $unityPath = $null
-          foreach ($p in $candidates) { if (Test-Path $p) { $unityPath = $p; break } }
-          if (-not $unityPath) { throw "Unity $versionLine not found in standard locations. Install via Unity Hub or adjust the path." }
-          "UNITY_EDITOR_PATH=$unityPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          $proj = "unity"
+          @('Library','Temp','obj','Logs','build') | ForEach-Object {
+            $p = Join-Path $proj $_
+            if (Test-Path $p) {
+              try {
+                Remove-Item -Recurse -Force -LiteralPath -ErrorAction Stop $p
+                Write-Host "Removed: $p"
+              } catch {
+                # Either wrap the var...
+                # Write-Warning "Failed to remove $($p): $($_.Exception.Message)"
+                # ...or use -f formatting (recommended)
+                Write-Warning ("Failed to remove {0}: {1}" -f $p, $_.Exception.Message)
+              }
+            }
+          }
 
-      - name: Build Unity Project for Android
-        uses: game-ci/unity-builder@v4
-        # Unity 6000.0.58f1 with OVR headless build fix
-        id: buildUnity
+      - name: Verify Unity Android modules
+        shell: pwsh
+        run: |
+          $editorDir = Split-Path $env:UNITY_EDITOR_PATH -Parent
+          $android   = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer'
+          if (-not (Test-Path $android)) { Write-Error "Missing AndroidPlayer folder: $android"; exit 1 }
+      
+          $ok = $true
+          $paths = @(
+            'SDK',         # Embedded Android SDK
+            'NDK',         # Embedded NDK
+            'OpenJDK',     # Embedded JDK
+            'Tools\gradle' # Gradle lives here in modern Unity
+          ) | ForEach-Object { Join-Path $android $_ }
+      
+          foreach ($p in $paths) {
+            if (-not (Test-Path $p)) {
+              Write-Warning "Android component missing (or different layout): $p"
+              $ok = $false
+            }
+          }
+      
+          # Legacy fallback: some versions used ...\AndroidPlayer\Gradle
+          $legacyGradle = Join-Path $android 'Gradle'
+          if (-not (Test-Path (Join-Path $android 'Tools\gradle')) -and (Test-Path $legacyGradle)) {
+            Write-Host "Using legacy Gradle path: $legacyGradle"
+            $ok = $true
+          }
+      
+          Write-Host "AndroidPlayer contents:"
+          Get-ChildItem $android -Depth 2 | Select-Object FullName, PSIsContainer | Format-Table -AutoSize
+      
+          if (-not $ok) { Write-Error "Android modules look incomplete for this Unity install."; exit 1 }
+
+      - name: Build with Unity (stream logs)
+        id: unity-build
+        timeout-minutes: 90
+        shell: pwsh
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          OVR_DISABLE_PROJECT_SETUP: 1
-          QUESTNAV_VERSION: ${{ steps.version-info.outputs.version }}
-          QUESTNAV_VERSION_CODE: ${{ steps.version-info.outputs.version-code }}
-          QUESTNAV_DEVELOPMENT_BUILD: 1
+          OVR_DISABLE_PROJECT_SETUP: "1"
+          UPM_LOG_LEVEL: debug
+        run: |
+          $proj    = "unity"
+          $unity   = $env:UNITY_EDITOR_PATH
+          $logPath = Join-Path $PWD "local-unity-build.log"
+          if (Test-Path $logPath) { Remove-Item $logPath -Force }
+      
+          # We'll tee console output into a file for artifact upload
+          $args = @(
+            '-batchmode','-nographics','-quit',
+            '-accept-apiupdate',               # avoid API Updater prompt
+            '-enablePackageManagerTraces',     # extra package manager logs
+            '-buildTarget','Android',          # make target explicit
+            '-projectPath', $proj,
+            '-executeMethod','CI.Build.PerformAndroid',
+            '-logFile','-'                     # <-- stream to stdout
+          )
+      
+          # Run Unity and tee output to our log file
+          # (&) blocks until Unity exits; $LASTEXITCODE will have Unity's exit code
+          & "$unity" @args 2>&1 | Tee-Object -FilePath $logPath
+          $exit = $LASTEXITCODE
+      
+          Write-Host "---- Tail of Unity log (from file) ----"
+          if (Test-Path $logPath) { Get-Content $logPath -Tail 200 } else { Write-Warning "Unity log file not found at $logPath" }
+          if ($exit -ne 0) { throw "Unity build failed with exit code $exit. See $logPath" }
+      
+          # Short post-exit grace period for file flush
+          $apk = Join-Path $proj "build/Android/QuestNav-local.apk"
+          for ($i=0; $i -lt 30 -and -not (Test-Path $apk); $i++) { Start-Sleep -Seconds 1 }
+      
+          if (-not (Test-Path $apk)) { throw "Expected APK not found at $apk. See $logPath" }
+          "APK_PATH=$apk" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+        
+        
+      - name: Compute artifact name
+        id: artifact
+        shell: pwsh
+        run: |
+          $name = "QuestNav-${{ steps.set-version.outputs.version }}-${{ steps.set-version.outputs['version-code'] }}"
+          if ("${{ inputs.devBuild }}".ToLower() -eq "true") { $name = "$name-dev" }
+          "ARTIFACT_NAME=$name" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
-          projectPath: unity
-          targetPlatform: Android
-          buildMethod: CI.Build.PerformAndroid
-          providerStrategy: local
-          unityVersion: auto
+          name: ${{ steps.artifact.outputs.ARTIFACT_NAME }}
+          path: ${{ steps.unity-build.outputs.APK_PATH }}
+          if-no-files-found: error
+
+      - name: Upload Unity build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-build-log-${{ steps.set-version.outputs.version }}
+          path: local-unity-build.log
+          retention-days: 7
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-diagnostics-${{ steps.set-version.outputs.version || 'unknown' }}
+          if-no-files-found: warn
+          retention-days: 7
+          path: |
+            local-unity-build.log
+            ${{ env.LOCALAPPDATA }}\Unity\Editor\Editor.log
+            ${{ env.LOCALAPPDATA }}\Unity\cache\logs\*
+            ${{ env.APPDATA }}\Unity\Packages\logs\*
+            unity\Library\**\*.log
+            unity\Logs\**\*
+            ${{ env.LOCALAPPDATA }}\Temp\Unity\Editor\Crashes\**
 
       - name: Preserve XML Documentation
         shell: pwsh
@@ -172,17 +300,9 @@ jobs:
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: questnav-xml-docs-${{ steps.version-info.outputs.version }}
+          name: questnav-xml-docs-${{ steps.set-version.outputs.version }}
           path: unity/DocFX/preserved-xml/QuestNav.xml
           retention-days: 30
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        id: upload
-        with:
-          name: questnav-apk-${{ steps.version-info.outputs.version }}
-          path: build/Android/*.apk
-          retention-days: 7
 
   # Call DocFX workflow after successful Unity build
   build-docfx:
