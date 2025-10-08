@@ -175,14 +175,17 @@ jobs:
         if: steps.check-xml.outputs.xml-available == 'true'
         id: changes
         run: |
-          # Check if there are any changes to commit
-          if git diff --quiet docs/static/api/csharp/; then
+          # Add all files to staging area to detect new/changed files
+          git add docs/static/api/csharp/
+          
+          # Check if there are any changes to commit (including new files)
+          if git diff --cached --quiet docs/static/api/csharp/; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No changes detected in DocFX output"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Changes detected in DocFX output"
-            git diff --stat docs/static/api/csharp/
+            git diff --cached --stat docs/static/api/csharp/
           fi
 
       - name: Clean Up XML Documentation

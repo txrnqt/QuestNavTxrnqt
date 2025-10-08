@@ -158,14 +158,17 @@ jobs:
         if: steps.check-unity-build.outputs.should-build == 'true'
         id: changes
         run: |
-          # Check if there are any changes to commit
-          if git diff --quiet docs/static/api/java/; then
+          # Add all files to staging area to detect new/changed files
+          git add docs/static/api/java/
+          
+          # Check if there are any changes to commit (including new files)
+          if git diff --cached --quiet docs/static/api/java/; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No changes detected in Javadoc output"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
             echo "Changes detected in Javadoc output"
-            git diff --stat docs/static/api/java/
+            git diff --cached --stat docs/static/api/java/
           fi
 
       - name: Commit Updated Documentation
