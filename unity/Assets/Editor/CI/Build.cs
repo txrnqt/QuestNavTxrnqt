@@ -29,9 +29,8 @@ namespace CI
 
             try
             {
-                var group = BuildTargetGroup.Android;
-                var defines =
-                    PlayerSettings.GetScriptingDefineSymbolsForGroup(group) ?? string.Empty;
+                var target = NamedBuildTarget.Android;
+                var defines = PlayerSettings.GetScriptingDefineSymbols(target) ?? string.Empty;
                 string[] needed = new[]
                 {
                     "OVRPLUGIN_ANDROID",
@@ -50,7 +49,7 @@ namespace CI
                         defines = string.IsNullOrEmpty(defines) ? d : defines + ";" + d;
                     }
                 }
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(group, defines);
+                PlayerSettings.SetScriptingDefineSymbols(target, defines);
             }
             catch (Exception e)
             {
