@@ -69,6 +69,13 @@ jobs:
         with:
           lfs: true
 
+      - name: Install DocFX
+        shell: pwsh
+        run: |
+          Write-Host "Installing DocFX..."
+          dotnet tool install -g docfx
+          Write-Host "DocFX installed successfully"
+
       - name: Determine version strategy
         id: set-version
         shell: pwsh
@@ -334,44 +341,74 @@ jobs:
             unity\Logs\**\*
             ${{ env.LOCALAPPDATA }}\Temp\Unity\Editor\Crashes\**
 
-      - name: Preserve XML Documentation
+      - name: Generate DocFX Documentation
+        shell: pwsh
+        working-directory: unity/DocFX
+        run: |
+          Write-Host "Generating DocFX metadata from C# project..."
+          docfx metadata --logLevel Verbose
+          
+          Write-Host "Building DocFX documentation site..."
+          docfx build --logLevel Verbose
+          
+          Write-Host "DocFX documentation generated successfully"
+
+      - name: Verify Generated Files
         shell: pwsh
         run: |
-          Write-Host "Preserving XML documentation file for DocFX..."
-          $xmlPath = "unity/Library/ScriptAssemblies/QuestNav.xml"
-          if (Test-Path $xmlPath) {
-            Write-Host "Found QuestNav.xml, copying to persistent location..."
-            New-Item -ItemType Directory -Force -Path "unity/DocFX/preserved-xml" | Out-Null
-            Copy-Item $xmlPath "unity/DocFX/preserved-xml/QuestNav.xml" -Force
-            Write-Host "XML documentation preserved at unity/DocFX/preserved-xml/QuestNav.xml"
-            Get-ChildItem "unity/DocFX/preserved-xml/" | Format-Table -AutoSize
-          }
-          else {
-            Write-Warning "QuestNav.xml not found at $xmlPath"
-            Write-Host "Available files in ScriptAssemblies:"
-            Get-ChildItem "unity/Library/ScriptAssemblies/" -File | Where-Object { $_.Extension -in '.xml','.dll' } | Format-Table -AutoSize
+          Write-Host "Verifying DocFX output..."
+          
+          if (Test-Path "docs/static/api/csharp/") {
+            Write-Host "DocFX output directory exists"
+            $htmlFiles = Get-ChildItem -Path "docs/static/api/csharp/api/" -Filter "*.html" -Recurse -ErrorAction SilentlyContinue
+            Write-Host "Generated HTML files: $($htmlFiles.Count)"
+            
+            if (Test-Path "docs/static/api/csharp/index.html") {
+              Write-Host "Main index file exists"
+            } else {
+              Write-Warning "Main index.html not found!"
+            }
+            
+            Write-Host "`nGenerated files summary:"
+            Get-ChildItem -Path "docs/static/api/csharp/" -Recurse | 
+              Group-Object Extension | 
+              Select-Object Name, Count | 
+              Format-Table -AutoSize
+          } else {
+            throw "DocFX output directory not found at docs/static/api/csharp/"
           }
 
-      - name: Upload XML Documentation Artifact
+      - name: Check for DocFX Changes
+        id: docfx-changes
+        shell: pwsh
+        run: |
+          git add docs/static/api/csharp/
+          
+          if (git diff --cached --quiet docs/static/api/csharp/) {
+            Write-Host "No changes detected in DocFX output"
+            "changed=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          } else {
+            Write-Host "Changes detected in DocFX output"
+            git diff --cached --stat docs/static/api/csharp/
+            "changed=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          }
+
+      - name: Commit DocFX Documentation
+        if: steps.docfx-changes.outputs.changed == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_call')
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'docs: Update C# API documentation via DocFX'
+          file_pattern: 'docs/static/api/csharp/**'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Upload DocFX Artifacts
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: questnav-xml-docs-${{ steps.set-version.outputs.version }}
-          path: unity/DocFX/preserved-xml/QuestNav.xml
+          name: docfx-api-docs-${{ github.run_id }}
+          path: docs/static/api/csharp/
           retention-days: 30
-
-  # Call DocFX workflow after successful Unity build
-  build-docfx:
-    name: Generate C# API Documentation
-    needs: build-unity
-    if: success()
-    uses: ./.github/workflows/build-docfx-api.yml
-    with:
-      unity-build-completed: true
-    permissions:
-      contents: write
-      pull-requests: write
-      actions: write
 
   # Call Javadoc workflow after successful Unity build
   build-javadoc:
