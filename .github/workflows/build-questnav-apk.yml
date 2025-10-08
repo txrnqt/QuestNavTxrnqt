@@ -268,14 +268,12 @@ jobs:
             New-Item -ItemType Directory -Force -Path $licensesDir | Out-Null
             
             # Android SDK License (most common)
-            @"
-    24333f8a63b6825ea9c5514f83c2829b004d1fee
-    "@ | Out-File -FilePath (Join-Path $licensesDir 'android-sdk-license') -Encoding ASCII -NoNewline
+            $licenseContent = "24333f8a63b6825ea9c5514f83c2829b004d1fee"
+            Set-Content -Path (Join-Path $licensesDir 'android-sdk-license') -Value $licenseContent -NoNewline -Encoding ASCII
             
             # Android SDK Preview License
-            @"
-    84831b9409646a918e30573bab4c9c91346d8abd
-    "@ | Out-File -FilePath (Join-Path $licensesDir 'android-sdk-preview-license') -Encoding ASCII -NoNewline
+            $previewLicenseContent = "84831b9409646a918e30573bab4c9c91346d8abd"
+            Set-Content -Path (Join-Path $licensesDir 'android-sdk-preview-license') -Value $previewLicenseContent -NoNewline -Encoding ASCII
             
             Write-Host "License files created in $licensesDir"
           }
