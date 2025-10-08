@@ -131,7 +131,6 @@ jobs:
         id: unity-path
         shell: pwsh
         run: |
-
           $unity = $env:UNITY_EDITOR_PATH
           
           if (-not $unity) {
