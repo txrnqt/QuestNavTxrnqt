@@ -141,6 +141,10 @@ namespace CI
             }
 
             Debug.Log($"SUCCESS: APK built at {outputFile}");
+            
+            // Force Unity to exit cleanly after successful build
+            // This prevents hanging on async operations in batch mode
+            EditorApplication.Exit(0);
         }
     }
 }
