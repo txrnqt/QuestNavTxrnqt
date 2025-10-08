@@ -53,6 +53,29 @@ jobs:
           nugetforunity restore unity/
         continue-on-error: true  # Don't fail if some packages can't be restored
 
+      - name: Download XML Documentation Artifact
+        if: inputs.unity-build-completed == true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: questnav-xml-docs-*
+          path: ./artifacts
+          merge-multiple: true
+        continue-on-error: true
+
+      - name: Restore XML Documentation from Artifact
+        if: inputs.unity-build-completed == true
+        run: |
+          # Look for the downloaded XML file
+          if [ -f "./artifacts/QuestNav.xml" ]; then
+            echo "Found XML documentation in downloaded artifacts"
+            mkdir -p unity/DocFX/preserved-xml
+            cp ./artifacts/QuestNav.xml unity/DocFX/preserved-xml/QuestNav.xml
+            echo "XML documentation restored from artifacts"
+          else
+            echo "No XML documentation found in artifacts"
+            ls -la ./artifacts/ || echo "No artifacts directory"
+          fi
+
       - name: Check for Preserved XML Documentation
         id: check-xml
         run: |
