@@ -2,6 +2,11 @@ name: Build QuestNav App
 on:
   workflow_call:
     inputs:
+      unityVersion:
+        description: 'Unity Editor version'
+        required: false
+        type: string
+        default: '6000.2.6f2'
       versionYear:
         description: 'Current FRC year'
         required: false
@@ -126,23 +131,47 @@ jobs:
         id: unity-path
         shell: pwsh
         run: |
-          function Get-UnityVersionFromWorkflow([string]$ymlPath) {
-            if (-not (Test-Path $ymlPath)) { return $null }
-            $content = Get-Content -Raw -Path $ymlPath
-            $m = [regex]::Match($content, "unityVersion:\s*([0-9\.a-zA-Z\-]+)")
-            if ($m.Success) { return $m.Groups[1].Value } else { return $null }
-          }
 
           $unity = $env:UNITY_EDITOR_PATH
+          
           if (-not $unity) {
-            $wfVersion = Get-UnityVersionFromWorkflow ".github/workflows/build-questnav-apk.yml"
-            if ($wfVersion) {
-              $candidate = "C:\Program Files\Unity\Hub\Editor\$wfVersion\Editor\Unity.exe"
-              if (Test-Path $candidate) { $unity = $candidate }
+            # Try unityVersion from workflow input
+            $version = "${{ inputs.unityVersion }}"
+            if ($version) {
+              Write-Host "Using Unity version from workflow input: $version"
+              $candidate = "C:\Program Files\Unity\Hub\Editor\$version\Editor\Unity.exe"
+              if (Test-Path $candidate) { 
+                $unity = $candidate 
+                Write-Host "Found Unity at: $unity"
+              } else {
+                Write-Warning "Unity $version not found at: $candidate"
+              }
             }
           }
-          if (-not $unity) { $unity = "C:\Program Files\Unity\Hub\Editor\6000.0.58f1\Editor\Unity.exe" }
-          if (-not (Test-Path $unity)) { throw "Unity Editor not found at: $unity" }
+          
+          if (-not $unity) {
+            # Try reading from ProjectVersion.txt
+            $versionFile = "unity\ProjectSettings\ProjectVersion.txt"
+            if (Test-Path $versionFile) {
+              $content = Get-Content $versionFile -Raw
+              $m = [regex]::Match($content, "m_EditorVersion:\s*([0-9\.a-zA-Z\-]+)")
+              if ($m.Success) {
+                $version = $m.Groups[1].Value
+                Write-Host "Using Unity version from ProjectVersion.txt: $version"
+                $candidate = "C:\Program Files\Unity\Hub\Editor\$version\Editor\Unity.exe"
+                if (Test-Path $candidate) { 
+                  $unity = $candidate
+                  Write-Host "Found Unity at: $unity"
+                }
+              }
+            }
+          }
+          
+          if (-not $unity) {
+            throw "Unity Editor not found. Please install Unity ${{ inputs.unityVersion }} or set UNITY_EDITOR_PATH environment variable."
+          }
+          
+          Write-Host "Using Unity Editor: $unity"
           "UNITY_EDITOR_PATH=$unity" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
 
       - name: Clean Unity artifacts
