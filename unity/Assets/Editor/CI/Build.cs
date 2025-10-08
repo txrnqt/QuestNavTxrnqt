@@ -4,8 +4,8 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
+using UnityEditor.XR.Management;
 using UnityEngine;
-using UnityEngine.XR.Management;
 
 namespace CI
 {
