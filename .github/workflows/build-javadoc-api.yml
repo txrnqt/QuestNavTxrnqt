@@ -169,7 +169,7 @@ jobs:
           fi
 
       - name: Commit Updated Documentation
-        if: steps.check-unity-build.outputs.should-build == 'true' && steps.changes.outputs.changed == 'true' && github.event_name == 'push'
+        if: steps.check-unity-build.outputs.should-build == 'true' && steps.changes.outputs.changed == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_call')
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'docs: Update Java API documentation via Javadoc'
@@ -230,7 +230,9 @@ jobs:
     name: Trigger Documentation Deployment
     needs: build-javadoc
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_call') && (github.ref == 'refs/heads/main' || github.ref_name == 'main')
+    permissions:
+      actions: write  # Required to trigger other workflows
     
     steps:
       - name: Trigger Docusaurus Deployment

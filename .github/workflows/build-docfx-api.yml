@@ -205,7 +205,7 @@ jobs:
           echo "XML cleanup completed - future DocFX builds will require fresh Unity builds"
 
       - name: Commit Updated Documentation
-        if: steps.check-xml.outputs.xml-available == 'true' && steps.changes.outputs.changed == 'true' && github.event_name == 'push'
+        if: steps.check-xml.outputs.xml-available == 'true' && steps.changes.outputs.changed == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_call')
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'docs: Update C# API documentation via DocFX'
@@ -260,7 +260,7 @@ jobs:
     name: Trigger Documentation Deployment
     needs: build-docfx
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_call') && (github.ref == 'refs/heads/main' || github.ref_name == 'main')
     permissions:
       actions: write  # Required to trigger other workflows
     
