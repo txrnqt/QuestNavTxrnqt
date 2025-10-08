@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
+using UnityEngine.XR.Management;
 
 namespace CI
 {
@@ -26,6 +27,20 @@ namespace CI
 
             EditorUserBuildSettings.buildAppBundle = false;
             EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
+
+            // Preload OpenXR settings to avoid "Please build again" error in batch mode
+            try
+            {
+                var xrSettings = XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(BuildTargetGroup.Android);
+                if (xrSettings != null)
+                {
+                    Debug.Log("OpenXR settings loaded successfully");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Failed to preload OpenXR settings: {e.Message}");
+            }
 
             try
             {
