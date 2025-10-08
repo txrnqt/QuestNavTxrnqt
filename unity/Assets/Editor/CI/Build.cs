@@ -34,29 +34,35 @@ namespace CI
             {
                 // Force load XR settings for Android
                 var buildTargetGroup = BuildTargetGroup.Android;
-                var xrSettings = XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(buildTargetGroup);
-                
+                var xrSettings = XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(
+                    buildTargetGroup
+                );
+
                 if (xrSettings != null && xrSettings.Manager != null)
                 {
                     Debug.Log("OpenXR settings loaded successfully");
-                    
+
                     // Try to initialize the loaders to ensure settings are fully loaded
                     var managers = xrSettings.Manager;
                     if (managers != null)
                     {
-                        Debug.Log($"XR Manager found with {managers.activeLoaders.Count} active loaders");
+                        Debug.Log(
+                            $"XR Manager found with {managers.activeLoaders.Count} active loaders"
+                        );
                     }
                 }
                 else
                 {
-                    Debug.LogWarning("OpenXR settings or Manager is null. Build may fail with 'Please build again' error.");
+                    Debug.LogWarning(
+                        "OpenXR settings or Manager is null. Build may fail with 'Please build again' error."
+                    );
                 }
             }
             catch (Exception e)
             {
                 Debug.LogWarning($"Failed to preload OpenXR settings: {e.Message}");
             }
-            
+
             // Force asset database to refresh to ensure all settings are loaded
             UnityEditor.AssetDatabase.Refresh();
 
@@ -141,7 +147,7 @@ namespace CI
             }
 
             Debug.Log($"SUCCESS: APK built at {outputFile}");
-            
+
             // Force Unity to exit cleanly after successful build
             // This prevents hanging on async operations in batch mode
             EditorApplication.Exit(0);
