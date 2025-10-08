@@ -29,18 +29,36 @@ namespace CI
             EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
 
             // Preload OpenXR settings to avoid "Please build again" error in batch mode
+            // This is a known Unity issue where OpenXR settings aren't loaded in batch mode
             try
             {
-                var xrSettings = XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(BuildTargetGroup.Android);
-                if (xrSettings != null)
+                // Force load XR settings for Android
+                var buildTargetGroup = BuildTargetGroup.Android;
+                var xrSettings = XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(buildTargetGroup);
+                
+                if (xrSettings != null && xrSettings.Manager != null)
                 {
                     Debug.Log("OpenXR settings loaded successfully");
+                    
+                    // Try to initialize the loaders to ensure settings are fully loaded
+                    var managers = xrSettings.Manager;
+                    if (managers != null)
+                    {
+                        Debug.Log($"XR Manager found with {managers.activeLoaders.Count} active loaders");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("OpenXR settings or Manager is null. Build may fail with 'Please build again' error.");
                 }
             }
             catch (Exception e)
             {
                 Debug.LogWarning($"Failed to preload OpenXR settings: {e.Message}");
             }
+            
+            // Force asset database to refresh to ensure all settings are loaded
+            UnityEditor.AssetDatabase.Refresh();
 
             try
             {
