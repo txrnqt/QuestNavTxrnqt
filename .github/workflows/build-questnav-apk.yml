@@ -233,56 +233,26 @@ jobs:
         run: |
           $editorDir = Split-Path $env:UNITY_EDITOR_PATH -Parent
           $sdkPath = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer\SDK'
-          $jdkPath = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer\OpenJDK'
-          $sdkmanager = Join-Path $sdkPath 'cmdline-tools\latest\bin\sdkmanager.bat'
+          $licensesDir = Join-Path $sdkPath 'licenses'
           
-          # Check if sdkmanager exists in the expected location
-          if (-not (Test-Path $sdkmanager)) {
-            # Try alternative locations
-            $altPaths = @(
-              (Join-Path $sdkPath 'tools\bin\sdkmanager.bat'),
-              (Join-Path $sdkPath 'cmdline-tools\bin\sdkmanager.bat')
-            )
-            foreach ($alt in $altPaths) {
-              if (Test-Path $alt) {
-                $sdkmanager = $alt
-                break
-              }
-            }
-          }
+          Write-Host "Creating Android SDK license files in: $licensesDir"
+          New-Item -ItemType Directory -Force -Path $licensesDir | Out-Null
           
-          if (Test-Path $sdkmanager) {
-            Write-Host "Found sdkmanager at: $sdkmanager"
-            Write-Host "Accepting all Android SDK licenses..."
-            
-            # Set correct JAVA_HOME for this Unity version
-            $env:JAVA_HOME = $jdkPath
-            $env:ANDROID_SDK_ROOT = $sdkPath
-            Write-Host "JAVA_HOME set to: $env:JAVA_HOME"
-            Write-Host "ANDROID_SDK_ROOT set to: $env:ANDROID_SDK_ROOT"
-            
-            # Accept licenses by piping 'y' responses
-            $licenseInput = 'y' * 100  # Send multiple 'y' responses
-            $licenseInput | & $sdkmanager --licenses 2>&1 | Write-Host
-            
-            Write-Host "Android SDK licenses accepted."
-          } else {
-            Write-Host "sdkmanager not found, trying to create license files directly..."
-            
-            # Create licenses directory and accept all common licenses
-            $licensesDir = Join-Path $sdkPath 'licenses'
-            New-Item -ItemType Directory -Force -Path $licensesDir | Out-Null
-            
-            # Android SDK License (most common)
-            $licenseContent = "24333f8a63b6825ea9c5514f83c2829b004d1fee"
-            Set-Content -Path (Join-Path $licensesDir 'android-sdk-license') -Value $licenseContent -NoNewline -Encoding ASCII
-            
-            # Android SDK Preview License
-            $previewLicenseContent = "84831b9409646a918e30573bab4c9c91346d8abd"
-            Set-Content -Path (Join-Path $licensesDir 'android-sdk-preview-license') -Value $previewLicenseContent -NoNewline -Encoding ASCII
-            
-            Write-Host "License files created in $licensesDir"
-          }
+          # Android SDK License (most common)
+          $licenseContent = "24333f8a63b6825ea9c5514f83c2829b004d1fee"
+          Set-Content -Path (Join-Path $licensesDir 'android-sdk-license') -Value $licenseContent -NoNewline -Encoding ASCII
+          Write-Host "Created android-sdk-license"
+          
+          # Android SDK Preview License
+          $previewLicenseContent = "84831b9409646a918e30573bab4c9c91346d8abd"
+          Set-Content -Path (Join-Path $licensesDir 'android-sdk-preview-license') -Value $previewLicenseContent -NoNewline -Encoding ASCII
+          Write-Host "Created android-sdk-preview-license"
+          
+          # Intel Android Extra License (sometimes needed)
+          Set-Content -Path (Join-Path $licensesDir 'intel-android-extra-license') -Value $licenseContent -NoNewline -Encoding ASCII
+          Write-Host "Created intel-android-extra-license"
+          
+          Write-Host "Android SDK licenses accepted successfully"
 
       - name: Build with Unity (stream logs)
         id: unity-build
