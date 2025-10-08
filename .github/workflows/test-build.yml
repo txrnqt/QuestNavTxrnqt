@@ -8,14 +8,11 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  UNITY_VERSION: 6000.2.6f2
-
 jobs:
   apk:
     uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
     with:
-      unityVersion: ${{ env.UNITY_VERSION }}
+      unityVersion: '6000.2.6f2'
     permissions:
       contents: write
       pull-requests: write
