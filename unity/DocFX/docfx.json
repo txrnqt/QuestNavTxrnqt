@@ -29,11 +29,6 @@
         "files": ["*.md"]
       }
     ],
-    "resource": [
-      {
-        "files": ["images/**"]
-      }
-    ],
     "output": "../../docs/static/api/csharp",
     "template": ["default"],
     "globalMetadata": {

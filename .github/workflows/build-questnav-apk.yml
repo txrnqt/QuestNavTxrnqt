@@ -395,12 +395,19 @@ jobs:
 
       - name: Commit DocFX Documentation
         if: steps.docfx-changes.outputs.changed == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_call')
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'docs: Update C# API documentation via DocFX'
-          file_pattern: 'docs/static/api/csharp/**'
-          commit_user_name: 'github-actions[bot]'
-          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+        shell: pwsh
+        run: |
+          Write-Host "Committing DocFX documentation changes..."
+          
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git commit -m "docs: Update C# API documentation via DocFX"
+          
+          Write-Host "Pushing changes to repository..."
+          git push
+          
+          Write-Host "DocFX documentation committed and pushed successfully"
 
       - name: Upload DocFX Artifacts
         uses: actions/upload-artifact@v4
