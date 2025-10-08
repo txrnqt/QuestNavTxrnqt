@@ -233,6 +233,7 @@ jobs:
         run: |
           $editorDir = Split-Path $env:UNITY_EDITOR_PATH -Parent
           $sdkPath = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer\SDK'
+          $jdkPath = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer\OpenJDK'
           $sdkmanager = Join-Path $sdkPath 'cmdline-tools\latest\bin\sdkmanager.bat'
           
           # Check if sdkmanager exists in the expected location
@@ -254,8 +255,13 @@ jobs:
             Write-Host "Found sdkmanager at: $sdkmanager"
             Write-Host "Accepting all Android SDK licenses..."
             
-            # Accept licenses by piping 'y' responses
+            # Set correct JAVA_HOME for this Unity version
+            $env:JAVA_HOME = $jdkPath
             $env:ANDROID_SDK_ROOT = $sdkPath
+            Write-Host "JAVA_HOME set to: $env:JAVA_HOME"
+            Write-Host "ANDROID_SDK_ROOT set to: $env:ANDROID_SDK_ROOT"
+            
+            # Accept licenses by piping 'y' responses
             $licenseInput = 'y' * 100  # Send multiple 'y' responses
             $licenseInput | & $sdkmanager --licenses 2>&1 | Write-Host
             
