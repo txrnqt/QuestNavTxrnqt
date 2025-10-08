@@ -228,6 +228,58 @@ jobs:
       
           if (-not $ok) { Write-Error "Android modules look incomplete for this Unity install."; exit 1 }
 
+      - name: Accept Android SDK Licenses
+        shell: pwsh
+        run: |
+          $editorDir = Split-Path $env:UNITY_EDITOR_PATH -Parent
+          $sdkPath = Join-Path $editorDir 'Data\PlaybackEngines\AndroidPlayer\SDK'
+          $sdkmanager = Join-Path $sdkPath 'cmdline-tools\latest\bin\sdkmanager.bat'
+          
+          # Check if sdkmanager exists in the expected location
+          if (-not (Test-Path $sdkmanager)) {
+            # Try alternative locations
+            $altPaths = @(
+              (Join-Path $sdkPath 'tools\bin\sdkmanager.bat'),
+              (Join-Path $sdkPath 'cmdline-tools\bin\sdkmanager.bat')
+            )
+            foreach ($alt in $altPaths) {
+              if (Test-Path $alt) {
+                $sdkmanager = $alt
+                break
+              }
+            }
+          }
+          
+          if (Test-Path $sdkmanager) {
+            Write-Host "Found sdkmanager at: $sdkmanager"
+            Write-Host "Accepting all Android SDK licenses..."
+            
+            # Accept licenses by piping 'y' responses
+            $env:ANDROID_SDK_ROOT = $sdkPath
+            $licenseInput = 'y' * 100  # Send multiple 'y' responses
+            $licenseInput | & $sdkmanager --licenses 2>&1 | Write-Host
+            
+            Write-Host "Android SDK licenses accepted."
+          } else {
+            Write-Host "sdkmanager not found, trying to create license files directly..."
+            
+            # Create licenses directory and accept all common licenses
+            $licensesDir = Join-Path $sdkPath 'licenses'
+            New-Item -ItemType Directory -Force -Path $licensesDir | Out-Null
+            
+            # Android SDK License (most common)
+            @"
+    24333f8a63b6825ea9c5514f83c2829b004d1fee
+    "@ | Out-File -FilePath (Join-Path $licensesDir 'android-sdk-license') -Encoding ASCII -NoNewline
+            
+            # Android SDK Preview License
+            @"
+    84831b9409646a918e30573bab4c9c91346d8abd
+    "@ | Out-File -FilePath (Join-Path $licensesDir 'android-sdk-preview-license') -Encoding ASCII -NoNewline
+            
+            Write-Host "License files created in $licensesDir"
+          }
+
       - name: Build with Unity (stream logs)
         id: unity-build
         timeout-minutes: 90
