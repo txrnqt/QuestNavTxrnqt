@@ -10,7 +10,7 @@ on:
 
 jobs:
   apk:
-    uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
+    uses: ./.github/workflows/build-questnav-apk.yml
     with:
       unityVersion: '6000.2.6f2'
     permissions:
