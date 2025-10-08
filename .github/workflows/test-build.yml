@@ -6,15 +6,13 @@ on:
   pull_request_target:
     branches:
       - main
-
-env:
-  UNITY_VERSION: 6000.2.6f2
+  workflow_dispatch:
 
 jobs:
   apk:
     uses: QuestNav/QuestNav/.github/workflows/build-questnav-apk.yml@main
     with:
-      unityVersion: ${{ env.UNITY_VERSION }}
+      unityVersion: '6000.2.6f2'
     permissions:
       contents: write
       pull-requests: write
