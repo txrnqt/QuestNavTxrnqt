@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class NtInstance | QuestNav API Documentation ">
     
-    
+    <meta name="description" content="Represents a NetworkTables instance for communication with FRC robots. Provides methods for creating publishers, subscribers, and managing connections.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,7 +81,9 @@
 
 
   <h1 id="QuestNav_Native_NTCore_NtInstance" data-uid="QuestNav.Native.NTCore.NtInstance" class="text-break">Class NtInstance</h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents a NetworkTables instance for communication with FRC robots.
+Provides methods for creating publishers, subscribers, and managing connections.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -91,25 +93,25 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="QuestNav.html">QuestNav</a>.<a class="xref" href="QuestNav.Native.html">Native</a>.<a class="xref" href="QuestNav.Native.NTCore.html">NTCore</a></h6>
@@ -122,7 +124,8 @@
 </h3>
   <a id="QuestNav_Native_NTCore_NtInstance__ctor_" data-uid="QuestNav.Native.NTCore.NtInstance.#ctor*"></a>
   <h4 id="QuestNav_Native_NTCore_NtInstance__ctor_System_String_" data-uid="QuestNav.Native.NTCore.NtInstance.#ctor(System.String)">NtInstance(string)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a new NetworkTables instance with the specified name</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -141,7 +144,8 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">instanceName</span></td>
-        <td></td>
+        <td><p>The name for this NetworkTables instance</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -149,7 +153,8 @@
 </h3>
   <a id="QuestNav_Native_NTCore_NtInstance_CreateLogger_" data-uid="QuestNav.Native.NTCore.NtInstance.CreateLogger*"></a>
   <h4 id="QuestNav_Native_NTCore_NtInstance_CreateLogger_System_Int32_System_Int32_" data-uid="QuestNav.Native.NTCore.NtInstance.CreateLogger(System.Int32,System.Int32)">CreateLogger(int, int)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a logger for NetworkTables internal messages within the specified level range</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -168,12 +173,14 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">minLevel</span></td>
-        <td></td>
+        <td><p>Minimum log level to capture</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">maxLevel</span></td>
-        <td></td>
+        <td><p>Maximum log level to capture</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -188,7 +195,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="QuestNav.Native.NTCore.PolledLogger.html">PolledLogger</a></td>
-        <td></td>
+        <td><p>A polled logger for NetworkTables messages</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -464,7 +472,8 @@
   </table>
   <a id="QuestNav_Native_NTCore_NtInstance_GetProtobufPublisher_" data-uid="QuestNav.Native.NTCore.NtInstance.GetProtobufPublisher*"></a>
   <h4 id="QuestNav_Native_NTCore_NtInstance_GetProtobufPublisher__1_System_String_System_String_QuestNav_Native_NTCore_PubSubOptions_" data-uid="QuestNav.Native.NTCore.NtInstance.GetProtobufPublisher``1(System.String,System.String,QuestNav.Native.NTCore.PubSubOptions)">GetProtobufPublisher&lt;T&gt;(string, string, PubSubOptions)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a protobuf publisher for the specified topic and message type</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -483,17 +492,20 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
-        <td></td>
+        <td><p>The topic name</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">classString</span></td>
-        <td></td>
+        <td><p>The protobuf class identifier</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="QuestNav.Native.NTCore.PubSubOptions.html">PubSubOptions</a></td>
         <td><span class="parametername">options</span></td>
-        <td></td>
+        <td><p>Publisher options</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -508,7 +520,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="QuestNav.Native.NTCore.ProtobufPublisher-1.html">ProtobufPublisher</a>&lt;T&gt;</td>
-        <td></td>
+        <td><p>A protobuf publisher for the specified type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -523,13 +536,15 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td></td>
+        <td><p>The protobuf message type</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtInstance_GetProtobufSubscriber_" data-uid="QuestNav.Native.NTCore.NtInstance.GetProtobufSubscriber*"></a>
   <h4 id="QuestNav_Native_NTCore_NtInstance_GetProtobufSubscriber__1_System_String_System_String_QuestNav_Native_NTCore_PubSubOptions_" data-uid="QuestNav.Native.NTCore.NtInstance.GetProtobufSubscriber``1(System.String,System.String,QuestNav.Native.NTCore.PubSubOptions)">GetProtobufSubscriber&lt;T&gt;(string, string, PubSubOptions)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a protobuf subscriber for the specified topic and message type</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -548,17 +563,20 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
-        <td></td>
+        <td><p>The topic name</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">classString</span></td>
-        <td></td>
+        <td><p>The protobuf class identifier</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="QuestNav.Native.NTCore.PubSubOptions.html">PubSubOptions</a></td>
         <td><span class="parametername">options</span></td>
-        <td></td>
+        <td><p>Subscriber options</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -573,7 +591,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="QuestNav.Native.NTCore.ProtobufSubscriber-1.html">ProtobufSubscriber</a>&lt;T&gt;</td>
-        <td></td>
+        <td><p>A protobuf subscriber for the specified type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -588,7 +607,8 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td></td>
+        <td><p>The protobuf message type</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -694,7 +714,8 @@
   </table>
   <a id="QuestNav_Native_NTCore_NtInstance_IsConnected_" data-uid="QuestNav.Native.NTCore.NtInstance.IsConnected*"></a>
   <h4 id="QuestNav_Native_NTCore_NtInstance_IsConnected" data-uid="QuestNav.Native.NTCore.NtInstance.IsConnected">IsConnected()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Checks if this NetworkTables instance is currently connected to a server</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -711,13 +732,15 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
+        <td><p>True if connected, false otherwise</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtInstance_SetAddresses_" data-uid="QuestNav.Native.NTCore.NtInstance.SetAddresses*"></a>
   <h4 id="QuestNav_Native_NTCore_NtInstance_SetAddresses_System_ValueTuple_System_String_System_Int32____" data-uid="QuestNav.Native.NTCore.NtInstance.SetAddresses(System.ValueTuple{System.String,System.Int32}[])">SetAddresses((string addr, int port)[])</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets specific IP addresses and ports for NetworkTables connection</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -736,13 +759,15 @@
       <tr>
         <td>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.addr">addr</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.int32-.port">port</a>)[]</td>
         <td><span class="parametername">addressesAndPorts</span></td>
-        <td></td>
+        <td><p>Array of address/port tuples to connect to</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtInstance_SetTeamNumber_" data-uid="QuestNav.Native.NTCore.NtInstance.SetTeamNumber*"></a>
   <h4 id="QuestNav_Native_NTCore_NtInstance_SetTeamNumber_System_Int32_System_Int32_" data-uid="QuestNav.Native.NTCore.NtInstance.SetTeamNumber(System.Int32,System.Int32)">SetTeamNumber(int, int)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Sets the team number for automatic FRC robot connection</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -761,12 +786,14 @@
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">teamNumber</span></td>
-        <td></td>
+        <td><p>The FRC team number</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">port</span></td>
-        <td></td>
+        <td><p>The NetworkTables port (defaults to standard port)</p>
+</td>
       </tr>
     </tbody>
   </table>
