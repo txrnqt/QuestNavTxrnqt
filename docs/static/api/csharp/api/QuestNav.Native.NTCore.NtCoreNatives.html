@@ -91,25 +91,25 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="QuestNav.html">QuestNav</a>.<a class="xref" href="QuestNav.Native.html">Native</a>.<a class="xref" href="QuestNav.Native.NTCore.html">NTCore</a></h6>
@@ -117,6 +117,16 @@
   <h5 id="QuestNav_Native_NTCore_NtCoreNatives_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class NtCoreNatives</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <a id="QuestNav_Native_NTCore_NtCoreNatives__ctor_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.#ctor*"></a>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives__ctor" data-uid="QuestNav.Native.NTCore.NtCoreNatives.#ctor">NtCoreNatives()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NtCoreNatives()</code></pre>
   </div>
   <h3 id="fields">Fields
 </h3>
@@ -260,12 +270,12 @@
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtCoreNatives_NT_DisposeEventArray_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray*"></a>
-  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_DisposeEventArray_QuestNav_Native_NTCore_NativeNtEvent__System_UIntPtr_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray(QuestNav.Native.NTCore.NativeNtEvent*,System.UIntPtr)">NT_DisposeEventArray(NativeNtEvent*, UIntPtr)</h4>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_DisposeEventArray_QuestNav_Native_NTCore_NativeNtEvent__System_UIntPtr_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray(QuestNav.Native.NTCore.NativeNtEvent*,System.UIntPtr)">NT_DisposeEventArray(NativeNtEvent*, nuint)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static extern void NT_DisposeEventArray(NativeNtEvent* arr, UIntPtr count)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void NT_DisposeEventArray(NativeNtEvent* arr, nuint count)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -283,7 +293,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a></td>
         <td><span class="parametername">count</span></td>
         <td></td>
       </tr>
@@ -408,12 +418,12 @@
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtCoreNatives_NT_GetFloatArray_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray*"></a>
-  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_GetFloatArray_System_UInt32_System_Single__System_UIntPtr_System_UIntPtr__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray(System.UInt32,System.Single*,System.UIntPtr,System.UIntPtr*)">NT_GetFloatArray(uint, float*, UIntPtr, UIntPtr*)</h4>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_GetFloatArray_System_UInt32_System_Single__System_UIntPtr_System_UIntPtr__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray(System.UInt32,System.Single*,System.UIntPtr,System.UIntPtr*)">NT_GetFloatArray(uint, float*, nuint, nuint*)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static extern float* NT_GetFloatArray(uint subscriber, float* defaultValue, UIntPtr defaultLen, UIntPtr* len)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern float* NT_GetFloatArray(uint subscriber, float* defaultValue, nuint defaultLen, nuint* len)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -436,12 +446,12 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a></td>
         <td><span class="parametername">defaultLen</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a>*</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a>*</td>
         <td><span class="parametername">len</span></td>
         <td></td>
       </tr>
@@ -508,12 +518,12 @@
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtCoreNatives_NT_GetRaw_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw*"></a>
-  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_GetRaw_System_UInt32_System_Byte__System_UIntPtr_System_UIntPtr__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw(System.UInt32,System.Byte*,System.UIntPtr,System.UIntPtr*)">NT_GetRaw(uint, byte*, UIntPtr, UIntPtr*)</h4>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_GetRaw_System_UInt32_System_Byte__System_UIntPtr_System_UIntPtr__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw(System.UInt32,System.Byte*,System.UIntPtr,System.UIntPtr*)">NT_GetRaw(uint, byte*, nuint, nuint*)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static extern byte* NT_GetRaw(uint subscriber, byte* defaultValue, UIntPtr defaultLen, UIntPtr* len)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern byte* NT_GetRaw(uint subscriber, byte* defaultValue, nuint defaultLen, nuint* len)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -536,12 +546,12 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a></td>
         <td><span class="parametername">defaultLen</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a>*</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a>*</td>
         <td><span class="parametername">len</span></td>
         <td></td>
       </tr>
@@ -703,12 +713,12 @@
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtCoreNatives_NT_ReadListenerQueue_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue*"></a>
-  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_ReadListenerQueue_System_UInt32_System_UIntPtr__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue(System.UInt32,System.UIntPtr*)">NT_ReadListenerQueue(uint, UIntPtr*)</h4>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_ReadListenerQueue_System_UInt32_System_UIntPtr__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue(System.UInt32,System.UIntPtr*)">NT_ReadListenerQueue(uint, nuint*)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static extern NativeNtEvent* NT_ReadListenerQueue(uint poller, UIntPtr* len)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern NativeNtEvent* NT_ReadListenerQueue(uint poller, nuint* len)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -726,7 +736,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a>*</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a>*</td>
         <td><span class="parametername">len</span></td>
         <td></td>
       </tr>
@@ -798,12 +808,12 @@
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetFloatArray_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray*"></a>
-  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetFloatArray_System_UInt32_System_Int64_System_Single__System_UIntPtr_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray(System.UInt32,System.Int64,System.Single*,System.UIntPtr)">NT_SetFloatArray(uint, long, float*, UIntPtr)</h4>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetFloatArray_System_UInt32_System_Int64_System_Single__System_UIntPtr_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray(System.UInt32,System.Int64,System.Single*,System.UIntPtr)">NT_SetFloatArray(uint, long, float*, nuint)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static extern int NT_SetFloatArray(uint publisher, long time, float* value, UIntPtr len)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int NT_SetFloatArray(uint publisher, long time, float* value, nuint len)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -831,7 +841,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a></td>
         <td><span class="parametername">len</span></td>
         <td></td>
       </tr>
@@ -903,12 +913,12 @@
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetRaw_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw*"></a>
-  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetRaw_System_UInt32_System_Int64_System_Byte__System_UIntPtr_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw(System.UInt32,System.Int64,System.Byte*,System.UIntPtr)">NT_SetRaw(uint, long, byte*, UIntPtr)</h4>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetRaw_System_UInt32_System_Int64_System_Byte__System_UIntPtr_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw(System.UInt32,System.Int64,System.Byte*,System.UIntPtr)">NT_SetRaw(uint, long, byte*, nuint)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static extern int NT_SetRaw(uint publisher, long time, byte* value, UIntPtr len)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern int NT_SetRaw(uint publisher, long time, byte* value, nuint len)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -936,7 +946,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a></td>
         <td><span class="parametername">len</span></td>
         <td></td>
       </tr>
@@ -958,12 +968,12 @@
     </tbody>
   </table>
   <a id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetServerMulti_" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti*"></a>
-  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetServerMulti_System_UInt32_System_UIntPtr_QuestNav_Native_NTCore_WpiString__System_UInt32__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti(System.UInt32,System.UIntPtr,QuestNav.Native.NTCore.WpiString*,System.UInt32*)">NT_SetServerMulti(uint, UIntPtr, WpiString*, uint*)</h4>
+  <h4 id="QuestNav_Native_NTCore_NtCoreNatives_NT_SetServerMulti_System_UInt32_System_UIntPtr_QuestNav_Native_NTCore_WpiString__System_UInt32__" data-uid="QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti(System.UInt32,System.UIntPtr,QuestNav.Native.NTCore.WpiString*,System.UInt32*)">NT_SetServerMulti(uint, nuint, WpiString*, uint*)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static extern void NT_SetServerMulti(uint inst, UIntPtr count, WpiString* server_names, uint* ports)</code></pre>
+    <pre><code class="lang-csharp hljs">public static extern void NT_SetServerMulti(uint inst, nuint count, WpiString* server_names, uint* ports)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -981,7 +991,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uintptr">nuint</a></td>
         <td><span class="parametername">count</span></td>
         <td></td>
       </tr>

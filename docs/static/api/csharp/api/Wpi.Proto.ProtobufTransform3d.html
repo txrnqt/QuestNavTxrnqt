@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufTransform3d | QuestNav API Documentation ">
     
-    <meta name="description" content="Represents a 3D coordinate transformation. This message describes how to transform coordinates from one 3D coordinate frame to another. It combines a 3D translation and rotation to define the complete spatial relationship between two coordinate systems. Mathematical Interpretation: Given a point P in frame A, the corresponding point in frame B is: P_B = Transform3d * P_A = Rotation * P_A + Translation This follows the standard transformation sequence:  Apply rotation to the point Add translation to the rotated point  Applications:  Transform between robot and world coordinate frames Camera calibration and extrinsic parameters Sensor mounting transformations Relative positioning between 3D objects Coordinate frame conversions in 3D path planning Multi-robot relative localization  The transform represents &amp;quot;how to get from frame A to frame B&amp;quot; and can be inverted to get the reverse transformation. Transforms can also be composed to create transformation chains through multiple coordinate frames.">
+    
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,34 +81,7 @@
 
 
   <h1 id="Wpi_Proto_ProtobufTransform3d" data-uid="Wpi.Proto.ProtobufTransform3d" class="text-break">Class ProtobufTransform3d</h1>
-  <div class="markdown level0 summary"><ul>
-<li></li>
-</ul>
-<p>Represents a 3D coordinate transformation.</p>
-<p>This message describes how to transform coordinates from one 3D coordinate
-frame to another. It combines a 3D translation and rotation to define the
-complete spatial relationship between two coordinate systems.</p>
-<p>Mathematical Interpretation:
-Given a point P in frame A, the corresponding point in frame B is:
-P_B = Transform3d * P_A = Rotation * P_A + Translation</p>
-<p>This follows the standard transformation sequence:</p>
-<ol>
-<li>Apply rotation to the point</li>
-<li>Add translation to the rotated point</li>
-</ol>
-<p>Applications:</p>
-<ul>
-<li>Transform between robot and world coordinate frames</li>
-<li>Camera calibration and extrinsic parameters</li>
-<li>Sensor mounting transformations</li>
-<li>Relative positioning between 3D objects</li>
-<li>Coordinate frame conversions in 3D path planning</li>
-<li>Multi-robot relative localization</li>
-</ul>
-<p>The transform represents &quot;how to get from frame A to frame B&quot; and can be
-inverted to get the reverse transformation. Transforms can also be composed
-to create transformation chains through multiple coordinate frames.</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -126,10 +99,10 @@ to create transformation chains through multiple coordinate frames.</p>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -179,8 +152,7 @@ to create transformation chains through multiple coordinate frames.</p>
   <h3 id="fields">Fields
 </h3>
   <h4 id="Wpi_Proto_ProtobufTransform3d_RotationFieldNumber" data-uid="Wpi.Proto.ProtobufTransform3d.RotationFieldNumber">RotationFieldNumber</h4>
-  <div class="markdown level1 summary"><p>Field number for the &quot;rotation&quot; field.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -202,8 +174,7 @@ to create transformation chains through multiple coordinate frames.</p>
     </tbody>
   </table>
   <h4 id="Wpi_Proto_ProtobufTransform3d_TranslationFieldNumber" data-uid="Wpi.Proto.ProtobufTransform3d.TranslationFieldNumber">TranslationFieldNumber</h4>
-  <div class="markdown level1 summary"><p>Field number for the &quot;translation&quot; field.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -274,16 +245,7 @@ to create transformation chains through multiple coordinate frames.</p>
   </table>
   <a id="Wpi_Proto_ProtobufTransform3d_Rotation_" data-uid="Wpi.Proto.ProtobufTransform3d.Rotation*"></a>
   <h4 id="Wpi_Proto_ProtobufTransform3d_Rotation" data-uid="Wpi.Proto.ProtobufTransform3d.Rotation">Rotation</h4>
-  <div class="markdown level1 summary"><ul>
-<li></li>
-</ul>
-<p>Rotation component of the 3D transformation.</p>
-<p>This represents the angular difference between the two coordinate
-frames in 3D space. It specifies how the target frame is rotated
-relative to the source frame.</p>
-<p>The rotation is applied before the translation in the transformation
-sequence (standard mathematical convention for homogeneous transforms).</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -306,14 +268,7 @@ sequence (standard mathematical convention for homogeneous transforms).</p>
   </table>
   <a id="Wpi_Proto_ProtobufTransform3d_Translation_" data-uid="Wpi.Proto.ProtobufTransform3d.Translation*"></a>
   <h4 id="Wpi_Proto_ProtobufTransform3d_Translation" data-uid="Wpi.Proto.ProtobufTransform3d.Translation">Translation</h4>
-  <div class="markdown level1 summary"><ul>
-<li></li>
-</ul>
-<p>Translation component of the 3D transformation.</p>
-<p>This represents the displacement between the origins of the two
-coordinate frames in 3D space. It specifies how far and in which
-direction the target frame's origin is from the source frame's origin.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

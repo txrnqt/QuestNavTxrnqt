@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class ProtobufEllipse2d | QuestNav API Documentation ">
     
-    <meta name="description" content="Represents a 2D ellipse with arbitrary orientation. This message defines an elliptical region in 2D space using a center pose and semi-axis lengths. The ellipse can be rotated to any orientation based on the center pose&#39;s rotation component. Geometric Properties:  Center point and orientation defined by pose Major/minor axes aligned with pose&#39;s local coordinate frame X semi-axis extends along pose&#39;s X-axis (local forward direction) Y semi-axis extends along pose&#39;s Y-axis (local left direction) Total area = π * xSemiAxis * ySemiAxis  Applications:  Uncertainty ellipses for localization Smooth obstacle representations Robot operating regions Sensor coverage areas Path planning with uncertainty  Special Cases:  Circle: xSemiAxis = ySemiAxis Degenerate ellipse: one semi-axis approaches zero (becomes a line)">
+    
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -81,35 +81,7 @@
 
 
   <h1 id="Wpi_Proto_ProtobufEllipse2d" data-uid="Wpi.Proto.ProtobufEllipse2d" class="text-break">Class ProtobufEllipse2d</h1>
-  <div class="markdown level0 summary"><ul>
-<li></li>
-</ul>
-<p>Represents a 2D ellipse with arbitrary orientation.</p>
-<p>This message defines an elliptical region in 2D space using a center pose
-and semi-axis lengths. The ellipse can be rotated to any orientation
-based on the center pose's rotation component.</p>
-<p>Geometric Properties:</p>
-<ul>
-<li>Center point and orientation defined by pose</li>
-<li>Major/minor axes aligned with pose's local coordinate frame</li>
-<li>X semi-axis extends along pose's X-axis (local forward direction)</li>
-<li>Y semi-axis extends along pose's Y-axis (local left direction)</li>
-<li>Total area = π * xSemiAxis * ySemiAxis</li>
-</ul>
-<p>Applications:</p>
-<ul>
-<li>Uncertainty ellipses for localization</li>
-<li>Smooth obstacle representations</li>
-<li>Robot operating regions</li>
-<li>Sensor coverage areas</li>
-<li>Path planning with uncertainty</li>
-</ul>
-<p>Special Cases:</p>
-<ul>
-<li>Circle: xSemiAxis = ySemiAxis</li>
-<li>Degenerate ellipse: one semi-axis approaches zero (becomes a line)</li>
-</ul>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -127,10 +99,10 @@ based on the center pose's rotation component.</p>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -180,8 +152,7 @@ based on the center pose's rotation component.</p>
   <h3 id="fields">Fields
 </h3>
   <h4 id="Wpi_Proto_ProtobufEllipse2d_CenterFieldNumber" data-uid="Wpi.Proto.ProtobufEllipse2d.CenterFieldNumber">CenterFieldNumber</h4>
-  <div class="markdown level1 summary"><p>Field number for the &quot;center&quot; field.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -203,8 +174,7 @@ based on the center pose's rotation component.</p>
     </tbody>
   </table>
   <h4 id="Wpi_Proto_ProtobufEllipse2d_XSemiAxisFieldNumber" data-uid="Wpi.Proto.ProtobufEllipse2d.XSemiAxisFieldNumber">XSemiAxisFieldNumber</h4>
-  <div class="markdown level1 summary"><p>Field number for the &quot;xSemiAxis&quot; field.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -226,8 +196,7 @@ based on the center pose's rotation component.</p>
     </tbody>
   </table>
   <h4 id="Wpi_Proto_ProtobufEllipse2d_YSemiAxisFieldNumber" data-uid="Wpi.Proto.ProtobufEllipse2d.YSemiAxisFieldNumber">YSemiAxisFieldNumber</h4>
-  <div class="markdown level1 summary"><p>Field number for the &quot;ySemiAxis&quot; field.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -252,19 +221,7 @@ based on the center pose's rotation component.</p>
 </h3>
   <a id="Wpi_Proto_ProtobufEllipse2d_Center_" data-uid="Wpi.Proto.ProtobufEllipse2d.Center*"></a>
   <h4 id="Wpi_Proto_ProtobufEllipse2d_Center" data-uid="Wpi.Proto.ProtobufEllipse2d.Center">Center</h4>
-  <div class="markdown level1 summary"><ul>
-<li></li>
-</ul>
-<p>Center pose of the ellipse.</p>
-<p>The translation component specifies the center point of the ellipse
-in the coordinate system. The rotation component specifies the
-orientation of the ellipse's local coordinate frame.</p>
-<p>The ellipse's axes are aligned with this local coordinate frame:</p>
-<ul>
-<li>X semi-axis extends along local X-axis (rotated forward direction)</li>
-<li>Y semi-axis extends along local Y-axis (rotated left direction)</li>
-</ul>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -333,18 +290,7 @@ orientation of the ellipse's local coordinate frame.</p>
   </table>
   <a id="Wpi_Proto_ProtobufEllipse2d_XSemiAxis_" data-uid="Wpi.Proto.ProtobufEllipse2d.XSemiAxis*"></a>
   <h4 id="Wpi_Proto_ProtobufEllipse2d_XSemiAxis" data-uid="Wpi.Proto.ProtobufEllipse2d.XSemiAxis">XSemiAxis</h4>
-  <div class="markdown level1 summary"><ul>
-<li></li>
-</ul>
-<p>Semi-axis length along the ellipse's local X-axis.</p>
-<p>This is half the width of the ellipse in the direction of the
-center pose's forward direction (after rotation). The ellipse
-extends ±xSemiAxis from the center along this axis.</p>
-<p>Units: meters
-Must be positive</p>
-<p>Note: This is the semi-axis, not the full width. The full width
-along this axis is 2 * xSemiAxis.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -367,18 +313,7 @@ along this axis is 2 * xSemiAxis.</p>
   </table>
   <a id="Wpi_Proto_ProtobufEllipse2d_YSemiAxis_" data-uid="Wpi.Proto.ProtobufEllipse2d.YSemiAxis*"></a>
   <h4 id="Wpi_Proto_ProtobufEllipse2d_YSemiAxis" data-uid="Wpi.Proto.ProtobufEllipse2d.YSemiAxis">YSemiAxis</h4>
-  <div class="markdown level1 summary"><ul>
-<li></li>
-</ul>
-<p>Semi-axis length along the ellipse's local Y-axis.</p>
-<p>This is half the height of the ellipse in the direction of the
-center pose's left direction (after rotation). The ellipse
-extends ±ySemiAxis from the center along this axis.</p>
-<p>Units: meters
-Must be positive</p>
-<p>Note: This is the semi-axis, not the full height. The full height
-along this axis is 2 * ySemiAxis.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">

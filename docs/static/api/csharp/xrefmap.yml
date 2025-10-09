@@ -26,7 +26,6 @@ references:
   name: CommandProcessor
   href: api/QuestNav.Commands.CommandProcessor.html#QuestNav_Commands_CommandProcessor__ctor_
   commentId: Overload:QuestNav.Commands.CommandProcessor.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Commands.CommandProcessor.CommandProcessor
   fullName.vb: QuestNav.Commands.CommandProcessor.New
@@ -42,7 +41,6 @@ references:
   name: ProcessCommands
   href: api/QuestNav.Commands.CommandProcessor.html#QuestNav_Commands_CommandProcessor_ProcessCommands_
   commentId: Overload:QuestNav.Commands.CommandProcessor.ProcessCommands
-  isSpec: "True"
   fullName: QuestNav.Commands.CommandProcessor.ProcessCommands
   nameWithType: CommandProcessor.ProcessCommands
 - uid: QuestNav.Commands.Commands
@@ -70,7 +68,6 @@ references:
   name: PoseResetCommand
   href: api/QuestNav.Commands.Commands.PoseResetCommand.html#QuestNav_Commands_Commands_PoseResetCommand__ctor_
   commentId: Overload:QuestNav.Commands.Commands.PoseResetCommand.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Commands.Commands.PoseResetCommand.PoseResetCommand
   fullName.vb: QuestNav.Commands.Commands.PoseResetCommand.New
@@ -86,7 +83,6 @@ references:
   name: Execute
   href: api/QuestNav.Commands.Commands.PoseResetCommand.html#QuestNav_Commands_Commands_PoseResetCommand_Execute_
   commentId: Overload:QuestNav.Commands.Commands.PoseResetCommand.Execute
-  isSpec: "True"
   fullName: QuestNav.Commands.Commands.PoseResetCommand.Execute
   nameWithType: PoseResetCommand.Execute
 - uid: QuestNav.Commands.Commands.PoseResetCommand.commandNiceName
@@ -99,7 +95,6 @@ references:
   name: commandNiceName
   href: api/QuestNav.Commands.Commands.PoseResetCommand.html#QuestNav_Commands_Commands_PoseResetCommand_commandNiceName_
   commentId: Overload:QuestNav.Commands.Commands.PoseResetCommand.commandNiceName
-  isSpec: "True"
   fullName: QuestNav.Commands.Commands.PoseResetCommand.commandNiceName
   nameWithType: PoseResetCommand.commandNiceName
 - uid: QuestNav.Commands.ICommand
@@ -118,7 +113,6 @@ references:
   name: Execute
   href: api/QuestNav.Commands.ICommand.html#QuestNav_Commands_ICommand_Execute_
   commentId: Overload:QuestNav.Commands.ICommand.Execute
-  isSpec: "True"
   fullName: QuestNav.Commands.ICommand.Execute
   nameWithType: ICommand.Execute
 - uid: QuestNav.Commands.ICommand.commandNiceName
@@ -131,7 +125,6 @@ references:
   name: commandNiceName
   href: api/QuestNav.Commands.ICommand.html#QuestNav_Commands_ICommand_commandNiceName_
   commentId: Overload:QuestNav.Commands.ICommand.commandNiceName
-  isSpec: "True"
   fullName: QuestNav.Commands.ICommand.commandNiceName
   nameWithType: ICommand.commandNiceName
 - uid: QuestNav.Commands.ICommandProcessor
@@ -150,7 +143,6 @@ references:
   name: ProcessCommands
   href: api/QuestNav.Commands.ICommandProcessor.html#QuestNav_Commands_ICommandProcessor_ProcessCommands_
   commentId: Overload:QuestNav.Commands.ICommandProcessor.ProcessCommands
-  isSpec: "True"
   fullName: QuestNav.Commands.ICommandProcessor.ProcessCommands
   nameWithType: ICommandProcessor.ProcessCommands
 - uid: QuestNav.Core
@@ -165,6 +157,24 @@ references:
   commentId: T:QuestNav.Core.QuestNav
   fullName: QuestNav.Core.QuestNav
   nameWithType: QuestNav
+- uid: QuestNav.Core.QuestNav.#ctor
+  name: QuestNav()
+  href: api/QuestNav.Core.QuestNav.html#QuestNav_Core_QuestNav__ctor
+  commentId: M:QuestNav.Core.QuestNav.#ctor
+  name.vb: New()
+  fullName: QuestNav.Core.QuestNav.QuestNav()
+  fullName.vb: QuestNav.Core.QuestNav.New()
+  nameWithType: QuestNav.QuestNav()
+  nameWithType.vb: QuestNav.New()
+- uid: QuestNav.Core.QuestNav.#ctor*
+  name: QuestNav
+  href: api/QuestNav.Core.QuestNav.html#QuestNav_Core_QuestNav__ctor_
+  commentId: Overload:QuestNav.Core.QuestNav.#ctor
+  name.vb: New
+  fullName: QuestNav.Core.QuestNav.QuestNav
+  fullName.vb: QuestNav.Core.QuestNav.New
+  nameWithType: QuestNav.QuestNav
+  nameWithType.vb: QuestNav.New
 - uid: QuestNav.Core.QuestNavConstants
   name: QuestNavConstants
   href: api/QuestNav.Core.QuestNavConstants.html
@@ -394,7 +404,6 @@ references:
   name: Set
   href: api/QuestNav.Native.NTCore.DoublePublisher.html#QuestNav_Native_NTCore_DoublePublisher_Set_
   commentId: Overload:QuestNav.Native.NTCore.DoublePublisher.Set
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.DoublePublisher.Set
   nameWithType: DoublePublisher.Set
 - uid: QuestNav.Native.NTCore.DoubleSubscriber
@@ -416,7 +425,6 @@ references:
   name: Get
   href: api/QuestNav.Native.NTCore.DoubleSubscriber.html#QuestNav_Native_NTCore_DoubleSubscriber_Get_
   commentId: Overload:QuestNav.Native.NTCore.DoubleSubscriber.Get
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.DoubleSubscriber.Get
   nameWithType: DoubleSubscriber.Get
 - uid: QuestNav.Native.NTCore.FloatArrayPublisher
@@ -438,7 +446,6 @@ references:
   name: Set
   href: api/QuestNav.Native.NTCore.FloatArrayPublisher.html#QuestNav_Native_NTCore_FloatArrayPublisher_Set_
   commentId: Overload:QuestNav.Native.NTCore.FloatArrayPublisher.Set
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.FloatArrayPublisher.Set
   nameWithType: FloatArrayPublisher.Set
 - uid: QuestNav.Native.NTCore.FloatArraySubscriber
@@ -460,7 +467,6 @@ references:
   name: Get
   href: api/QuestNav.Native.NTCore.FloatArraySubscriber.html#QuestNav_Native_NTCore_FloatArraySubscriber_Get_
   commentId: Overload:QuestNav.Native.NTCore.FloatArraySubscriber.Get
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.FloatArraySubscriber.Get
   nameWithType: FloatArraySubscriber.Get
 - uid: QuestNav.Native.NTCore.IntegerPublisher
@@ -482,7 +488,6 @@ references:
   name: Set
   href: api/QuestNav.Native.NTCore.IntegerPublisher.html#QuestNav_Native_NTCore_IntegerPublisher_Set_
   commentId: Overload:QuestNav.Native.NTCore.IntegerPublisher.Set
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.IntegerPublisher.Set
   nameWithType: IntegerPublisher.Set
 - uid: QuestNav.Native.NTCore.IntegerSubscriber
@@ -504,7 +509,6 @@ references:
   name: Get
   href: api/QuestNav.Native.NTCore.IntegerSubscriber.html#QuestNav_Native_NTCore_IntegerSubscriber_Get_
   commentId: Overload:QuestNav.Native.NTCore.IntegerSubscriber.Get
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.IntegerSubscriber.Get
   nameWithType: IntegerSubscriber.Get
 - uid: QuestNav.Native.NTCore.NativeConnectionInfo
@@ -1011,6 +1015,24 @@ references:
   commentId: T:QuestNav.Native.NTCore.NtCoreNatives
   fullName: QuestNav.Native.NTCore.NtCoreNatives
   nameWithType: NtCoreNatives
+- uid: QuestNav.Native.NTCore.NtCoreNatives.#ctor
+  name: NtCoreNatives()
+  href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives__ctor
+  commentId: M:QuestNav.Native.NTCore.NtCoreNatives.#ctor
+  name.vb: New()
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NtCoreNatives()
+  fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.New()
+  nameWithType: NtCoreNatives.NtCoreNatives()
+  nameWithType.vb: NtCoreNatives.New()
+- uid: QuestNav.Native.NTCore.NtCoreNatives.#ctor*
+  name: NtCoreNatives
+  href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives__ctor_
+  commentId: Overload:QuestNav.Native.NTCore.NtCoreNatives.#ctor
+  name.vb: New
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NtCoreNatives
+  fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.New
+  nameWithType: NtCoreNatives.NtCoreNatives
+  nameWithType.vb: NtCoreNatives.New
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_AddPolledLogger(System.UInt32,System.UInt32,System.UInt32)
   name: NT_AddPolledLogger(uint, uint, uint)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_AddPolledLogger_System_UInt32_System_UInt32_System_UInt32_
@@ -1063,11 +1085,14 @@ references:
   fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_DestroyListenerPoller
   nameWithType: NtCoreNatives.NT_DestroyListenerPoller
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray(QuestNav.Native.NTCore.NativeNtEvent*,System.UIntPtr)
-  name: NT_DisposeEventArray(NativeNtEvent*, UIntPtr)
+  name: NT_DisposeEventArray(NativeNtEvent*, nuint)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_DisposeEventArray_QuestNav_Native_NTCore_NativeNtEvent__System_UIntPtr_
   commentId: M:QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray(QuestNav.Native.NTCore.NativeNtEvent*,System.UIntPtr)
-  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray(QuestNav.Native.NTCore.NativeNtEvent*, System.UIntPtr)
-  nameWithType: NtCoreNatives.NT_DisposeEventArray(NativeNtEvent*, UIntPtr)
+  name.vb: NT_DisposeEventArray(NativeNtEvent*, UIntPtr)
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray(QuestNav.Native.NTCore.NativeNtEvent*, nuint)
+  fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray(QuestNav.Native.NTCore.NativeNtEvent*, System.UIntPtr)
+  nameWithType: NtCoreNatives.NT_DisposeEventArray(NativeNtEvent*, nuint)
+  nameWithType.vb: NtCoreNatives.NT_DisposeEventArray(NativeNtEvent*, UIntPtr)
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_DisposeEventArray*
   name: NT_DisposeEventArray
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_DisposeEventArray_
@@ -1132,13 +1157,13 @@ references:
   fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_GetDouble
   nameWithType: NtCoreNatives.NT_GetDouble
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray(System.UInt32,System.Single*,System.UIntPtr,System.UIntPtr*)
-  name: NT_GetFloatArray(uint, float*, UIntPtr, UIntPtr*)
+  name: NT_GetFloatArray(uint, float*, nuint, nuint*)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_GetFloatArray_System_UInt32_System_Single__System_UIntPtr_System_UIntPtr__
   commentId: M:QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray(System.UInt32,System.Single*,System.UIntPtr,System.UIntPtr*)
   name.vb: NT_GetFloatArray(UInteger, Single*, UIntPtr, UIntPtr*)
-  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray(uint, float*, System.UIntPtr, System.UIntPtr*)
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray(uint, float*, nuint, nuint*)
   fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray(UInteger, Single*, System.UIntPtr, System.UIntPtr*)
-  nameWithType: NtCoreNatives.NT_GetFloatArray(uint, float*, UIntPtr, UIntPtr*)
+  nameWithType: NtCoreNatives.NT_GetFloatArray(uint, float*, nuint, nuint*)
   nameWithType.vb: NtCoreNatives.NT_GetFloatArray(UInteger, Single*, UIntPtr, UIntPtr*)
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_GetFloatArray*
   name: NT_GetFloatArray
@@ -1162,13 +1187,13 @@ references:
   fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_GetInteger
   nameWithType: NtCoreNatives.NT_GetInteger
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw(System.UInt32,System.Byte*,System.UIntPtr,System.UIntPtr*)
-  name: NT_GetRaw(uint, byte*, UIntPtr, UIntPtr*)
+  name: NT_GetRaw(uint, byte*, nuint, nuint*)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_GetRaw_System_UInt32_System_Byte__System_UIntPtr_System_UIntPtr__
   commentId: M:QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw(System.UInt32,System.Byte*,System.UIntPtr,System.UIntPtr*)
   name.vb: NT_GetRaw(UInteger, Byte*, UIntPtr, UIntPtr*)
-  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw(uint, byte*, System.UIntPtr, System.UIntPtr*)
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw(uint, byte*, nuint, nuint*)
   fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw(UInteger, Byte*, System.UIntPtr, System.UIntPtr*)
-  nameWithType: NtCoreNatives.NT_GetRaw(uint, byte*, UIntPtr, UIntPtr*)
+  nameWithType: NtCoreNatives.NT_GetRaw(uint, byte*, nuint, nuint*)
   nameWithType.vb: NtCoreNatives.NT_GetRaw(UInteger, Byte*, UIntPtr, UIntPtr*)
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_GetRaw*
   name: NT_GetRaw
@@ -1222,13 +1247,13 @@ references:
   fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_Publish
   nameWithType: NtCoreNatives.NT_Publish
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue(System.UInt32,System.UIntPtr*)
-  name: NT_ReadListenerQueue(uint, UIntPtr*)
+  name: NT_ReadListenerQueue(uint, nuint*)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_ReadListenerQueue_System_UInt32_System_UIntPtr__
   commentId: M:QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue(System.UInt32,System.UIntPtr*)
   name.vb: NT_ReadListenerQueue(UInteger, UIntPtr*)
-  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue(uint, System.UIntPtr*)
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue(uint, nuint*)
   fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue(UInteger, System.UIntPtr*)
-  nameWithType: NtCoreNatives.NT_ReadListenerQueue(uint, UIntPtr*)
+  nameWithType: NtCoreNatives.NT_ReadListenerQueue(uint, nuint*)
   nameWithType.vb: NtCoreNatives.NT_ReadListenerQueue(UInteger, UIntPtr*)
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_ReadListenerQueue*
   name: NT_ReadListenerQueue
@@ -1252,13 +1277,13 @@ references:
   fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetDouble
   nameWithType: NtCoreNatives.NT_SetDouble
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray(System.UInt32,System.Int64,System.Single*,System.UIntPtr)
-  name: NT_SetFloatArray(uint, long, float*, UIntPtr)
+  name: NT_SetFloatArray(uint, long, float*, nuint)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_SetFloatArray_System_UInt32_System_Int64_System_Single__System_UIntPtr_
   commentId: M:QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray(System.UInt32,System.Int64,System.Single*,System.UIntPtr)
   name.vb: NT_SetFloatArray(UInteger, Long, Single*, UIntPtr)
-  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray(uint, long, float*, System.UIntPtr)
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray(uint, long, float*, nuint)
   fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray(UInteger, Long, Single*, System.UIntPtr)
-  nameWithType: NtCoreNatives.NT_SetFloatArray(uint, long, float*, UIntPtr)
+  nameWithType: NtCoreNatives.NT_SetFloatArray(uint, long, float*, nuint)
   nameWithType.vb: NtCoreNatives.NT_SetFloatArray(UInteger, Long, Single*, UIntPtr)
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_SetFloatArray*
   name: NT_SetFloatArray
@@ -1282,13 +1307,13 @@ references:
   fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetInteger
   nameWithType: NtCoreNatives.NT_SetInteger
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw(System.UInt32,System.Int64,System.Byte*,System.UIntPtr)
-  name: NT_SetRaw(uint, long, byte*, UIntPtr)
+  name: NT_SetRaw(uint, long, byte*, nuint)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_SetRaw_System_UInt32_System_Int64_System_Byte__System_UIntPtr_
   commentId: M:QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw(System.UInt32,System.Int64,System.Byte*,System.UIntPtr)
   name.vb: NT_SetRaw(UInteger, Long, Byte*, UIntPtr)
-  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw(uint, long, byte*, System.UIntPtr)
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw(uint, long, byte*, nuint)
   fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw(UInteger, Long, Byte*, System.UIntPtr)
-  nameWithType: NtCoreNatives.NT_SetRaw(uint, long, byte*, UIntPtr)
+  nameWithType: NtCoreNatives.NT_SetRaw(uint, long, byte*, nuint)
   nameWithType.vb: NtCoreNatives.NT_SetRaw(UInteger, Long, Byte*, UIntPtr)
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw*
   name: NT_SetRaw
@@ -1297,13 +1322,13 @@ references:
   fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetRaw
   nameWithType: NtCoreNatives.NT_SetRaw
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti(System.UInt32,System.UIntPtr,QuestNav.Native.NTCore.WpiString*,System.UInt32*)
-  name: NT_SetServerMulti(uint, UIntPtr, WpiString*, uint*)
+  name: NT_SetServerMulti(uint, nuint, WpiString*, uint*)
   href: api/QuestNav.Native.NTCore.NtCoreNatives.html#QuestNav_Native_NTCore_NtCoreNatives_NT_SetServerMulti_System_UInt32_System_UIntPtr_QuestNav_Native_NTCore_WpiString__System_UInt32__
   commentId: M:QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti(System.UInt32,System.UIntPtr,QuestNav.Native.NTCore.WpiString*,System.UInt32*)
   name.vb: NT_SetServerMulti(UInteger, UIntPtr, WpiString*, UInteger*)
-  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti(uint, System.UIntPtr, QuestNav.Native.NTCore.WpiString*, uint*)
+  fullName: QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti(uint, nuint, QuestNav.Native.NTCore.WpiString*, uint*)
   fullName.vb: QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti(UInteger, System.UIntPtr, QuestNav.Native.NTCore.WpiString*, UInteger*)
-  nameWithType: NtCoreNatives.NT_SetServerMulti(uint, UIntPtr, WpiString*, uint*)
+  nameWithType: NtCoreNatives.NT_SetServerMulti(uint, nuint, WpiString*, uint*)
   nameWithType.vb: NtCoreNatives.NT_SetServerMulti(UInteger, UIntPtr, WpiString*, UInteger*)
 - uid: QuestNav.Native.NTCore.NtCoreNatives.NT_SetServerMulti*
   name: NT_SetServerMulti
@@ -1375,7 +1400,6 @@ references:
   name: NtInstance
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance__ctor_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Native.NTCore.NtInstance.NtInstance
   fullName.vb: QuestNav.Native.NTCore.NtInstance.New
@@ -1394,7 +1418,6 @@ references:
   name: CreateLogger
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_CreateLogger_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.CreateLogger
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.CreateLogger
   nameWithType: NtInstance.CreateLogger
 - uid: QuestNav.Native.NTCore.NtInstance.GetDoublePublisher(System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1410,7 +1433,6 @@ references:
   name: GetDoublePublisher
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetDoublePublisher_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetDoublePublisher
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetDoublePublisher
   nameWithType: NtInstance.GetDoublePublisher
 - uid: QuestNav.Native.NTCore.NtInstance.GetDoubleSubscriber(System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1426,7 +1448,6 @@ references:
   name: GetDoubleSubscriber
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetDoubleSubscriber_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetDoubleSubscriber
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetDoubleSubscriber
   nameWithType: NtInstance.GetDoubleSubscriber
 - uid: QuestNav.Native.NTCore.NtInstance.GetFloatArrayPublisher(System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1442,7 +1463,6 @@ references:
   name: GetFloatArrayPublisher
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetFloatArrayPublisher_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetFloatArrayPublisher
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetFloatArrayPublisher
   nameWithType: NtInstance.GetFloatArrayPublisher
 - uid: QuestNav.Native.NTCore.NtInstance.GetFloatArraySubscriber(System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1458,7 +1478,6 @@ references:
   name: GetFloatArraySubscriber
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetFloatArraySubscriber_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetFloatArraySubscriber
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetFloatArraySubscriber
   nameWithType: NtInstance.GetFloatArraySubscriber
 - uid: QuestNav.Native.NTCore.NtInstance.GetIntegerPublisher(System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1474,7 +1493,6 @@ references:
   name: GetIntegerPublisher
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetIntegerPublisher_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetIntegerPublisher
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetIntegerPublisher
   nameWithType: NtInstance.GetIntegerPublisher
 - uid: QuestNav.Native.NTCore.NtInstance.GetIntegerSubscriber(System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1490,14 +1508,12 @@ references:
   name: GetIntegerSubscriber
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetIntegerSubscriber_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetIntegerSubscriber
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetIntegerSubscriber
   nameWithType: NtInstance.GetIntegerSubscriber
 - uid: QuestNav.Native.NTCore.NtInstance.GetProtobufPublisher*
   name: GetProtobufPublisher
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetProtobufPublisher_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetProtobufPublisher
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetProtobufPublisher
   nameWithType: NtInstance.GetProtobufPublisher
 - uid: QuestNav.Native.NTCore.NtInstance.GetProtobufPublisher``1(System.String,System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1513,7 +1529,6 @@ references:
   name: GetProtobufSubscriber
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetProtobufSubscriber_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetProtobufSubscriber
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetProtobufSubscriber
   nameWithType: NtInstance.GetProtobufSubscriber
 - uid: QuestNav.Native.NTCore.NtInstance.GetProtobufSubscriber``1(System.String,System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1538,7 +1553,6 @@ references:
   name: GetRawPublisher
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetRawPublisher_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetRawPublisher
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetRawPublisher
   nameWithType: NtInstance.GetRawPublisher
 - uid: QuestNav.Native.NTCore.NtInstance.GetRawSubscriber(System.String,System.String,QuestNav.Native.NTCore.PubSubOptions)
@@ -1554,7 +1568,6 @@ references:
   name: GetRawSubscriber
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_GetRawSubscriber_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.GetRawSubscriber
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.GetRawSubscriber
   nameWithType: NtInstance.GetRawSubscriber
 - uid: QuestNav.Native.NTCore.NtInstance.IsConnected
@@ -1567,7 +1580,6 @@ references:
   name: IsConnected
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_IsConnected_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.IsConnected
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.IsConnected
   nameWithType: NtInstance.IsConnected
 - uid: QuestNav.Native.NTCore.NtInstance.SetAddresses(System.ValueTuple{System.String,System.Int32}[])
@@ -1583,7 +1595,6 @@ references:
   name: SetAddresses
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_SetAddresses_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.SetAddresses
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.SetAddresses
   nameWithType: NtInstance.SetAddresses
 - uid: QuestNav.Native.NTCore.NtInstance.SetTeamNumber(System.Int32,System.Int32)
@@ -1599,7 +1610,6 @@ references:
   name: SetTeamNumber
   href: api/QuestNav.Native.NTCore.NtInstance.html#QuestNav_Native_NTCore_NtInstance_SetTeamNumber_
   commentId: Overload:QuestNav.Native.NTCore.NtInstance.SetTeamNumber
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.NtInstance.SetTeamNumber
   nameWithType: NtInstance.SetTeamNumber
 - uid: QuestNav.Native.NTCore.NtType
@@ -1705,7 +1715,6 @@ references:
   name: PolledLogger
   href: api/QuestNav.Native.NTCore.PolledLogger.html#QuestNav_Native_NTCore_PolledLogger__ctor_
   commentId: Overload:QuestNav.Native.NTCore.PolledLogger.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Native.NTCore.PolledLogger.PolledLogger
   fullName.vb: QuestNav.Native.NTCore.PolledLogger.New
@@ -1721,7 +1730,6 @@ references:
   name: Close
   href: api/QuestNav.Native.NTCore.PolledLogger.html#QuestNav_Native_NTCore_PolledLogger_Close_
   commentId: Overload:QuestNav.Native.NTCore.PolledLogger.Close
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PolledLogger.Close
   nameWithType: PolledLogger.Close
 - uid: QuestNav.Native.NTCore.PolledLogger.Dispose
@@ -1734,7 +1742,6 @@ references:
   name: Dispose
   href: api/QuestNav.Native.NTCore.PolledLogger.html#QuestNav_Native_NTCore_PolledLogger_Dispose_
   commentId: Overload:QuestNav.Native.NTCore.PolledLogger.Dispose
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PolledLogger.Dispose
   nameWithType: PolledLogger.Dispose
 - uid: QuestNav.Native.NTCore.PolledLogger.PollForMessages
@@ -1747,7 +1754,6 @@ references:
   name: PollForMessages
   href: api/QuestNav.Native.NTCore.PolledLogger.html#QuestNav_Native_NTCore_PolledLogger_PollForMessages_
   commentId: Overload:QuestNav.Native.NTCore.PolledLogger.PollForMessages
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PolledLogger.PollForMessages
   nameWithType: PolledLogger.PollForMessages
 - uid: QuestNav.Native.NTCore.ProtobufPublisher`1
@@ -1771,7 +1777,6 @@ references:
   name: Set
   href: api/QuestNav.Native.NTCore.ProtobufPublisher-1.html#QuestNav_Native_NTCore_ProtobufPublisher_1_Set_
   commentId: Overload:QuestNav.Native.NTCore.ProtobufPublisher`1.Set
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.ProtobufPublisher<T>.Set
   fullName.vb: QuestNav.Native.NTCore.ProtobufPublisher(Of T).Set
   nameWithType: ProtobufPublisher<T>.Set
@@ -1797,7 +1802,6 @@ references:
   name: Get
   href: api/QuestNav.Native.NTCore.ProtobufSubscriber-1.html#QuestNav_Native_NTCore_ProtobufSubscriber_1_Get_
   commentId: Overload:QuestNav.Native.NTCore.ProtobufSubscriber`1.Get
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.ProtobufSubscriber<T>.Get
   fullName.vb: QuestNav.Native.NTCore.ProtobufSubscriber(Of T).Get
   nameWithType: ProtobufSubscriber<T>.Get
@@ -1818,7 +1822,6 @@ references:
   name: AllDefault
   href: api/QuestNav.Native.NTCore.PubSubOptions.html#QuestNav_Native_NTCore_PubSubOptions_AllDefault_
   commentId: Overload:QuestNav.Native.NTCore.PubSubOptions.AllDefault
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PubSubOptions.AllDefault
   nameWithType: PubSubOptions.AllDefault
 - uid: QuestNav.Native.NTCore.PubSubOptions.KeepDuplicates
@@ -1831,7 +1834,6 @@ references:
   name: KeepDuplicates
   href: api/QuestNav.Native.NTCore.PubSubOptions.html#QuestNav_Native_NTCore_PubSubOptions_KeepDuplicates_
   commentId: Overload:QuestNav.Native.NTCore.PubSubOptions.KeepDuplicates
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PubSubOptions.KeepDuplicates
   nameWithType: PubSubOptions.KeepDuplicates
 - uid: QuestNav.Native.NTCore.PubSubOptions.Periodic
@@ -1844,7 +1846,6 @@ references:
   name: Periodic
   href: api/QuestNav.Native.NTCore.PubSubOptions.html#QuestNav_Native_NTCore_PubSubOptions_Periodic_
   commentId: Overload:QuestNav.Native.NTCore.PubSubOptions.Periodic
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PubSubOptions.Periodic
   nameWithType: PubSubOptions.Periodic
 - uid: QuestNav.Native.NTCore.PubSubOptions.SendAll
@@ -1857,7 +1858,6 @@ references:
   name: SendAll
   href: api/QuestNav.Native.NTCore.PubSubOptions.html#QuestNav_Native_NTCore_PubSubOptions_SendAll_
   commentId: Overload:QuestNav.Native.NTCore.PubSubOptions.SendAll
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PubSubOptions.SendAll
   nameWithType: PubSubOptions.SendAll
 - uid: QuestNav.Native.NTCore.PubSubOptions.ToNative
@@ -1870,7 +1870,6 @@ references:
   name: ToNative
   href: api/QuestNav.Native.NTCore.PubSubOptions.html#QuestNav_Native_NTCore_PubSubOptions_ToNative_
   commentId: Overload:QuestNav.Native.NTCore.PubSubOptions.ToNative
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.PubSubOptions.ToNative
   nameWithType: PubSubOptions.ToNative
 - uid: QuestNav.Native.NTCore.RawPublisher
@@ -1892,7 +1891,6 @@ references:
   name: Set
   href: api/QuestNav.Native.NTCore.RawPublisher.html#QuestNav_Native_NTCore_RawPublisher_Set_
   commentId: Overload:QuestNav.Native.NTCore.RawPublisher.Set
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.RawPublisher.Set
   nameWithType: RawPublisher.Set
 - uid: QuestNav.Native.NTCore.RawSubscriber
@@ -1914,7 +1912,6 @@ references:
   name: Get
   href: api/QuestNav.Native.NTCore.RawSubscriber.html#QuestNav_Native_NTCore_RawSubscriber_Get_
   commentId: Overload:QuestNav.Native.NTCore.RawSubscriber.Get
-  isSpec: "True"
   fullName: QuestNav.Native.NTCore.RawSubscriber.Get
   nameWithType: RawSubscriber.Get
 - uid: QuestNav.Native.NTCore.WpiString
@@ -1957,7 +1954,6 @@ references:
   name: GetCommandRequest
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_GetCommandRequest_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.GetCommandRequest
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.GetCommandRequest
   nameWithType: INetworkTableConnection.GetCommandRequest
 - uid: QuestNav.Network.INetworkTableConnection.IsConnected
@@ -1970,7 +1966,6 @@ references:
   name: IsConnected
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_IsConnected_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.IsConnected
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.IsConnected
   nameWithType: INetworkTableConnection.IsConnected
 - uid: QuestNav.Network.INetworkTableConnection.IsReadyToConnect
@@ -1983,7 +1978,6 @@ references:
   name: IsReadyToConnect
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_IsReadyToConnect_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.IsReadyToConnect
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.IsReadyToConnect
   nameWithType: INetworkTableConnection.IsReadyToConnect
 - uid: QuestNav.Network.INetworkTableConnection.LoggerPeriodic
@@ -1996,7 +1990,6 @@ references:
   name: LoggerPeriodic
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_LoggerPeriodic_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.LoggerPeriodic
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.LoggerPeriodic
   nameWithType: INetworkTableConnection.LoggerPeriodic
 - uid: QuestNav.Network.INetworkTableConnection.PublishDeviceData(System.Boolean,System.Int32,System.Int32)
@@ -2012,7 +2005,6 @@ references:
   name: PublishDeviceData
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_PublishDeviceData_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.PublishDeviceData
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.PublishDeviceData
   nameWithType: INetworkTableConnection.PublishDeviceData
 - uid: QuestNav.Network.INetworkTableConnection.PublishFrameData(System.Int32,System.Double,UnityEngine.Vector3,UnityEngine.Quaternion)
@@ -2028,7 +2020,6 @@ references:
   name: PublishFrameData
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_PublishFrameData_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.PublishFrameData
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.PublishFrameData
   nameWithType: INetworkTableConnection.PublishFrameData
 - uid: QuestNav.Network.INetworkTableConnection.SetCommandResponse(QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse)
@@ -2041,7 +2032,6 @@ references:
   name: SetCommandResponse
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_SetCommandResponse_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.SetCommandResponse
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.SetCommandResponse
   nameWithType: INetworkTableConnection.SetCommandResponse
 - uid: QuestNav.Network.INetworkTableConnection.UpdateTeamNumber(System.Int32)
@@ -2057,7 +2047,6 @@ references:
   name: UpdateTeamNumber
   href: api/QuestNav.Network.INetworkTableConnection.html#QuestNav_Network_INetworkTableConnection_UpdateTeamNumber_
   commentId: Overload:QuestNav.Network.INetworkTableConnection.UpdateTeamNumber
-  isSpec: "True"
   fullName: QuestNav.Network.INetworkTableConnection.UpdateTeamNumber
   nameWithType: INetworkTableConnection.UpdateTeamNumber
 - uid: QuestNav.Protos.Generated
@@ -2082,7 +2071,6 @@ references:
   name: Descriptor
   href: api/QuestNav.Protos.Generated.CommandsReflection.html#QuestNav_Protos_Generated_CommandsReflection_Descriptor_
   commentId: Overload:QuestNav.Protos.Generated.CommandsReflection.Descriptor
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.CommandsReflection.Descriptor
   nameWithType: CommandsReflection.Descriptor
 - uid: QuestNav.Protos.Generated.DataReflection
@@ -2101,7 +2089,6 @@ references:
   name: Descriptor
   href: api/QuestNav.Protos.Generated.DataReflection.html#QuestNav_Protos_Generated_DataReflection_Descriptor_
   commentId: Overload:QuestNav.Protos.Generated.DataReflection.Descriptor
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.DataReflection.Descriptor
   nameWithType: DataReflection.Descriptor
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand
@@ -2132,7 +2119,6 @@ references:
   name: ProtobufQuestNavCommand
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand__ctor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.ProtobufQuestNavCommand
   fullName.vb: QuestNav.Protos.Generated.ProtobufQuestNavCommand.New
@@ -2148,7 +2134,6 @@ references:
   name: CalculateSize
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_CalculateSize_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.CalculateSize
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.CalculateSize
   nameWithType: ProtobufQuestNavCommand.CalculateSize
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.ClearPayload
@@ -2161,7 +2146,6 @@ references:
   name: ClearPayload
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_ClearPayload_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.ClearPayload
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.ClearPayload
   nameWithType: ProtobufQuestNavCommand.ClearPayload
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Clone
@@ -2174,7 +2158,6 @@ references:
   name: Clone
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_Clone_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.Clone
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Clone
   nameWithType: ProtobufQuestNavCommand.Clone
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.CommandId
@@ -2187,7 +2170,6 @@ references:
   name: CommandId
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_CommandId_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.CommandId
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.CommandId
   nameWithType: ProtobufQuestNavCommand.CommandId
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.CommandIdFieldNumber
@@ -2206,7 +2188,6 @@ references:
   name: Descriptor
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_Descriptor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.Descriptor
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Descriptor
   nameWithType: ProtobufQuestNavCommand.Descriptor
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Equals(QuestNav.Protos.Generated.ProtobufQuestNavCommand)
@@ -2228,7 +2209,6 @@ references:
   name: Equals
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_Equals_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.Equals
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Equals
   nameWithType: ProtobufQuestNavCommand.Equals
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.GetHashCode
@@ -2241,7 +2221,6 @@ references:
   name: GetHashCode
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_GetHashCode_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.GetHashCode
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.GetHashCode
   nameWithType: ProtobufQuestNavCommand.GetHashCode
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -2260,7 +2239,6 @@ references:
   name: MergeFrom
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_MergeFrom_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.MergeFrom
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.MergeFrom
   nameWithType: ProtobufQuestNavCommand.MergeFrom
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Parser
@@ -2273,7 +2251,6 @@ references:
   name: Parser
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_Parser_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.Parser
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Parser
   nameWithType: ProtobufQuestNavCommand.Parser
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadCase
@@ -2286,7 +2263,6 @@ references:
   name: PayloadCase
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_PayloadCase_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadCase
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadCase
   nameWithType: ProtobufQuestNavCommand.PayloadCase
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.PayloadOneofCase
@@ -2317,7 +2293,6 @@ references:
   name: PoseResetPayload
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_PoseResetPayload_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.PoseResetPayload
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.PoseResetPayload
   nameWithType: ProtobufQuestNavCommand.PoseResetPayload
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.PoseResetPayloadFieldNumber
@@ -2336,7 +2311,6 @@ references:
   name: ToString
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_ToString_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.ToString
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.ToString
   nameWithType: ProtobufQuestNavCommand.ToString
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Type
@@ -2349,7 +2323,6 @@ references:
   name: Type
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_Type_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.Type
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.Type
   nameWithType: ProtobufQuestNavCommand.Type
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommand.TypeFieldNumber
@@ -2368,7 +2341,6 @@ references:
   name: WriteTo
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommand.html#QuestNav_Protos_Generated_ProtobufQuestNavCommand_WriteTo_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommand.WriteTo
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommand.WriteTo
   nameWithType: ProtobufQuestNavCommand.WriteTo
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse
@@ -2399,7 +2371,6 @@ references:
   name: ProtobufQuestNavCommandResponse
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse__ctor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.ProtobufQuestNavCommandResponse
   fullName.vb: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.New
@@ -2415,7 +2386,6 @@ references:
   name: CalculateSize
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_CalculateSize_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.CalculateSize
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.CalculateSize
   nameWithType: ProtobufQuestNavCommandResponse.CalculateSize
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Clone
@@ -2428,7 +2398,6 @@ references:
   name: Clone
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_Clone_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Clone
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Clone
   nameWithType: ProtobufQuestNavCommandResponse.Clone
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.CommandId
@@ -2441,7 +2410,6 @@ references:
   name: CommandId
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_CommandId_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.CommandId
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.CommandId
   nameWithType: ProtobufQuestNavCommandResponse.CommandId
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.CommandIdFieldNumber
@@ -2460,7 +2428,6 @@ references:
   name: Descriptor
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_Descriptor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Descriptor
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Descriptor
   nameWithType: ProtobufQuestNavCommandResponse.Descriptor
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Equals(QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse)
@@ -2482,7 +2449,6 @@ references:
   name: Equals
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_Equals_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Equals
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Equals
   nameWithType: ProtobufQuestNavCommandResponse.Equals
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.ErrorMessage
@@ -2495,7 +2461,6 @@ references:
   name: ErrorMessage
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_ErrorMessage_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.ErrorMessage
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.ErrorMessage
   nameWithType: ProtobufQuestNavCommandResponse.ErrorMessage
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.ErrorMessageFieldNumber
@@ -2514,7 +2479,6 @@ references:
   name: GetHashCode
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_GetHashCode_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.GetHashCode
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.GetHashCode
   nameWithType: ProtobufQuestNavCommandResponse.GetHashCode
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -2533,7 +2497,6 @@ references:
   name: MergeFrom
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_MergeFrom_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.MergeFrom
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.MergeFrom
   nameWithType: ProtobufQuestNavCommandResponse.MergeFrom
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Parser
@@ -2546,7 +2509,6 @@ references:
   name: Parser
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_Parser_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Parser
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Parser
   nameWithType: ProtobufQuestNavCommandResponse.Parser
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Success
@@ -2559,7 +2521,6 @@ references:
   name: Success
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_Success_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Success
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.Success
   nameWithType: ProtobufQuestNavCommandResponse.Success
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.SuccessFieldNumber
@@ -2578,7 +2539,6 @@ references:
   name: ToString
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_ToString_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.ToString
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.ToString
   nameWithType: ProtobufQuestNavCommandResponse.ToString
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -2591,7 +2551,6 @@ references:
   name: WriteTo
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.html#QuestNav_Protos_Generated_ProtobufQuestNavCommandResponse_WriteTo_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.WriteTo
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavCommandResponse.WriteTo
   nameWithType: ProtobufQuestNavCommandResponse.WriteTo
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData
@@ -2622,7 +2581,6 @@ references:
   name: ProtobufQuestNavDeviceData
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData__ctor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.ProtobufQuestNavDeviceData
   fullName.vb: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.New
@@ -2638,7 +2596,6 @@ references:
   name: BatteryPercent
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_BatteryPercent_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.BatteryPercent
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.BatteryPercent
   nameWithType: ProtobufQuestNavDeviceData.BatteryPercent
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.BatteryPercentFieldNumber
@@ -2657,7 +2614,6 @@ references:
   name: CalculateSize
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_CalculateSize_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CalculateSize
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CalculateSize
   nameWithType: ProtobufQuestNavDeviceData.CalculateSize
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Clone
@@ -2670,7 +2626,6 @@ references:
   name: Clone
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_Clone_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Clone
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Clone
   nameWithType: ProtobufQuestNavDeviceData.Clone
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CurrentlyTracking
@@ -2683,7 +2638,6 @@ references:
   name: CurrentlyTracking
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_CurrentlyTracking_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CurrentlyTracking
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CurrentlyTracking
   nameWithType: ProtobufQuestNavDeviceData.CurrentlyTracking
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.CurrentlyTrackingFieldNumber
@@ -2702,7 +2656,6 @@ references:
   name: Descriptor
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_Descriptor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Descriptor
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Descriptor
   nameWithType: ProtobufQuestNavDeviceData.Descriptor
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Equals(QuestNav.Protos.Generated.ProtobufQuestNavDeviceData)
@@ -2724,7 +2677,6 @@ references:
   name: Equals
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_Equals_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Equals
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Equals
   nameWithType: ProtobufQuestNavDeviceData.Equals
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.GetHashCode
@@ -2737,7 +2689,6 @@ references:
   name: GetHashCode
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_GetHashCode_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.GetHashCode
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.GetHashCode
   nameWithType: ProtobufQuestNavDeviceData.GetHashCode
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -2756,7 +2707,6 @@ references:
   name: MergeFrom
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_MergeFrom_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.MergeFrom
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.MergeFrom
   nameWithType: ProtobufQuestNavDeviceData.MergeFrom
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Parser
@@ -2769,7 +2719,6 @@ references:
   name: Parser
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_Parser_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Parser
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.Parser
   nameWithType: ProtobufQuestNavDeviceData.Parser
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.ToString
@@ -2782,7 +2731,6 @@ references:
   name: ToString
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_ToString_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.ToString
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.ToString
   nameWithType: ProtobufQuestNavDeviceData.ToString
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.TrackingLostCounter
@@ -2795,7 +2743,6 @@ references:
   name: TrackingLostCounter
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_TrackingLostCounter_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.TrackingLostCounter
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.TrackingLostCounter
   nameWithType: ProtobufQuestNavDeviceData.TrackingLostCounter
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.TrackingLostCounterFieldNumber
@@ -2814,7 +2761,6 @@ references:
   name: WriteTo
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.html#QuestNav_Protos_Generated_ProtobufQuestNavDeviceData_WriteTo_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.WriteTo
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavDeviceData.WriteTo
   nameWithType: ProtobufQuestNavDeviceData.WriteTo
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData
@@ -2845,7 +2791,6 @@ references:
   name: ProtobufQuestNavFrameData
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData__ctor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.ProtobufQuestNavFrameData
   fullName.vb: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.New
@@ -2861,7 +2806,6 @@ references:
   name: CalculateSize
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_CalculateSize_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.CalculateSize
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.CalculateSize
   nameWithType: ProtobufQuestNavFrameData.CalculateSize
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Clone
@@ -2874,7 +2818,6 @@ references:
   name: Clone
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Clone_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Clone
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Clone
   nameWithType: ProtobufQuestNavFrameData.Clone
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Descriptor
@@ -2887,7 +2830,6 @@ references:
   name: Descriptor
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Descriptor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Descriptor
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Descriptor
   nameWithType: ProtobufQuestNavFrameData.Descriptor
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Equals(QuestNav.Protos.Generated.ProtobufQuestNavFrameData)
@@ -2909,7 +2851,6 @@ references:
   name: Equals
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Equals_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Equals
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Equals
   nameWithType: ProtobufQuestNavFrameData.Equals
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.FrameCount
@@ -2922,7 +2863,6 @@ references:
   name: FrameCount
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_FrameCount_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.FrameCount
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.FrameCount
   nameWithType: ProtobufQuestNavFrameData.FrameCount
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.FrameCountFieldNumber
@@ -2941,7 +2881,6 @@ references:
   name: GetHashCode
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_GetHashCode_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.GetHashCode
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.GetHashCode
   nameWithType: ProtobufQuestNavFrameData.GetHashCode
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -2960,7 +2899,6 @@ references:
   name: MergeFrom
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_MergeFrom_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.MergeFrom
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.MergeFrom
   nameWithType: ProtobufQuestNavFrameData.MergeFrom
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Parser
@@ -2973,7 +2911,6 @@ references:
   name: Parser
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Parser_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Parser
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Parser
   nameWithType: ProtobufQuestNavFrameData.Parser
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Pose2D
@@ -2986,7 +2923,6 @@ references:
   name: Pose2D
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Pose2D_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Pose2D
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Pose2D
   nameWithType: ProtobufQuestNavFrameData.Pose2D
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Pose2DFieldNumber
@@ -3005,7 +2941,6 @@ references:
   name: Timestamp
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_Timestamp_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Timestamp
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.Timestamp
   nameWithType: ProtobufQuestNavFrameData.Timestamp
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.TimestampFieldNumber
@@ -3024,7 +2959,6 @@ references:
   name: ToString
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_ToString_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.ToString
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.ToString
   nameWithType: ProtobufQuestNavFrameData.ToString
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -3037,7 +2971,6 @@ references:
   name: WriteTo
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavFrameData.html#QuestNav_Protos_Generated_ProtobufQuestNavFrameData_WriteTo_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavFrameData.WriteTo
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavFrameData.WriteTo
   nameWithType: ProtobufQuestNavFrameData.WriteTo
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload
@@ -3068,7 +3001,6 @@ references:
   name: ProtobufQuestNavPoseResetPayload
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload__ctor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.ProtobufQuestNavPoseResetPayload
   fullName.vb: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.New
@@ -3084,7 +3016,6 @@ references:
   name: CalculateSize
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_CalculateSize_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.CalculateSize
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.CalculateSize
   nameWithType: ProtobufQuestNavPoseResetPayload.CalculateSize
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Clone
@@ -3097,7 +3028,6 @@ references:
   name: Clone
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_Clone_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Clone
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Clone
   nameWithType: ProtobufQuestNavPoseResetPayload.Clone
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Descriptor
@@ -3110,7 +3040,6 @@ references:
   name: Descriptor
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_Descriptor_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Descriptor
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Descriptor
   nameWithType: ProtobufQuestNavPoseResetPayload.Descriptor
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Equals(QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload)
@@ -3132,7 +3061,6 @@ references:
   name: Equals
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_Equals_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Equals
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Equals
   nameWithType: ProtobufQuestNavPoseResetPayload.Equals
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.GetHashCode
@@ -3145,7 +3073,6 @@ references:
   name: GetHashCode
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_GetHashCode_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.GetHashCode
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.GetHashCode
   nameWithType: ProtobufQuestNavPoseResetPayload.GetHashCode
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -3164,7 +3091,6 @@ references:
   name: MergeFrom
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_MergeFrom_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.MergeFrom
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.MergeFrom
   nameWithType: ProtobufQuestNavPoseResetPayload.MergeFrom
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Parser
@@ -3177,7 +3103,6 @@ references:
   name: Parser
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_Parser_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Parser
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.Parser
   nameWithType: ProtobufQuestNavPoseResetPayload.Parser
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.TargetPose
@@ -3190,7 +3115,6 @@ references:
   name: TargetPose
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_TargetPose_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.TargetPose
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.TargetPose
   nameWithType: ProtobufQuestNavPoseResetPayload.TargetPose
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.TargetPoseFieldNumber
@@ -3209,7 +3133,6 @@ references:
   name: ToString
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_ToString_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.ToString
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.ToString
   nameWithType: ProtobufQuestNavPoseResetPayload.ToString
 - uid: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -3222,7 +3145,6 @@ references:
   name: WriteTo
   href: api/QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.html#QuestNav_Protos_Generated_ProtobufQuestNavPoseResetPayload_WriteTo_
   commentId: Overload:QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.WriteTo
-  isSpec: "True"
   fullName: QuestNav.Protos.Generated.ProtobufQuestNavPoseResetPayload.WriteTo
   nameWithType: ProtobufQuestNavPoseResetPayload.WriteTo
 - uid: QuestNav.Protos.Generated.QuestNavCommandType
@@ -3265,7 +3187,6 @@ references:
   name: UIPeriodic
   href: api/QuestNav.UI.IUIManager.html#QuestNav_UI_IUIManager_UIPeriodic_
   commentId: Overload:QuestNav.UI.IUIManager.UIPeriodic
-  isSpec: "True"
   fullName: QuestNav.UI.IUIManager.UIPeriodic
   nameWithType: IUIManager.UIPeriodic
 - uid: QuestNav.UI.UIManager
@@ -3287,7 +3208,6 @@ references:
   name: UIManager
   href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager__ctor_
   commentId: Overload:QuestNav.UI.UIManager.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: QuestNav.UI.UIManager.UIManager
   fullName.vb: QuestNav.UI.UIManager.New
@@ -3303,7 +3223,6 @@ references:
   name: TeamNumber
   href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager_TeamNumber_
   commentId: Overload:QuestNav.UI.UIManager.TeamNumber
-  isSpec: "True"
   fullName: QuestNav.UI.UIManager.TeamNumber
   nameWithType: UIManager.TeamNumber
 - uid: QuestNav.UI.UIManager.UIPeriodic
@@ -3316,7 +3235,6 @@ references:
   name: UIPeriodic
   href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager_UIPeriodic_
   commentId: Overload:QuestNav.UI.UIManager.UIPeriodic
-  isSpec: "True"
   fullName: QuestNav.UI.UIManager.UIPeriodic
   nameWithType: UIManager.UIPeriodic
 - uid: QuestNav.Utils
@@ -3341,7 +3259,6 @@ references:
   name: FrcToUnity
   href: api/QuestNav.Utils.Conversions.html#QuestNav_Utils_Conversions_FrcToUnity_
   commentId: Overload:QuestNav.Utils.Conversions.FrcToUnity
-  isSpec: "True"
   fullName: QuestNav.Utils.Conversions.FrcToUnity
   nameWithType: Conversions.FrcToUnity
 - uid: QuestNav.Utils.Conversions.UnityToFrc(UnityEngine.Vector3,UnityEngine.Quaternion)
@@ -3354,7 +3271,6 @@ references:
   name: UnityToFrc
   href: api/QuestNav.Utils.Conversions.html#QuestNav_Utils_Conversions_UnityToFrc_
   commentId: Overload:QuestNav.Utils.Conversions.UnityToFrc
-  isSpec: "True"
   fullName: QuestNav.Utils.Conversions.UnityToFrc
   nameWithType: Conversions.UnityToFrc
 - uid: QuestNav.Utils.QuaternionExtensions
@@ -3373,7 +3289,6 @@ references:
   name: ToArray
   href: api/QuestNav.Utils.QuaternionExtensions.html#QuestNav_Utils_QuaternionExtensions_ToArray_
   commentId: Overload:QuestNav.Utils.QuaternionExtensions.ToArray
-  isSpec: "True"
   fullName: QuestNav.Utils.QuaternionExtensions.ToArray
   nameWithType: QuaternionExtensions.ToArray
 - uid: QuestNav.Utils.QueuedLogger
@@ -3392,7 +3307,6 @@ references:
   name: Flush
   href: api/QuestNav.Utils.QueuedLogger.html#QuestNav_Utils_QueuedLogger_Flush_
   commentId: Overload:QuestNav.Utils.QueuedLogger.Flush
-  isSpec: "True"
   fullName: QuestNav.Utils.QueuedLogger.Flush
   nameWithType: QueuedLogger.Flush
 - uid: QuestNav.Utils.QueuedLogger.Log(System.String,QuestNav.Utils.QueuedLogger.LogLevel,System.String)
@@ -3408,7 +3322,6 @@ references:
   name: Log
   href: api/QuestNav.Utils.QueuedLogger.html#QuestNav_Utils_QueuedLogger_Log_
   commentId: Overload:QuestNav.Utils.QueuedLogger.Log
-  isSpec: "True"
   fullName: QuestNav.Utils.QueuedLogger.Log
   nameWithType: QueuedLogger.Log
 - uid: QuestNav.Utils.QueuedLogger.LogError(System.String,System.String)
@@ -3424,7 +3337,6 @@ references:
   name: LogError
   href: api/QuestNav.Utils.QueuedLogger.html#QuestNav_Utils_QueuedLogger_LogError_
   commentId: Overload:QuestNav.Utils.QueuedLogger.LogError
-  isSpec: "True"
   fullName: QuestNav.Utils.QueuedLogger.LogError
   nameWithType: QueuedLogger.LogError
 - uid: QuestNav.Utils.QueuedLogger.LogException(System.Exception,System.String)
@@ -3449,7 +3361,6 @@ references:
   name: LogException
   href: api/QuestNav.Utils.QueuedLogger.html#QuestNav_Utils_QueuedLogger_LogException_
   commentId: Overload:QuestNav.Utils.QueuedLogger.LogException
-  isSpec: "True"
   fullName: QuestNav.Utils.QueuedLogger.LogException
   nameWithType: QueuedLogger.LogException
 - uid: QuestNav.Utils.QueuedLogger.LogLevel
@@ -3489,7 +3400,6 @@ references:
   name: LogWarning
   href: api/QuestNav.Utils.QueuedLogger.html#QuestNav_Utils_QueuedLogger_LogWarning_
   commentId: Overload:QuestNav.Utils.QueuedLogger.LogWarning
-  isSpec: "True"
   fullName: QuestNav.Utils.QueuedLogger.LogWarning
   nameWithType: QueuedLogger.LogWarning
 - uid: QuestNav.Utils.VectorExtensions
@@ -3508,7 +3418,6 @@ references:
   name: ToArray
   href: api/QuestNav.Utils.VectorExtensions.html#QuestNav_Utils_VectorExtensions_ToArray_
   commentId: Overload:QuestNav.Utils.VectorExtensions.ToArray
-  isSpec: "True"
   fullName: QuestNav.Utils.VectorExtensions.ToArray
   nameWithType: VectorExtensions.ToArray
 - uid: Wpi.Proto
@@ -3533,7 +3442,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.Geometry2DReflection.html#Wpi_Proto_Geometry2DReflection_Descriptor_
   commentId: Overload:Wpi.Proto.Geometry2DReflection.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.Geometry2DReflection.Descriptor
   nameWithType: Geometry2DReflection.Descriptor
 - uid: Wpi.Proto.Geometry3DReflection
@@ -3552,7 +3460,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.Geometry3DReflection.html#Wpi_Proto_Geometry3DReflection_Descriptor_
   commentId: Overload:Wpi.Proto.Geometry3DReflection.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.Geometry3DReflection.Descriptor
   nameWithType: Geometry3DReflection.Descriptor
 - uid: Wpi.Proto.ProtobufEllipse2d
@@ -3583,7 +3490,6 @@ references:
   name: ProtobufEllipse2d
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufEllipse2d.ProtobufEllipse2d
   fullName.vb: Wpi.Proto.ProtobufEllipse2d.New
@@ -3599,7 +3505,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.CalculateSize
   nameWithType: ProtobufEllipse2d.CalculateSize
 - uid: Wpi.Proto.ProtobufEllipse2d.Center
@@ -3612,7 +3517,6 @@ references:
   name: Center
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_Center_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.Center
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.Center
   nameWithType: ProtobufEllipse2d.Center
 - uid: Wpi.Proto.ProtobufEllipse2d.CenterFieldNumber
@@ -3631,7 +3535,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.Clone
   nameWithType: ProtobufEllipse2d.Clone
 - uid: Wpi.Proto.ProtobufEllipse2d.Descriptor
@@ -3644,7 +3547,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.Descriptor
   nameWithType: ProtobufEllipse2d.Descriptor
 - uid: Wpi.Proto.ProtobufEllipse2d.Equals(System.Object)
@@ -3666,7 +3568,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.Equals
   nameWithType: ProtobufEllipse2d.Equals
 - uid: Wpi.Proto.ProtobufEllipse2d.GetHashCode
@@ -3679,7 +3580,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.GetHashCode
   nameWithType: ProtobufEllipse2d.GetHashCode
 - uid: Wpi.Proto.ProtobufEllipse2d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -3698,7 +3598,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.MergeFrom
   nameWithType: ProtobufEllipse2d.MergeFrom
 - uid: Wpi.Proto.ProtobufEllipse2d.Parser
@@ -3711,7 +3610,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.Parser
   nameWithType: ProtobufEllipse2d.Parser
 - uid: Wpi.Proto.ProtobufEllipse2d.ToString
@@ -3724,7 +3622,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.ToString
   nameWithType: ProtobufEllipse2d.ToString
 - uid: Wpi.Proto.ProtobufEllipse2d.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -3737,7 +3634,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.WriteTo
   nameWithType: ProtobufEllipse2d.WriteTo
 - uid: Wpi.Proto.ProtobufEllipse2d.XSemiAxis
@@ -3750,7 +3646,6 @@ references:
   name: XSemiAxis
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_XSemiAxis_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.XSemiAxis
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.XSemiAxis
   nameWithType: ProtobufEllipse2d.XSemiAxis
 - uid: Wpi.Proto.ProtobufEllipse2d.XSemiAxisFieldNumber
@@ -3769,7 +3664,6 @@ references:
   name: YSemiAxis
   href: api/Wpi.Proto.ProtobufEllipse2d.html#Wpi_Proto_ProtobufEllipse2d_YSemiAxis_
   commentId: Overload:Wpi.Proto.ProtobufEllipse2d.YSemiAxis
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufEllipse2d.YSemiAxis
   nameWithType: ProtobufEllipse2d.YSemiAxis
 - uid: Wpi.Proto.ProtobufEllipse2d.YSemiAxisFieldNumber
@@ -3806,7 +3700,6 @@ references:
   name: ProtobufPose2d
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufPose2d.ProtobufPose2d
   fullName.vb: Wpi.Proto.ProtobufPose2d.New
@@ -3822,7 +3715,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.CalculateSize
   nameWithType: ProtobufPose2d.CalculateSize
 - uid: Wpi.Proto.ProtobufPose2d.Clone
@@ -3835,7 +3727,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.Clone
   nameWithType: ProtobufPose2d.Clone
 - uid: Wpi.Proto.ProtobufPose2d.Descriptor
@@ -3848,7 +3739,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.Descriptor
   nameWithType: ProtobufPose2d.Descriptor
 - uid: Wpi.Proto.ProtobufPose2d.Equals(System.Object)
@@ -3870,7 +3760,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.Equals
   nameWithType: ProtobufPose2d.Equals
 - uid: Wpi.Proto.ProtobufPose2d.GetHashCode
@@ -3883,7 +3772,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.GetHashCode
   nameWithType: ProtobufPose2d.GetHashCode
 - uid: Wpi.Proto.ProtobufPose2d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -3902,7 +3790,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.MergeFrom
   nameWithType: ProtobufPose2d.MergeFrom
 - uid: Wpi.Proto.ProtobufPose2d.Parser
@@ -3915,7 +3802,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.Parser
   nameWithType: ProtobufPose2d.Parser
 - uid: Wpi.Proto.ProtobufPose2d.Rotation
@@ -3928,7 +3814,6 @@ references:
   name: Rotation
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_Rotation_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.Rotation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.Rotation
   nameWithType: ProtobufPose2d.Rotation
 - uid: Wpi.Proto.ProtobufPose2d.RotationFieldNumber
@@ -3947,7 +3832,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.ToString
   nameWithType: ProtobufPose2d.ToString
 - uid: Wpi.Proto.ProtobufPose2d.Translation
@@ -3960,7 +3844,6 @@ references:
   name: Translation
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_Translation_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.Translation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.Translation
   nameWithType: ProtobufPose2d.Translation
 - uid: Wpi.Proto.ProtobufPose2d.TranslationFieldNumber
@@ -3979,7 +3862,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufPose2d.html#Wpi_Proto_ProtobufPose2d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufPose2d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose2d.WriteTo
   nameWithType: ProtobufPose2d.WriteTo
 - uid: Wpi.Proto.ProtobufPose3d
@@ -4010,7 +3892,6 @@ references:
   name: ProtobufPose3d
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufPose3d.ProtobufPose3d
   fullName.vb: Wpi.Proto.ProtobufPose3d.New
@@ -4026,7 +3907,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.CalculateSize
   nameWithType: ProtobufPose3d.CalculateSize
 - uid: Wpi.Proto.ProtobufPose3d.Clone
@@ -4039,7 +3919,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.Clone
   nameWithType: ProtobufPose3d.Clone
 - uid: Wpi.Proto.ProtobufPose3d.Descriptor
@@ -4052,7 +3931,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.Descriptor
   nameWithType: ProtobufPose3d.Descriptor
 - uid: Wpi.Proto.ProtobufPose3d.Equals(System.Object)
@@ -4074,7 +3952,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.Equals
   nameWithType: ProtobufPose3d.Equals
 - uid: Wpi.Proto.ProtobufPose3d.GetHashCode
@@ -4087,7 +3964,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.GetHashCode
   nameWithType: ProtobufPose3d.GetHashCode
 - uid: Wpi.Proto.ProtobufPose3d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -4106,7 +3982,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.MergeFrom
   nameWithType: ProtobufPose3d.MergeFrom
 - uid: Wpi.Proto.ProtobufPose3d.Parser
@@ -4119,7 +3994,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.Parser
   nameWithType: ProtobufPose3d.Parser
 - uid: Wpi.Proto.ProtobufPose3d.Rotation
@@ -4132,7 +4006,6 @@ references:
   name: Rotation
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_Rotation_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.Rotation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.Rotation
   nameWithType: ProtobufPose3d.Rotation
 - uid: Wpi.Proto.ProtobufPose3d.RotationFieldNumber
@@ -4151,7 +4024,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.ToString
   nameWithType: ProtobufPose3d.ToString
 - uid: Wpi.Proto.ProtobufPose3d.Translation
@@ -4164,7 +4036,6 @@ references:
   name: Translation
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_Translation_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.Translation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.Translation
   nameWithType: ProtobufPose3d.Translation
 - uid: Wpi.Proto.ProtobufPose3d.TranslationFieldNumber
@@ -4183,7 +4054,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufPose3d.html#Wpi_Proto_ProtobufPose3d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufPose3d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufPose3d.WriteTo
   nameWithType: ProtobufPose3d.WriteTo
 - uid: Wpi.Proto.ProtobufQuaternion
@@ -4214,7 +4084,6 @@ references:
   name: ProtobufQuaternion
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion__ctor_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufQuaternion.ProtobufQuaternion
   fullName.vb: Wpi.Proto.ProtobufQuaternion.New
@@ -4230,7 +4099,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.CalculateSize
   nameWithType: ProtobufQuaternion.CalculateSize
 - uid: Wpi.Proto.ProtobufQuaternion.Clone
@@ -4243,7 +4111,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_Clone_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.Clone
   nameWithType: ProtobufQuaternion.Clone
 - uid: Wpi.Proto.ProtobufQuaternion.Descriptor
@@ -4256,7 +4123,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.Descriptor
   nameWithType: ProtobufQuaternion.Descriptor
 - uid: Wpi.Proto.ProtobufQuaternion.Equals(System.Object)
@@ -4278,7 +4144,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_Equals_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.Equals
   nameWithType: ProtobufQuaternion.Equals
 - uid: Wpi.Proto.ProtobufQuaternion.GetHashCode
@@ -4291,7 +4156,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.GetHashCode
   nameWithType: ProtobufQuaternion.GetHashCode
 - uid: Wpi.Proto.ProtobufQuaternion.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -4310,7 +4174,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.MergeFrom
   nameWithType: ProtobufQuaternion.MergeFrom
 - uid: Wpi.Proto.ProtobufQuaternion.Parser
@@ -4323,7 +4186,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_Parser_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.Parser
   nameWithType: ProtobufQuaternion.Parser
 - uid: Wpi.Proto.ProtobufQuaternion.ToString
@@ -4336,7 +4198,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_ToString_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.ToString
   nameWithType: ProtobufQuaternion.ToString
 - uid: Wpi.Proto.ProtobufQuaternion.W
@@ -4349,7 +4210,6 @@ references:
   name: W
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_W_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.W
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.W
   nameWithType: ProtobufQuaternion.W
 - uid: Wpi.Proto.ProtobufQuaternion.WFieldNumber
@@ -4368,7 +4228,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.WriteTo
   nameWithType: ProtobufQuaternion.WriteTo
 - uid: Wpi.Proto.ProtobufQuaternion.X
@@ -4381,7 +4240,6 @@ references:
   name: X
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_X_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.X
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.X
   nameWithType: ProtobufQuaternion.X
 - uid: Wpi.Proto.ProtobufQuaternion.XFieldNumber
@@ -4400,7 +4258,6 @@ references:
   name: Y
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_Y_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.Y
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.Y
   nameWithType: ProtobufQuaternion.Y
 - uid: Wpi.Proto.ProtobufQuaternion.YFieldNumber
@@ -4419,7 +4276,6 @@ references:
   name: Z
   href: api/Wpi.Proto.ProtobufQuaternion.html#Wpi_Proto_ProtobufQuaternion_Z_
   commentId: Overload:Wpi.Proto.ProtobufQuaternion.Z
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufQuaternion.Z
   nameWithType: ProtobufQuaternion.Z
 - uid: Wpi.Proto.ProtobufQuaternion.ZFieldNumber
@@ -4456,7 +4312,6 @@ references:
   name: ProtobufRectangle2d
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufRectangle2d.ProtobufRectangle2d
   fullName.vb: Wpi.Proto.ProtobufRectangle2d.New
@@ -4472,7 +4327,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.CalculateSize
   nameWithType: ProtobufRectangle2d.CalculateSize
 - uid: Wpi.Proto.ProtobufRectangle2d.Center
@@ -4485,7 +4339,6 @@ references:
   name: Center
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_Center_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.Center
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.Center
   nameWithType: ProtobufRectangle2d.Center
 - uid: Wpi.Proto.ProtobufRectangle2d.CenterFieldNumber
@@ -4504,7 +4357,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.Clone
   nameWithType: ProtobufRectangle2d.Clone
 - uid: Wpi.Proto.ProtobufRectangle2d.Descriptor
@@ -4517,7 +4369,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.Descriptor
   nameWithType: ProtobufRectangle2d.Descriptor
 - uid: Wpi.Proto.ProtobufRectangle2d.Equals(System.Object)
@@ -4539,7 +4390,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.Equals
   nameWithType: ProtobufRectangle2d.Equals
 - uid: Wpi.Proto.ProtobufRectangle2d.GetHashCode
@@ -4552,7 +4402,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.GetHashCode
   nameWithType: ProtobufRectangle2d.GetHashCode
 - uid: Wpi.Proto.ProtobufRectangle2d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -4571,7 +4420,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.MergeFrom
   nameWithType: ProtobufRectangle2d.MergeFrom
 - uid: Wpi.Proto.ProtobufRectangle2d.Parser
@@ -4584,7 +4432,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.Parser
   nameWithType: ProtobufRectangle2d.Parser
 - uid: Wpi.Proto.ProtobufRectangle2d.ToString
@@ -4597,7 +4444,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.ToString
   nameWithType: ProtobufRectangle2d.ToString
 - uid: Wpi.Proto.ProtobufRectangle2d.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -4610,7 +4456,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.WriteTo
   nameWithType: ProtobufRectangle2d.WriteTo
 - uid: Wpi.Proto.ProtobufRectangle2d.XWidth
@@ -4623,7 +4468,6 @@ references:
   name: XWidth
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_XWidth_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.XWidth
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.XWidth
   nameWithType: ProtobufRectangle2d.XWidth
 - uid: Wpi.Proto.ProtobufRectangle2d.XWidthFieldNumber
@@ -4642,7 +4486,6 @@ references:
   name: YWidth
   href: api/Wpi.Proto.ProtobufRectangle2d.html#Wpi_Proto_ProtobufRectangle2d_YWidth_
   commentId: Overload:Wpi.Proto.ProtobufRectangle2d.YWidth
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRectangle2d.YWidth
   nameWithType: ProtobufRectangle2d.YWidth
 - uid: Wpi.Proto.ProtobufRectangle2d.YWidthFieldNumber
@@ -4679,7 +4522,6 @@ references:
   name: ProtobufRotation2d
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufRotation2d.ProtobufRotation2d
   fullName.vb: Wpi.Proto.ProtobufRotation2d.New
@@ -4695,7 +4537,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.CalculateSize
   nameWithType: ProtobufRotation2d.CalculateSize
 - uid: Wpi.Proto.ProtobufRotation2d.Clone
@@ -4708,7 +4549,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.Clone
   nameWithType: ProtobufRotation2d.Clone
 - uid: Wpi.Proto.ProtobufRotation2d.Descriptor
@@ -4721,7 +4561,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.Descriptor
   nameWithType: ProtobufRotation2d.Descriptor
 - uid: Wpi.Proto.ProtobufRotation2d.Equals(System.Object)
@@ -4743,7 +4582,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.Equals
   nameWithType: ProtobufRotation2d.Equals
 - uid: Wpi.Proto.ProtobufRotation2d.GetHashCode
@@ -4756,7 +4594,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.GetHashCode
   nameWithType: ProtobufRotation2d.GetHashCode
 - uid: Wpi.Proto.ProtobufRotation2d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -4775,7 +4612,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.MergeFrom
   nameWithType: ProtobufRotation2d.MergeFrom
 - uid: Wpi.Proto.ProtobufRotation2d.Parser
@@ -4788,7 +4624,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.Parser
   nameWithType: ProtobufRotation2d.Parser
 - uid: Wpi.Proto.ProtobufRotation2d.ToString
@@ -4801,7 +4636,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.ToString
   nameWithType: ProtobufRotation2d.ToString
 - uid: Wpi.Proto.ProtobufRotation2d.Value
@@ -4814,7 +4648,6 @@ references:
   name: Value
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_Value_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.Value
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.Value
   nameWithType: ProtobufRotation2d.Value
 - uid: Wpi.Proto.ProtobufRotation2d.ValueFieldNumber
@@ -4833,7 +4666,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufRotation2d.html#Wpi_Proto_ProtobufRotation2d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufRotation2d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation2d.WriteTo
   nameWithType: ProtobufRotation2d.WriteTo
 - uid: Wpi.Proto.ProtobufRotation3d
@@ -4864,7 +4696,6 @@ references:
   name: ProtobufRotation3d
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufRotation3d.ProtobufRotation3d
   fullName.vb: Wpi.Proto.ProtobufRotation3d.New
@@ -4880,7 +4711,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.CalculateSize
   nameWithType: ProtobufRotation3d.CalculateSize
 - uid: Wpi.Proto.ProtobufRotation3d.Clone
@@ -4893,7 +4723,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.Clone
   nameWithType: ProtobufRotation3d.Clone
 - uid: Wpi.Proto.ProtobufRotation3d.Descriptor
@@ -4906,7 +4735,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.Descriptor
   nameWithType: ProtobufRotation3d.Descriptor
 - uid: Wpi.Proto.ProtobufRotation3d.Equals(System.Object)
@@ -4928,7 +4756,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.Equals
   nameWithType: ProtobufRotation3d.Equals
 - uid: Wpi.Proto.ProtobufRotation3d.GetHashCode
@@ -4941,7 +4768,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.GetHashCode
   nameWithType: ProtobufRotation3d.GetHashCode
 - uid: Wpi.Proto.ProtobufRotation3d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -4960,7 +4786,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.MergeFrom
   nameWithType: ProtobufRotation3d.MergeFrom
 - uid: Wpi.Proto.ProtobufRotation3d.Parser
@@ -4973,7 +4798,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.Parser
   nameWithType: ProtobufRotation3d.Parser
 - uid: Wpi.Proto.ProtobufRotation3d.Q
@@ -4986,7 +4810,6 @@ references:
   name: Q
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_Q_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.Q
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.Q
   nameWithType: ProtobufRotation3d.Q
 - uid: Wpi.Proto.ProtobufRotation3d.QFieldNumber
@@ -5005,7 +4828,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.ToString
   nameWithType: ProtobufRotation3d.ToString
 - uid: Wpi.Proto.ProtobufRotation3d.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -5018,7 +4840,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufRotation3d.html#Wpi_Proto_ProtobufRotation3d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufRotation3d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufRotation3d.WriteTo
   nameWithType: ProtobufRotation3d.WriteTo
 - uid: Wpi.Proto.ProtobufTransform2d
@@ -5049,7 +4870,6 @@ references:
   name: ProtobufTransform2d
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufTransform2d.ProtobufTransform2d
   fullName.vb: Wpi.Proto.ProtobufTransform2d.New
@@ -5065,7 +4885,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.CalculateSize
   nameWithType: ProtobufTransform2d.CalculateSize
 - uid: Wpi.Proto.ProtobufTransform2d.Clone
@@ -5078,7 +4897,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.Clone
   nameWithType: ProtobufTransform2d.Clone
 - uid: Wpi.Proto.ProtobufTransform2d.Descriptor
@@ -5091,7 +4909,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.Descriptor
   nameWithType: ProtobufTransform2d.Descriptor
 - uid: Wpi.Proto.ProtobufTransform2d.Equals(System.Object)
@@ -5113,7 +4930,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.Equals
   nameWithType: ProtobufTransform2d.Equals
 - uid: Wpi.Proto.ProtobufTransform2d.GetHashCode
@@ -5126,7 +4942,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.GetHashCode
   nameWithType: ProtobufTransform2d.GetHashCode
 - uid: Wpi.Proto.ProtobufTransform2d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -5145,7 +4960,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.MergeFrom
   nameWithType: ProtobufTransform2d.MergeFrom
 - uid: Wpi.Proto.ProtobufTransform2d.Parser
@@ -5158,7 +4972,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.Parser
   nameWithType: ProtobufTransform2d.Parser
 - uid: Wpi.Proto.ProtobufTransform2d.Rotation
@@ -5171,7 +4984,6 @@ references:
   name: Rotation
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_Rotation_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.Rotation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.Rotation
   nameWithType: ProtobufTransform2d.Rotation
 - uid: Wpi.Proto.ProtobufTransform2d.RotationFieldNumber
@@ -5190,7 +5002,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.ToString
   nameWithType: ProtobufTransform2d.ToString
 - uid: Wpi.Proto.ProtobufTransform2d.Translation
@@ -5203,7 +5014,6 @@ references:
   name: Translation
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_Translation_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.Translation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.Translation
   nameWithType: ProtobufTransform2d.Translation
 - uid: Wpi.Proto.ProtobufTransform2d.TranslationFieldNumber
@@ -5222,7 +5032,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufTransform2d.html#Wpi_Proto_ProtobufTransform2d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufTransform2d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform2d.WriteTo
   nameWithType: ProtobufTransform2d.WriteTo
 - uid: Wpi.Proto.ProtobufTransform3d
@@ -5253,7 +5062,6 @@ references:
   name: ProtobufTransform3d
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufTransform3d.ProtobufTransform3d
   fullName.vb: Wpi.Proto.ProtobufTransform3d.New
@@ -5269,7 +5077,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.CalculateSize
   nameWithType: ProtobufTransform3d.CalculateSize
 - uid: Wpi.Proto.ProtobufTransform3d.Clone
@@ -5282,7 +5089,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.Clone
   nameWithType: ProtobufTransform3d.Clone
 - uid: Wpi.Proto.ProtobufTransform3d.Descriptor
@@ -5295,7 +5101,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.Descriptor
   nameWithType: ProtobufTransform3d.Descriptor
 - uid: Wpi.Proto.ProtobufTransform3d.Equals(System.Object)
@@ -5317,7 +5122,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.Equals
   nameWithType: ProtobufTransform3d.Equals
 - uid: Wpi.Proto.ProtobufTransform3d.GetHashCode
@@ -5330,7 +5134,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.GetHashCode
   nameWithType: ProtobufTransform3d.GetHashCode
 - uid: Wpi.Proto.ProtobufTransform3d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -5349,7 +5152,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.MergeFrom
   nameWithType: ProtobufTransform3d.MergeFrom
 - uid: Wpi.Proto.ProtobufTransform3d.Parser
@@ -5362,7 +5164,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.Parser
   nameWithType: ProtobufTransform3d.Parser
 - uid: Wpi.Proto.ProtobufTransform3d.Rotation
@@ -5375,7 +5176,6 @@ references:
   name: Rotation
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_Rotation_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.Rotation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.Rotation
   nameWithType: ProtobufTransform3d.Rotation
 - uid: Wpi.Proto.ProtobufTransform3d.RotationFieldNumber
@@ -5394,7 +5194,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.ToString
   nameWithType: ProtobufTransform3d.ToString
 - uid: Wpi.Proto.ProtobufTransform3d.Translation
@@ -5407,7 +5206,6 @@ references:
   name: Translation
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_Translation_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.Translation
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.Translation
   nameWithType: ProtobufTransform3d.Translation
 - uid: Wpi.Proto.ProtobufTransform3d.TranslationFieldNumber
@@ -5426,7 +5224,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufTransform3d.html#Wpi_Proto_ProtobufTransform3d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufTransform3d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTransform3d.WriteTo
   nameWithType: ProtobufTransform3d.WriteTo
 - uid: Wpi.Proto.ProtobufTranslation2d
@@ -5457,7 +5254,6 @@ references:
   name: ProtobufTranslation2d
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufTranslation2d.ProtobufTranslation2d
   fullName.vb: Wpi.Proto.ProtobufTranslation2d.New
@@ -5473,7 +5269,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.CalculateSize
   nameWithType: ProtobufTranslation2d.CalculateSize
 - uid: Wpi.Proto.ProtobufTranslation2d.Clone
@@ -5486,7 +5281,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.Clone
   nameWithType: ProtobufTranslation2d.Clone
 - uid: Wpi.Proto.ProtobufTranslation2d.Descriptor
@@ -5499,7 +5293,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.Descriptor
   nameWithType: ProtobufTranslation2d.Descriptor
 - uid: Wpi.Proto.ProtobufTranslation2d.Equals(System.Object)
@@ -5521,7 +5314,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.Equals
   nameWithType: ProtobufTranslation2d.Equals
 - uid: Wpi.Proto.ProtobufTranslation2d.GetHashCode
@@ -5534,7 +5326,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.GetHashCode
   nameWithType: ProtobufTranslation2d.GetHashCode
 - uid: Wpi.Proto.ProtobufTranslation2d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -5553,7 +5344,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.MergeFrom
   nameWithType: ProtobufTranslation2d.MergeFrom
 - uid: Wpi.Proto.ProtobufTranslation2d.Parser
@@ -5566,7 +5356,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.Parser
   nameWithType: ProtobufTranslation2d.Parser
 - uid: Wpi.Proto.ProtobufTranslation2d.ToString
@@ -5579,7 +5368,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.ToString
   nameWithType: ProtobufTranslation2d.ToString
 - uid: Wpi.Proto.ProtobufTranslation2d.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -5592,7 +5380,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.WriteTo
   nameWithType: ProtobufTranslation2d.WriteTo
 - uid: Wpi.Proto.ProtobufTranslation2d.X
@@ -5605,7 +5392,6 @@ references:
   name: X
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_X_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.X
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.X
   nameWithType: ProtobufTranslation2d.X
 - uid: Wpi.Proto.ProtobufTranslation2d.XFieldNumber
@@ -5624,7 +5410,6 @@ references:
   name: Y
   href: api/Wpi.Proto.ProtobufTranslation2d.html#Wpi_Proto_ProtobufTranslation2d_Y_
   commentId: Overload:Wpi.Proto.ProtobufTranslation2d.Y
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation2d.Y
   nameWithType: ProtobufTranslation2d.Y
 - uid: Wpi.Proto.ProtobufTranslation2d.YFieldNumber
@@ -5661,7 +5446,6 @@ references:
   name: ProtobufTranslation3d
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufTranslation3d.ProtobufTranslation3d
   fullName.vb: Wpi.Proto.ProtobufTranslation3d.New
@@ -5677,7 +5461,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.CalculateSize
   nameWithType: ProtobufTranslation3d.CalculateSize
 - uid: Wpi.Proto.ProtobufTranslation3d.Clone
@@ -5690,7 +5473,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.Clone
   nameWithType: ProtobufTranslation3d.Clone
 - uid: Wpi.Proto.ProtobufTranslation3d.Descriptor
@@ -5703,7 +5485,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.Descriptor
   nameWithType: ProtobufTranslation3d.Descriptor
 - uid: Wpi.Proto.ProtobufTranslation3d.Equals(System.Object)
@@ -5725,7 +5506,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.Equals
   nameWithType: ProtobufTranslation3d.Equals
 - uid: Wpi.Proto.ProtobufTranslation3d.GetHashCode
@@ -5738,7 +5518,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.GetHashCode
   nameWithType: ProtobufTranslation3d.GetHashCode
 - uid: Wpi.Proto.ProtobufTranslation3d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -5757,7 +5536,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.MergeFrom
   nameWithType: ProtobufTranslation3d.MergeFrom
 - uid: Wpi.Proto.ProtobufTranslation3d.Parser
@@ -5770,7 +5548,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.Parser
   nameWithType: ProtobufTranslation3d.Parser
 - uid: Wpi.Proto.ProtobufTranslation3d.ToString
@@ -5783,7 +5560,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.ToString
   nameWithType: ProtobufTranslation3d.ToString
 - uid: Wpi.Proto.ProtobufTranslation3d.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -5796,7 +5572,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.WriteTo
   nameWithType: ProtobufTranslation3d.WriteTo
 - uid: Wpi.Proto.ProtobufTranslation3d.X
@@ -5809,7 +5584,6 @@ references:
   name: X
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_X_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.X
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.X
   nameWithType: ProtobufTranslation3d.X
 - uid: Wpi.Proto.ProtobufTranslation3d.XFieldNumber
@@ -5828,7 +5602,6 @@ references:
   name: Y
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_Y_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.Y
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.Y
   nameWithType: ProtobufTranslation3d.Y
 - uid: Wpi.Proto.ProtobufTranslation3d.YFieldNumber
@@ -5847,7 +5620,6 @@ references:
   name: Z
   href: api/Wpi.Proto.ProtobufTranslation3d.html#Wpi_Proto_ProtobufTranslation3d_Z_
   commentId: Overload:Wpi.Proto.ProtobufTranslation3d.Z
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTranslation3d.Z
   nameWithType: ProtobufTranslation3d.Z
 - uid: Wpi.Proto.ProtobufTranslation3d.ZFieldNumber
@@ -5884,7 +5656,6 @@ references:
   name: ProtobufTwist2d
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufTwist2d.ProtobufTwist2d
   fullName.vb: Wpi.Proto.ProtobufTwist2d.New
@@ -5900,7 +5671,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.CalculateSize
   nameWithType: ProtobufTwist2d.CalculateSize
 - uid: Wpi.Proto.ProtobufTwist2d.Clone
@@ -5913,7 +5683,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.Clone
   nameWithType: ProtobufTwist2d.Clone
 - uid: Wpi.Proto.ProtobufTwist2d.Descriptor
@@ -5926,7 +5695,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.Descriptor
   nameWithType: ProtobufTwist2d.Descriptor
 - uid: Wpi.Proto.ProtobufTwist2d.Dtheta
@@ -5939,7 +5707,6 @@ references:
   name: Dtheta
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_Dtheta_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.Dtheta
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.Dtheta
   nameWithType: ProtobufTwist2d.Dtheta
 - uid: Wpi.Proto.ProtobufTwist2d.DthetaFieldNumber
@@ -5958,7 +5725,6 @@ references:
   name: Dx
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_Dx_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.Dx
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.Dx
   nameWithType: ProtobufTwist2d.Dx
 - uid: Wpi.Proto.ProtobufTwist2d.DxFieldNumber
@@ -5977,7 +5743,6 @@ references:
   name: Dy
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_Dy_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.Dy
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.Dy
   nameWithType: ProtobufTwist2d.Dy
 - uid: Wpi.Proto.ProtobufTwist2d.DyFieldNumber
@@ -6005,7 +5770,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.Equals
   nameWithType: ProtobufTwist2d.Equals
 - uid: Wpi.Proto.ProtobufTwist2d.GetHashCode
@@ -6018,7 +5782,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.GetHashCode
   nameWithType: ProtobufTwist2d.GetHashCode
 - uid: Wpi.Proto.ProtobufTwist2d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -6037,7 +5800,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.MergeFrom
   nameWithType: ProtobufTwist2d.MergeFrom
 - uid: Wpi.Proto.ProtobufTwist2d.Parser
@@ -6050,7 +5812,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.Parser
   nameWithType: ProtobufTwist2d.Parser
 - uid: Wpi.Proto.ProtobufTwist2d.ToString
@@ -6063,7 +5824,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.ToString
   nameWithType: ProtobufTwist2d.ToString
 - uid: Wpi.Proto.ProtobufTwist2d.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -6076,7 +5836,6 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufTwist2d.html#Wpi_Proto_ProtobufTwist2d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufTwist2d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist2d.WriteTo
   nameWithType: ProtobufTwist2d.WriteTo
 - uid: Wpi.Proto.ProtobufTwist3d
@@ -6107,7 +5866,6 @@ references:
   name: ProtobufTwist3d
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d__ctor_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.#ctor
-  isSpec: "True"
   name.vb: New
   fullName: Wpi.Proto.ProtobufTwist3d.ProtobufTwist3d
   fullName.vb: Wpi.Proto.ProtobufTwist3d.New
@@ -6123,7 +5881,6 @@ references:
   name: CalculateSize
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_CalculateSize_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.CalculateSize
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.CalculateSize
   nameWithType: ProtobufTwist3d.CalculateSize
 - uid: Wpi.Proto.ProtobufTwist3d.Clone
@@ -6136,7 +5893,6 @@ references:
   name: Clone
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Clone_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Clone
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Clone
   nameWithType: ProtobufTwist3d.Clone
 - uid: Wpi.Proto.ProtobufTwist3d.Descriptor
@@ -6149,7 +5905,6 @@ references:
   name: Descriptor
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Descriptor_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Descriptor
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Descriptor
   nameWithType: ProtobufTwist3d.Descriptor
 - uid: Wpi.Proto.ProtobufTwist3d.Dx
@@ -6162,7 +5917,6 @@ references:
   name: Dx
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Dx_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Dx
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Dx
   nameWithType: ProtobufTwist3d.Dx
 - uid: Wpi.Proto.ProtobufTwist3d.DxFieldNumber
@@ -6181,7 +5935,6 @@ references:
   name: Dy
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Dy_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Dy
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Dy
   nameWithType: ProtobufTwist3d.Dy
 - uid: Wpi.Proto.ProtobufTwist3d.DyFieldNumber
@@ -6200,7 +5953,6 @@ references:
   name: Dz
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Dz_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Dz
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Dz
   nameWithType: ProtobufTwist3d.Dz
 - uid: Wpi.Proto.ProtobufTwist3d.DzFieldNumber
@@ -6228,7 +5980,6 @@ references:
   name: Equals
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Equals_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Equals
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Equals
   nameWithType: ProtobufTwist3d.Equals
 - uid: Wpi.Proto.ProtobufTwist3d.GetHashCode
@@ -6241,7 +5992,6 @@ references:
   name: GetHashCode
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_GetHashCode_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.GetHashCode
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.GetHashCode
   nameWithType: ProtobufTwist3d.GetHashCode
 - uid: Wpi.Proto.ProtobufTwist3d.MergeFrom(Google.Protobuf.CodedInputStream)
@@ -6260,7 +6010,6 @@ references:
   name: MergeFrom
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_MergeFrom_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.MergeFrom
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.MergeFrom
   nameWithType: ProtobufTwist3d.MergeFrom
 - uid: Wpi.Proto.ProtobufTwist3d.Parser
@@ -6273,7 +6022,6 @@ references:
   name: Parser
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Parser_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Parser
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Parser
   nameWithType: ProtobufTwist3d.Parser
 - uid: Wpi.Proto.ProtobufTwist3d.Rx
@@ -6286,7 +6034,6 @@ references:
   name: Rx
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Rx_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Rx
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Rx
   nameWithType: ProtobufTwist3d.Rx
 - uid: Wpi.Proto.ProtobufTwist3d.RxFieldNumber
@@ -6305,7 +6052,6 @@ references:
   name: Ry
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Ry_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Ry
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Ry
   nameWithType: ProtobufTwist3d.Ry
 - uid: Wpi.Proto.ProtobufTwist3d.RyFieldNumber
@@ -6324,7 +6070,6 @@ references:
   name: Rz
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_Rz_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.Rz
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.Rz
   nameWithType: ProtobufTwist3d.Rz
 - uid: Wpi.Proto.ProtobufTwist3d.RzFieldNumber
@@ -6343,7 +6088,6 @@ references:
   name: ToString
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_ToString_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.ToString
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.ToString
   nameWithType: ProtobufTwist3d.ToString
 - uid: Wpi.Proto.ProtobufTwist3d.WriteTo(Google.Protobuf.CodedOutputStream)
@@ -6356,6 +6100,5 @@ references:
   name: WriteTo
   href: api/Wpi.Proto.ProtobufTwist3d.html#Wpi_Proto_ProtobufTwist3d_WriteTo_
   commentId: Overload:Wpi.Proto.ProtobufTwist3d.WriteTo
-  isSpec: "True"
   fullName: Wpi.Proto.ProtobufTwist3d.WriteTo
   nameWithType: ProtobufTwist3d.WriteTo
