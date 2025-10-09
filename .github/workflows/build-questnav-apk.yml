@@ -402,6 +402,9 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
+          Write-Host "Adding documentation files..."
+          git add docs/static/api/csharp/**
+          
           git commit -m "docs: Update C# API documentation via DocFX"
           
           Write-Host "Pushing changes to repository..."
