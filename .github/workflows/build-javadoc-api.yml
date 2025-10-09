@@ -171,6 +171,13 @@ jobs:
             git diff --cached --stat docs/static/api/java/
           fi
 
+      - name: Pull Latest Changes
+        if: steps.check-unity-build.outputs.should-build == 'true' && steps.changes.outputs.changed == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_call')
+        run: |
+          echo "Pulling latest changes to avoid conflicts with DocFX commit..."
+          git pull --rebase --autostash origin main || true
+          echo "Latest changes pulled successfully"
+
       - name: Commit Updated Documentation
         if: steps.check-unity-build.outputs.should-build == 'true' && steps.changes.outputs.changed == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_call')
         uses: stefanzweifel/git-auto-commit-action@v5
