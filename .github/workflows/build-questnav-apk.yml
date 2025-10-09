@@ -69,12 +69,76 @@ jobs:
         with:
           lfs: true
 
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Verify MSBuild availability
+        shell: pwsh
+        run: |
+          Write-Host "Checking for MSBuild..."
+          
+          # Try to find MSBuild
+          $msbuild = $null
+          
+          # Check if MSBuild is in PATH
+          try {
+            $msbuild = (Get-Command msbuild -ErrorAction SilentlyContinue).Source
+            if ($msbuild) {
+              Write-Host "✓ Found MSBuild in PATH: $msbuild"
+            }
+          } catch {}
+          
+          # If not in PATH, try Visual Studio locations
+          if (-not $msbuild) {
+            $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+            if (Test-Path $vswhere) {
+              Write-Host "Searching for MSBuild using vswhere..."
+              $msbuildPath = & $vswhere -latest -requires Microsoft.Component.MSBuild -find MSBuild\**\Bin\MSBuild.exe | Select-Object -First 1
+              if ($msbuildPath -and (Test-Path $msbuildPath)) {
+                $msbuild = $msbuildPath
+                Write-Host "✓ Found MSBuild via vswhere: $msbuild"
+                # Add to PATH for this session and persist for subsequent steps
+                $msbuildDir = Split-Path $msbuild -Parent
+                $env:PATH = "$msbuildDir;$env:PATH"
+                "$msbuildDir" | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
+                Write-Host "Added MSBuild to GITHUB_PATH for subsequent steps"
+              }
+            }
+          }
+          
+          if (-not $msbuild) {
+            Write-Warning "MSBuild not found - DocFX may fail to process .csproj files"
+            Write-Host "Attempting to use .NET SDK MSBuild as fallback..."
+            try {
+              dotnet --version
+              Write-Host "✓ .NET SDK is available, DocFX can use 'dotnet msbuild'"
+            } catch {
+              throw "Neither MSBuild nor .NET SDK found. Please install Visual Studio Build Tools or .NET SDK."
+            }
+          } else {
+            # Test MSBuild works
+            & $msbuild -version
+            if ($LASTEXITCODE -eq 0) {
+              Write-Host "✓ MSBuild is functional"
+            } else {
+              Write-Warning "MSBuild found but returned error code: $LASTEXITCODE"
+            }
+          }
+
       - name: Install DocFX
         shell: pwsh
         run: |
           Write-Host "Installing DocFX..."
           dotnet tool install -g docfx
           Write-Host "DocFX installed successfully"
+          
+          # Verify DocFX installation
+          docfx --version
+          if ($LASTEXITCODE -ne 0) {
+            throw "DocFX installation verification failed"
+          }
 
       - name: Determine version strategy
         id: set-version
@@ -341,6 +405,23 @@ jobs:
             unity\Logs\**\*
             ${{ env.LOCALAPPDATA }}\Temp\Unity\Editor\Crashes\**
 
+      - name: Verify .csproj exists for DocFX
+        shell: pwsh
+        run: |
+          $csprojPath = "unity/QuestNav.csproj"
+          if (-not (Test-Path $csprojPath)) {
+            throw "QuestNav.csproj not found at $csprojPath - Unity may not have generated project files"
+          }
+          Write-Host "✓ Found QuestNav.csproj"
+          
+          # Verify it's a valid XML file
+          try {
+            [xml]$content = Get-Content $csprojPath
+            Write-Host "✓ QuestNav.csproj is valid XML"
+          } catch {
+            throw "QuestNav.csproj exists but is not valid XML: $_"
+          }
+
       - name: Generate DocFX Documentation
         shell: pwsh
         working-directory: unity/DocFX
@@ -392,6 +473,9 @@ jobs:
             git diff --cached --stat docs/static/api/csharp/
             "changed=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
           }
+          
+          # Ensure script exits successfully regardless of git exit codes
+          exit 0
 
       - name: Commit DocFX Documentation
         if: steps.docfx-changes.outputs.changed == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_call')
