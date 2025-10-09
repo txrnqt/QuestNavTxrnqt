@@ -12,13 +12,13 @@ Explore the API documentation to browse all available classes, methods, and prop
 
 ## Key Namespaces
 
-- **QuestNav.Core** - Main application logic and constants
-- **QuestNav.Commands** - Command processing system
-- **QuestNav.Network** - NetworkTables communication
-- **QuestNav.UI** - User interface management
-- **QuestNav.Utils** - Utility functions and extensions
-- **QuestNav.Native.NTCore** - Native NetworkTables bindings
-- **QuestNav.Protos.Generated** - Protocol buffer generated classes
+- [QuestNav.Core](xref:QuestNav.Core) - Main application logic and constants
+- [QuestNav.Commands](xref:QuestNav.Commands) - Command processing system
+- [QuestNav.Network](xref:QuestNav.Network) - NetworkTables communication
+- [QuestNav.UI](xref:QuestNav.UI) - User interface management
+- [QuestNav.Utils](xref:QuestNav.Utils) - Utility functions and extensions
+- [QuestNav.Native.NTCore](xref:QuestNav.Native.NTCore) - Native NetworkTables bindings
+- [QuestNav.Protos.Generated](xref:QuestNav.Protos.Generated) - Protocol buffer generated classes
 
 ## Main Documentation
 

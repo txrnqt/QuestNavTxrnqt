@@ -36,8 +36,16 @@
       "_appName": "QuestNav API",
       "_appFooter": "QuestNav - VR Navigation for FRC Robots",
       "_enableSearch": true,
-      "_enableNewTab": true,
-      "_disableContribution": true
-    }
+      "_enableNewTab": false,
+      "_disableContribution": true,
+      "_disableToc": false,
+      "_disableAffix": false
+    },
+    "xref": [
+      "https://normanderwan.github.io/UnityXrefMaps/6000.0/xrefmap.yml"
+    ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ]
   }
 }
