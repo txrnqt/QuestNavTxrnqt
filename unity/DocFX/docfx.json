@@ -3,23 +3,27 @@
     {
       "src": [
         {
-          "files": ["Library/ScriptAssemblies/QuestNav.dll"],
+          "files": [
+            "Library/ScriptAssemblies/QuestNav.dll",
+            "Library/ScriptAssemblies/Unity.TextMeshPro.dll",
+            "Library/ScriptAssemblies/Oculus.VR.dll"
+          ],
           "src": "../"
+        },
+        {
+          "files": ["Google.Protobuf.dll"],
+          "src": "../Assets/Plugins/Google.Protobuf"
         }
       ],
       "references": [
         {
           "files": ["*.dll"],
-          "exclude": ["QuestNav.dll"],
+          "exclude": ["QuestNav.dll", "Unity.TextMeshPro.dll", "Oculus.VR.dll", "Google.Protobuf.dll"],
           "src": "../Library/ScriptAssemblies"
         },
         {
           "files": ["UnityEngine.dll", "UnityEngine.*.dll"],
           "src": "C:/Program Files/Unity/Hub/Editor/6000.2.6f2/Editor/Data/Managed/UnityEngine"
-        },
-        {
-          "files": ["*.dll"],
-          "src": "../Assets/Plugins/Google.Protobuf"
         }
       ],
       "dest": "api",
@@ -39,6 +43,11 @@
         "files": ["*.md"]
       }
     ],
+    "resource": [
+      {
+        "files": ["images/**"]
+      }
+    ],
     "output": "../../docs/static/api/csharp",
     "template": ["default"],
     "globalMetadata": {
@@ -48,6 +57,12 @@
       "_enableSearch": true,
       "_enableNewTab": true,
       "_disableContribution": true
-    }
+    },
+    "xref": [
+      "https://normanderwan.github.io/UnityXrefMaps/6000.0/xrefmap.yml"
+    ],
+    "xrefService": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ]
   }
 }
