@@ -9,10 +9,15 @@ oculus-frc-streamer_*/
 .idea/
 .DS_Store
 
-# DocFX preserved XML documentation files
+# CMake/NDK build artifacts
+.utmp/
+
+# DocFX build artifacts
 unity/DocFX/preserved-xml/*.xml
+unity/DocFX/api/
+unity/DocFX/obj/
 unity/Assets/Resources/PerformanceTestRunInfo.*
 unity/Assets/Resources/PerformanceTestRunSettings.*
 unity/Assets/StreamingAssets/RuntimeActionBindings.*
 /.cursor
-/unity/Assets/XR/Resources
+/unity/Assets/XR/Resources/*

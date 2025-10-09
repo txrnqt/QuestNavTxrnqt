@@ -3,21 +3,31 @@
     {
       "src": [
         {
-          "files": ["QuestNav.csproj"],
+          "files": ["Library/ScriptAssemblies/QuestNav.dll"],
           "src": "../"
+        }
+      ],
+      "references": [
+        {
+          "files": ["*.dll"],
+          "exclude": ["QuestNav.dll"],
+          "src": "../Library/ScriptAssemblies"
+        },
+        {
+          "files": ["UnityEngine.dll", "UnityEngine.*.dll"],
+          "src": "C:/Program Files/Unity/Hub/Editor/6000.2.6f2/Editor/Data/Managed/UnityEngine"
+        },
+        {
+          "files": ["*.dll"],
+          "src": "../Assets/Plugins/Google.Protobuf"
         }
       ],
       "dest": "api",
       "includePrivateMembers": false,
       "disableGitFeatures": false,
       "disableDefaultFilter": false,
-      "noRestore": true,
       "namespaceLayout": "flattened",
-      "memberLayout": "samePage",
-      "allowCompilationErrors": true,
-      "properties": {
-        "TargetFramework": "netstandard2.1"
-      }
+      "memberLayout": "samePage"
     }
   ],
   "build": {
