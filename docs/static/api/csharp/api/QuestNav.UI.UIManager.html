@@ -126,13 +126,13 @@
   <h3 id="constructors">Constructors
 </h3>
   <a id="QuestNav_UI_UIManager__ctor_" data-uid="QuestNav.UI.UIManager.#ctor*"></a>
-  <h4 id="QuestNav_UI_UIManager__ctor_QuestNav_Network_INetworkTableConnection_TMPro_TMP_InputField_TMPro_TMP_Text_TMPro_TMP_Text_UnityEngine_UI_Button_UnityEngine_UI_Toggle_" data-uid="QuestNav.UI.UIManager.#ctor(QuestNav.Network.INetworkTableConnection,TMPro.TMP_InputField,TMPro.TMP_Text,TMPro.TMP_Text,UnityEngine.UI.Button,UnityEngine.UI.Toggle)">UIManager(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, Button, Toggle)</h4>
+  <h4 id="QuestNav_UI_UIManager__ctor_QuestNav_Network_INetworkTableConnection_TMPro_TMP_InputField_TMPro_TMP_Text_TMPro_TMP_Text_TMPro_TMP_Text_TMPro_TMP_Text_TMPro_TMP_Text_UnityEngine_UI_Button_UnityEngine_UI_Toggle_" data-uid="QuestNav.UI.UIManager.#ctor(QuestNav.Network.INetworkTableConnection,TMPro.TMP_InputField,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,UnityEngine.UI.Button,UnityEngine.UI.Toggle)">UIManager(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, TMP_Text, TMP_Text, TMP_Text, Button, Toggle)</h4>
   <div class="markdown level1 summary"><p>Initializes the UI manager with required UI components.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UIManager(INetworkTableConnection networkTableConnection, TMP_InputField teamInput, TMP_Text ipAddressText, TMP_Text conStateText, Button teamUpdateButton, Toggle autoStartToggle)</code></pre>
+    <pre><code class="lang-csharp hljs">public UIManager(INetworkTableConnection networkTableConnection, TMP_InputField teamInput, TMP_Text ipAddressText, TMP_Text conStateText, TMP_Text posXText, TMP_Text posYText, TMP_Text rotationText, Button teamUpdateButton, Toggle autoStartToggle)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -169,6 +169,24 @@
 </td>
       </tr>
       <tr>
+        <td><span class="xref">TMP_Text</span></td>
+        <td><span class="parametername">posXText</span></td>
+        <td><p>Text for X coordinate of Quest position</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TMP_Text</span></td>
+        <td><span class="parametername">posYText</span></td>
+        <td><p>Text for Y coordinate of Quest position</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TMP_Text</span></td>
+        <td><span class="parametername">rotationText</span></td>
+        <td><p>Text for rotation coordinate of Quest position</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">Button</span></td>
         <td><span class="parametername">teamUpdateButton</span></td>
         <td><p>Button for updating team number</p>
@@ -177,7 +195,7 @@
       <tr>
         <td><span class="xref">Toggle</span></td>
         <td><span class="parametername">autoStartToggle</span></td>
-        <td><p>Toggle for auto-start on boot functionality</p>
+        <td><p>Button for turning auto start on/off</p>
 </td>
       </tr>
     </tbody>
@@ -219,6 +237,37 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void UIPeriodic()</code></pre>
   </div>
+  <a id="QuestNav_UI_UIManager_UpdatePositionText_" data-uid="QuestNav.UI.UIManager.UpdatePositionText*"></a>
+  <h4 id="QuestNav_UI_UIManager_UpdatePositionText_UnityEngine_Vector3_UnityEngine_Quaternion_" data-uid="QuestNav.UI.UIManager.UpdatePositionText(UnityEngine.Vector3,UnityEngine.Quaternion)">UpdatePositionText(Vector3, Quaternion)</h4>
+  <div class="markdown level1 summary"><p>Updates the connection state text display.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePositionText(Vector3 position, Quaternion rotation)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Vector3.html">Vector3</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Quaternion.html">Quaternion</a></td>
+        <td><span class="parametername">rotation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="QuestNav.UI.IUIManager.html">IUIManager</a>

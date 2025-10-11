@@ -3274,15 +3274,15 @@ references:
   commentId: T:QuestNav.UI.UIManager
   fullName: QuestNav.UI.UIManager
   nameWithType: UIManager
-- uid: QuestNav.UI.UIManager.#ctor(QuestNav.Network.INetworkTableConnection,TMPro.TMP_InputField,TMPro.TMP_Text,TMPro.TMP_Text,UnityEngine.UI.Button,UnityEngine.UI.Toggle)
-  name: UIManager(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, Button, Toggle)
-  href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager__ctor_QuestNav_Network_INetworkTableConnection_TMPro_TMP_InputField_TMPro_TMP_Text_TMPro_TMP_Text_UnityEngine_UI_Button_UnityEngine_UI_Toggle_
-  commentId: M:QuestNav.UI.UIManager.#ctor(QuestNav.Network.INetworkTableConnection,TMPro.TMP_InputField,TMPro.TMP_Text,TMPro.TMP_Text,UnityEngine.UI.Button,UnityEngine.UI.Toggle)
-  name.vb: New(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, Button, Toggle)
-  fullName: QuestNav.UI.UIManager.UIManager(QuestNav.Network.INetworkTableConnection, TMPro.TMP_InputField, TMPro.TMP_Text, TMPro.TMP_Text, UnityEngine.UI.Button, UnityEngine.UI.Toggle)
-  fullName.vb: QuestNav.UI.UIManager.New(QuestNav.Network.INetworkTableConnection, TMPro.TMP_InputField, TMPro.TMP_Text, TMPro.TMP_Text, UnityEngine.UI.Button, UnityEngine.UI.Toggle)
-  nameWithType: UIManager.UIManager(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, Button, Toggle)
-  nameWithType.vb: UIManager.New(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, Button, Toggle)
+- uid: QuestNav.UI.UIManager.#ctor(QuestNav.Network.INetworkTableConnection,TMPro.TMP_InputField,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,UnityEngine.UI.Button,UnityEngine.UI.Toggle)
+  name: UIManager(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, TMP_Text, TMP_Text, TMP_Text, Button, Toggle)
+  href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager__ctor_QuestNav_Network_INetworkTableConnection_TMPro_TMP_InputField_TMPro_TMP_Text_TMPro_TMP_Text_TMPro_TMP_Text_TMPro_TMP_Text_TMPro_TMP_Text_UnityEngine_UI_Button_UnityEngine_UI_Toggle_
+  commentId: M:QuestNav.UI.UIManager.#ctor(QuestNav.Network.INetworkTableConnection,TMPro.TMP_InputField,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,TMPro.TMP_Text,UnityEngine.UI.Button,UnityEngine.UI.Toggle)
+  name.vb: New(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, TMP_Text, TMP_Text, TMP_Text, Button, Toggle)
+  fullName: QuestNav.UI.UIManager.UIManager(QuestNav.Network.INetworkTableConnection, TMPro.TMP_InputField, TMPro.TMP_Text, TMPro.TMP_Text, TMPro.TMP_Text, TMPro.TMP_Text, TMPro.TMP_Text, UnityEngine.UI.Button, UnityEngine.UI.Toggle)
+  fullName.vb: QuestNav.UI.UIManager.New(QuestNav.Network.INetworkTableConnection, TMPro.TMP_InputField, TMPro.TMP_Text, TMPro.TMP_Text, TMPro.TMP_Text, TMPro.TMP_Text, TMPro.TMP_Text, UnityEngine.UI.Button, UnityEngine.UI.Toggle)
+  nameWithType: UIManager.UIManager(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, TMP_Text, TMP_Text, TMP_Text, Button, Toggle)
+  nameWithType.vb: UIManager.New(INetworkTableConnection, TMP_InputField, TMP_Text, TMP_Text, TMP_Text, TMP_Text, TMP_Text, Button, Toggle)
 - uid: QuestNav.UI.UIManager.#ctor*
   name: UIManager
   href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager__ctor_
@@ -3319,6 +3319,19 @@ references:
   isSpec: "True"
   fullName: QuestNav.UI.UIManager.UIPeriodic
   nameWithType: UIManager.UIPeriodic
+- uid: QuestNav.UI.UIManager.UpdatePositionText(UnityEngine.Vector3,UnityEngine.Quaternion)
+  name: UpdatePositionText(Vector3, Quaternion)
+  href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager_UpdatePositionText_UnityEngine_Vector3_UnityEngine_Quaternion_
+  commentId: M:QuestNav.UI.UIManager.UpdatePositionText(UnityEngine.Vector3,UnityEngine.Quaternion)
+  fullName: QuestNav.UI.UIManager.UpdatePositionText(UnityEngine.Vector3, UnityEngine.Quaternion)
+  nameWithType: UIManager.UpdatePositionText(Vector3, Quaternion)
+- uid: QuestNav.UI.UIManager.UpdatePositionText*
+  name: UpdatePositionText
+  href: api/QuestNav.UI.UIManager.html#QuestNav_UI_UIManager_UpdatePositionText_
+  commentId: Overload:QuestNav.UI.UIManager.UpdatePositionText
+  isSpec: "True"
+  fullName: QuestNav.UI.UIManager.UpdatePositionText
+  nameWithType: UIManager.UpdatePositionText
 - uid: QuestNav.Utils
   name: QuestNav.Utils
   href: api/QuestNav.Utils.html
