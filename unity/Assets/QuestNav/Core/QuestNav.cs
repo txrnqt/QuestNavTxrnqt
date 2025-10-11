@@ -67,6 +67,24 @@ namespace QuestNav.Core
         private TMP_Text conStateText;
 
         /// <summary>
+        /// posXText text
+        /// </summary>
+        [SerializeField]
+        private TMP_Text posXText;
+
+        /// <summary>
+        /// posYText text
+        /// </summary>
+        [SerializeField]
+        private TMP_Text posYText;
+
+        /// <summary>
+        /// rotationText text
+        /// </summary>
+        [SerializeField]
+        private TMP_Text rotationText;
+
+        /// <summary>
         /// Button to update team number
         /// </summary>
         [SerializeField]
@@ -153,6 +171,9 @@ namespace QuestNav.Core
                 teamInput,
                 ipAddressText,
                 conStateText,
+                posXText,
+                posYText,
+                rotationText,
                 teamUpdateButton,
                 autoStartToggle
             );
@@ -210,6 +231,7 @@ namespace QuestNav.Core
             // Update UI elements like connection status, IP address display, team number validation
             // UI updates don't need to be real-time, 3Hz provides smooth visual feedback
             uiManager.UIPeriodic();
+            uiManager.UpdatePositionText(position, rotation);
 
             // Monitor device health: tracking status, battery level, tracking loss events
             // This data helps diagnose issues but doesn't need high-frequency updates
