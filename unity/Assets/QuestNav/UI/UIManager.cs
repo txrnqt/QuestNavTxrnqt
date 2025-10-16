@@ -80,6 +80,9 @@ namespace QuestNav.UI
         /// Holds the detected local IP address of the HMD
         /// </summary>
         private string myAddressLocal = "0.0.0.0";
+
+		private AudioSource audioSource;
+		public AudioClip connectionTone;
         #endregion
 
         /// <summary>
@@ -103,7 +106,9 @@ namespace QuestNav.UI
             TMP_Text posYText,
             TMP_Text rotationText,
             Button teamUpdateButton,
-            Toggle autoStartToggle
+            Toggle autoStartToggle,
+			AudioSource audioSource,
+    		AudioClip connectionTone
         )
         {
             this.networkTableConnection = networkTableConnection;
@@ -114,7 +119,8 @@ namespace QuestNav.UI
             this.posYText = posYText;
             this.rotationText = rotationText;
             this.teamUpdateButton = teamUpdateButton;
-            this.autoStartToggle = autoStartToggle;
+            this.audioSource = audioSource;
+    		this.connectionTone = connectionTone;
 
             teamNumber = PlayerPrefs.GetInt(
                 "TeamNumber",
@@ -210,6 +216,11 @@ namespace QuestNav.UI
             {
                 conText.text = "Connected to NT4";
                 conText.color = Color.green;
+				if (audioSource != null && connectionTone != null) 
+				{
+					audioSource.clip = connectionTone;
+					audioSource.Play();
+				}
             }
             else if (teamNumber == QuestNavConstants.Network.DEFAULT_TEAM_NUMBER)
             {

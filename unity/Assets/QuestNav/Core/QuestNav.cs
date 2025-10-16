@@ -149,6 +149,11 @@ namespace QuestNav.Core
         /// Reference to the UI manager component
         /// </summary>
         private UIManager uiManager;
+        
+        private AudioSource audioSource;
+
+        public AudioClip connectionTone;
+        
         #endregion
         #endregion
 
@@ -175,7 +180,9 @@ namespace QuestNav.Core
                 posYText,
                 rotationText,
                 teamUpdateButton,
-                autoStartToggle
+                autoStartToggle,
+                audioSource,
+                connectionTone
             );
 
             // Set Oculus display frequency
