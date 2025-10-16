@@ -90,14 +90,15 @@ namespace QuestNav.UI
         /// Current team number
         /// </summary>
         private int teamNumber;
+        
+        private AudioSource audioSource;
+        
+        public AudioClip connectionTone;
 
         /// <summary>
         /// Holds the detected local IP address of the HMD
         /// </summary>
         private string myAddressLocal = "0.0.0.0";
-
-		private AudioSource audioSource;
-		public AudioClip connectionTone;
         #endregion
 
         /// <summary>
@@ -128,8 +129,8 @@ namespace QuestNav.UI
             TMP_Text zRotText,
             Button teamUpdateButton,
             Toggle autoStartToggle,
-			AudioSource audioSource,
-    		AudioClip connectionTone
+            AudioSource audioSource,
+            AudioClip connectionTone
         )
         {
             this.networkTableConnection = networkTableConnection;
@@ -144,8 +145,7 @@ namespace QuestNav.UI
             this.zRotText = zRotText;
             this.teamUpdateButton = teamUpdateButton;
             this.audioSource = audioSource;
-    		this.connectionTone = connectionTone;
-
+            this.connectionTone = connectionTone;
             teamNumber = PlayerPrefs.GetInt(
                 "TeamNumber",
                 QuestNavConstants.Network.DEFAULT_TEAM_NUMBER

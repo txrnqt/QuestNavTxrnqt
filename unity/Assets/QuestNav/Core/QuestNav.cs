@@ -167,11 +167,12 @@ namespace QuestNav.Core
         /// Reference to the UI manager component
         /// </summary>
         private UIManager uiManager;
-        
-        private AudioSource audioSource;
 
+        private AudioSource audioSource;
         public AudioClip connectionTone;
-        
+            
+            
+            
         #endregion
         #endregion
 
