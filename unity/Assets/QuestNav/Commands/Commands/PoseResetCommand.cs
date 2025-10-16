@@ -51,14 +51,24 @@ namespace QuestNav.Commands.Commands
             QueuedLogger.Log("Received pose reset request, initiating reset...");
 
             // Read pose data from network tables
-            ProtobufPose2d resetPose = receivedCommand.PoseResetPayload.TargetPose;
+            ProtobufPose3d resetPose = receivedCommand.PoseResetPayload.TargetPose;
             double poseX = resetPose.Translation.X;
             double poseY = resetPose.Translation.Y;
-            double poseTheta = resetPose.Rotation.Value;
+            double poseZ = resetPose.Translation.Z;
+            double poseQX = resetPose.Rotation.Q.X;
+            double poseQY = resetPose.Rotation.Q.Y;
+            double poseQZ = resetPose.Rotation.Q.Z;
+            double poseQW = resetPose.Rotation.Q.W;
 
             // Validate pose data
             bool validPose =
-                !double.IsNaN(poseX) && !double.IsNaN(poseY) && !double.IsNaN(poseTheta);
+                !double.IsNaN(poseX)
+                && !double.IsNaN(poseY)
+                && !double.IsNaN(poseZ)
+                && !double.IsNaN(poseQX)
+                && !double.IsNaN(poseQY)
+                && !double.IsNaN(poseQZ)
+                && !double.IsNaN(poseQW);
 
             // Additional validation for field boundaries
             if (validPose)
@@ -91,10 +101,10 @@ namespace QuestNav.Commands.Commands
                  *
                  * Algorithm Steps:
                  * 1. Convert target field coordinates to Unity world coordinates
-                 * 2. Calculate how much we need to rotate the world to align headset orientation
-                 * 3. Capture the headset's offset from world origin BEFORE rotation
-                 * 4. Rotate the world origin to align orientations
-                 * 5. Move the world origin so the headset ends up at the target position
+                 * 2. Calculate rotation difference between current camera and target
+                 * 3. Apply rotation to root
+                 * 4. Recalculate position after rotation
+                 * 5. Apply the new position to vrCameraRoot
                  *
                  * This ensures the user's physical position in their room doesn't change, but their
                  * virtual position on the field matches what the robot expects.
@@ -102,34 +112,27 @@ namespace QuestNav.Commands.Commands
 
                 // Step 1: Convert FRC field coordinates (meters, standard orientation) to Unity coordinates
                 // This accounts for coordinate system differences (FRC: X forward, Y left vs Unity: Z forward, X right)
-                var (targetCameraPosition, targetCameraRotation) = Conversions.FrcToUnity(
-                    resetPose,
-                    vrCamera.position,
-                    vrCamera.rotation
+                var (targetCameraPosition, targetCameraRotation) = Conversions.FrcToUnity3d(
+                    resetPose
                 );
 
-                // Step 2: Calculate how much to rotate the world to align headset with target orientation
-                // We only care about Y-axis rotation (yaw) since pitch/roll should remain user-controlled
-                float currentCameraY = vrCamera.rotation.eulerAngles.y;
-                float targetCameraY = targetCameraRotation.eulerAngles.y;
-                float rotationDifference = Mathf.DeltaAngle(currentCameraY, targetCameraY);
+                // Step 2: Calculate rotation difference between current camera and target
+                Quaternion newRotation =
+                    targetCameraRotation * Quaternion.Inverse(vrCamera.localRotation);
 
-                // Step 3: Capture headset offset from world origin in LOCAL space BEFORE we rotate
-                // This is crucial - we need the offset in the coordinate system that will be rotated
-                Vector3 localCameraOffset = vrCameraRoot.InverseTransformPoint(vrCamera.position);
+                // Step 3: Apply rotation to root
+                vrCameraRoot.rotation = newRotation;
 
-                // Step 4: Rotate the world origin to align orientations
-                // This rotates the entire virtual world around the user
-                vrCameraRoot.Rotate(0, rotationDifference, 0);
+                // Step 4: Recalculate position after rotation
+                Vector3 newRootPosition =
+                    targetCameraPosition - (newRotation * vrCamera.localPosition);
 
-                // Step 5: Calculate where to position the world origin so headset ends up at target
-                // After rotation, we need to recalculate the world-space offset and adjust accordingly
-                Vector3 worldCameraOffset =
-                    vrCameraRoot.TransformPoint(localCameraOffset) - vrCameraRoot.position;
-                Vector3 targetRootPosition = targetCameraPosition - worldCameraOffset;
-                vrCameraRoot.position = targetRootPosition;
+                // Step 5: Apply the new position to vrCameraRoot
+                vrCameraRoot.position = newRootPosition;
 
-                QueuedLogger.Log($"Pose reset applied: X={poseX}, Y={poseY}, Theta={poseTheta}");
+                QueuedLogger.Log(
+                    $"Pose reset applied: X={poseX}, Y={poseY}, Z={poseZ} Rotation X={targetCameraRotation.eulerAngles.x}, Y={targetCameraRotation.eulerAngles.y}, Z={targetCameraRotation.eulerAngles.z}"
+                );
 
                 networkTableConnection.SetCommandResponse(
                     new ProtobufQuestNavCommandResponse

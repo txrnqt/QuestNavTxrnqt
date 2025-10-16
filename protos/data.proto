@@ -25,7 +25,7 @@ option csharp_namespace = "QuestNav.Protos.Generated";
 option java_package = "gg.questnav.questnav.protos.generated";
 
 // Import geometry messages for pose representation
-import "geometry2d.proto";
+import "geometry3d.proto";
 
 /**
  * High-frequency tracking data sent from Quest to external systems.
@@ -77,7 +77,7 @@ message ProtobufQuestNavFrameData {
   double timestamp = 2;
   
   /**
-   * Quest's 2D pose on the field in WPILib coordinates.
+   * Quest's 3D pose on the field in WPILib coordinates.
    * 
    * This represents the Quest's position and orientation as determined by
    * the Quest's tracking system. The pose accounts for:
@@ -89,8 +89,11 @@ message ProtobufQuestNavFrameData {
    * 
    * Coordinate System Details:
    * - X: Forward direction (towards opposing alliance)
-   * - Y: Left direction (when facing forward)  
-   * - Rotation: Counter-clockwise positive (radians)
+   * - Y: Left direction (when facing forward)
+   * - Z: Up direction
+   * - Yaw (Z): Counter-clockwise (right-handed) rotation around the Z axis
+   * - Pitch (Y): Counter-clockwise (right-handed) rotation around Y axis
+   * - Roll (X): Counter-clockwise (right-handed) rotation around the X axis
    * - Units: meters for translation, radians for rotation
    * 
    * Accuracy depends on:
@@ -99,7 +102,7 @@ message ProtobufQuestNavFrameData {
    * - Calibration accuracy
    * - Time since last pose reset
    */
-  wpi.proto.ProtobufPose2d pose2d = 3;
+  wpi.proto.ProtobufPose3d pose3d = 3;
 }
 
 /**
