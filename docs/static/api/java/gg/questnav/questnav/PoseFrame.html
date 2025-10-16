@@ -78,8 +78,8 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>Record Components:</dt>
-<dd><code><span id="param-questPose">questPose</span></code> - The robot's pose on the field as measured by the Quest tracking system. This
-     will only provide meaningful field-relative coordinates after <a href="QuestNav.html#setPose(edu.wpi.first.math.geometry.Pose2d)"><code>QuestNav.setPose(Pose2d)</code></a> has been called to establish the field reference frame.</dd>
+<dd><code><span id="param-questPose3d">questPose3d</span></code> - The robot's pose on the field as measured by the Quest tracking system. This
+     will only provide meaningful field-relative coordinates after <a href="QuestNav.html#setPose(edu.wpi.first.math.geometry.Pose3d)"><code>QuestNav.setPose(Pose2d)</code></a> has been called to establish the field reference frame.</dd>
 <dd><code><span id="param-dataTimestamp">dataTimestamp</span></code> - The NetworkTables timestamp indicating when this frame data was received by
      the robot. This timestamp should be used when adding vision measurements to pose estimators
      as it represents when the measurement was available to the robot code. Units: seconds since
@@ -93,7 +93,7 @@ loadScripts(document, 'script');</script>
      rate. Resets to 0 when the Quest app restarts.</dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">PoseFrame</span>(edu.wpi.first.math.geometry.Pose2d&nbsp;questPose, double&nbsp;dataTimestamp, double&nbsp;appTimestamp, int&nbsp;frameCount)
+<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">PoseFrame</span>(edu.wpi.first.math.geometry.Pose3d&nbsp;questPose3d, double&nbsp;dataTimestamp, double&nbsp;appTimestamp, int&nbsp;frameCount)
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a></span></div>
 <div class="block">Represents a single frame of pose tracking data received from the Quest headset.
 
@@ -146,7 +146,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <ul class="see-list-long">
 <li><a href="QuestNav.html#getAllUnreadPoseFrames()"><code>QuestNav.getAllUnreadPoseFrames()</code></a></li>
-<li><a href="QuestNav.html#setPose(edu.wpi.first.math.geometry.Pose2d)"><code>QuestNav.setPose(Pose2d)</code></a></li>
+<li><a href="QuestNav.html#setPose(edu.wpi.first.math.geometry.Pose3d)"><code>QuestNav.setPose(Pose2d)</code></a></li>
 <li><code>PoseEstimator</code></li>
 <li><code>Pose2d</code></li>
 </ul>
@@ -163,7 +163,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(edu.wpi.first.math.geometry.Pose2d,double,double,int)" class="member-name-link">PoseFrame</a><wbr>(edu.wpi.first.math.geometry.Pose2d&nbsp;questPose,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(edu.wpi.first.math.geometry.Pose3d,double,double,int)" class="member-name-link">PoseFrame</a><wbr>(edu.wpi.first.math.geometry.Pose3d&nbsp;questPose3d,
  double&nbsp;dataTimestamp,
  double&nbsp;appTimestamp,
  int&nbsp;frameCount)</code></div>
@@ -209,10 +209,10 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns a hash code value for this object.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>edu.wpi.first.math.geometry.Pose2d</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#questPose()" class="member-name-link">questPose</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>edu.wpi.first.math.geometry.Pose3d</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#questPose3d()" class="member-name-link">questPose3d</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the value of the <a href="#param-questPose"><code>questPose</code></a> record component.</div>
+<div class="block">Returns the value of the <a href="#param-questPose3d"><code>questPose3d</code></a> record component.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
@@ -237,16 +237,16 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(edu.wpi.first.math.geometry.Pose2d,double,double,int)">
+<section class="detail" id="&lt;init&gt;(edu.wpi.first.math.geometry.Pose3d,double,double,int)">
 <h3>PoseFrame</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">PoseFrame</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose2d&nbsp;questPose,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">PoseFrame</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose3d&nbsp;questPose3d,
  double&nbsp;dataTimestamp,
  double&nbsp;appTimestamp,
  int&nbsp;frameCount)</span></div>
 <div class="block">Creates an instance of a <code>PoseFrame</code> record class.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>questPose</code> - the value for the <a href="#param-questPose"><code>questPose</code></a> record component</dd>
+<dd><code>questPose3d</code> - the value for the <a href="#param-questPose3d"><code>questPose3d</code></a> record component</dd>
 <dd><code>dataTimestamp</code> - the value for the <a href="#param-dataTimestamp"><code>dataTimestamp</code></a> record component</dd>
 <dd><code>appTimestamp</code> - the value for the <a href="#param-appTimestamp"><code>appTimestamp</code></a> record component</dd>
 <dd><code>frameCount</code> - the value for the <a href="#param-frameCount"><code>frameCount</code></a> record component</dd>
@@ -303,13 +303,13 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="questPose()">
-<h3>questPose</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose2d</span>&nbsp;<span class="element-name">questPose</span>()</div>
-<div class="block">Returns the value of the <a href="#param-questPose"><code>questPose</code></a> record component.</div>
+<section class="detail" id="questPose3d()">
+<h3>questPose3d</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">edu.wpi.first.math.geometry.Pose3d</span>&nbsp;<span class="element-name">questPose3d</span>()</div>
+<div class="block">Returns the value of the <a href="#param-questPose3d"><code>questPose3d</code></a> record component.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the value of the <a href="#param-questPose"><code>questPose</code></a> record component</dd>
+<dd>the value of the <a href="#param-questPose3d"><code>questPose3d</code></a> record component</dd>
 </dl>
 </section>
 </li>

@@ -25,7 +25,7 @@ option csharp_namespace = "QuestNav.Protos.Generated";
 option java_package = "gg.questnav.questnav.protos.generated";
 
 // Import geometry messages for pose-related commands
-import "geometry2d.proto";
+import "geometry3d.proto";
 
 /**
  * Enumeration of available command types in the QuestNav system.
@@ -70,7 +70,11 @@ enum QuestNavCommandType {
  * - Uses WPILib field-relative coordinate system
  * - X-axis: Forward (towards opposing alliance)
  * - Y-axis: Left (when facing forward)
- * - Rotation: Counter-clockwise positive (standard mathematical convention)
+ * - Z-axis: Up
+ * - Yaw (Z): Counter-clockwise (right-handed) rotation around the Z axis
+ * - Pitch (Y): Counter-clockwise (right-handed) rotation around Y axis
+ * - Roll (X): Counter-clockwise (right-handed) rotation around the X axis
+ * - Rotation: Counter-clockwise positive (right-hand coordinate system)
  * - Origin: Typically at one corner of the field (see field layout documentation)
  */
 message ProtobufQuestNavPoseResetPayload {
@@ -85,7 +89,7 @@ message ProtobufQuestNavPoseResetPayload {
    * - Translation: meters
    * - Rotation: radians
    */
-  wpi.proto.ProtobufPose2d target_pose = 1;
+  wpi.proto.ProtobufPose3d target_pose = 1;
 }
 
 /**

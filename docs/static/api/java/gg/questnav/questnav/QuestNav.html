@@ -235,7 +235,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Gets the current tracking state of the Quest headset.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPose(edu.wpi.first.math.geometry.Pose2d)" class="member-name-link">setPose</a><wbr>(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setPose(edu.wpi.first.math.geometry.Pose3d)" class="member-name-link">setPose</a><wbr>(edu.wpi.first.math.geometry.Pose3d&nbsp;pose)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the field-relative pose of the Quest headset by commanding it to reset its tracking.</div>
 </div>
@@ -264,7 +264,7 @@ loadScripts(document, 'script');</script>
 
  <p>This constructor initializes all necessary NetworkTables subscribers and publishers for
  communication with the Quest device. The instance is ready to use immediately, but you should
- call <a href="#setPose(edu.wpi.first.math.geometry.Pose2d)"><code>setPose(Pose2d)</code></a> to establish field-relative tracking before relying on pose data.
+ call <a href="#setPose(edu.wpi.first.math.geometry.Pose3d)"><code>setPose(Pose2d)</code></a> to establish field-relative tracking before relying on pose data.
 
  <p>The constructor sets up:
 
@@ -286,9 +286,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="setPose(edu.wpi.first.math.geometry.Pose2d)">
+<section class="detail" id="setPose(edu.wpi.first.math.geometry.Pose3d)">
 <h3>setPose</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPose</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose2d&nbsp;pose)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setPose</span><wbr><span class="parameters">(edu.wpi.first.math.geometry.Pose3d&nbsp;pose)</span></div>
 <div class="block">Sets the field-relative pose of the Quest headset by commanding it to reset its tracking.
 
  <p>This method sends a pose reset command to the Quest headset, telling it where the Quest is
@@ -404,7 +404,7 @@ loadScripts(document, 'script');</script>
    <li>Move to an area with more visual features
    <li>Reduce robot motion to allow re-initialization
    <li>Clear any obstructions from Quest cameras
-   <li>Call <a href="#setPose(edu.wpi.first.math.geometry.Pose2d)"><code>setPose(Pose2d)</code></a> once tracking recovers
+   <li>Call <a href="#setPose(edu.wpi.first.math.geometry.Pose3d)"><code>setPose(Pose2d)</code></a> once tracking recovers
  </ul></div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -572,7 +572,7 @@ loadScripts(document, 'script');</script>
  <p>This method must be called regularly (typically in <code>robotPeriodic()</code>) to:
 
  <ul>
-   <li>Process responses to commands sent via <a href="#setPose(edu.wpi.first.math.geometry.Pose2d)"><code>setPose(Pose2d)</code></a>
+   <li>Process responses to commands sent via <a href="#setPose(edu.wpi.first.math.geometry.Pose3d)"><code>setPose(Pose2d)</code></a>
    <li>Log command failures to the DriverStation for debugging
    <li>Maintain proper command/response synchronization
    <li>Prevent command response queue overflow
@@ -608,7 +608,7 @@ loadScripts(document, 'script');</script>
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list-long">
-<li><a href="#setPose(edu.wpi.first.math.geometry.Pose2d)"><code>setPose(Pose2d)</code></a></li>
+<li><a href="#setPose(edu.wpi.first.math.geometry.Pose3d)"><code>setPose(Pose2d)</code></a></li>
 <li><code>DriverStation.reportError(String, boolean)</code></li>
 </ul>
 </dd>
